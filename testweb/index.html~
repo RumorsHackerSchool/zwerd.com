@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>test web</title>
+<style>
+
+    p {
+        color: #ff0999;
+    }
+
+    a {
+        color: blue;
+    }
+body {
+    font-size: 20pt;
+    color: navy;
+}
+h1 {
+    color: #ffc;
+    background-color: #009;
+}
+h2 {
+	font-family: "helvetica"
+}
+</style>
+</head>
+
+<body>
+this is the body
+<p>this is the paragraph <br/>
+<a>this is "a"</a>
+<h1>this is h1</h1>
+<h2>hello</h2>
+<h3>hello</h3>
+</body>
+</html>
