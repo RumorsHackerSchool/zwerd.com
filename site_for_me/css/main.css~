@@ -1,0 +1,136 @@
+@font-face{
+	font-family:'audimat_monoregular';src:url("./assets/fonts/audimat-mono-webfont/audimrg_-webfont.eot");src:url("./assets/fonts/audimat-mono-webfont/audimrg_-webfont.eot?#iefix") format("embedded-opentype"),url("./assets/fonts/audimat-mono-webfont/audimrg_-webfont.woff2") format("woff2"),url("./assets/fonts/audimat-mono-webfont/audimrg_-webfont.woff") format("woff"),url("./assets/fonts/audimat-mono-webfont/audimrg_-webfont.ttf") format("truetype"),url("./assets/fonts/audimat-mono-webfont/audimrg_-webfont.svg#audimat_monoregular") format("svg");
+	font-weight:normal;
+	font-style:normal;
+	}
+
+@font-face{
+	font-family:'audimat_monolight';src:url("./assets/fonts/audimat-mono-webfont/audiml__-webfont.eot");src:url("./assets/fonts/audimat-mono-webfont/audiml__-webfont.eot?#iefix") format("embedded-opentype"),url("./assets/fonts/audimat-mono-webfont/audiml__-webfont.woff2") format("woff2"),url("./assets/fonts/audimat-mono-webfont/audiml__-webfont.woff") format("woff"),url("./assets/fonts/audimat-mono-webfont/audiml__-webfont.ttf") format("truetype"),url("./assets/fonts/audimat-mono-webfont/audiml__-webfont.svg#audimat_monolight") format("svg");
+	font-weight:normal;
+	font-style:normal;
+	}
+@font-face{
+		font-family:'audimat_monobold';src:url("./assets/fonts/audimat-mono-webfont/audimb__-webfont.eot");src:url("./assets/fonts/audimat-mono-webfont/audimb__-webfont.eot?#iefix") format("embedded-opentype"),url("./assets/fonts/audimat-mono-webfont/audimb__-webfont.woff2") format("woff2"),url("./assets/fonts/audimat-mono-webfont/audimb__-webfont.woff") format("woff"),url("./assets/fonts/audimat-mono-webfont/audimb__-webfont.ttf") format("truetype"),url("./assets/fonts/audimat-mono-webfont/audimb__-webfont.svg#audimat_monobold") format("svg");
+		font-weight:normal;
+		font-style:normal;
+		}
+@media (min-width: 768px) {
+	body{background-image:url("./img/hackinblue.jpg");
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	}}
+@media (min-width: 1025px) {
+	body{
+		background-image:url("./img/hackinblue.jpg");
+		}}
+	body{background-color:#000;}
+	body,.pure-g [class*="pure-u"],
+	.pure-g-r [class*="pure-u"]{
+		font-family:"Lekton",serif;
+		color:#3465A4;
+		line-height:1.3;
+		font-size:1em;
+		}
+	.container{
+		max-width:960px;
+		margin:0 auto;
+		}
+	header.site-header,footer.site-footer{padding:20px 0;}
+@media (max-width: 1024px) {
+	header.site-header,footer.site-footer,.container{padding:20px;}}
+	footer.site-footer{font-size:80%;}
+	h1,h2,h3,h4,h5,h6{
+		font-family:"audimat_monolight";
+		font-weight:100;
+		color:#3465A4;
+		text-transform:uppercase;
+		}
+	h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{
+		color:#3465A4;
+		text-decoration:none;
+		}
+	ul{
+		list-style-type:square;
+		list-style-position:inside;
+		padding:0;
+		}
+	ul li{
+		margin-bottom:15px;
+		}
+	a{
+		color:#3465A4;
+		}
+	.content-row{
+		margin-bottom:40px;
+		}
+		::selection{background:#0F0;color:#000;}
+		::-moz-selection{background:#0F0;color:#000;}
+		.scary-elite-hacker-threat,.red{color:#F00;}
+		.wallpapers .wallpaper{padding:10px;}
+		.wallpapers .wallpaper img{border:1px solid #040;}
+		.pure-table{border:0;width:100%;}
+		.pure-table th,.pure-table td{border-left:none;border-right:none;border-bottom:1px dotted #030;background-color:inherit;}
+		.pure-table thead{background-color:inherit;color:#0F0;}
+		.pure-table td{background-color:inherit;}
+		.contact .pure-form label{display:block;}
+		.contact .pure-form input,.contact .pure-form textarea{background:rgba(0,200,0,0.1);border:1px solid #030;box-shadow:none;box-sizing:0;color:#07C102;border-radius:0;}
+		.banner-container{padding-left:20px;}
+		.book.ad-right{text-align:left;}
+		.book.ad-right .book-info{margin-top:20px;padding:0;}
+		.book.ad-right a{width:100%;}
+		.sx_ad_container{margin-top:20px;}
+		.sx_ad_container img{margin:0 auto;}
+		header.site-header .nav-header img{vertical-align:middle;margin-right:20px;}
+		header.site-header a.brand{font-family:"audimat_monolight";font-size:150%;color:#0F0;letter-spacing:2px;text-decoration:none;text-transform:uppercase;
+		}header.site-header a{color:#07C102;font-size:90%;}
+		header.site-header a:hover{background:none;color:#0F0;}
+		header.site-header nav{font-size:120%;}
+		header.site-header nav ul{display:flex;flex-direction:horizontal;flex-wrap:wrap;list-style:none;justify-content:flex-end;margin:0;}
+		header.site-header nav ul li{margin:0px 10px;}
+		header.site-header nav ul li a{text-decoration:none;vertical-align:middle;
+}@media (max-width: 767px) {
+	header.site-header .nav-header{text-align:center;margin-bottom:20px;}
+	header.site-header .nav-header img{display:block;text-align:center;margin:0 auto;}
+	header.site-header nav ul{display:block;text-align:center;}}
+	.lead{background-color:rgba(0,200,0,0.1);width:100%;border-top:1px solid #040;border-bottom:1px solid #040;padding:20px 0;margin-bottom:20px;}
+	.lead h1{padding:0;margin:0 0 20px 0;}
+	.welcome p{margin:0;}
+	.book{padding-left:20px;}
+	.book .book-info{padding:0 20px;}
+	.book .book-info h3{margin:0 0 20px 0;}
+	.cta{padding:0 20px;}
+	.cta .pure-button{width:100%;text-align:center;}
+	.pure-button{color:#000;background-color:#0C0;border-radius:0;font-size:90%;}
+		
+		
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

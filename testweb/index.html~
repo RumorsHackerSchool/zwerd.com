@@ -28,6 +28,7 @@ body {
     font-size: 20pt;
     color: navy;
      margin:0;
+     background: white url(http://www.htmldog.com/images/bg.gif) no-repeat top right;
 }
 h1 {
     color: #ffc;
