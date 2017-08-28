@@ -3,11 +3,14 @@ body{
  padding: 0;
  margin:0;
  background-color: #f4f4f4;
+ background-image:url("../img/hackinblue.jpg");
+ background-repeat:no-repeat;
+ background-attachment:fixed;
 }
 
 .container{
 	width: 80%;
-	margin:auto;
+	margin:0;
 	overflow:hidden;
 }
 
@@ -15,17 +18,18 @@ body{
 .container{
 	width:80%;
 	margin:auto;
+  padding: 0;
 	overflow:hidden;
 }
 
 ul{
 	margin: 0;
 	padding: 0;
-	
+
 }
 .button_1{
 	height: 38px;
-	background:#e8491d;
+	background:#35424a;
 	border:0;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -41,11 +45,17 @@ ul{
 }
 /* Header **/
 header{
-	background:#35424a;
 	color:#ffffff;
-	padding-top:30px;
+	padding-top:3px;
 	min-height:70px;
-	border-bottom:#e8491d 3px solid;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+
+
 }
 
 header a{
@@ -53,16 +63,22 @@ header a{
 	text-decoration:none;
 	text-transform: uppercase;
 	font-size: 16px;
+
 }
 
 header li{
 	float:left;
 	display:inline;
 	padding: 0 20px 0 20px;
+  margin: 0 0 0 0;
+	font-weight:bold;
+  padding-top:43px;
+	min-height:50px;
 }
 
 header #branding{
 	float:left;
+  font-size: 32px;
 }
 
 header #branding h1{
@@ -75,7 +91,7 @@ header nav{
 }
 
 header .highlight, header .current a{
-	color:#e8491d;
+	color:#3465A4;
 	font-weight:bold;
 }
 
@@ -87,28 +103,59 @@ header a:hover{
 /*showcase*/
 #showcase{
 	min-height: 400px;
-	background:url("../img/cybersecurity2.jpg");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
 	text-align: center;
 	color: #ffffff;
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
 }
 
 #showcase h1{
 	margin-top: 100px;
 	font-size: 55px;
-	margin-bottom: 10px;
+	margin-bottom: 0;
 }
 
 #showcase p{
 	font-size: 20px;
 }
 
+
+/* boxes */
+#boxes {
+	margin-top:0;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#boxes .box{
+	float:left;
+	text-align: center;
+	width: 30%;
+	padding:10px;
+  color:#fff;
+
+}
+
+#boxes .box img{
+	width: 90px;
+}
+
 /* newsletter */
 #newsletter{
 	padding:15px;
 	color:#ffffff;
-	background: #35424a;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
 }
 
 #newsletter h1{
@@ -122,24 +169,9 @@ header a:hover{
 #newsletter input[type="email"]{
 	padding:4px;
 	height: 25px;
-	width: 250px; 
+	width: 250px;
 }
 
-/* boxes */
-#boxes {
-	margin-top:20px;
-}
-
-#boxes .box{
-	float:left;
-	text-align: center;
-	width: 30%;
-	padding:10px;
-}
-
-#boxes .box img{
-	width: 90px;
-}
 
 /*aside*/
 aside#sidebar{
@@ -155,9 +187,18 @@ aside#sidebar .quote input, aside#sidebar .quote textarea{
 
 
 /*about-me*/
+#about{
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
+}
+
 article#about-me{
 	float: left;
 	width: 65%;
+  color: #fff
+
 }
 
 
@@ -173,11 +214,14 @@ ul#services li{
 }
 
 footer{
-	padding:20px;
-	margin-top:20px;
+	padding:0;
+	margin-top:0;
 	color:#ffffff;
-	background-color:#e8491d;
 	text-align: center;
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
 }
 
 /*Media Quries */
@@ -190,13 +234,13 @@ footer{
 		float: none;
 		text-align: center;
 		width:100%;
-		
+
 	}
-	
+
 	header{
-		padding-bottom: 20px;	
+		padding-bottom: 20px;
 	}
-	
+
 	#showcase h1{
 		margin-top: 40px;
 	}

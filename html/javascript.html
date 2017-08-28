@@ -24,7 +24,7 @@
 		average = final_score / exams_num;
 		alert("Your average score is: " +average);
 	}
-	
+
 
 	var score;
 	score = 0;
@@ -38,7 +38,7 @@
 		score += score_value;
 		document.write(score);
 	}
-	
+
 	function exams() {
 		exams_num = document.getElementById("exams_num").value;
 		document.getElementById('script').innerHTML = '<br/><b>The number of the exams are ' + exams_num + '</b>';
@@ -51,30 +51,30 @@
 	function submit_score() {
 		for (i=0;i<exams_num;i++) {
 				score_value += parseInt(document.getElementById('exam_'+i).value);
-		}	
+		}
 		document.getElementById('script').innerHTML = '<br/>You average score is: '+score_value/exams_num;
-		
-	}	
-		
+
+	}
+
 
 </script>
 	<header>
 		<div class="container">
 			<div id="branding">
-				<h1><span class="highlight">Zwerd</span> WEBsite</h1>
+				<h1><img src="./img/icon.png" width="33.2" height="45.3"/><span class="highlight">Zwerd</span></h1>
 			</div>
 			<nav>
 				<ul>
-					<li><a href="index.html" >Home</a></li>	
-					<li><a href="about.html" >About</a></li>	
-					<li class="current"><a href="learning.html" >Learning</a></li>	
+					<li><a href="index.html" >Home</a></li>
+					<li><a href="about.html" >About</a></li>
+					<li class="current"><a href="learning.html" >Learning</a></li>
 					<li><a href="post.html" >post</a></li>
-					<li><a href="services.html" >עברית</a></li>				
+					<li><a href="services.html" >עברית</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
-	
+
 		<section id="newsletter">
 			<div class="container">
 				<h1>JavaScript</h1>
@@ -94,7 +94,5 @@
 			<p>Zwerd Web Deisgn, Copyright &copy; 2017</p>
 		</footer>
 	</section>
-</body>		
+</body>
 </html>
-
-	
