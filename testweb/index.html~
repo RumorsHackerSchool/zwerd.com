@@ -6,7 +6,6 @@
     p {
         color: #ff0999;
         margin: 1px 5px 10px 20px;
-		  background-color: #864;
     }
 p:first-child {
     font-weight: bold;
