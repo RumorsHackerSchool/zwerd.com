@@ -232,11 +232,22 @@ header a:hover{
 
 #blogs b{
 	text-align: justify;
+  text-justify: inter-word;
 	padding:0;
   color:#fff;
   content: '';
   width: 100%;
   white-space: pre-wrap;
+}
+
+#blogs ul{
+  margin: left;
+  padding: :inline;
+}
+#blogs li{
+  float:left;
+  display:inline;
+  padding: 0 0 0 25%;
 }
 
 #blogs div {
