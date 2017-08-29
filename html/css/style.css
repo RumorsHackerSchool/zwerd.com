@@ -27,8 +27,15 @@
   font-style:normal;
 }
 
+@font-face{
+  font-family: "hackers_square";
+  src: url("../fonts/hackers_square.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
 body{
- font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
+ font: 15px/1.5 hackers_square, Helvetica, sans-serif;
  padding: 0;
  margin:0;
  background-color: #f4f4f4;
@@ -71,6 +78,7 @@ ul{
 }
 /* Header **/
 header{
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
 	color:#ffffff;
 	padding-top:3px;
 	min-height:70px;
@@ -137,6 +145,7 @@ header a:hover{
 }
 
 #showcase h1{
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
 	margin-top: 0;
 	font-size: 55px;
 }
@@ -158,6 +167,7 @@ header a:hover{
 }
 
 #boxes h2{
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
   color: #fff;
   text-align: center;
 }
@@ -191,6 +201,7 @@ header a:hover{
 }
 
 #newsletter h1{
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
   text-align: center;
 }
 #newsletter form {
@@ -300,6 +311,7 @@ ul#services li{
 }
 
 footer{
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
 	padding:0;
 	margin-top:0;
 	color:#ffffff;
