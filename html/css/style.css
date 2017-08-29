@@ -1,18 +1,40 @@
+
+@font-face{
+  font-family: "hacker_bold";
+  src: url("../fonts/Elite_Hacker_Corroded.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face{
+  font-family: "hacker_normal";
+  src: url("../fonts/hackers.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face{
+  font-family: "hacker_light";
+  src: url("../fonts/hacka___.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face{
+  font-family: "hacker_binary";
+  src: url("../fonts/Hacker.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
 body{
- font: 15px/1.5 Ariel, Helvetica, sans-serif;
- font-family:'audimat_monoregular';
+ font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
  padding: 0;
  margin:0;
  background-color: #f4f4f4;
  background-image:url("../img/hackinblue.jpg");
  background-repeat:no-repeat;
  background-attachment:fixed;
-}
-
-.container{
-	width: 80%;
-	margin:0;
-	overflow:hidden;
 }
 
 /* Globla */
@@ -72,7 +94,6 @@ header li{
 	display:inline;
 	padding: 0 20px 0 20px;
   margin: 0 0 0 0;
-	font-weight:bold;
   padding-top:43px;
 	min-height:50px;
 }
@@ -103,7 +124,7 @@ header a:hover{
 
 /*showcase*/
 #showcase{
-	min-height: 400px;
+	min-height: 200px;
 	text-align: center;
 	color: #ffffff;
   background: rgb(0, 40, 60); /* fallback color */
@@ -113,13 +134,12 @@ header a:hover{
 }
 
 #showcase h1{
-	margin-top: 100px;
+	margin-top: 0;
 	font-size: 55px;
-	margin-bottom: 0;
 }
 
 #showcase p{
-	font-size: 20px;
+	font-size: 25px;
 }
 
 
@@ -132,6 +152,11 @@ header a:hover{
   background-size: cover;
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.7);
+}
+
+#boxes h2{
+  color: #fff;
+  text-align: center;
 }
 
 #boxes .box{
@@ -155,16 +180,19 @@ header a:hover{
   background-attachment:fixed;
 	background-color:#000000;
   background-size: cover;
-  background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
+
 }
 
 #newsletter h1{
-	float:left;
+  text-align: center;
 }
 #newsletter form {
-	float: right;
-	height: 25px;
+  text-align: center;
+	height: 40px;
 	margin-top: 15px;
 }
 #newsletter input[type="email"]{
@@ -173,6 +201,49 @@ header a:hover{
 	width: 250px;
 }
 
+/* boxes */
+#blogs {
+	margin-top:0;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#blogs h2{
+  font: 25px/1.5 hacker_binary, Helvetica, sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+#blogs .blog {
+	border: solid;
+}
+
+#blogs .blog img{
+	text-align: left;
+  float:left;
+	width: 60px;
+  padding: 0;
+  margin: 0;
+}
+
+#blogs b{
+	text-align: justify;
+	padding:0;
+  color:#fff;
+  content: '';
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+#blogs div {
+  font: 15px/1.5 Ariel, Helvetica, sans-serif;
+	text-align: left;
+  color: #ffffff;
+}
 
 /*aside*/
 aside#sidebar{
