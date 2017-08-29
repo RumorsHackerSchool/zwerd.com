@@ -241,13 +241,13 @@ header a:hover{
 }
 
 #blogs ul{
-  margin: left;
-  padding: :inline;
+  margin: center;
+  padding:inline;
 }
 #blogs li{
   float:left;
   display:inline;
-  padding: 0 0 0 25%;
+  padding: 0 10% 0 10%;
 }
 
 #blogs div {
