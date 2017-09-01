@@ -345,6 +345,17 @@ footer{
 	}
 	}
 
+/* javascript */
+#javascript{
+  margin-top:0;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+}
+
 
 
 
