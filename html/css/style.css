@@ -343,10 +343,38 @@ footer{
 		margin-top: 40px;
 	}
 	}
-	}
+
 
 /* javascript */
 #javascript{
+  font: 15px/1.5 Ariel, Helvetica, sans-serif;
+  margin-top:0;
+  color: #ffffff;
+  text-align: center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
+}
+#boxes .javascript_box{
+	float:left;
+	text-align: center;
+	width: 30%;
+	padding:10px;
+  color:#fff;
+  border: solid;
+}
+
+
+
+/*post*/
+#post {
+  font: 15px/1.5 Ariel, Helvetica, sans-serif;
+  color: #fff;
   margin-top:0;
   background-repeat:no-repeat;
   background-attachment:fixed;
@@ -354,13 +382,19 @@ footer{
   background-size: cover;
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.7);
+
+}
+#post h1 {
+  margin: 0 0 10px;
+  text-align: center;
+  color: #fff;
+}
+#post h3 {
+  margin: 0 0 10px;
+  text-align: center;
+  color: #fff;
 }
 
-
-
-
-
-/*post*/
 #post .message img {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -398,7 +432,7 @@ footer{
   color: #444;
   font-size: 17px;
   text-shadow: 1px 1px #ccc;
-  margin: 10px 0 10px;
+  margin: 0 0 10px;
 }
 
 #post #header div {

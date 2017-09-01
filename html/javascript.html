@@ -32,7 +32,7 @@
 	score_value = 0;
 	var exams_num = 0;
 	function inner_average() {
-		document.getElementById('script').innerHTML += '<br/>Please type the number of exam for calculate average:<input type="text" id="exams_num" placeholder="Exam number..."/><br/><input type="submit" value="Submit" onclick="exams()"/>';
+		document.getElementById('script').innerHTML += '<br/>Please type the number of exam for calculate average:<input type="text" id="exams_num" placeholder="Exam number..." size="15"/><br/><input type="submit" value="Submit" onclick="exams()"/>';
 	}
 	function addition(){
 		score += score_value;
@@ -44,7 +44,7 @@
 		document.getElementById('script').innerHTML = '<br/><b>The number of the exams are ' + exams_num + '</b>';
 		for (i=0;i<exams_num;i++) {
 			num = i + 1
-			document.getElementById('script').innerHTML += '<br/>Please type score of exam number ' +num+ ':<input type="text" id="exam_'+i+'" placeholder="Exam score..."/>';
+			document.getElementById('script').innerHTML += '<br/>Please type score of exam number ' +num+ ':<input type="text" id="exam_'+i+'" placeholder="Exam score..." size="15"/>';
 		}
 		document.getElementById('script').innerHTML += '<br/><input type="submit" value="Submit" onclick="submit_score()"/>';
 		}
@@ -81,9 +81,10 @@
 				<img src="./img/js.png" style="width: 90px;" >
 			</div>
 		</section>
+
 		<section id="boxes">
 			<div class="container">
-				<div class="box">
+				<div class="javascript_box">
 					<p>JS for calculate average scores.
 					<input type="submit" value="js using prompt" onclick="prompt_average()"/>
 					<input type="submit" value="js using innerHTML" onclick="inner_average()"/></p>
