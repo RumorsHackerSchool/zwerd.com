@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="affordeble and professional web designe">
+	<meta name="keywords" content="web design, affordable web design, professional web designe">
+	<meta name="author" content="root" >
+	<title>Zwerd Google Map</title>
+	<style>
+		#map {
+			height:400px;
+			width:100%;
+		}
+	</style>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+			<div id="branding">
+				<h1><img src="../img/icon.png" width="33.2" height="45.3"/><span class="highlight">Zwerd</span></h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="../index.html" >Home</a></li>
+					<li><a href="../about.html" >About</a></li>
+					<li class="current"><a href="../Projects.html" >Learning</a></li>
+					<li><a href="../post.html" >post</a></li>
+					<li><a href="../services.html" >עברית</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+		<section id="newsletter">
+			<div class="container">
+				<h1>Google-map</h1>
+				<img src="../img/Google-logo.png" style="width:90px;"/>
+			</div>
+		</section>
+		<section>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var guyHome = {lat:31.833402,lng:35.234947};
+        var kalandia = {lat:31.857695,lng:35.208719};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: guyHome
+        });
+        var marker = new google.maps.Marker({
+          position: guyHome,
+          map: map
+        });
+				var marker2 = new google.maps.Marker({
+          position: kalandia,
+          map: map
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+        	content:'<h2>Guy home!</h2>'
+        });
+				var infoWindow2 = new google.maps.InfoWindow({
+        	content:'<h2>Sagi and Omer \n are u crazy? \n it\'s fukin kalandia!</h2>'
+        });
+
+        marker.addListener('click',function(){
+        infoWindow.open(map, marker);
+				infoWindow2.open(map, marker2);
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqoih4uboelNxC68m_TURmqtZukSCQ3M4&callback=initMap">
+    </script>
+		<footer>
+			<p>Zwerd Web Deisgn, Copyright &copy; 2017</p>
+		</footer>
+	</section>
+</body>
+</html>
