@@ -242,14 +242,21 @@ header a:hover{
 #blogs .blog {
 	border: solid;
 }
+#blogs .blog .blogImg{
+	text-align: left;
+   float:left;
+	width: 100%;
+   padding: 10;
+   margin: 10;
+}
 
 #blogs .blog img{
 	text-align: left;
-  float:left;
-	width: 60px;
-  padding: 0;
-  margin: 0;
+   float:left;
+   padding: 10;
+   margin: 10;
 }
+
 
 #blogs b{
 	text-align: justify;

@@ -1,31 +1,68 @@
+
+@font-face{
+  font-family: "hacker_bold";
+  src: url("../fonts/Elite_Hacker_Corroded.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face{
+  font-family: "hacker_normal";
+  src: url("../fonts/hackers.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face{
+  font-family: "hacker_light";
+  src: url("../fonts/hacka___.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face{
+  font-family: "hacker_binary";
+  src: url("../fonts/Hacker.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face{
+  font-family: "hackers_square";
+  src: url("../fonts/hackers_square.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
 body{
  font: 15px/1.5 Ariel, Helvetica, sans-serif;
  padding: 0;
  margin:0;
  background-color: #f4f4f4;
-}
-
-.container{
-	width: 80%;
-	margin:auto;
-	overflow:hidden;
+ background-image:url("../img/hackinblue.jpg");
+ min-height: 100%;
+ background-size: cover;
+ background-position: center;
+ background-repeat:no-repeat;
+ background-attachment:fixed;
 }
 
 /* Globla */
 .container{
 	width:80%;
 	margin:auto;
+  padding: 0;
 	overflow:hidden;
 }
 
 ul{
 	margin: 0;
 	padding: 0;
-	
+
 }
 .button_1{
 	height: 38px;
-	background:#e8491d;
+	background:#35424a;
 	border:0;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -41,11 +78,18 @@ ul{
 }
 /* Header **/
 header{
-	background:#35424a;
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
 	color:#ffffff;
-	padding-top:30px;
+	padding-top:3px;
 	min-height:70px;
-	border-bottom:#e8491d 3px solid;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+
+
 }
 
 header a{
@@ -53,16 +97,21 @@ header a{
 	text-decoration:none;
 	text-transform: uppercase;
 	font-size: 16px;
+
 }
 
 header li{
 	float:left;
 	display:inline;
 	padding: 0 20px 0 20px;
+  margin: 0 0 0 0;
+  padding-top:43px;
+	min-height:50px;
 }
 
 header #branding{
 	float:left;
+  font-size: 32px;
 }
 
 header #branding h1{
@@ -75,7 +124,7 @@ header nav{
 }
 
 header .highlight, header .current a{
-	color:#e8491d;
+	color:#3465A4;
 	font-weight:bold;
 }
 
@@ -86,59 +135,154 @@ header a:hover{
 
 /*showcase*/
 #showcase{
-	min-height: 400px;
-	background:url("../img/cybersecurity2.jpg");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
+	min-height: 200px;
 	text-align: center;
 	color: #ffffff;
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
 }
 
 #showcase h1{
-	margin-top: 100px;
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
+	margin-top: 0;
 	font-size: 55px;
-	margin-bottom: 10px;
 }
 
 #showcase p{
-	font-size: 20px;
+	font-size: 25px;
 }
 
-/* newsletter */
-#newsletter{
-	padding:15px;
-	color:#ffffff;
-	background: #35424a;
-}
-
-#newsletter h1{
-	float:left;
-}
-#newsletter form {
-	float: right;
-	height: 25px;
-	margin-top: 15px;
-}
-#newsletter input[type="email"]{
-	padding:4px;
-	height: 25px;
-	width: 250px; 
-}
 
 /* boxes */
 #boxes {
-	margin-top:20px;
+	margin-top:0;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+#boxes h2{
+  font: 30px/1.5 Ariel, Helvetica, sans-serif;
+  color: #fff;
+  text-align: center;
 }
 
 #boxes .box{
 	float:left;
 	text-align: center;
 	width: 30%;
-	padding:10px;
+	padding:20px;
+  color:#fff;
+
 }
 
 #boxes .box img{
 	width: 90px;
+}
+
+#boxes p{
+	direction: rtl;
+}
+
+
+
+/* newsletter */
+#newsletter{
+	padding:15px;
+	color:#ffffff;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
+
+}
+
+#newsletter h1{
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
+  text-align: center;
+}
+#newsletter form {
+  text-align: center;
+	height: 40px;
+	margin-top: 15px;
+}
+#newsletter input[type="email"]{
+	padding:4px;
+	height: 25px;
+	width: 250px;
+}
+
+/* boxes */
+#blogs {
+	margin-top:0;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#blogs h2{
+  font: 25px/1.5 hacker_binary, Helvetica, sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+#blogs .blog {
+	border: solid;
+}
+#blogs .blog .blogImg{
+	text-align: left;
+   float:left;
+	width: 100%;
+   padding: 10;
+   margin: 10;
+}
+
+#blogs .blog img{
+	text-align: left;
+   float:left;
+   padding: 10;
+   margin: 10;
+}
+
+
+
+#blogs b{
+	text-align: justify;
+  text-justify: inter-word;
+	padding:0;
+  color:#fff;
+  content: '';
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+#blogs ul{
+  margin: center;
+  padding:inline;
+}
+#blogs li{
+  float:left;
+  display:inline;
+  padding: 0 10% 0 10%;
+}
+
+#blogs div {
+  font: 15px/1.5 Ariel, Helvetica, sans-serif;
+	text-align: left;
+  color: #ffffff;
 }
 
 /*aside*/
@@ -155,9 +299,18 @@ aside#sidebar .quote input, aside#sidebar .quote textarea{
 
 
 /*about-me*/
+#about{
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
+}
+
 article#about-me{
 	float: left;
 	width: 65%;
+  color: #fff
+
 }
 
 
@@ -173,11 +326,15 @@ ul#services li{
 }
 
 footer{
-	padding:20px;
-	margin-top:20px;
+  font: 15px/1.5 hacker_binary, Helvetica, sans-serif;
+	padding:0;
+	margin-top:0;
 	color:#ffffff;
-	background-color:#e8491d;
 	text-align: center;
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
 }
 
 /*Media Quries */
@@ -190,24 +347,69 @@ footer{
 		float: none;
 		text-align: center;
 		width:100%;
-		
+
 	}
-	
+
 	header{
-		padding-bottom: 20px;	
+		padding-bottom: 20px;
 	}
-	
+
 	#showcase h1{
 		margin-top: 40px;
 	}
 	}
-	}
 
 
+/* javascript */
+#javascript{
+  font: 15px/1.5 Ariel, Helvetica, sans-serif;
+  margin-top:0;
+  color: #ffffff;
+  text-align: center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 40, 60); /* fallback color */
+  background: rgba(0, 40, 60, 0.7);
+  border-top:#3465A4 3px solid;
+  border-bottom:#3465A4 3px solid;
+}
+#boxes .javascript_box{
+	float:left;
+	text-align: center;
+	width: 30%;
+	padding:10px;
+  color:#fff;
+  border: solid;
+}
 
 
 
 /*post*/
+#post {
+  font: 15px/1.5 Ariel, Helvetica, sans-serif;
+  color: #fff;
+  margin-top:0;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+	background-color:#000000;
+  background-size: cover;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+
+}
+#post h1 {
+  margin: 0 0 10px;
+  text-align: center;
+  color: #fff;
+}
+#post h3 {
+  margin: 0 0 10px;
+  text-align: center;
+  color: #fff;
+}
+
 #post .message img {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -245,7 +447,7 @@ footer{
   color: #444;
   font-size: 17px;
   text-shadow: 1px 1px #ccc;
-  margin: 10px 0 10px;
+  margin: 0 0 10px;
 }
 
 #post #header div {
