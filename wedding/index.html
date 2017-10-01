@@ -5,6 +5,7 @@
     <title>אירוסין - שני וגיא</title>
     <style>
 body {
+    text-align: center;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -15,44 +16,77 @@ body {
     -ms-transform: translate(-50%, -50%);
   }
 
-
-div li{
-  	float:left;
+div{
+    background-image: url("./wedding-packages.jpg");
+    background-size:640px 350px ;
+    background-repeat: no-repeat;
+  	float:right;
   	display:inline;
-  	padding: 0 0 0 0;
+  	padding: 50px 10px 200px 450px ;
     margin: 0 0 0 0;
-    padding-top:0;
   	min-height:10px;
-    border: 1px solid #dddddd;
+    border: 2px solid #dddddd;
   }
+div form{
+  float:right;
+  text-align: right;
+}
+</style>
+<script type="text/javascript">
+function save() {
+  var section, fullName, phonNumber, numberOfPeople, numberOfKids, doComing, userSelect;
+  section=document.getElementById("section");
+  fullName=section.elements["full_name"].value;
+  phonNumber=section.elements["phon_number"].value;
+  numberOfPeople=section.elements["number_of_people"].value;
+  numberOfKids=section.elements["number_of_kids"].value;
+  doComing = document.getElementById('do_coming');
+  userSelect = doComing.options[doComing.selectedIndex].value;
+  console.log(fullName, phonNumber, numberOfPeople, numberOfKids, userSelect);
 
-  table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-  }
-  td, th {
-      width: 15%;
-      border: 1px solid #dddddd;
-      text-align: center;
-      padding: 8px;
-  }
-    </style>
+  $.ajax({
+  type: "POST",
+  url: "~/pythoncode.py",
+  data: { param: text}
+  }).done(function( o ) {
+     // do something
+  });
+
+}
+
+</script>
+
+
   </head>
   <body>
-    <div class="centered">
-      <img src="./wedding-packages.jpg" height="350" width="640" alt="wedding-packages">
-      <ul>
-        <li><input type="text" placeholder="שם מלא" style="text-align: center; font-size: 20px"/></li>
-        <li><input type="text" placeholder="טלפון" style="text-align: center; font-size: 20px"/></li>
-        <li><input type="text" name="Select" value="מאשר הגעה"
-       selectBoxOptions="כן;לא;אולי">
-        </li>
-        <li><input type="text" placeholder="מספר ילדים מתחת לגיל 10" style="text-align: center; font-size: 20px"/></li>
-        <li><input type="text" placeholder="מספר נפשות" style="text-align: center; font-size: 20px"/></li>
+    <h1>אירוסין - שני וגיא </h1>
+    <div class="centered" dir="rtl">
+      <!--<img src="./wedding-packages.jpg" height="350" width="640" alt="wedding-packages">-->
+      <form id="section">
+        <b>
+        שם מלא:<br>
+        <input name="full_name" type="text" value="">
+        <br>
+        טלפון:<br>
+        <input name="phon_number" type="text" value="">
+        <br>
+        מספר נפשות<br>
+        <input name="number_of_people" type="text" value="">
+        <br>
+        מספר ילדים מתחת לגיל 10<br>
+        <input name="number_of_kids" type="text" value="">
+        <br>
+        האם מגיע?<br>
+      </b>
+        <select id="do_coming" form="carform">
+          <option value="כן">כן</option>
+          <option value="לא">לא</option>
+          <option value="אולי">אולי</option>
+        </select>
+        <br><br>
+        <input type="submit" value="אישור" onclick="save()">
+      </form>
 
-
-      </ul>
     </div>
 
 
