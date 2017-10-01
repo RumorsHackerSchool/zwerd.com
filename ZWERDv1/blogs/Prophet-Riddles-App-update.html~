@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="he-IL">
+<!-- I am the FUCKING ZWERDLING, if u don't know me u better to run for ur life! -->
+<!-- this is my code for my first HTML site, all the option here are not working yet, I have no malicious code here so don't panic! -->
+<!-- If u want to contact me please send me an email Z3V5Lnp3ZXJkbGluZ0BnbWFpbC5jb20= Holy Frickin Shit-->
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Zwerd web designe">
+	<meta name="keywords" content="web design">
+	<meta name="author" content="guy" >
+	<title>Zwerd.com</title>
+	<link rel="icon" sizes="16x16" href="../img/favicon.ico">
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+			<div id="branding">
+				<h1><img src="../img/icon.png" width="33.2" height="45.3"/><span class="highlight">Zwerd</span></h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../about.html">About</a></li>
+					<li><a href="../Projects.html">Projects</a></li>
+					<li><a href="../post.html">Post</a></li>
+					<li><a href="../heb.html">עברית</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+
+			<section id="blogs">
+				<div class="container">
+					<div class="blog">
+						<div style="width:100%"><img src="../img/MagenDavid.gif"><ul><li><b><h3>Prophet-Riddles-App-update<h3></b></li><li><h3>17.09.2017<h3></li></ul><hr align="left" width="100%"></div>
+							<p>seriously!
+I've been trying to write some script in Python for a few days and nothing!
+The goal is to take the source file and convert it to a CSV file
+I broke it on my head and finally it worked! The script takes a retouch file of the original file that is set to txt and goes over the rows and marks and builds the new file that will be ready to be converted to json
+And finally it happens !!!</p>
+<p>I done hard work so far, this is what I feel. After I finished the script and now after I have the json file I work hard on the App itself in react-native, so far so good, but things dosnt work
+I wanted so I guess there is alot of work here, </p>
+<p>Meanwhile I have some photos how the app look so far:</p>
+<div class="blogImg">
+<img src="../img/riddles-HomeScreen.jpg" alt="riddles-HomeScreen"  width="80%" height="80%"/>
+<br>
+<p><img src="../img/riddles-Levels.jpg"/></p>
+<p><img src="../img/riddles-Riddle.jpg"/></p>
+</div>
+<br/>
+<p>So this is all for now!!</p>
+
+
+						</div>
+						</div>
+						
+
+			</section>
+
+		<footer>
+			<p>Zwerd Web Deisgn, Copyright &copy; 2017</p>
+		</footer>
+</body>
+</html>
