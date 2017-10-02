@@ -10,23 +10,32 @@
 body {
     text-align: center;
     top: 2%;
+    display: inline-block;
+    margin: 0px;
   }
 
 div{
-    background-image: url("./wedding-packages.jpg");
-    background-size:640px 350px ;
+    background-image: url("./wedding.jpg");
+    background-size:840px 550px ;
     background-repeat: no-repeat;
     text-align: center;
   	float:right;
   	display:inline;
-  	padding: 50px 10px 200px 450px ;
-    margin: 0 25% 0 0;
+  	padding: 50px 10px 0 40px ;
+    margin: 0 0 0 0;
   	min-height:10px;
     border: 2px solid #dddddd;;
   }
 div form{
   float:right;
   text-align: right;
+      margin: 0 0 0 0;
+}
+div form p {
+  text-align: center;
+  top: 2%;
+  display: inline-block;
+  margin: 0px ;
 }
 
 @media(max-width: 758px){
@@ -36,23 +45,32 @@ div form{
 body {
   text-align: center;
   top: 2%;
+  display: inline-block;
+  margin: 0px ;
 }
 
 div{
-  background-image: url("./wedding-packages.jpg");
-  background-size:640px 350px ;
+
+  background-image: url("./wedding.jpg");
+
   background-repeat: no-repeat;
   text-align: center;
-  float:right;
-  display:inline;
-  padding: 50px 10px 200px 42% ;
-  margin: 0 1% 0 1%;
+  float:left;
+  padding: 50px 5px 200px 45%;
+  margin: 0 0 0 0;
   min-height:10px;
   border: 2px solid #dddddd;
 }
 div form{
+
 float:right;
 text-align: right;
+}
+p {
+  text-align: center;
+  top: 2%;
+  display: inline-block;
+  margin: 0px ;
 }
 }
 </style>
@@ -74,14 +92,6 @@ function save() {
   userSelect = doComing.options[doComing.selectedIndex].value
   console.log(fullName, phonNumber, numberOfPeople, numberOfKids, userSelect)
 
-  $.ajax({
-    type: 'POST',
-    url: '~/pythoncode.py',
-    data: { param: text }
-  }).done(function(o) {
-    // do something
-  })
-}
 </script>
 
 
@@ -91,7 +101,7 @@ function save() {
     <h1>אירוסין - שני וגיא </h1>
     <div class="centered" dir="rtl">
       <!--<img src="./wedding-packages.jpg" height="350" width="640" alt="wedding-packages">-->
-      <form id="section">
+      <form action="myprocessingscript.php" method="POST">
         <b>
         שם מלא:<br>
         <input name="full_name" type="text" value="">
@@ -105,29 +115,46 @@ function save() {
         <input name="number_of_people" type="text" value="">
         <br>
         <br>
-        מספר ילדים<br> מתחת לגיל 10<br>
-        <input name="number_of_kids" type="text" value="">
-        <br>
-        <br>
         האם מגיע?<br>
       </b>
-        <select id="do_coming" form="carform">
-          <option value="כן">כן</option>
-          <option value="לא">לא</option>
-          <option value="אולי">אולי</option>
+        <select name="approve">
+          <option value="yes">כן</option>
+          <option value="no">לא</option>
+          <option value='maybe'>אולי</option>
         </select>
         <br><br>
-        <input type="submit" value="אישור" onclick="save()">
+        <input type="submit" name="submit" value="אישור">
+
+
+      <h2>
+האירוע יתקיים אי"ה ביום שלישי,
+      <br>
+      בתאריך ד' חשוון (24.10.17 למניינם),
+      <br>
+באולם "בוכריס" ברח' בוכריס 6, יבנה.
+      <br>
+      קבלת פנים בשעה 19:30.
+      <br>
+      <br>
+            <a href="https://waze.com/ul/hsv8tq9ger">waze<a>
+            <br><br>
+      נשמח לראותכם!
+<br>
+<br>
+      לפרטים נוספים:
+      <br>
+      שני - 0528089750
+      <br>
+      גיא - 0545558679
+
+      <br>
+
+
+      </h2>
       </form>
-
-      <form action="post.php" method="post">
-  Name <input type="text" name="user"><br />
-  Company<input type="text" name="comp"><br />
-  <input type="submit" value=" Submit Info">
-</form>
-    </div>
-
-
-
+  <footer>
+  <p>Zwerd Web Deisgn, Copyright &copy; 2017<br>
+  </footer>
 </body>
+<foot
 </html>
