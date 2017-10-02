@@ -1,4 +1,7 @@
+import cgi
+form = cgi.FieldStorage()
+searchterm =  form.getvalue('searchbox')
+
 file = open('test.txt', 'w')
-check = file.read
-
-
+file.write(searchterm)
+file.close()
