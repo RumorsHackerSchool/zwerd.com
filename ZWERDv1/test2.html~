@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Create Object from JSON String</h2>
+
+<p id="demo"></p>
+
+<script>
+
+var text;
+var text =  {
+	"yehoshuha": {
+		"yehoshuha": {
+			"bereshit": {
+				"riddles": [{
+						"1": {
+							"riddle": "this is the riddle",
+							"answer": "this is the answer"
+						}
+					},
+					{
+						"2": {
+							"riddle": "this is the riddle2",
+							"answer": "this is the answer2"
+						}
+					}
+				]
+			}
+		}
+	}
+};
+var test = "test1";
+
+
+document.getElementById("demo").innerHTML += "test" ;
+console.log(text.yehoshuha.yehoshuha.bereshit.riddles[0]["2"].riddle);
+</script>
+
+</body>
+</html>
+
