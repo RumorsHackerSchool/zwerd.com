@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Guy Zwerdling</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="icon" sizes="16x16" href="./icons/favicon_16_16.ico"/>
+    <link rel="icon" sizes="128x128" href="./icons/favicon_128_128.png">
+    <link rel="icon" sizes="192x192" href="./icons/favicon_192_192.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="./icons/favicon_128_128.png">
+    <link rel="apple-touch-icon-precomposed" sizes="128x128" href="./icons/favicon_128_128.png">
+
+    <meta itemprop="name"            content="Sagi Kedmi">
+    <meta itemprop="description"     content="Blogs of a PT warrior.">
+    <meta itemprop="image"           content="https://zwerd.com/images/icon.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@https://twitter.com/GuyZwerdling">
+    <meta name="twitter:title" content="Guy Zwerdling">
+    <meta name="twitter:description" content="Blogs of a PT warrior.">
+    <meta name="twitter:image" content="https://zwerd.com/images/icon.png">
+    <meta name="twitter:creator" content="@https://twitter.com/GuyZwerdling">
+    <meta name="twitter:domain" content="https://zwerd.com/">
+
+    <meta property="og:url"          content="https://sagi.io/"/>
+    <meta property="og:type"         content="article" />
+    <meta property="og:title"        content="Guy Zwerdling"/>
+    <meta property="og:description"  content="Blogs of a PT warrior."/>
+    <meta property="og:image"        content="https://zwerd.com/images/icon.png"/>
+    <script>
+    function loadDeferredImgs() {
+      var deferredImgs = document.getElementsByTagName('img');
+      for (var i=0; i<deferredImgs.length; i++) {
+        if(deferredImgs[i].getAttribute('data-src')) {
+          deferredImgs[i].setAttribute('src',deferredImgs[i].getAttribute('data-src'));
+        }
+      }
+    }
+    window.addEventListener("load",loadDeferredImgs);
+
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("demo").innerHTML =
+          this.responseText;
+        }
+      };
+      xhttp.open("GET", "Prophet-Riddles-App-update.html", true);
+      xhttp.send();
+    }
+    </script>
+
+
+    </script>
+
+  </head>
+  <body>
+    <div id="wrap">
+      <header>
+        <img
+        data-src="./images/icon2.png"
+        alt="web icon"/>
+        <h1><a href="./">Guy Zwerdling</a></h1>
+        <nav class="header-links">
+            <a href="./about">ABOUT</a> /
+            <a href="./talks">TALKS</a> /
+            <a href="https://twitter.com/GuyZwerdling">TWITTER</a> /
+            <a href="https://github.com/GuyZwer">GITHUB</a>
+            <br>
+            <a href="./index.xml">RSS</a> /
+            <a href="./archives">ARCHIVES</a>
+        </nav>
+
+      </header>
+      <main>
+      <div class="container">
+        <button type="button" onclick="loadDoc()">Change Content</button>
+        <article id="demo">
+        </article>
+
+
+  </header>
+  </body>
+</html>

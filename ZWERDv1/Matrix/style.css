@@ -2,4 +2,5 @@
 * {margin: 0; padding: 0;}
 /*adding a black bg to the body to make things clearer*/
 body {background: black;color:white}
-canvas {display: block;}
+canvas {display: block;background:transparent;}
+div {display: block;color:white}

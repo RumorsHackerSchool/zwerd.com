@@ -25,6 +25,7 @@ function draw()
 	//Black BG for the canvas
 	//translucent BG to show trail
 	ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+	ctx.fillText("Hello World!",10,50);
 	ctx.fillRect(0, 0, c.width, c.height);
 
 	ctx.fillStyle = "#87CEEB"; //Navy Blue text
