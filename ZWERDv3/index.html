@@ -37,22 +37,9 @@
       }
     }
     window.addEventListener("load",loadDeferredImgs);
-
-    function loadDoc() {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("demo").innerHTML =
-          this.responseText;
-        }
-      };
-      xhttp.open("GET", "Prophet-Riddles-App-update.html", true);
-      xhttp.send();
-    }
     </script>
+    <script src="./scripts/onload.js" charset="utf-8"></script>
 
-
-    </script>
 
   </head>
   <body>
