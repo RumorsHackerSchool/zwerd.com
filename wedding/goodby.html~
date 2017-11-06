@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Goodby</title>
+  </head>
+  <style>
+  html {
+    text-align: center;
+  }
+body {
+  text-align: center;
+  top: 2%;
+  display: inline-block;
+  margin: 0px;
+}
+
+div{
+  background-image: url("./wedding.jpg");
+  background-size:840px 550px ;
+  background-repeat: no-repeat;
+  text-align: center;
+  float:right;
+  display:inline;
+  padding: 50px 10px 0 20px ;
+  margin: 0 0 0 0;
+  min-height:10px;
+  border: 2px solid #dddddd;;
+}
+div form{
+float:right;
+text-align: right;
+    margin: 0 0 0 0;
+}
+div form p {
+text-align: center;
+top: 2%;
+display: inline-block;
+margin: 0px ;
+}
+
+@media(max-width: 758px){
+html {
+  text-align: center;
+}
+body {
+text-align: center;
+top: 2%;
+display: inline-block;
+margin: 0px ;
+}
+
+div{
+
+background-image: url("./wedding.jpg");
+
+background-repeat: no-repeat;
+text-align: center;
+float:left;
+padding: 50px 5px 200px 45%;
+margin: 0 0 0 0;
+min-height:10px;
+border: 2px solid #dddddd;
+}
+div form{
+
+float:right;
+text-align: right;
+}
+p {
+text-align: center;
+top: 2%;
+display: inline-block;
+margin: 0px ;
+}
+}
+</style>
+<body>
+  <h1>אירוסין - שני וגיא </h1>
+  <div class="centered" dir="rtl">
+    <!--<img src="./wedding-packages.jpg" height="350" width="640" alt="wedding-packages">-->
+    <form action="myprocessingscript.php" method="POST">
+      <h1>
+        ברוכים הבאים!
+      </h1>
+
+    <h2>
+      האירוע יתקיים אי"ה ביום שלישי,
+      <br>
+      בתאריך ד' חשוון (24.10.17 למניינם),
+      <br>
+באולם "בוכריס" ברח' בוכריס 6, יבנה.
+    <br>
+    קבלת פנים בשעה 19:30.
+    <br>
+    <br>
+          <a href="https://waze.com/ul/hsv8tq9ger">waze<a>
+          <br><br>
+    נשמח לראותכם!
+<br>
+<br>
+    לפרטים נוספים:
+    <br>
+    שני - 0528089750
+    <br>
+    גיא - 0545558679
+
+    <br>
+
+
+    </h2>
+    </form>
+    <footer>
+    <p>Zwerd Web Deisgn, Copyright &copy; 2017<br>
+    </footer>
+  </body>
+</html>
