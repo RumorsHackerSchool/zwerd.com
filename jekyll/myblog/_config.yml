@@ -21,6 +21,20 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://zwerd.com/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: guyzwerdling
 github_username:  zwerd
+highlighter: rouge
+
+source:          .
+destination:     ./_site
+collections_dir: .
+plugins_dir:     _plugins
+layouts_dir:     _layouts
+data_dir:        _data
+includes_dir:    _includes
+collections:
+  posts:
+    output:   true
+
+
 
 # Build settings
 markdown: kramdown
