@@ -4,4 +4,3 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
-![icone](../../../assets/images/icon.png){:class="img-responsive"}{:height="50px" width="40px"}
