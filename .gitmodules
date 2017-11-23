@@ -1,0 +1,3 @@
+[submodule "hugo/zwerd/themes/kiera"]
+	path = hugo/zwerd/themes/kiera
+	url = https://github.com/avianto/hugo-kiera
