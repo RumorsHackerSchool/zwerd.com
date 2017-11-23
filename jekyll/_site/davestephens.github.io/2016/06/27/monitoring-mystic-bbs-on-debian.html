@@ -1,0 +1,131 @@
+<p>I’ve recently got back into <a href="/bbs">running a BBS</a> using an awesome piece of software called <a href="http://www.mysticbbs.com">Mystic</a>. 
+Whilst it seems incredibly stable out of the box, it can never hurt to have a little bit of monitoring around processes running on your system. With that in mind, I’ve knocked up an init.d script so that
+Mystic will start and stop on boot/shutdown. Additionally, I’ve leveraged this script with <a href="https://mmonit.com/monit/">Monit</a>
+to provide some process monitoring around Mystic should the worst happen and the process die. I like Monit for its simplicity - it doesn’t require a central monitoring server, and will automatically restart processes based on defined triggers. It’ll even send you an email when it does something should you want it to.</p>
+
+<p>Let’s get Mystic starting and stopping with the system startup/shutdown first, then we’ll get Monit installed and monitoring the system, then finally we can configure Monit to keep an eye on Mystic.</p>
+
+<p>Start by switching to root as it’ll save you prefixing every command with a sudo:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo -i
+</code></pre></div></div>
+
+<p>Download and install the init script to your system:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://gist.githubusercontent.com/davestephens/afb321663fa83c9dd0ba83a2b33e75e7/raw/34ff9143d9219a3ccaddcd38fb15aa90aa295e1d/mis
+</code></pre></div></div>
+
+<p>Check out the script and ensure the paths are set correctly for your system before you install it - then proceed with the commands below.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp ./mis /etc/init.d/mis
+update-rc.d mis defaults
+</code></pre></div></div>
+
+<p>Ensure that Mystic isn’t running, then you should be able to start the system:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service mis start
+</code></pre></div></div>
+
+<p>…and check it’s status:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service mis status
+</code></pre></div></div>
+
+<p>OK cool - so we now have a Mystic BBS that starts and stops with our system. Let’s now leverage that init script and configure Monit to keep an eye on things.</p>
+
+<p>Install Monit:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install monit
+</code></pre></div></div>
+
+<p>Edit the Monit configuration to start up its web UI and request a username and password:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano /etc/monit/monitrc
+</code></pre></div></div>
+
+<p>Remove the hash from the following lines:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set httpd port 2812 and
+    allow admin:monit
+</code></pre></div></div>
+
+<p>Ensure that monit starts correctly, and check its status:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service monit start
+monit status
+</code></pre></div></div>
+
+<p>You should see something like the following:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>System 'dave-beast'
+  status 				Running
+  monitoring status 		Monitored
+  load average 			[0.00] [0.02] [0.05]
+  cpu 				1.5%us 0.9%sy 0.1%wa
+  memory usage 			70.0 MB [38.6%]
+  swap usage 			0.0 B [0.0%]
+  data collected                    Mon, 27 Jun 2016 14:25:47
+</code></pre></div></div>
+
+<p>OK, so we’re now set to start configuring Monit to our needs. Monit has a conf.d folder, which is where we can stick all of our custom bits. If you choose to monitor something else, simply create another .conf file with relevant settings, and it’ll be included next time you restart Monit. I’ve saved a generic Mystic config for Monit as a Github Gist, so download that to get started:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /etc/monit/conf.d
+wget https://gist.githubusercontent.com/davestephens/afb321663fa83c9dd0ba83a2b33e75e7/raw/34ff9143d9219a3ccaddcd38fb15aa90aa295e1d/mystic.conf
+</code></pre></div></div>
+
+<p>Let’s discuss the config.</p>
+
+<p>Firstly, we tell Monit to look for the Mystic pidfile. This tells Monit the process ID of the Mystic mis daemon:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>check process mystic with pidfile /mystic/semaphore/mis.bsy
+  group mystic
+</code></pre></div></div>
+
+<p>We then tell Monit how to start and stop Mystic, using the init script we set up earlier:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  start program = "/etc/init.d/mis start"
+  stop program = "/etc/init.d/mis stop"
+</code></pre></div></div>
+
+<p>Because we can, we’ll also check that Mystic is listening on port 23 for telnet connections. Don’t forget to edit the port if you use something other than the default.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  if failed host 127.0.0.1 port 23 type tcp then restart
+</code></pre></div></div>
+
+<p>Then just to make sure we don’t endlessly restart Mystic if there’s a problem, we tell Monit to give up if it restarts 5 times within 5 checks:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  if 5 restarts within 5 cycles then timeout
+</code></pre></div></div>
+
+<p>If it seems simple - that’s because it is! Let’s restart Monit and check everything looks OK:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>monit restart
+monit status
+</code></pre></div></div>
+
+<p>You’ll notice that the output looks similar to before, along with an all new Mystic section:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Process 'mystic'
+  status 			Running
+  monitoring status 	Monitored
+  pid 			4796
+  parent pid 		1
+  uid 			1000
+  effective uid 		1000
+  gid 			1000
+  uptime 			5h 13m
+  children 			0
+  memory kilobytes 		4.6 MB
+  memory kilobytes total 	4.6 MB
+  memory percent 		2.5%
+  memory percent total 	2.5%
+  cpu percent 		0.0%
+  cpu percent total 	0.0%
+  port response time 	0.006s to 127.0.0.1:23 [DEFAULT via TCP]
+  data collected            Mon, 27 Jun 2016 15:07:49
+</code></pre></div></div>
+
+<p>For bonus points, hit the web UI at http://computer-hostname:2812, log in with the credentials you specified in the config file and you’ll see the same information with the addition of some control buttons. Test them out!</p>
+
+<p>…and that’s pretty much it. Easy!</p>
+

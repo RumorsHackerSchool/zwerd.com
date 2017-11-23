@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title></title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2017-11-23T13:30:08+02:00</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name></name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Welcome to Jekyll!</title>
+   <link href="http://localhost:4000/mysite2/jekyll/update/2017/11/23/welcome-to-jekyll.html"/>
+   <updated>2017-11-23T12:28:56+02:00</updated>
+   <id>http://localhost:4000/mysite2/jekyll/update/2017/11/23/welcome-to-jekyll</id>
+   <content type="html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>First Post!</title>
+   <link href="http://localhost:4000/myblog2/2017/11/23/first-post.html"/>
+   <updated>2017-11-23T11:13:15+02:00</updated>
+   <id>http://localhost:4000/myblog2/2017/11/23/first-post</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;../../../assets/images/icon.png&quot; alt=&quot;icone&quot; class=&quot;img-responsive&quot; height=&quot;50px&quot; width=&quot;40px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I write this post in &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; and this is my basic blog. Maybe in th further I will update the blog but for now it fit for my needs.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rouge&quot; data-lang=&quot;rouge&quot;&gt;print &quot;hello world&quot;
+#=&amp;gt; prints 'hello world' to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/zwerd&quot;&gt;My Github&lt;/a&gt; for more info on who am I and what I’ve done so far.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>First Post!</title>
+   <link href="http://localhost:4000/myblog/2017/11/23/first-post.html"/>
+   <updated>2017-11-23T11:13:15+02:00</updated>
+   <id>http://localhost:4000/myblog/2017/11/23/first-post</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;../../../assets/images/icon.png&quot; alt=&quot;icone&quot; class=&quot;img-responsive&quot; height=&quot;50px&quot; width=&quot;40px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I write this post in &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; and this is my basic blog. Maybe in th further I will update the blog but for now it fit for my needs.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rouge&quot; data-lang=&quot;rouge&quot;&gt;print &quot;hello world&quot;
+#=&amp;gt; prints 'hello world' to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/zwerd&quot;&gt;My Github&lt;/a&gt; for more info on who am I and what I’ve done so far.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Welcome to Jekyll!</title>
+   <link href="http://localhost:4000/mysite/jekyll/update/2017/11/23/welcome-to-jekyll.html"/>
+   <updated>2017-11-23T09:43:31+02:00</updated>
+   <id>http://localhost:4000/mysite/jekyll/update/2017/11/23/welcome-to-jekyll</id>
+   <content type="html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Hello</title>
+   <link href="http://localhost:4000/mysite2/2017/11/23/hello.html"/>
+   <updated>2017-11-23T00:00:00+02:00</updated>
+   <id>http://localhost:4000/mysite2/2017/11/23/hello</id>
+   <content type="html">&lt;p&gt;helloy&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Welcome to Jekyll!</title>
+   <link href="http://localhost:4000/myblog2/jekyll/update/2017/11/20/welcome-to-jekyll.html"/>
+   <updated>2017-11-20T19:13:15+02:00</updated>
+   <id>http://localhost:4000/myblog2/jekyll/update/2017/11/20/welcome-to-jekyll</id>
+   <content type="html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rouge&quot; data-lang=&quot;rouge&quot;&gt;def print_hi(name)
+  puts &quot;Hi, #{name}&quot;
+end
+print_hi('Tom')
+#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Welcome to Jekyll!</title>
+   <link href="http://localhost:4000/myblog/jekyll/update/2017/11/20/welcome-to-jekyll.html"/>
+   <updated>2017-11-20T19:13:15+02:00</updated>
+   <id>http://localhost:4000/myblog/jekyll/update/2017/11/20/welcome-to-jekyll</id>
+   <content type="html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rouge&quot; data-lang=&quot;rouge&quot;&gt;def print_hi(name)
+  puts &quot;Hi, #{name}&quot;
+end
+print_hi('Tom')
+#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Why I Ditched FreeNAS And Replaced It With Ubuntu Server And Ansible</title>
+   <link href="http://localhost:4000/davestephens.github.io/ansible/linux/ubuntu/2017/10/05/why-i-ditched-freenas-replaced-with-ubuntu-ansible.html"/>
+   <updated>2017-10-05T00:00:00+03:00</updated>
+   <id>http://localhost:4000/davestephens.github.io/ansible/linux/ubuntu/2017/10/05/why-i-ditched-freenas-replaced-with-ubuntu-ansible</id>
+   <content type="html">&lt;p&gt;I’ve been running a NAS at home since Netgear released the first ARM-powered ReadyNAS device in 2007. It wasn’t particularly fast, 
+but it did a great job of being a NAS (i.e. keeping my data safe). It also had a decent community following that packaged software 
+into easy to install plugins, such as Transmission for downloading torrents and Twonky for serving up media. This worked great until 
+I developed a backup plugin that needed to do compression and encryption - then the CPU started to show its age.&lt;/p&gt;
+
+&lt;p&gt;Some point in 2011 I upgraded to an HP Microserver running FreeNAS 8. FreeNAS also had a plugin architecture using FreeBSD jails 
+(essentially small virtualised environments for applications to run in), so I could install the software I’d used previously as well as 
+some cool new things - Crashplan, Plex, etc.&lt;/p&gt;
+
+&lt;p&gt;This ticked along nicely for a few years until I had a disk failure. I should have heard alarm bells ringing when the second-top Google 
+result for “FreeNAS replace failed disk” was a bunch of FreeNAS forum posts with lots of people asking the same thing over and over, 
+each with similar (but not the same results!). The top Google result are the FreeNAS docs, and they are &lt;em&gt;dreadful&lt;/em&gt;. 
+Searching “zfs replace failed disk” yielded slightly better results and at least some readable documentation.&lt;/p&gt;
+
+&lt;p&gt;I eventually made my way to FreeNAS 9 but yet more hardware failures followed, 
+this time the USB stick with the FreeNAS system partition on it crapped out. Data still intact (and a full backup stashed 
+away in Crashplan), but no OS to read it. FreeNAS Corral had been out about a month at that point, so I fired up a fresh 
+USB stick and loaded it on. Thankfully it was reasonably trivial to import my data and everything was up and running after a few hours.&lt;/p&gt;
+
+&lt;p&gt;Then I tried to reboot it…..and waited. And waited. Hmmm. Must be a one off. Power off, try again…another hang. 
+Try again…wait…and eventually it came online and everything seemed ok. Unfortunately (for me), within a few days FreeNAS Corral 
+started to show its immaturity - the web UI would become unresponsive, it’d randomly drop off the network, 
+the reboot instability continued, and the CPU would get mashed when it was seemingly sat there idle. Then…THEN, the clowns at 
+iXSystems decided that &lt;a href=&quot;https://www.theregister.co.uk/2017/04/18/freenas_downgrades_latest_release_to_tech_preview/&quot;&gt;FreeNAS Corral wasn’t a real release after all&lt;/a&gt;, 
+but it was actually a “tech preview”. Wait, what?&lt;/p&gt;
+
+&lt;p&gt;It was at this point I thought “why on earth am I bothering with this crap?” - my career is based around building stable systems 
+that process obscene amounts of data, so I should put this into practise and build something simple that “just works”.&lt;/p&gt;
+
+&lt;p&gt;And I did.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/davestephens/ansible-nas&quot;&gt;Ansible-NAS&lt;/a&gt; is as simple as it gets whilst being packed with features - a barebones Ubuntu LTS image, Samba for sharing data, 
+Linux ZFS so I could just import my ZFS disk pools with minimal messing about, and best of all - a Docker host to run up whatever 
+I please at any point in time. Not a crappy FreeNAS-style unstable Docker host, but a real one that works and stays online. With the 
+flexibility Docker brings, I’ve included a bunch of (switchable) Docker images that most people running their own NAS would find useful:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Transmission for downloading torrents&lt;/li&gt;
+  &lt;li&gt;Crashplan for data backup&lt;/li&gt;
+  &lt;li&gt;Couchpotato for managing movies&lt;/li&gt;
+  &lt;li&gt;Sonarr for managing a music collection&lt;/li&gt;
+  &lt;li&gt;Glances for a quick web-based view of the system status&lt;/li&gt;
+  &lt;li&gt;Portainer for managing the Docker host and running ad-hoc containers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ve been running it myself now for a few months, and guess what? It’s rock solid.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/davestephens/ansible-nas&quot;&gt;Try it out&lt;/a&gt; and let me know what you think. If there’s something missing you’d love to 
+see added, submit a pull request - contributions are welcome!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Monitoring Mystic BBS on Debian</title>
+   <link href="http://localhost:4000/davestephens.github.io/2016/06/27/monitoring-mystic-bbs-on-debian.html"/>
+   <updated>2016-06-27T00:00:00+03:00</updated>
+   <id>http://localhost:4000/davestephens.github.io/2016/06/27/monitoring-mystic-bbs-on-debian</id>
+   <content type="html">&lt;p&gt;I’ve recently got back into &lt;a href=&quot;/bbs&quot;&gt;running a BBS&lt;/a&gt; using an awesome piece of software called &lt;a href=&quot;http://www.mysticbbs.com&quot;&gt;Mystic&lt;/a&gt;. 
+Whilst it seems incredibly stable out of the box, it can never hurt to have a little bit of monitoring around processes running on your system. With that in mind, I’ve knocked up an init.d script so that
+Mystic will start and stop on boot/shutdown. Additionally, I’ve leveraged this script with &lt;a href=&quot;https://mmonit.com/monit/&quot;&gt;Monit&lt;/a&gt;
+to provide some process monitoring around Mystic should the worst happen and the process die. I like Monit for its simplicity - it doesn’t require a central monitoring server, and will automatically restart processes based on defined triggers. It’ll even send you an email when it does something should you want it to.&lt;/p&gt;
+
+&lt;p&gt;Let’s get Mystic starting and stopping with the system startup/shutdown first, then we’ll get Monit installed and monitoring the system, then finally we can configure Monit to keep an eye on Mystic.&lt;/p&gt;
+
+&lt;p&gt;Start by switching to root as it’ll save you prefixing every command with a sudo:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -i
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download and install the init script to your system:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://gist.githubusercontent.com/davestephens/afb321663fa83c9dd0ba83a2b33e75e7/raw/34ff9143d9219a3ccaddcd38fb15aa90aa295e1d/mis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Check out the script and ensure the paths are set correctly for your system before you install it - then proceed with the commands below.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cp ./mis /etc/init.d/mis
+update-rc.d mis defaults
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ensure that Mystic isn’t running, then you should be able to start the system:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;service mis start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;…and check it’s status:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;service mis status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;OK cool - so we now have a Mystic BBS that starts and stops with our system. Let’s now leverage that init script and configure Monit to keep an eye on things.&lt;/p&gt;
+
+&lt;p&gt;Install Monit:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install monit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Edit the Monit configuration to start up its web UI and request a username and password:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano /etc/monit/monitrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Remove the hash from the following lines:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set httpd port 2812 and
+    allow admin:monit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ensure that monit starts correctly, and check its status:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;service monit start
+monit status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You should see something like the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System 'dave-beast'
+  status 				Running
+  monitoring status 		Monitored
+  load average 			[0.00] [0.02] [0.05]
+  cpu 				1.5%us 0.9%sy 0.1%wa
+  memory usage 			70.0 MB [38.6%]
+  swap usage 			0.0 B [0.0%]
+  data collected                    Mon, 27 Jun 2016 14:25:47
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;OK, so we’re now set to start configuring Monit to our needs. Monit has a conf.d folder, which is where we can stick all of our custom bits. If you choose to monitor something else, simply create another .conf file with relevant settings, and it’ll be included next time you restart Monit. I’ve saved a generic Mystic config for Monit as a Github Gist, so download that to get started:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /etc/monit/conf.d
+wget https://gist.githubusercontent.com/davestephens/afb321663fa83c9dd0ba83a2b33e75e7/raw/34ff9143d9219a3ccaddcd38fb15aa90aa295e1d/mystic.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s discuss the config.&lt;/p&gt;
+
+&lt;p&gt;Firstly, we tell Monit to look for the Mystic pidfile. This tells Monit the process ID of the Mystic mis daemon:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;check process mystic with pidfile /mystic/semaphore/mis.bsy
+  group mystic
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We then tell Monit how to start and stop Mystic, using the init script we set up earlier:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  start program = &quot;/etc/init.d/mis start&quot;
+  stop program = &quot;/etc/init.d/mis stop&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Because we can, we’ll also check that Mystic is listening on port 23 for telnet connections. Don’t forget to edit the port if you use something other than the default.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  if failed host 127.0.0.1 port 23 type tcp then restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then just to make sure we don’t endlessly restart Mystic if there’s a problem, we tell Monit to give up if it restarts 5 times within 5 checks:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  if 5 restarts within 5 cycles then timeout
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If it seems simple - that’s because it is! Let’s restart Monit and check everything looks OK:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;monit restart
+monit status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You’ll notice that the output looks similar to before, along with an all new Mystic section:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Process 'mystic'
+  status 			Running
+  monitoring status 	Monitored
+  pid 			4796
+  parent pid 		1
+  uid 			1000
+  effective uid 		1000
+  gid 			1000
+  uptime 			5h 13m
+  children 			0
+  memory kilobytes 		4.6 MB
+  memory kilobytes total 	4.6 MB
+  memory percent 		2.5%
+  memory percent total 	2.5%
+  cpu percent 		0.0%
+  cpu percent total 	0.0%
+  port response time 	0.006s to 127.0.0.1:23 [DEFAULT via TCP]
+  data collected            Mon, 27 Jun 2016 15:07:49
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For bonus points, hit the web UI at http://computer-hostname:2812, log in with the credentials you specified in the config file and you’ll see the same information with the addition of some control buttons. Test them out!&lt;/p&gt;
+
+&lt;p&gt;…and that’s pretty much it. Easy!&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>How To Cook Beer Can Chicken on a Two Burner Weber E-210 Grill</title>
+   <link href="http://localhost:4000/davestephens.github.io/food/2015/09/07/beer-can-chicken-on-two-burner-weber-spirit-e210.html"/>
+   <updated>2015-09-07T20:00:00+03:00</updated>
+   <id>http://localhost:4000/davestephens.github.io/food/2015/09/07/beer-can-chicken-on-two-burner-weber-spirit-e210</id>
+   <content type="html">&lt;p&gt;I’d had my eye on a ‘proper’ BBQ for a few years, but living in an apartment had absolutely nowhere to put it. Having
+recently moved to a house, one of my first purchases was a Weber grill. I spent about an hour at the &lt;a href=&quot;http://www.riversidegardencentre.co.uk/weber-bbq.html&quot;&gt;Riverside Garden Centre&lt;/a&gt;,
+deciding between the two burner Weber Spirit E-210 Original, and the three burner Weber Spirit E-310 equivalent.&lt;/p&gt;
+
+&lt;p&gt;The guy in the shop was pushing to sell the three burner model - “are you sure the two burner model will be big enough
+if you have a family?” (dude, seriously, I could cook for an army on the E-210), also stating that it wasn’t possible
+to do indirect cooking with the two burner model, meaning no beer can chicken. Determined to prove him wrong, I started
+ experimenting…&lt;/p&gt;
+
+&lt;p&gt;If you’re not sure of the difference there are plenty of descriptions on the internet; but in a nutshell “direct
+grilling” is where you cook your food directly over the heat source - steaks, kebabs, sausages etc that only take a
+short amount of time to cook. “Indirect grilling” is where you use the BBQ more like a convection oven, and is a
+technique typically used for roasts, ribs and other larger cuts that take a longer amount of time.&lt;/p&gt;
+
+&lt;blockquote class=&quot;instagram-media&quot; data-instgrm-captioned=&quot;&quot; data-instgrm-version=&quot;4&quot; style=&quot; background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);&quot;&gt;&lt;div style=&quot;padding:8px;&quot;&gt; &lt;div style=&quot; background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;&quot;&gt; &lt;div style=&quot; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;&quot;&gt;&lt;/div&gt;&lt;/div&gt; &lt;p style=&quot; margin:8px 0 0 0; padding:0 4px;&quot;&gt; &lt;a href=&quot;https://instagram.com/p/6dKs5cSLkP/&quot; style=&quot; color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;&quot; target=&quot;_top&quot;&gt;First attempt at beer can chicken on the @webergrills e210, and it was awesome! #weber #bbq&lt;/a&gt;&lt;/p&gt; &lt;p style=&quot; color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;&quot;&gt;A photo posted by Dave Stephens (@devastating_dave) on &lt;time style=&quot; font-family:Arial,sans-serif; font-size:14px; line-height:17px;&quot; datetime=&quot;2015-08-16T19:19:22+00:00&quot;&gt;Aug 16, 2015 at 12:19pm PDT&lt;/time&gt;&lt;/p&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; defer=&quot;&quot; src=&quot;//platform.instagram.com/en_US/embeds.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Beer Can Chicken is that awesome “I want to impress my mates” BBQ piece that you absolutely have to try. Beer, meat,
+a load of seasoning, what could possibly go wrong?&lt;/p&gt;
+
+&lt;h2 id=&quot;ingredients&quot;&gt;Ingredients&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A chicken, obviously!&lt;/li&gt;
+  &lt;li&gt;A tall can of beer&lt;/li&gt;
+  &lt;li&gt;Spice mix&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;spice-mix&quot;&gt;Spice Mix&lt;/h2&gt;
+
+&lt;p&gt;Anything bold works on the chicken, but any variation of the following will work (don’t be afraid to experiment!):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 tsp salt&lt;/li&gt;
+  &lt;li&gt;2 tsp pepper&lt;/li&gt;
+  &lt;li&gt;1 tsp garlic powder&lt;/li&gt;
+  &lt;li&gt;2 tsp paprika&lt;/li&gt;
+  &lt;li&gt;1 tsp cayenne chilli pepper (less if you don’t like spice)&lt;/li&gt;
+  &lt;li&gt;1 tsp coriander&lt;/li&gt;
+  &lt;li&gt;1 tsp thyme&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;method&quot;&gt;Method&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Heat the grill on full whack, both burners on.&lt;/li&gt;
+  &lt;li&gt;Make the spice mix in a bowl. Smash it up in a pestle and mortar if you want to be flash, but it’s not required. Coat
+the chicken in olive oil, and rub in the spice mix all over.&lt;/li&gt;
+  &lt;li&gt;Pour the top third of the can of beer down your throat, and stab a few holes in the top (of the can, not your throat).
+This lets the beery steam out into the chicken as it heats. Yum. Stick the seasoned chicken over the can of beer.&lt;/li&gt;
+  &lt;li&gt;Turn off the right hand burner, put the chicken on the right hand side of the BBQ, and close the lid. After 45
+minutes, open the lid, turn the chicken around 180 degrees so that the other side of the chicken is facing the “on”
+burner. Shut the lid again.&lt;/li&gt;
+  &lt;li&gt;Depending on the size of the chicken, it’ll probably need another 45 minutes or so (check the cooking instructions
+ on the label for the total cooking time). Use a meat thermometer to check the temperature of the chicken if you’re unsure
+ if it’s done.&lt;/li&gt;
+  &lt;li&gt;Rest it for 10 minutes, then EAT. Accompany with copious amounts of decent beer. Check out my &lt;a href=&quot;https://untappd.com/user/devastating_dave&quot;&gt;Untappd&lt;/a&gt; profile
+to see some of the stuff I’ve been drinking recently!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So there you have it. Lessons learnt:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Beer Can Chicken is awesome. Your mates will love it, and you for cooking them it.&lt;/li&gt;
+  &lt;li&gt;Indirect cooking &lt;em&gt;is&lt;/em&gt; possible on a two burner Weber Grill.&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Simple is better</title>
+   <link href="http://localhost:4000/davestephens.github.io/update/2014/06/21/simple-is-better.html"/>
+   <updated>2014-06-21T23:23:00+03:00</updated>
+   <id>http://localhost:4000/davestephens.github.io/update/2014/06/21/simple-is-better</id>
+   <content type="html">&lt;p&gt;Two things that learning Ruby has taught me:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Simple is better.&lt;/li&gt;
+  &lt;li&gt;Simple is better.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Oh, and, Don’t Repeat Yourself. We’ll ignore that one for now as I think this is pretty important. Let me elaborate.&lt;/p&gt;
+
+&lt;p&gt;My blog was nothing spectacular - a few rambling words here and there
+about various things I was working on at various points in time. These words were always written by me, proofed by
+me, and published by me. Stuff embedded in posts consisted of code snippets or the odd image or quote by someone. Sometimes
+if something popped into my head in the middle of the day, I’d hack a few lines into a draft post during my lunch break and
+complete and publish it that evening when I got in.&lt;/p&gt;
+
+&lt;p&gt;Yet for some reason, which I think must have been because I thought it was cool to run a PHP application on a Linux box
+(we’re talking a good 10 years or so ago!), I chose to create my blog using Wordpress. For a while this seemed pretty cool -
+it was forcing me to play with Linux (something I’d wanted to learn more about),
+I’d learned a bit about MySQL, and some of the drivel I was posting was getting a fair few hits. Awesome.&lt;/p&gt;
+
+&lt;p&gt;Fast forward a number of years, a zillion Wordpress updates (and two complete crap-outs after updating),
+endless notifications of security vulnerabilities, and running Wordpress was starting to look a lot less attractive.
+In addition, with persistent script kiddie attempts of trying to find a hole in the Wordpress version I was using (and
+once succeeding), running a seemingly simple blog on Wordpress (and obviously the PHP stack) was taking it’s toll on my
+poor little VM with run queues frequently sitting somewhere around 10.&lt;/p&gt;
+
+&lt;p&gt;With my foray into Ruby (and Rails) like everyone I’d come across Github pages and subsequently Jekyll that powers it. It seemed
+like the ideal solution - I write my pages as text files formatted with Markdown, and Jekyll drops out a static HTML site
+that I then serve from wherever I decide.&lt;/p&gt;
+
+&lt;p&gt;After spending a couple of weeks thinking about the best thing to do, I took the leap and ditched the old Wordpress/PHP
+junk and started afresh with a static site generated by Jekyll. This is the first post.&lt;/p&gt;
+
+&lt;p&gt;What I’ve learned/worked out/realised is that I &lt;em&gt;don’t need&lt;/em&gt; a mega-heavy content management system for my little blog. There is &lt;em&gt;so&lt;/em&gt; much
+crud and complexity in Wordpress that I’ll never use. There are tonnes of bugs and security holes constantly being found
+that require more effort than I can be bothered to spend simply keeping my site alive and my server safe. As my blog is now
+in git, it means I can hack on it from wherever I can check into Github - i.e. - everywhere.&lt;/p&gt;
+
+&lt;p&gt;So from now on, this is it. Static HTML.&lt;/p&gt;
+
+&lt;p&gt;Check yourself before you deploy an overly-elaborate content management system
+that you haven’t written yourself and that’ll probably require constant maintenance. Do you really need it? Probably not.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Welcome to Jekyll!</title>
+   <link href="http://localhost:4000/gereksiz/2014/03/19/welcome-to-jekyll.html"/>
+   <updated>2014-03-19T19:40:41+02:00</updated>
+   <id>http://localhost:4000/gereksiz/2014/03/19/welcome-to-jekyll</id>
+   <content type="html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code class=&quot;highlighter-rouge&quot;&gt;-w&lt;/code&gt; switch) to see your changes!
+To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+
+</feed>
