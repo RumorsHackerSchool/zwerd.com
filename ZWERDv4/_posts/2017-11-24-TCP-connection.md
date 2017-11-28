@@ -1,12 +1,12 @@
 ---
 layout: post
 title: TCP connection
-excerpt: "The well none protocol named TCP is one of the important protocol that really matter in the wide network of today. This protocol as a big play part
-in the Internet in general, many protocols relay on TCP and many"
+excerpt: "The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!"
 tags:
 - network
 
 ---
+Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn't know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn't really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.
 
 The well none protocol named TCP is one of the important protocol that really matter in the wide network of today. This protocol as a big play part
 in the Internet in general, many protocols relay on TCP and many protocols designed in such way that without TCP they cannot run. The Important thin
@@ -294,4 +294,46 @@ As you can see URG flag is set, if we look at the data we can find a Hex of `0xF
 **Figure 16** TCP Urgent notification.
 
 
-**Option** - This is the field where the MSS (Maximum Segment Site) came in with other values
+**Option** - This field contain more optional stuff, that mean the we will see that field typically in the synchronization of two parties, we going to see the real important field in the Option header but ceep in mind that there is more stuff going on.
+  - **Maximum Segment Size** - Typically this field is 4 byte length and it responsible to specified the Maximum Segment Size or more shortly MMS which is the length of the data payload. We will see that MSS typically in the three way handshake, when some site of the parties get this value he knows that the other side can handle and process maximum of data size as specified in the value of the MSS header, as example if John sent to Bob MSS of 1460, Bob knows that in every message that he send to John he can send only up to 1460 byte in each TCP segment.
+  - **SACK-permitted** - This is short for **Selective ACKknowledgment**, this field is responsible for case of lost data in the TCP connections, if we lost some packets we will announce to the other endpoint of the lost by the SACK field. In the three way handshake we will see that the two side agree to use SACK if they support it. if you want to know exactly what going on in the SACK filed please refer to [this link](http://packetlife.net/blog/2010/jun/17/tcp-selective-acknowledgments-sack/).
+  - **Timestamps** - This field are responsible for two value **TSval** which is Timestamp Value field and is contain the clock value of the timestamp of the TCP that going to be send to the other endpoint. The **TSecr** which stand for Timestamp Echo Reply field is only valid when ACK flag is set and it's echo the TSval value we get from the other endpoint, the propose for timestamps is to taking time measurements. You can read more about the if [RFC 7323](https://tools.ietf.org/html/rfc7323#section-3)
+  - **Window Scale** - This option is used to increase the maximum window size,
+  as you remember the window size value is the way that one side tells to the other what it the maximum byte size that he can handle before we get ACK from him, the Window Scale allow us to increase the window size up to 1 gigabyte if it posible or to decrease the window size value if some congestion had being sense. You can read more about it in [RFC 1323](https://tools.ietf.org/html/rfc1323#section-2)
+
+**Data** - This is the actual payload in the TCP segment, this is the data thet one side want to transfer to the other endpoint.
+
+**Summary**
+The TCP segment structure can be complex to understanding but if you get down to the real detail you will get it, I guarantee you!
+
+Let's check what really going on in the realty with some real session.
+
+### TCP session in real world.
+
+In this section I'll demonstrate how things are really going on, I have two endpoint so let's called theme John and Bob. I'm going to use Wireshark and we going to open FTP connection between the two, just remember that FTP session works with two ports, 21 for control session and 20 for data session.
+
+If you want you can downloads the session [here](/assets/downloads/FTP session with ports 21 and 20.pcapng).
+
+So John IP address is 10.0.0.8 and Bob IP address is 10.0.0.5, John want to connect Bob and copy from Bob to his machine some file named test.zip (you can actualy download that file from the sniffer captured file LOL).
+
+![cap1](/assets/images/cap1.png "cap1"){:class="img-responsive"}{:height="1000px" width="2000px"}
+
+John send the first TCP segment to synchronize with Bob, you can see that the source port is 49738 and the destination port is 21 which is the FTP service for control connection, the sequence number is 0 because we doesn't ever sent any data and the acknowledgement number is 0 also. At the flag area you can see a SYN activated which mean that John want to start the three way handshake for TCP base connection, the window size value is 8192 which mean that John tells Bob he can handle only 8k at the same time we will see how that go on the session.
+
+![cap2](/assets/images/cap2.png "cap2"){:class="img-responsive"}{:height="1000px" width="2000px"}
+
+The checksum is looking good so it's great (you can do the calculation the I show you earlier), in the urgent point the value is 0 becouse we have no urgent data at this moment.
+
+If you expand the Option area you will see some value like the MSS that set on 1460 byte which mean that John is willing to get TCP segment data with the maximum of 1460 byte per segment.
+
+So the starting session look as follow:
+
+![cap3](/assets/images/cap3.png "cap3"){:class="img-responsive"}{:height="1000px" width="2000px"}
+
+Please remember that because the SYN flag is active this is why we have the 1 phantom bit, so Bob will count it on his response.  
+
+Now Bob going to respond with SYN + ACK flag active and in the acknowledgement number he will specifies `1` because he get sequence of 0 and data of 1 which is the phantom byte, on the sequence number he will specifies `0`.
+
+![cap4](/assets/images/cap4.png "cap4"){:class="img-responsive"}{:height="1000px" width="2000px"}
+
+Let's look on the captured file, we can see the source port is 21 and the destination is 49738 and the ACK is set to 1 as he expected, Bob activated the SYN and ACK flags and the window size value is also 8K like John, but as you can see the checksum is bed, it should be `0x442e` but it's `0x1433`,

@@ -7,8 +7,8 @@ excerpt: "Hello everyone, We want to update that the development of the applicat
 
 Hello everyone, We want to update that the development of the application has been successfully completed and you can download the application from Google Play
 
-
-<h2><a href="./NachRiddles/">Nach Riddles</a></h2>
+ou
+<h2><a href="https://zwerd.com/NachRiddles/">Nach Riddles</a></h2>
 
 
 As mentioned in the past, it is a riddles game built on many books from the Bible, the quiz itself high level and therefore is forced to learn the part of the riddles before trying to answer the riddles
