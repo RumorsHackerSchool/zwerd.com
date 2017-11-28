@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-28T07:42:38+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;The well none protocol named TCP is one of the important protocol that really matter in the wide network of today. This protocol as a big play part
+in the Internet in general, many protocols relay on TCP and many protocols designed in such way that without TCP they cannot run. The Important thin
+is that the TCP is can seams so complex but the truth is the opposite, all we need to do is actually look on the session of some protocol that relay on TCP and after we learn theoretically how TCP works it’s more easy to understand.&lt;/p&gt;
+
+&lt;p&gt;In my opinion, to understand really good how TCP work we need to lean as follow:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;TCP in the OSI and TCP/IP module.&lt;/li&gt;
+  &lt;li&gt;Basic TCP Functionality and basic flags like SYN/ACK/FIN.&lt;/li&gt;
+  &lt;li&gt;History of TCP in RFC’s 793/3168/3540.&lt;/li&gt;
+  &lt;li&gt;TCP segment structure.&lt;/li&gt;
+  &lt;li&gt;TCP session in real world.&lt;/li&gt;
+  &lt;li&gt;The special flags.&lt;/li&gt;
+  &lt;li&gt;Real world problems and how to solved them.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;so let’s get started&lt;/p&gt;
+
+&lt;h3 id=&quot;tcp-in-the-osi-and-tcpip-module&quot;&gt;TCP in the OSI and TCP/IP module.&lt;/h3&gt;
+
+&lt;p&gt;first of all TCP is in the Transport layer in the TCP/IP or IOS models. Brief refresh on OSI model, this is a seven layers model that are labeled from 1 through 7.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Layer No.&lt;/th&gt;
+      &lt;th&gt;Layer Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Application&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Consists of standard communication services and applications that everyone can use.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;Presentation&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Ensures that information is delivered to the receiving machine in a form that it can understand.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Session&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Manages the connections and terminations between cooperating computers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Transport&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Manages the transfer of data and assures that received and transmitted data are identical.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Network&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Manages data addressing and delivery between networks.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Data Link&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Handles the transfer of data across the network media.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Physical&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Defines the characteristics of the network hardware.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Figure 1 OSI Model&lt;/p&gt;
+
+&lt;p&gt;The transport layer is where the TCP live, Layer 4 of the OSI model is named the transport layer and is responsible for message segmentation, acknowledgement, traffic control, and session multiplexing. The transport layer also has the ability to perform error detection and correction (resends), message reordering to ensure message sequence, and reliable message channel depending on the specific transport layer protocol used. The most common of the used transport layer protocols include the Transport Control Protocol (TCP) and User Datagram Protocol (UDP).&lt;/p&gt;
+
+&lt;p&gt;TCP is also on layer 3 of TCP/IP model, like the OSI model, the TCP/IP model is layered and is used in the same fashion as the OSI model but with fewer layers. As the modern Internet and most communications use the Internet Protocol (IP), the TCP/IP model is technically more in line with modern network implementations. As stated before, the layers within the TCP/IP model are considered less rigid then that of the OSI model, which basically means that many protocols implemented can be considered in grey areas between one area and another. The TCP/IP protocol suite (often referred to as the TCP/IP protocol) contains the same protocols referenced in the earlier OSI model sections. Figure
+2 below shows a representation of the TCP/IP model:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Layer No.&lt;/th&gt;
+      &lt;th&gt;Layer Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Application&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Consists of standard communication services and applications that everyone can use.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Transport&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Manages the transfer of data and assures that received and transmitted data are identical.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Network&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Manages data addressing and delivery between networks.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Link&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Handles the transfer of data across the network media.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Figure 2 TCP/IP Model&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;TCP is paced in transport layer in the TCP/IP and OSI model, this layer is about reliability of the connection the message that sent on that layer are called segments, this layer also responsible for acknowledgement, traffic control, and session multiplexing. will will see as we proceed in the article how it actually look like in real communication between tow endpoints.&lt;/p&gt;
+
+&lt;h3 id=&quot;basic-tcp-functionality-and-basic-flags-like-synackfin&quot;&gt;Basic TCP Functionality and basic flags like SYN/ACK/FIN.&lt;/h3&gt;
+
+&lt;p&gt;The functionality of the TCP working with two main important thing:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Approved every revived TCP segment, in that way the other side that get the approvement know that what he sent successfully arrived to the other side.&lt;/li&gt;
+  &lt;li&gt;Numbering every segment with some sequence number before we sent it, in this way we can be shore that if the other side get the segments &lt;strong&gt;not in the same order&lt;/strong&gt; as we sent it he will know what the order by that sequence number.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;those are the main thing that TCP responsible to do, there is many application out there that working with TCP because of this functionality, but the is some application that doesn’t and this can be because of millions reasons one of that is that the application itself for some reason do checking that the other side get the message.&lt;/p&gt;
+
+&lt;p&gt;The is three which is the most important flags in every session that you will see in every TCP session is the SYN, ACK and FIN. The SYN flag is used every time some endpoint want to start session with other endpoint, you can consider that like the following example:&lt;/p&gt;
+
+&lt;p&gt;some one named Assaf go’s down the sthreet and see his friend Asher, so he start a conversation:&lt;/p&gt;
+
+&lt;p&gt;Assaf: Hello! how do you do?&lt;/p&gt;
+
+&lt;p&gt;Asher: I’m good! and you?&lt;/p&gt;
+
+&lt;p&gt;Assaf: Great!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/tcp-session-page-001.jpg&quot; alt=&quot;tcp-session&quot; title=&quot;tcp-session&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+Figure 3 real life conversation&lt;/p&gt;
+
+&lt;p&gt;In TCP it pretty much the same, one site ask the other that he want to start conversation with him and the other response with sort of ok like and the first one do the same.&lt;/p&gt;
+
+&lt;p&gt;endpoint1: I wanna to SYN with you!&lt;/p&gt;
+
+&lt;p&gt;endpoint2: OK, I want to SYN with you too!&lt;/p&gt;
+
+&lt;p&gt;endpoint1: OK.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SYN+ACK.png&quot; alt=&quot;SYN+ACK&quot; title=&quot;SYN+ACK&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+Figure 4 TCP starting conversation&lt;/p&gt;
+
+&lt;p&gt;In real session you will see that the most if not all segment message are sent with the flag ACK as active which means that we get what the other endpoint was sent and now we respond for it with new segment and approved the receivement with ACK flag.&lt;/p&gt;
+
+&lt;p&gt;As you go foreword in this article you will see that every flag is actually a bit in the segment message that represent by &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;, if the flag is active than we will see that the bit is set to &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;There is many flags out there but the other flag that we will see often is the FIN flag that stand for finish. If one side of opening conversation want to close the session, he is just send TCP segment message with activated FIN flag.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/FIN+ACK.png&quot; alt=&quot;FIN+ACK&quot; title=&quot;FIN+ACK&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+Figure 5 TCP ending conversation&lt;/p&gt;
+
+&lt;p&gt;Till now is so simple; to open a session all we need to do is to send &lt;strong&gt;SYN&lt;/strong&gt; flag to the other side, throughout the conversation we always approved the receivement of the TCP segment from the other side with activated &lt;strong&gt;ACK&lt;/strong&gt;, when we wanna close running session we just sent TCP segment with activated &lt;strong&gt;FIN&lt;/strong&gt; flag and that’s it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;So the functionality of TCP is always approved if we get the segment or not and numbering the TCP segment with sequence number.&lt;/p&gt;
+
+&lt;h3 id=&quot;history-of-tcp-in-rfcs-79331683540&quot;&gt;History of TCP in RFC’s 793/3168/3540.&lt;/h3&gt;
+
+&lt;p&gt;Before we start to get down to deep detail is better to know some history. The TCP was developed and designed in 1970s by two DARPA scientists - Vint Cerf and Bob Kahn, persons most often called the fathers of the Internet.&lt;/p&gt;
+
+&lt;p&gt;Kahn worked on an existing project to establish a satellite packet network, and initiated a project to establish a ground-based radio packet network. These experiences convinced him of the need for development of an open-architecture network model, where any network could communicate with any other independent of individual hardware and software configuration. Kahn therefore set four goals for the design of what would become the &lt;strong&gt;Transmission Control Protocol&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In the spring of 1973, Vinton Cerf joined Kahn on the project and together they wrote the RFC 675 and it was the first ever version of TCP and the real name of TCP was &lt;strong&gt;Transmission Control Program&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;In 1981 DARPA scientists write another RFC number 793 and this was actually the first RFC of the &lt;strong&gt;TRANSMISSION CONTROL PROTOCOL&lt;/strong&gt;, in that RFC we can find a structure of the TCP/IP model and the TCP implementations.&lt;/p&gt;
+
+&lt;p&gt;There is some more RFC that discuss the TCP and update the protocol, but I want to focus on only two RFCs 3168 and 3540. The original RFC 793 specified a six flags that we can activat in the TCP segment which is as follow:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;URG&lt;/li&gt;
+  &lt;li&gt;ACK&lt;/li&gt;
+  &lt;li&gt;PSH&lt;/li&gt;
+  &lt;li&gt;RST&lt;/li&gt;
+  &lt;li&gt;SYN&lt;/li&gt;
+  &lt;li&gt;FIN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;I will explain them all later on&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The RFCs 3168 and 3540 specifies together three bit flags named ECN which stand for Explicit Congestion Notification, the three flags are as follow:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ECN-none&lt;/li&gt;
+  &lt;li&gt;CWR&lt;/li&gt;
+  &lt;li&gt;ECE&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Please remember those, we will come back to them later on&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The TCP at first was publish in RFC 793 and update later in RFC 3168 and RFC 3540, these are important because the bits that they specified, we will see as we go further in this article why we need these three bit flags, but for know I just want you to remember that there is six main flags and more three flags that responsible for congestion which is sort of collision that accrue in the network.&lt;/p&gt;
+
+&lt;h3 id=&quot;tcp-segment-structure&quot;&gt;TCP segment structure.&lt;/h3&gt;
+
+&lt;p&gt;Ok, now we going to discuss on the really cool things in TCP segment. The structure of the TCP header look like follow:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/TCP.jpg&quot; alt=&quot;TCP&quot; title=&quot;TCP&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+Figure 6 TCP header structure&lt;/p&gt;
+
+&lt;p&gt;As you can see the length of the segment is 32 bit long, just please remember that the TCP segment is consists of bits so in reality it’s structure of &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; that represented the values of the filed in the TCP header.&lt;/p&gt;
+
+&lt;p&gt;So let’s check out the headers:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Source ports&lt;/strong&gt; - The port number is really important because with that port we use to represent some service. In source port the sender generate some random port between 49152 to 65535 and that port are used through all the session between the two devices that communicate.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Destination port&lt;/strong&gt; - The destination port is actually some service that represented by some port, as example HTTP represented by port 80 and FTP represented by port 21, so, if we want to use some service of some server like HTTP, we communicate with that server by using port 80 in the destination, in that way the receiver which is the server know that we want the HTTP service which is used to display some HTML page that the server has.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sequence number&lt;/strong&gt; - Sequence number or short SEQ is used to tracked down the data that as being send, so if we sent some data we count the data in the sequence field plus previous sequence number, as example if we had in the previous sequence field 1476 and the amount of data we sending now is 658 byte, the new sequence will be 1476 + 658 which is 2134, this mean that the sequence number always go greater through the session. please remember the rule of the sequence number as follow:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The sequence number is the number of &lt;strong&gt;previously sent data&lt;/strong&gt; plus the &lt;strong&gt;previously sent sequence number&lt;/strong&gt; to the other endpoint.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Acknowledgement number&lt;/strong&gt; - This field used to acknowledge the data that we receive, in that way we can know what data as being receive by the other side and what data doesn’t by the acknowledge number that the other side send us after he get some data from us, if he doesn’t get the data we will don’t received any acknowledge from him about that data so in this case we will send the data again until the other side will approve that he get the data. The counting of the acknowledgement goes by the following rule:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The acknowledgement number is the number of the &lt;strong&gt;received data&lt;/strong&gt; plus the &lt;strong&gt;received sequence number&lt;/strong&gt; we get from the other endpoint.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I want to stop you here to clear the &lt;strong&gt;ACK&lt;/strong&gt; and &lt;strong&gt;SEQ&lt;/strong&gt; numbers in the session. later on I will demonstrate that principle again and again because I want that you will have a good understanding how the things really works.&lt;/p&gt;
+
+&lt;p&gt;If you remember in the section of &lt;strong&gt;Basic TCP Functionality&lt;/strong&gt; we saw some basic session like starting session in TCP and ending session, so, let’s look now in deep what is really going on.&lt;/p&gt;
+
+&lt;p&gt;Let’s say that John want to communicate with bob in some sort of protocol that using TCP.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;To start the session John need to send &lt;strong&gt;SYN&lt;/strong&gt; flag first because he want to synchronize with Bob about some values that will be used through the conversation. in the SEQ and ACK headers the values will be 0’s because nothing of the rules that we saw earlier doesn’t apply yet, we have no received data and no received sequence number, and we haven’t sent any data and sequence number. because this is the first time we send message in TCP with flag SYN set, the message that send will be count with 1 phantom byte because of the SYN flag.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/images/firstSYN.png&quot; alt=&quot;&quot; /&gt;&lt;strong&gt;Figure 7&lt;/strong&gt; first-SYN from John.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Bob received the TCP segment message, he sees that the message contain flag of SYN in active form so he knows that John want to start conversation with him. Bob respond with two flags: &lt;strong&gt;SYN&lt;/strong&gt; and &lt;strong&gt;ACK&lt;/strong&gt;, the SYN is because he want to synchronize with John about some values like John did, and the ACK is because he want to inform John that he get the message. In the ACK number header Bob set it to 1 because as you remember the received data is 1 which is the phantom byte and the received sequence number is 0 so it’s 1+0=1, so now when John will get this message he will new by the acknowledgement number that the previous message arrived successfully without data lost.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/images/firstSYN3.png&quot; alt=&quot;SYN-and-ACK&quot; title=&quot;SYN-and-ACK&quot; class=&quot;img-responsive&quot; height=&quot;3000px&quot; /&gt;
+Figure 8 SYN and ACK from Bob with acknowledgement number calculation.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;John received the message and sees that Bob what to synchronize with him too, he also see the ACK flag active so he know that Bob actually approved the receivement, because Bob activated SYN flag John count it as phantom byte and add it to the sequence number which is 0, so in the message that John going send to Bob filled with ACK value of 1, and now because John sent previously some message that contain sequence number of 0 and phantom byte of 1 (because of the SYN) John now respond to Bob with TCP segment that contain sequence number of 1. in the flag area John activate only the ACK flag to approved that the segment that came from Bob successfully arrived.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/firstSYN4.png&quot; alt=&quot;ACK&quot; title=&quot;ACK-from-john&quot; class=&quot;img-responsive&quot; height=&quot;3000px&quot; /&gt;
+Figure 9 ACK from John with sequence of 1 and acknowledge of 1.&lt;/p&gt;
+
+&lt;p&gt;we will see more of that ack and seq calculation further on.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TCP header length&lt;/strong&gt; - This header also called &lt;strong&gt;data offset&lt;/strong&gt;, this field are specified the entire length of the TCP segment, this include the previous headers, the source and destination port number, the acknowledgement number, the sequence number and so on. As you can see in the diagram in figure 6 this field in 4 bit long.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reserved&lt;/strong&gt; - The reserved is actually the gray field in the diagram in figure 6, it is 6 bit long that &lt;strong&gt;reserved&lt;/strong&gt; for future use. It’s actually just 3 bit and more 3 bit used for ECN as I specified earlier, but just keep in mind that there is 6 bit in that area and after that more 6 bit that used for flags.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Flags&lt;/strong&gt; - The 6 bits after the reserved bits are used for flags, this flags is takes a big part in the tcp session. for each flag there is a scenario, to see each flag we going to use network analyzer like Wireshark, you can use TCPdump or NAST or any kind of analyzer you like, I’m using Wireshark for the examples. we going to see each flag but not in the same order as you saw in the TCP segment structure you’ll understand why later on.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;SYN&lt;/strong&gt; - as we already saw, the SYN flag used for starting conversation, in the TCP world the starting session end up always with three TCP segments that send back and forth between two parties, because of that this starting point called &lt;strong&gt;Three Way Handshake&lt;/strong&gt;, you will see the three way handshake in every conversion that base on TCP.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;ACK&lt;/strong&gt; - we saw that flag, and if you remember, that flag are resposible for approving that the TCP segment arrived successfully to the other endpoint, but keep in mind that if we get ACK flag activated in the TCP segment it doesn’t mean that the data that arrived doesn’t broken and if you ask what we done with broken data? for that we have the CRC (which is the checksum) and we will see that header as we  move on in this article.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;FIN&lt;/strong&gt; - if you remember in the &lt;strong&gt;Basic TCP Functionality&lt;/strong&gt; section we saw the FIN &amp;amp; ACK session, the FIN is responsible for closing some session, so if one side want to end the TCP session he send a FIN + ACK flags, the ACK is for approved that the previous TCP segment arrived and the FIN is to inporm the other endpoint that we wish to end the session, so the other endpoint will respond with ACK to approved that we get the FIN + ACK that we sent and he with also initiate a FIN + ACK message to end the session too, and then the first endpoint will respond with ACK and that it, the session is ending, just like we saw in figure 5.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;PSH&lt;/strong&gt; - This flag is stand for push which mean that we want to push some data to the other endpoint, so, every time that the TCP contain some DATA in the upper layer, you will see this flag in active state. When the other site get this segment with active PSH he knows that there is a data and he transfer it to the application that expect to this data. We will see some example of that PSH as you keep reading.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;RST&lt;/strong&gt; - This flag is stand for reset, we will see this flag when we have some issue in the connection, or when some side of the parties trying to kill the session, basically if the receiver see that flag he shouldn’t send any message further in that session and discard any further message that he received from the other side that related to that session.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;URG&lt;/strong&gt; - This flag stand for urgent, we use this flag to inform the other side that there is some urgent data that must be treatment immediately, there is more header that related to this flag and specified the urgent data.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Window Size&lt;/strong&gt; - This header used for to inform the other endpoint that we can to buffer some specific amount of data, as example if we send to the other endpoint Window Size of 20000 byte, the other endpoint knows that we can get 20K of data before we sent to him an ACK on the 20K data. Let’s assume that John sent to Bob TCP segment that contain 20K in the window side header, so Bob knows that he can send no more that 20K to John because John can handle only 20K at the time, so if Bob reach to this value he will stop from sending data until he will get some ACK from John about the data Bob was sent, only after that Bob will keep to send more data. Please remember that this is not mean that if John tels Bob about 20K that Bob immediately send 20K stop until the ACK and send again 20K and stop and so on, it’s just let’s Bob knows that he can only handle 20K at the time. We will see in the examples that after two side synchronize they may send small pieces of data as a start, only after that the amount of data may be grow before some ACK will received.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Checksum&lt;/strong&gt; - I think that this header is very cool although this is so old algorithm and probably your computer doesn’t use it, the principle is to check an error in the arriving message or check that this message arriving is the same message that was sent in the first place and no one change it in the middle, the calculation are done as follow:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Pseudo Header&lt;/strong&gt; which is some headers from the IP packets that are include in the checksum calculation. The header are the &lt;strong&gt;Source address&lt;/strong&gt; and &lt;strong&gt;destination address&lt;/strong&gt; from the IP packet with &lt;strong&gt;Reserved&lt;/strong&gt; filed of 8 bit and &lt;strong&gt;Protocol Type&lt;/strong&gt; from IP packet which always be 6 because of the TCP, and &lt;strong&gt;TCP Segment Length&lt;/strong&gt;.
+&lt;img src=&quot;/assets/images/pseudo.png&quot; alt=&quot;pseudo&quot; title=&quot;Pseudo&quot; class=&quot;img-responsive&quot; height=&quot;3000px&quot; /&gt;
+&lt;strong&gt;Figure 10&lt;/strong&gt; Pseudo Header.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Source Port&lt;/strong&gt; from the TCP segment.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Destination Port&lt;/strong&gt; from the TCP segment.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sequence number&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Acknowledgement number&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data Offset&lt;/strong&gt; as we discussed, it also called TCP header length&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reserved&lt;/strong&gt; field from the TCP segment&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Flags&lt;/strong&gt; bits.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Window Size&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Option&lt;/strong&gt; we will discuss this field later in the article.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/checksum.png&quot; alt=&quot;checksum&quot; title=&quot;checksum&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+  &lt;strong&gt;Figure 11&lt;/strong&gt; TCP header for checksum calculation.&lt;/p&gt;
+
+&lt;p&gt;After that we take the all field and add it together, the score need to be in length of 4 digits, and after we put all together we calculate the opposite of what we get, in HEX the calculation will be 15 - n = x, the &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; is the new number we need. We can also calculated as following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;converted the Hex value to binary.&lt;/li&gt;
+  &lt;li&gt;change every bit to the opposite which mean &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; become &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; become &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;after the calculation, the value we get in the result this is the checksum value.&lt;/p&gt;
+
+&lt;p&gt;let’s do real check for example:
+  &lt;img src=&quot;/assets/images/checksum2.png&quot; alt=&quot;checksum2&quot; title=&quot;checksum2&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+  &lt;strong&gt;Figure 12&lt;/strong&gt; Checksum calculation using Wireshark.&lt;/p&gt;
+
+&lt;p&gt;As you can see the packet that I chose is from some session between my default getaway to one of my hosts. The checksum number is &lt;code class=&quot;highlighter-rouge&quot;&gt;0x2aa1&lt;/code&gt;, so let’s check it our self and find the if the checksum we get is the same checksum we calculate.&lt;/p&gt;
+
+&lt;p&gt;So we need to calculate the pseudo, the source address is 10.0.0.138 which in Hex is &lt;code class=&quot;highlighter-rouge&quot;&gt;0a00&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;008a&lt;/code&gt;, the destination address is 10.0.0.6 which is &lt;code class=&quot;highlighter-rouge&quot;&gt;0a00&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;0006&lt;/code&gt; now we have 8 reserved bit which in Hex is &lt;strong&gt;00&lt;/strong&gt; and the protocol type is also 8 bit so we have &lt;strong&gt;06&lt;/strong&gt; and together it’s &lt;code class=&quot;highlighter-rouge&quot;&gt;0006&lt;/code&gt;, after that we have TCP segment length in my case it’s 32 bytes so convert that decimal it to Hex we get 20 so we will treat it as &lt;code class=&quot;highlighter-rouge&quot;&gt;0020&lt;/code&gt;.
+The source port is 40991 which is &lt;code class=&quot;highlighter-rouge&quot;&gt;a01f&lt;/code&gt; and the destination port is 2869 in Hex is &lt;code class=&quot;highlighter-rouge&quot;&gt;0b35&lt;/code&gt;, the sequence number &lt;code class=&quot;highlighter-rouge&quot;&gt;6d11&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;6aff&lt;/code&gt;, and the acknowledge number is &lt;code class=&quot;highlighter-rouge&quot;&gt;2c1e&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;a2dc&lt;/code&gt;, the data offset, reserved and flags together is &lt;code class=&quot;highlighter-rouge&quot;&gt;8010&lt;/code&gt;, the window size is &lt;code class=&quot;highlighter-rouge&quot;&gt;05b4&lt;/code&gt; and Option is &lt;code class=&quot;highlighter-rouge&quot;&gt;0101&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;080a&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;024c&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;cebf&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;006a&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;0e03&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now lets calculate all together:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0a00 + 008a + 0a00 + 0006 + 0006 + 0020 + a01f + 0b35 + 6d11 + 6aff + 2c1e + a2dc + 8010 + 05b4 + 0101 + 080a + 024c + cebf + 006a + 0e03 = 3D55B&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Remember the score is always 4 digits so let’s calculate:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0003 + D55B = D55E&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let’s calculate what is the opposite number of &lt;strong&gt;D55E&lt;/strong&gt;, we can to that in binary as follow:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;1101 0101 0101 1110&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;-------------------&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;0010 1010 1010 0001&lt;/code&gt;
+In Hex is &lt;strong&gt;2AA1&lt;/strong&gt;.
+We also can to the following calculation:&lt;br /&gt;
+15 - e = 1&lt;br /&gt;
+15 - 5 = a&lt;br /&gt;
+15 - 5 = a&lt;br /&gt;
+15 - d = 2&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Remember what was the checksum?? yes! &lt;code class=&quot;highlighter-rouge&quot;&gt;0x2aa1&lt;/code&gt; so the checksum test for this segment pass successfully!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Urgent Pointer&lt;/strong&gt; - We will see the urgent pointer when the URG flag is active, as I mentioned earlier when one of the sides sent urgent message in that filed we specified what is the length of the urgent data from the start point of the data field. As example let’s open FTP connection to transfer some file, I using 3cdeamon for the FTP server in one of my hosts, and on anouther host I using CMD.&lt;/p&gt;
+
+&lt;p&gt;In one PC I opened CMD and type &lt;code class=&quot;highlighter-rouge&quot;&gt;ftp&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;open 10.0.0.9&lt;/code&gt; and type my user and password and start to copy to my host the test.mp3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ftp.png&quot; alt=&quot;ftp&quot; title=&quot;ftp&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 13&lt;/strong&gt; opening FTP session in command line.&lt;/p&gt;
+
+&lt;p&gt;After the transfer as start I killed it with &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+c&lt;/code&gt; which is activate the &lt;strong&gt;URG&lt;/strong&gt; flag.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ftp5.png&quot; alt=&quot;ftp5&quot; title=&quot;ftp5&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 14&lt;/strong&gt; Killing the FTP session.&lt;/p&gt;
+
+&lt;p&gt;On the other PC you can see that the session has being stopped.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ftp2.png&quot; alt=&quot;ftp2&quot; title=&quot;ftp2&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 15&lt;/strong&gt; FTP session has stopped.&lt;/p&gt;
+
+&lt;p&gt;Now, if we look on the captured file we will see some frame that contain in the TCP segment a URG flag (I have done some filtering so this is why you see only one packet).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ftp3.png&quot; alt=&quot;ftp3&quot; title=&quot;ftp3&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 15&lt;/strong&gt; FTP session has stopped.&lt;/p&gt;
+
+&lt;p&gt;As you can see URG flag is set, if we look at the data we can find a Hex of &lt;code class=&quot;highlighter-rouge&quot;&gt;0xF2&lt;/code&gt; which is in decimal 242 which is the DATA MARK that specified by &lt;a href=&quot;https://tools.ietf.org/html/rfc854&quot;&gt;RFC 854&lt;/a&gt; and it’s the &lt;strong&gt;TCP Urgent notification&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ftp4.png&quot; alt=&quot;ftp4&quot; title=&quot;ftp4&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 16&lt;/strong&gt; TCP Urgent notification.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Option&lt;/strong&gt; - This is the field where the MSS (Maximum Segment Site) came in with other values&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The well none protocol named TCP is one of the important protocol that really matter in the wide network of today. This protocol as a big play part in the Internet in general, many protocols relay on TCP and many</summary></entry><entry><title type="html">אביעה חידות</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="אביעה חידות" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p dir=&quot;rtl&quot;&gt;
+אוקיי... אז סיימתי סוף סוף את האפליקציה, אביעה חידות מני קדם מוכנה ויושבת בחנות של גוגל, זאת הייתה עבודה קשה אבל זה משתלם כי עכשיו יש לי נסיון גם בריאקט&lt;br /&gt; נייטיב (react native) וזה ממש טוב!&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+אני מרוצה מהתוצאה הסופית.. קיבלתי חלק מהפידבקים חיובים וחלק פחות חיוביים, הרבה אמרו לי שהאפליקציה ממש קשה, ואני כזה... נו מה... למה ציפיתם הרי התשובות&lt;br /&gt; כתובים ממש בפרשיות זה חייב להיות קשה לכו ללמוד את הפרשיות, כנראה שחלק ילכו אבל החלק הגדול לא, לכן חשבתי לעשות משהו אחר&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+מלבד לכתוב מה הפרשייה ובעצם להודיע למשתמה ששם התשובה, אני אביא לו את המקורות לנייד ככה שהוא יוכל לשבת וללמוד ואז הרווחנו שני ציפורים במכה אחת&lt;br /&gt;
+הוא גם יישב וילמד וגם יענה וירוויח נקודות.. הנאה כפולה מהמשחק&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+בעקרון יש לי מספר מטרון כדלהלן&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+- להעביר את כפתור האיפוס למסך הראשי&lt;br /&gt;
+- לשנות את כל האפליקציה לעבוד עם flex&lt;br /&gt;
+- להוסיף פרס למי שמסיים את האפליקציה&lt;br /&gt;
+- להוסיף הודעה משמחת על כל 100 יהלומים שזוכים&lt;br /&gt;
+- להוסיף מוסיקה&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+כן הייתם מאמינים, כשבניתי את האפליקיציה לא חשבתי לעשות FLEX איזו טעות חמורה&lt;br /&gt;
+אבל אני עוד אסדר את זה וזה למען האמת החלק הקל&lt;br /&gt;
+מה עם מוסיקה, לעשות משהו מקורי או להביא חיקוי זול? ואם לעשות משהו מקורי אז מוסיקה מוסיקה או סתם רעשים שונים ברקע...&lt;br /&gt;
+&lt;br /&gt;
+אני צריך לחשוב על זה, בנתיים אני כבר לא עובד על האפליקציה אני פותר תרגילים באינטרנט ולומד התקפות ברמת אבטחת מידע&lt;br /&gt;
+אני מקווה למצא עבודה טובה בתחום עם צוות טוב ומגובש שזה הדבר החשוב באמת&lt;br /&gt;
+&lt;br /&gt;
+ובחזרה לאפליקציה&lt;br /&gt;
+אני רוצה לנצל את ההזדמנות להציג פה חלקים ממנה&lt;br /&gt;
+&lt;br /&gt;
+זה המסך הראשי של האפליקציה, ברגע שמתחילים במשחק ולוחצים תשובה נכונה, במקום &quot;התחל&quot; יהיה כתוב &quot;המשך&quot; זה היה מאוד קשה לעשות את זה כי מדובר על שני סקשנים נפרדים&lt;br /&gt;
+ובשביל לעבור ממסך למסך השתמשתי בנוויגייטור (navigator) והיה צריך להכניס ערכים מיוחדים בשביל לעשות את זה&lt;br /&gt;
+העיקר זה עבד&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/app2.jpg&quot; alt=&quot;HomeScreen&quot; title=&quot;HomeScreen&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p dir=&quot;rtl&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+אנשים המליצו לי להוסיף כפתור איפס כבר במסך הזה לאיפוס המשחק ולהוסיפ עוד כפתור של סאונד אם יהיה במסך הזה והכי חשוב שלא יהיה ניתן לגלול את המסך הזה כלומר שהוא&lt;br /&gt; יהיה קבוע ומקובע... צריך לראות איך עושים את זה כי זה לא נשמע פשוט&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+
+
+המסך השני קצת יותר מורכב מהקודם, במסך הזה אמרו לי אנשים שבחלק הקלדת התשובה יהיו אותיות שהינם מתוך התשובה&lt;br /&gt;
+האתם שעשיתי את זה בהתחלה אבל היה ממש מסובך לשייך את האותיות למקום המתאים בגרירה ואולי זה אשפרי עם רידקס (redax) אבל אני לא בטוח&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/app3.jpg&quot; alt=&quot;Riddle&quot; title=&quot;Riddle&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p dir=&quot;rtl&quot;&gt;
+&lt;br /&gt;
+עקרונית במסך הזה בקובעיה של החידון זה למעשה יהיה כפתור שפותח לנו את הפרשה המלאה&lt;br /&gt;
+השאלה הנוספת ונניח שאני מחליט לתת פרס למי שהצליח לענות על החידון, איך אני מודה שהוא באמת ענה ולא מרמה אותי, בנוסף האם להגיד מהו הפרס? הרי הפרס הוא הספר&lt;br /&gt;
+ המקורי, לפחות על זה חשבתי וזה נשמע לי רעיון פצצה&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+
+אם המשתמש טעה בחידה חשבתי פעם להוריד לו יהלומים אבל אני לא יודע, אולי לא כדאי, בנתיים זה מה יש&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/app4.jpg&quot; alt=&quot;wrong&quot; title=&quot;wrong&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p dir=&quot;rtl&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+
+זה החלק הכי מגניב כי חנות הרמזים היא בעצם מה שנותנת הנאה מהמחק מלבד החידות עצמןשהם גאוניות&lt;br /&gt;
+החישוב ברמזים הוא עלות, כלומר כל רמז עולה יהלומים ואם אין מספיק אז נחשו מה.... איי אפשר להתקדם עם רמזים בלבד לכל אורך המשחק&lt;br /&gt;
+זה מכריח מהמשתמש להתאמץ וזה מה שכייף&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/app5.jpg&quot; alt=&quot;diamonds&quot; title=&quot;diamonds&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p dir=&quot;rtl&quot;&gt;
+&lt;br /&gt;
+מישהו אמחר לי  שזה יכול להיות משחק שימושי למטרות חינוך, אני מסכים אבל האם זה ילך, אין לי שמץ&lt;br /&gt;
+&lt;br /&gt;
+
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+
+
+
+המסך האחרון להיום בהמשך למסך הקודם&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/app1.jpg&quot; alt=&quot;diamonds2&quot; title=&quot;diamonds2&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p dir=&quot;rtl&quot;&gt;
+&lt;br /&gt;
+שלא תגידו שהמשחק הזה לא מושקע, זה לקח לי חודשיים וחצי בשביל ההנאה שלכם!&lt;br /&gt;
+אז יאללה תהנו!!!&lt;br /&gt;
+&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">אני כותב בעברית כי זאת האפליקציה הראשונה שלי והוא בעברית והכל בעברית אז מי שלא יודע עברית שילך ויילמד אני קרעתי את התחת</summary></entry><entry><title type="html">Heb Page TEST!</title><link href="http://localhost:4000/2017/10/17/heb-page.html" rel="alternate" type="text/html" title="Heb Page TEST!" /><published>2017-10-17T00:00:00+03:00</published><updated>2017-10-17T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/17/heb-page</id><content type="html" xml:base="http://localhost:4000/2017/10/17/heb-page.html">&lt;p dir=&quot;rtl&quot;&gt;
+לא בטוח שיש לי תמיכה בעברית אבל צריך לוודא
+&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">אני כותב בעברית כדי לראות אם זה עובד</summary></entry><entry><title type="html">Nach Riddles on Google Play!</title><link href="http://localhost:4000/2017/10/15/Finish-the-App.html" rel="alternate" type="text/html" title="Nach Riddles on Google Play!" /><published>2017-10-15T00:00:00+03:00</published><updated>2017-10-15T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/15/Finish-the-App</id><content type="html" xml:base="http://localhost:4000/2017/10/15/Finish-the-App.html">&lt;p&gt;Hello everyone, We want to update that the development of the application has been successfully completed and you can download the application from Google Play&lt;/p&gt;
+
+&lt;h2&gt;&lt;a href=&quot;./NachRiddles/&quot;&gt;Nach Riddles&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;As mentioned in the past, it is a riddles game built on many books from the Bible, the quiz itself high level and therefore is forced to learn the part of the riddles before trying to answer the riddles&lt;/p&gt;
+
+&lt;p&gt;The application was developed according to David Zwerdling’s book&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">Hello everyone, We want to update that the development of the application has been successfully completed and you can download the application from Google Play</summary></entry><entry><title type="html">Prophet-Riddles-App-Update</title><link href="http://localhost:4000/2017/09/17/Prophet-Riddles-App-update.html" rel="alternate" type="text/html" title="Prophet-Riddles-App-Update" /><published>2017-09-17T00:00:00+03:00</published><updated>2017-09-17T00:00:00+03:00</updated><id>http://localhost:4000/2017/09/17/Prophet-Riddles-App-update</id><content type="html" xml:base="http://localhost:4000/2017/09/17/Prophet-Riddles-App-update.html">&lt;p&gt;seriously! I’ve been trying to write some script in Python for a few days and nothing! The goal is to take the source file and convert it to a CSV file I broke it on my head and finally it worked! The script takes a retouch file of the original file that is set to txt and goes over the rows and marks and builds the new file that will be ready to be converted to json And finally it happens !!!&lt;/p&gt;
+
+&lt;p&gt;I done hard work so far, this is what I feel. After I finished the script and now after I have the json file I work hard on the App itself in react-native, so far so good, but things dosnt work I wanted so I guess there is alot of work here,&lt;/p&gt;
+
+&lt;p&gt;Meanwhile I have some photos how the app look so far:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/riddles-HomeScreen.jpg&quot; alt=&quot;HomeScreen&quot; title=&quot;HomeScreen&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/riddles-Levels.jpg&quot; alt=&quot;Levels&quot; title=&quot;Levels&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/riddles-Riddle.jpg&quot; alt=&quot;Riddles&quot; title=&quot;Riddles&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So this is all for now!!&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">seriously! I've been trying to write some script in Python for a few days and nothing! The goal is to take the source file and convert it to a CSV file I broke it on my head and finally it worked! The script takes a retouch file of the original file that is set to txt and goes over the rows and marks and builds the new file that will be ready to be converted to json</summary></entry><entry><title type="html">Prophet-Riddles-App</title><link href="http://localhost:4000/2017/09/10/Prophet-Riddles-App.html" rel="alternate" type="text/html" title="Prophet-Riddles-App" /><published>2017-09-10T00:00:00+03:00</published><updated>2017-09-10T00:00:00+03:00</updated><id>http://localhost:4000/2017/09/10/Prophet-Riddles-App</id><content type="html" xml:base="http://localhost:4000/2017/09/10/Prophet-Riddles-App.html">&lt;p&gt;This application is about riddles on Neviim and Ktuvim which is the second and the third parts of the Bible, the original book named “אביעה חידות מני קדם” was writing by my dear brother. We working on this app day and night with huge wish to finish the first version until 5th of October of this year. I think this is the place to write a little about the author&lt;/p&gt;
+
+&lt;p&gt;My brother was a noble soul! He loved to help everyone! To be there for them. He studied at the Kol Yaakov Yeshiva and focused on the Bible which he loved to learn very much. The idea of telling the riddles was created by him and by a friend from the yeshiva. In his introduction to this book he writes the following lines:
+“ברוך שבחר בנביאים טובים, וזיכני לכתוב חידונים, שכולם בחרוזים, למען נהיה בהם בקיאים. והתחלתי לעשות זאת יען כי הרגשתי שברוך ה’ אני די בקיא בתורתו הקדושה, לדעת היכן נמצא פסוק פלוני ומי אמר למי פסוק אלמוני, אך הרגשתי שאין אני בקיא כן בנביא, ועל-כן לקחתי את הנביאים, המלמדים את קורות עם ישראל מכניסתם לארץ ועד שיבת ציון (יהושע, שופטים, שמואל, מלכים, דניאל, עזרא ונחמיה), וחלקתים ל-54 חלקים כמניין פרשיות התורה, ולכל חלק נתתי שם, כמו השמות של פרשיות התורה (כדי לזכור כל דיבור באיזו “פרשה” הוא נמצא), וסידרתי אותם מול פרשיות התורה למען אלמד בהם במשך השנה במקביל לפרשיות השבוע וכך אשלים מחזור בשמחת תורה ואתחיל מהתחלה כל שנה ואולי על-ידי כך אזכה לרכוש בקיאות בנביא, על-ידי החזרה כמו המחזור השנתי של קריאת התורה. והנה כמעט בכל שבוע מתכנסים חברֵי חדרי מישיבת “קול יעקב” המעטירה, לשמוע מפי חידון על פרשת השבוע שערך אותו הרב יהודה צימרוט בספרו “להתענג”, וחברַי מראים שליטה ובקיאות נפלאה בפרשה ולכן הוסיף לי חברי היקר הבה”ח שלמה יוסף רווח שאולי כדי שאכתוב חידונים על הנביא כמו החידונים על הפרשה, והחידונים גם יעזרו לעשות חזרה על החומר וגם לחדד את השכל בבקיאות הנביא וכך השתדלתי לעשות. החידונים ערוכים לפי הא”ב כך שכל תשובה מתחילה באות אחרת לפי סדר הא”ב, וכמעט כל תשובות הן בעצם מילים מהפסוקים עצמם. חשוב להדגיש שיש ללמוד את כל ה”פרשה” לכל הפחות עם רש”י ומצודות ואחר כך ניתן לענות על החידות בקלות. קראתי לספר אביעה חידות מני קדם על שם הפסוק בתהלים עח,ב ששם מסביר המצודה: אומר דברים סתומים שנעשו בימי קדם. תודתי נתונה לבוחר בנביאים טובים ותפילתי אליו שאזכה לדעת את דבריהם של הנביאים ולהיות בקיא בהם, וכמובן תודה להוריי שנתנו לי את האמצעיים לעסוק בתורה ולישיבה הנפלאה שבה עליתי עוד ועוד, ישיבת “קול יעקב”. תודה לרב יהודה צימרוט על ספרו הנפלא “להתענג” שכשמו כן הוא ומשם נולד הרעיון, וכן תודה לחברי היקר שהגה את הרעיון הנפלא שלמה יוסף רווח (וגם לחברֵי החדר שבאים לשמוע את חידון כמיטב המסורת של החדר). ולסיום חשוב להודות למי שהיו חברותות נהדרות בנביא, הרב חיים זוהר, והבה”ח עזרא עדס, שיזכו להמשיך ולעלות בתורה ובנביאים. דוד בן שלמה זלמן צברדלינג”&lt;/p&gt;
+
+&lt;p&gt;On the book itself he write the folloing lins:
+“‫אביעה חידות מני קדם הוא חיבור של 1188 חידות בחרוזים על ספרי נביאים ראשונים ודניאל, עזרה ונחמיה.&lt;/p&gt;
+
+&lt;p&gt;החיבור מחלק את ספרי הנביאים ל-54 פרשיות כמניין פרשיות התורה בכדי שבכל שבוע יהיה אפשר ללמוד לצד פרשת השבוע גם חלק מהנביא ואחר כך לענות על חידון ועל ידי כך להיות בקיאים יותר בנביא.‬‬”&lt;/p&gt;
+
+&lt;p&gt;I’m so proud of my dear brother! So love him! And very miss him! I hope that this app will indeed be compatible with his desire to create a masterpiece on the Bible.
+David Zwerdling, may his memory be blessed&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">This application is about riddles on Neviim and Ktuvim which is the second and the third parts of the Bible, the original book named..... was writing by my dear brother</summary></entry><entry><title type="html">Linux Ubuntu</title><link href="http://localhost:4000/2017/08/30/linux-ubuntu.html" rel="alternate" type="text/html" title="Linux Ubuntu" /><published>2017-08-30T00:00:00+03:00</published><updated>2017-08-30T00:00:00+03:00</updated><id>http://localhost:4000/2017/08/30/linux-ubuntu</id><content type="html" xml:base="http://localhost:4000/2017/08/30/linux-ubuntu.html">&lt;p&gt;I love so much ubuntu because it so frendly lol, but realy, the reasens in my opinion why to used Ubuntu is because of the communities that support in ubuntu, it’s important to understand that the biger the community, the better support, anless u wanna to be hard core in linux and that another immportant field&lt;/p&gt;
+
+&lt;p&gt;In the passed week I worked on my grub, this is grub 2 and I setup some opening image, it was so cool after that I decided to setup opening music, so I configure the Hz of “In the Hall of Mountain King”. It sound great, to setup your own music sound all you need is to open /etc/default/grub file and in the section of GRUB_INIT_TUNE write your own code, the first number is the tempo, and after that the nubers goes as a peers the first one is the Hz tune and the second is the delay of the tune, as example:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;412 265 4 165 4 265 8&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;the first number “412” is the tempo that we going to work with, the second number is the tune of “265 Hz”, the last number is “4” and this is set the sound delay, so number “8” is two time longer than “4”&lt;/p&gt;
+
+&lt;p&gt;and this is my code for “In the Hall of Mountain King”:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;714 123 4 138 4 146 4 164 4 185 4 146 4 185 8 174 4 138 4 174 8 164 4 130 4 164 8 123 4 138 4 146 4 164 4 185 4 146 4 185 4 246 4 220 4 185 4 146 4 185 4 220 8&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;please remember that after you setup the grub you mast type the command “update-grub” for the setting will take affects
+more cool song to the grub:&lt;/p&gt;
+
+&lt;p&gt;Super Mario:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;1000 334 1 334 1 0 1 334 1 0 1 261 1 334 1 0 1 392 2 0 4 196 2&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Star Wars Imperial Death March:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;480 440 4 440 4 440 4 349 3 523 1 440 4 349 3 523 1 440 8 659 4 659 4 659 4 698 3 523 1 415 4 349 3 523 1 440 8&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Raining Blood:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;640 165 4 165 4 165 4 554 2 587 2 554 4 370 2 554 2 523 4 349 2 523 2 494 8 165 4 165 4 165 4&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Mario Bros. Mushroom Powerup:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;1750 523 1 392 1 523 1 659 1 784 1 1047 1 784 1 415 1 523 1 622 1 831 1 622 1 831 1 1046 1 1244 1 1661 1 1244 1 466 1 587 1 698 1 932 1 1195 1 1397 1 1865 1 1397 1&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Fuer Elise:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;480 420 1 400 1 420 1 400 1 420 1 315 1 370 1 335 1 282 3 180 1 215 1 282 1 315 3 213 1 262 1 315 1 335 3 213 1 420 1 400 1 420 1 400 1 420 1 315 1 370 1 335 1 282 3 180 1 215 1 282 1 315 3 213 1 330 1 315 1 282 3&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">I love so much ubuntu because it so frendly lol, but realy, the reasens in my opinion why to used Ubuntu is because of the communities that support in ubuntu, it's important to understand that the biger the community, the better support, anless u wanna to be hard core in linux and that another immportant field In the passed week I worked on my</summary></entry><entry><title type="html">First Post</title><link href="http://localhost:4000/2017/08/29/first-post.html" rel="alternate" type="text/html" title="First Post" /><published>2017-08-29T00:00:00+03:00</published><updated>2017-08-29T00:00:00+03:00</updated><id>http://localhost:4000/2017/08/29/first-post</id><content type="html" xml:base="http://localhost:4000/2017/08/29/first-post.html">&lt;p&gt;Hello every one, this is my first blog at my first website, so, congratulations to myself!&lt;/p&gt;
+
+&lt;p&gt;I think that because this is my first website that I develop by myself there is no beter place to tells my story.&lt;/p&gt;
+
+&lt;p&gt;At the beginning I start my creer as Network technician at Israel Air Force, after three years I left the army and I find a job in Israel Ministry Of Healf, I worked there four years as Network and Security engineer, in that job I was rensposible on wide range of network devices like Cisco and HP and as a security guy I I was manage CyberArk vault and ODIX Safe.&lt;/p&gt;
+
+&lt;p&gt;I also helped to my team operating another security appliance like CheckPoint FW and wise-moon NAC and for one moment I found myself fascinated about the Security filed I was able to play with security component like PaloAlto FW, IBM DataPower, F5 BIG-IP and WAF, proxies servers and etc. and as the time passed I found myself with grater will to be an EXPERT in CyberSecurity area.&lt;/p&gt;
+
+&lt;p&gt;So I start to learn about some attacks like XSS ,SQL injection, CSRF etc. I also start to lern python and challenge myself with challenge website coding python.&lt;/p&gt;
+
+&lt;p&gt;It was so fun, I leaned and play with everything product that I was able to put my hands on! but after while I can’t able to see my future in that place because of the bureaucracy in the Information Department that made some changes in our team so I decided to leave and after long search I found some place that was look like a fit place for my, so I applied for a job in BrightSource.&lt;/p&gt;
+
+&lt;p&gt;Over there I got responsibilities on cisco devices and security stuff and I exposed to mor coolest proxies like Websense and fireglass I also manage MDM named Intune by mycrosoft and at the first time I found myself writing scripts in PowerShell to solved some weird issue in that MDM product the live was so fun, but unfortunately I fired after a half year, and in my family the thing was get worse and we passed some difficult situation that I don’t want to write about here.&lt;/p&gt;
+
+&lt;p&gt;However, as I said, this is my first site ever, so I glod and want to thaks to God that bring me here to do great stuff, I want to thank my parents that support me all the way.&lt;/p&gt;
+
+&lt;p&gt;I also want to thank my mentor Sagi Kedmi that learnd me and keep learning me every week some seriesly stuff in cybersecurity and programing, and also I wanna thank to Max that keep pushing me and motivate me to learn.&lt;/p&gt;
+
+&lt;p&gt;And also many thanks to my beautiful girlfriend that keep feedback me about this site!&lt;/p&gt;
+
+&lt;p&gt;This is all for now, wish u the best!&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">Hello every one, this is my first blog at my first website, so, congratulations to myself! I think that because this is my first website that I develop by myself there is no beter place to tells my story. At the beginning I start my creer as Network technician at Israel Air Force, after three years I left the army and I find a job in Israel Ministry Of Healf, I worked there four years as Network and Security</summary></entry><entry><title type="html">testing</title><link href="http://localhost:4000/2017/06/01/testing.html" rel="alternate" type="text/html" title="testing" /><published>2017-06-01T00:00:00+03:00</published><updated>2017-06-01T00:00:00+03:00</updated><id>http://localhost:4000/2017/06/01/testing</id><content type="html" xml:base="http://localhost:4000/2017/06/01/testing.html">&lt;p&gt;Hydeout updates the original &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;Hyde&lt;/a&gt;
+theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; 3.x and adds new functionality.&lt;/p&gt;
+
+&lt;h3 id=&quot;keep-it-simple&quot;&gt;Keep It Simple&lt;/h3&gt;
+
+&lt;p&gt;In keeping with the original Hyde theme, Hydeout aims to keep the overall
+design lightweight and plugin-free. JavaScript is currently limited only
+to Disqus and Google Analytics (and is only loaded if you provide configuration
+variables).&lt;/p&gt;
+
+&lt;p&gt;Hydeout makes heavy use of Flexbox in its CSS. If Flexbox is not available,
+the CSS degrades into a single column layout.&lt;/p&gt;
+
+&lt;h3 id=&quot;customization&quot;&gt;Customization&lt;/h3&gt;
+
+&lt;p&gt;Hydeout replaces Hyde’s class-based theming with the use
+of the following SASS variables:&lt;/p&gt;
+
+&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$sidebar-bg-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#202020&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$sidebar-sticky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$layout-reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$link-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#268bd2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To override these variables, create your own &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/css/main.scss&lt;/code&gt; file.
+Define your own variables, then import in Hydeout’s SCSS, like so:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+# Jekyll needs front matter for SCSS files
+---
+
+$sidebar-bg-color: #ac4142;
+$link-color: #ac4142;
+$sidebar-sticky: false;
+@import &quot;hydeout&quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;See the &lt;a href=&quot;_sass/hydeout/_variables.scss&quot;&gt;_variables&lt;/a&gt; file for other variables
+you can override.&lt;/p&gt;
+
+&lt;p&gt;You can also insert custom head tags (e.g. to load your own stylesheets) by
+defining your own &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/custom-head.html&lt;/code&gt; or insert tags at the end
+of the body (e.g. for custom JS) by defining your own
+&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/custom-foot.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;new-features&quot;&gt;New Features&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Hydeout also adds a new tags page (accessible in the sidebar) and a new
+“category” layout for dedicated category pages.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Category pages are automatically added to the sidebar. All other pages
+must have &lt;code class=&quot;highlighter-rouge&quot;&gt;sidebar_link: true&lt;/code&gt; in their front matter to show up in
+the sidebar.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A simple redirect-to-Google search is available. If you want to use
+Google Custom Search or Algolia or something with more involved,
+override the &lt;code class=&quot;highlighter-rouge&quot;&gt;search.html&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Disqus integration is ready out of the box. Just add the following to
+your config file:&lt;/p&gt;
+
+    &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;disqus&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;shortname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my-disqus-shortname&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;If you don’t want Disqus or want to use something else, override
+&lt;code class=&quot;highlighter-rouge&quot;&gt;comments.html&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For Google Analytics support, define a &lt;code class=&quot;highlighter-rouge&quot;&gt;google_analytics&lt;/code&gt; variable with
+your property ID in your config file.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There’s also a bunch of minor tweaks and adjustments throughout the
+theme. Hope this works for you!&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">Hydeout updates the original [Hyde](https://github.com/poole/hyde) theme for [Jekyll](http://jekyllrb.com) 3.x and adds new functionality. ### Keep It Simple In keeping with the original Hyde theme, Hydeout aims to keep the overall design lightweight and plugin-free. JavaScript is currently limited only to Disqus and Google Analytics (and is only loaded if you provide configuration variables).</summary></entry></feed>
