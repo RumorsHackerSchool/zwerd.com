@@ -718,7 +718,19 @@ The TCP segment structure can be complex to understanding but if you get down to
 
 <p><img src="/assets/images/cap4.png" alt="cap4" title="cap4" class="img-responsive" height="1000px" width="2000px" /></p>
 
-<p>Let’s look on the captured file, we can see the source port is 21 and the destination is 49738 and the ACK is set to 1 as he expected, Bob activated the SYN and ACK flags and the window size value is also 8K like John, but as you can see the checksum is bed, it should be <code class="highlighter-rouge">0x442e</code> but it’s <code class="highlighter-rouge">0x1433</code>,</p>
+<p>Let’s look on the captured file, we can see the source port is 21 and the destination is 49738 and the ACK is set to 1 as we expected, Bob activated the SYN and ACK flags and the window size value is also 8K like John, but as you can see the checksum is bed, it should be <code class="highlighter-rouge">0x442e</code> but it’s <code class="highlighter-rouge">0x1433</code>,</p>
+
+<p><img src="/assets/images/cap5.png" alt="cap5" title="cap5" class="img-responsive" height="1000px" width="2000px" /></p>
+
+<p>In my case this maybe because of my local network at my home lab but you can check it out if you want, just go to this <a href="https://wiki.wireshark.org/TCP_Checksum_Verification">link</a>, you also can remove the TCP check by wireshark to ignore such an error.</p>
+
+<p>Let’s go to the next step in the three way handshake, now John going to approved that he get the TCP segment from Bob and this is close up the TCP three way handshake.</p>
+
+<p><img src="/assets/images/cap6.png" alt="cap6" title="cap6" class="img-responsive" height="1000px" width="2000px" /></p>
+
+<p>As you can see the ACK is equal to <code class="highlighter-rouge">1</code> because of the sequence number of <code class="highlighter-rouge">0</code> and <code class="highlighter-rouge">1</code> phantom byte that count as data, the sequence number now is equal to <code class="highlighter-rouge">1</code> as well because John sent in the passed sequence number of <code class="highlighter-rouge">0</code> plus some <code class="highlighter-rouge">1</code> phantom byte.</p>
+
+<p><img src="/assets/images/cap7.png" alt="cap7" title="cap7" class="img-responsive" height="1000px" width="2000px" /></p>
 
     
 

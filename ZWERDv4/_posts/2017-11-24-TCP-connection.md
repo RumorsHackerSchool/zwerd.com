@@ -336,4 +336,17 @@ Now Bob going to respond with SYN + ACK flag active and in the acknowledgement n
 
 ![cap4](/assets/images/cap4.png "cap4"){:class="img-responsive"}{:height="1000px" width="2000px"}
 
-Let's look on the captured file, we can see the source port is 21 and the destination is 49738 and the ACK is set to 1 as he expected, Bob activated the SYN and ACK flags and the window size value is also 8K like John, but as you can see the checksum is bed, it should be `0x442e` but it's `0x1433`,
+Let's look on the captured file, we can see the source port is 21 and the destination is 49738 and the ACK is set to 1 as we expected, Bob activated the SYN and ACK flags and the window size value is also 8K like John, but as you can see the checksum is bed, it should be `0x442e` but it's `0x1433`,
+
+![cap5](/assets/images/cap5.png "cap5"){:class="img-responsive"}{:height="1000px" width="2000px"}
+
+In my case this maybe because of my local network at my home lab but you can check it out if you want, just go to this [link](https://wiki.wireshark.org/TCP_Checksum_Verification), you also can remove the TCP check by wireshark to ignore such an error.
+
+Let's go to the next step in the three way handshake, now John going to approved that he get the TCP segment from Bob and this is close up the TCP three way handshake.
+
+![cap6](/assets/images/cap6.png "cap6"){:class="img-responsive"}{:height="1000px" width="2000px"}
+
+
+As you can see the ACK is equal to `1` because of the sequence number of `0` and `1` phantom byte that count as data, the sequence number now is equal to `1` as well because John sent in the passed sequence number of `0` plus some `1` phantom byte.
+
+![cap7](/assets/images/cap7.png "cap7"){:class="img-responsive"}{:height="1000px" width="2000px"}
