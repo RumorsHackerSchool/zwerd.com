@@ -212,7 +212,7 @@ we will see more of that ack and seq calculation further on.
 
 **Window Size** - This header used for to inform the other endpoint that we can to buffer some specific amount of data, as example if we send to the other endpoint Window Size of 20000 byte, the other endpoint knows that we can get 20K of data before we sent to him an ACK on the 20K data. Let's assume that John sent to Bob TCP segment that contain 20K in the window side header, so Bob knows that he can send no more that 20K to John because John can handle only 20K at the time, so if Bob reach to this value he will stop from sending data until he will get some ACK from John about the data Bob was sent, only after that Bob will keep to send more data. Please remember that this is not mean that if John tels Bob about 20K that Bob immediately send 20K stop until the ACK and send again 20K and stop and so on, it's just let's Bob knows that he can only handle 20K at the time. We will see in the examples that after two side synchronize they may send small pieces of data as a start, only after that the amount of data may be grow before some ACK will received.
 
-**Checksum** - I think that this header is very cool although this is so old algorithm and probably your computer doesn't use it, the principle is to check an error in the arriving message or check that this message arriving is the same message that was sent in the first place and no one change it in the middle, the calculation are done as follow:
+**Checksum** - I think that this header is very cool although this is so old algorithm, this is the way to find an error on the TCP segments, the receiver will check the checksum value against the following calculation, if the value is not the same as the checksum value the TCP segment are discard. The calculation are done as follow:
   - **Pseudo Header** which is some headers from the IP packets that are include in the checksum calculation. The header are the **Source address** and **destination address** from the IP packet with **Reserved** filed of 8 bit and **Protocol Type** from IP packet which always be 6 because of the TCP, and **TCP Segment Length**.
 ![pseudo](/assets/images/pseudo.png "Pseudo"){:class="img-responsive"}{:height="3000px"}
 **Figure 10** Pseudo Header.
@@ -317,36 +317,61 @@ If you want you can downloads the session [here](/assets/downloads/FTP session w
 So John IP address is 10.0.0.8 and Bob IP address is 10.0.0.5, John want to connect Bob and copy from Bob to his machine some file named test.zip (you can actualy download that file from the sniffer captured file LOL).
 
 ![cap1](/assets/images/cap1.png "cap1"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 17** John and Bob.
 
-John send the first TCP segment to synchronize with Bob, you can see that the source port is 49738 and the destination port is 21 which is the FTP service for control connection, the sequence number is 0 because we doesn't ever sent any data and the acknowledgement number is 0 also. At the flag area you can see a SYN activated which mean that John want to start the three way handshake for TCP base connection, the window size value is 8192 which mean that John tells Bob he can handle only 8k at the same time we will see how that go on the session.
+John send the first TCP segment to synchronize with Bob, you can see that the source port is 49738 and the destination port is 21 which is the FTP service for control connection, the sequence number is 0 because we doesn't ever sent any data and the acknowledgement number is 0 also. At the flag area you can see a SYN activated which mean that John want to start the three way handshake for TCP base connection, the window size value is 8192 which mean that John tells Bob he can handle only 8k at the same time we will see how that goes on the session.
 
 ![cap2](/assets/images/cap2.png "cap2"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 18** Wireshark connection - TCP ports 21 and 20
 
 The checksum is looking good so it's great (you can do the calculation the I show you earlier), in the urgent point the value is 0 becouse we have no urgent data at this moment.
 
-If you expand the Option area you will see some value like the MSS that set on 1460 byte which mean that John is willing to get TCP segment data with the maximum of 1460 byte per segment.
+If you expand the option area you will see some value like the MSS that set on 1460 byte which mean that John is willing to get TCP segment data with the maximum of 1460 byte per segment.
 
 So the starting session look as follow:
 
 ![cap3](/assets/images/cap3.png "cap3"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 19** First SYN - Three Way Handshake
 
 Please remember that because the SYN flag is active this is why we have the 1 phantom bit, so Bob will count it on his response.  
 
 Now Bob going to respond with SYN + ACK flag active and in the acknowledgement number he will specifies `1` because he get sequence of 0 and data of 1 which is the phantom byte, on the sequence number he will specifies `0`.
 
 ![cap4](/assets/images/cap4.png "cap4"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 20** Second SYN with ACK - Three Way Handshake
 
 Let's look on the captured file, we can see the source port is 21 and the destination is 49738 and the ACK is set to 1 as we expected, Bob activated the SYN and ACK flags and the window size value is also 8K like John, but as you can see the checksum is bed, it should be `0x442e` but it's `0x1433`,
 
 ![cap5](/assets/images/cap5.png "cap5"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 20** Wireshark second SYN with ACK
 
-In my case this maybe because of my local network at my home lab but you can check it out if you want, just go to this [link](https://wiki.wireshark.org/TCP_Checksum_Verification), you also can remove the TCP check by wireshark to ignore such an error.
+This is happens because of TCP checksum offload, please notice that this error occurs only when Bob packets, well this is because the capture file was taken from Bob machine, so throughout the conversation you will see such an errors only from Bob.
+
+The key here is that this happens for packets transmitted by the machine doing the capture, not packets received by the machine doing the capture.
+
+When transmitting a segment the OS fills out every field in the TCP segment in the memory, the checksum field is not computed by the OS, it contains whatever data there was before in that memory location.When we capture with Wireshark, it's capture the contents of this memory location which contains a TCP segment without a computed checksum it's have a random data. When the OS sends the segment to the NIC, the NIC hardware then performs the checksum computation, and puts the computed checksum to the particular TCP segment field. This checksum is never seen by the OS or Wireshark. So this is the reason for the errors.
+
+If you wanna check yourself, just go to this [link](https://wiki.wireshark.org/TCP_Checksum_Verification), you also can remove the TCP check by Wireshark to ignore such an error.
 
 Let's go to the next step in the three way handshake, now John going to approved that he get the TCP segment from Bob and this is close up the TCP three way handshake.
 
 ![cap6](/assets/images/cap6.png "cap6"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 21** Last ACK - Three Way Handshake
 
 
-As you can see the ACK is equal to `1` because of the sequence number of `0` and `1` phantom byte that count as data, the sequence number now is equal to `1` as well because John sent in the passed sequence number of `0` plus some `1` phantom byte.
+As you can see the ACK is equal to `1` because John get sequence number of `0` and `1` phantom byte that count as data, the sequence number now is equal to `1` as well because John sent in the passed sequence number of `0` plus some `1` phantom byte.
 
 ![cap7](/assets/images/cap7.png "cap7"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 22** Wireshark last ACK
+
+The session continue with Bob PSH and ACK flags which tells us that on the TCP payload we will find some data that related to FTP (which in our case Bob tell to John that the service are ready for new user). Meanwhile John get login screen so he need to type some user name.
+![cap8](/assets/images/cap8.png "cap8"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 23** Login screen.
+
+Please notice that Bob sent to John TCP segment with SEQ that equal to 1 and data bytes size of 42.
+
+John PC respond with ACK about the data that arravied and send another TCP segment that contain a ACK and PSH with data that contain the username guy.
+![cap9](/assets/images/cap9.png "cap9"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 24** ACK and PSH with username.
+
+As you can see the acknowledgement number is 43 because
