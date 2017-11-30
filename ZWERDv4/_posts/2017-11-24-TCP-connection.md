@@ -374,4 +374,77 @@ John PC respond with ACK about the data that arravied and send another TCP segme
 ![cap9](/assets/images/cap9.png "cap9"){:class="img-responsive"}{:height="1000px" width="2000px"}
 **Figure 24** ACK and PSH with username.
 
-As you can see the acknowledgement number is 43 because
+As you can see the acknowledgement number from John is 43 because the received sequence number is 1 plus the received data in byte is 42, the sequence number however remains the same because John sent sequence number of 1 and data of 0.
+
+![cap10](/assets/images/cap10.png "cap10"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 25** Sequence and acknowledgement.
+
+Now Bob response with SYN and PSH active, the ACK is 11 because the received data was 10 and the received sequence was 1, Bob sequence number is 43 related to the sequence number that was sent before bluse the data that was 0.
+
+![cap11](/assets/images/cap11.png "cap11"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 26** Bob respond again.
+
+John response with sequence of 11 because he already sent sequence of 1 and 10 data bytes, the acknowledgement number is 76 because John got a data bytes of 33 and sequence number of 43.
+
+![cap12](/assets/images/cap12.png "cap12"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 27** Sequence of 11 and acknowledgement of 76.
+
+John send more TCP segment with the same values but with data bytes of 13 with password for the FTP session, please note that this is why FTP isn't secure, the password pass over the net in clear text form.
+
+![cap14](/assets/images/cap14.png "cap14"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 28** FTP password in clear text.
+
+Please remember that this time John send again data so is a PSH plus ACK.
+
+![cap13](/assets/images/cap13.png "cap13"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 28** TCP session continue.
+
+The acknowledgement and sequence numbers calculate again and Bob send this time ACK of 11 and SEQ of 76, the data bytes are 20 and Bob actually approved that John log in and in the flags are PSH and ACK.
+
+![cap15](/assets/images/cap15.png "cap15"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 29** Bob respond again.
+
+The acknowledgement that John specifies is 96 and the sequence is 24, this is just ACK so there is no data in this TCP segment. the other packet contain some data in upper layer.  
+
+![cap16](/assets/images/cap16.png "cap16"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 30** Two TCP segments from John.
+
+So the session will go in that way, just remember the rules we saw earlier:
+- The sequence number is the number of **previously sent data** plus the **previously sent sequence number** to the other endpoint.
+- The acknowledgement number is the number of the **received data** plus the **received sequence number** we get from the other endpoint.
+
+If we make some TCP session that pass through big amount of data we will see the window size and the window scale in action.
+
+As the session continue you will see the test.zip file transfer to John from Bob, for now I want to jump ahead to packet number 436. In this TCP segment we will see the FIN flag in active form from Bob to John, the flags that are active are FIN, PSH and ACK, the TCP payload is 40 bytes, the sequence number is 234 and acknowledgement number is 67.
+
+![cap17](/assets/images/cap17.png "cap17"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 31** FIN flag.
+
+The follow TCP segment from John contain just ACK and immediately John send also FIN and ACK segment. The first segment contain values of 275 at ACK number because we got sequence of 234 and more data byte of 40 and we also have phantom byte to count because this is the first the FIN flag is active from Bob side. The sequence number is 67 because of packet 435 that contain sequence number of 67 with data of 0 bytes.
+
+![cap18](/assets/images/cap18.png "cap18"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 32** FIN flag is the phantom this time.
+
+The second packets stay with the same value and the flags as we said are FIN with ACK active.
+
+![cap19](/assets/images/cap19.png "cap19"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 33** FIN flag is the phantom this time.
+
+Bob respose with ACK and that's it the session end.
+
+![cap20](/assets/images/cap20.png "cap20"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 34** The ending ACK.
+
+Let's look at the diagram to see the numbers in the ending session.
+
+![cap21](/assets/images/cap21.png "cap21"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 34** TCP ending session.
+
+**Summary**
+
+The TCP session contain two rules that we saw every time in the sequence and acknowledge number, the three way handshake is the starting point at TCP session that contain 3 TCP segments, the ending session contain 4 TCP segments that contian FIN flag that stand for finish.
+
+### The special flags.
+
+If you remember we talk earlier about three flags that are called Explicit Congestion Notification. In TCP work if the two endpoint sense some congestion in the network which mean some sort of load that cause drop of TCP segments, the endpoint that sense the congestion will send notification to the other endpoint that and and the two endpoint will decrease the traffic by using window scale.
+The problem with that operation is that we always need to resend some packets that was lost during the TCP session. To migrate that issue we use the ECN flags.

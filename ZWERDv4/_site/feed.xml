@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-30T19:52:52+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-30T23:22:22+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.&lt;/p&gt;
 
 &lt;p&gt;The well none protocol named TCP is one of the important protocol that really matter in the wide network of today. This protocol as a big play part
 in the Internet in general, many protocols relay on TCP and many protocols designed in such way that without TCP they cannot run. The Important thin
@@ -446,7 +446,82 @@ The TCP segment structure can be complex to understanding but if you get down to
 &lt;img src=&quot;/assets/images/cap9.png&quot; alt=&quot;cap9&quot; title=&quot;cap9&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
 &lt;strong&gt;Figure 24&lt;/strong&gt; ACK and PSH with username.&lt;/p&gt;
 
-&lt;p&gt;As you can see the acknowledgement number is 43 because&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">אביעה חידות</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="אביעה חידות" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p dir=&quot;rtl&quot;&gt;
+&lt;p&gt;As you can see the acknowledgement number from John is 43 because the received sequence number is 1 plus the received data in byte is 42, the sequence number however remains the same because John sent sequence number of 1 and data of 0.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap10.png&quot; alt=&quot;cap10&quot; title=&quot;cap10&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 25&lt;/strong&gt; Sequence and acknowledgement.&lt;/p&gt;
+
+&lt;p&gt;Now Bob response with SYN and PSH active, the ACK is 11 because the received data was 10 and the received sequence was 1, Bob sequence number is 43 related to the sequence number that was sent before bluse the data that was 0.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap11.png&quot; alt=&quot;cap11&quot; title=&quot;cap11&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 26&lt;/strong&gt; Bob respond again.&lt;/p&gt;
+
+&lt;p&gt;John response with sequence of 11 because he already sent sequence of 1 and 10 data bytes, the acknowledgement number is 76 because John got a data bytes of 33 and sequence number of 43.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap12.png&quot; alt=&quot;cap12&quot; title=&quot;cap12&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 27&lt;/strong&gt; Sequence of 11 and acknowledgement of 76.&lt;/p&gt;
+
+&lt;p&gt;John send more TCP segment with the same values but with data bytes of 13 with password for the FTP session, please note that this is why FTP isn’t secure, the password pass over the net in clear text form.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap14.png&quot; alt=&quot;cap14&quot; title=&quot;cap14&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 28&lt;/strong&gt; FTP password in clear text.&lt;/p&gt;
+
+&lt;p&gt;Please remember that this time John send again data so is a PSH plus ACK.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap13.png&quot; alt=&quot;cap13&quot; title=&quot;cap13&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 28&lt;/strong&gt; TCP session continue.&lt;/p&gt;
+
+&lt;p&gt;The acknowledgement and sequence numbers calculate again and Bob send this time ACK of 11 and SEQ of 76, the data bytes are 20 and Bob actually approved that John log in and in the flags are PSH and ACK.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap15.png&quot; alt=&quot;cap15&quot; title=&quot;cap15&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 29&lt;/strong&gt; Bob respond again.&lt;/p&gt;
+
+&lt;p&gt;The acknowledgement that John specifies is 96 and the sequence is 24, this is just ACK so there is no data in this TCP segment. the other packet contain some data in upper layer.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap16.png&quot; alt=&quot;cap16&quot; title=&quot;cap16&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 30&lt;/strong&gt; Two TCP segments from John.&lt;/p&gt;
+
+&lt;p&gt;So the session will go in that way, just remember the rules we saw earlier:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The sequence number is the number of &lt;strong&gt;previously sent data&lt;/strong&gt; plus the &lt;strong&gt;previously sent sequence number&lt;/strong&gt; to the other endpoint.&lt;/li&gt;
+  &lt;li&gt;The acknowledgement number is the number of the &lt;strong&gt;received data&lt;/strong&gt; plus the &lt;strong&gt;received sequence number&lt;/strong&gt; we get from the other endpoint.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If we make some TCP session that pass through big amount of data we will see the window size and the window scale in action.&lt;/p&gt;
+
+&lt;p&gt;As the session continue you will see the test.zip file transfer to John from Bob, for now I want to jump ahead to packet number 436. In this TCP segment we will see the FIN flag in active form from Bob to John, the flags that are active are FIN, PSH and ACK, the TCP payload is 40 bytes, the sequence number is 234 and acknowledgement number is 67.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap17.png&quot; alt=&quot;cap17&quot; title=&quot;cap17&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 31&lt;/strong&gt; FIN flag.&lt;/p&gt;
+
+&lt;p&gt;The follow TCP segment from John contain just ACK and immediately John send also FIN and ACK segment. The first segment contain values of 275 at ACK number because we got sequence of 234 and more data byte of 40 and we also have phantom byte to count because this is the first the FIN flag is active from Bob side. The sequence number is 67 because of packet 435 that contain sequence number of 67 with data of 0 bytes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap18.png&quot; alt=&quot;cap18&quot; title=&quot;cap18&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 32&lt;/strong&gt; FIN flag is the phantom this time.&lt;/p&gt;
+
+&lt;p&gt;The second packets stay with the same value and the flags as we said are FIN with ACK active.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap19.png&quot; alt=&quot;cap19&quot; title=&quot;cap19&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 33&lt;/strong&gt; FIN flag is the phantom this time.&lt;/p&gt;
+
+&lt;p&gt;Bob respose with ACK and that’s it the session end.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap20.png&quot; alt=&quot;cap20&quot; title=&quot;cap20&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 34&lt;/strong&gt; The ending ACK.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at the diagram to see the numbers in the ending session.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap21.png&quot; alt=&quot;cap21&quot; title=&quot;cap21&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 34&lt;/strong&gt; TCP ending session.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The TCP session contain two rules that we saw every time in the sequence and acknowledge number, the three way handshake is the starting point at TCP session that contain 3 TCP segments, the ending session contain 4 TCP segments that contian FIN flag that stand for finish.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-special-flags&quot;&gt;The special flags.&lt;/h3&gt;
+
+&lt;p&gt;If you remember we talk earlier about three flags that are called Explicit Congestion Notification. In TCP work if the two endpoint sense some congestion in the network which mean some sort of load that cause drop of TCP segments, the endpoint that sense the congestion will send notification to the other endpoint that and and the two endpoint will decrease the traffic by using window scale.
+The problem with that operation is that we always need to resend some packets that was lost during the TCP session. To migrate that issue we use the ECN flags.&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">אביעה חידות</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="אביעה חידות" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p dir=&quot;rtl&quot;&gt;
 אוקיי... אז סיימתי סוף סוף את האפליקציה, אביעה חידות מני קדם מוכנה ויושבת בחנות של גוגל, זאת הייתה עבודה קשה אבל זה משתלם כי עכשיו יש לי נסיון גם בריאקט&lt;br /&gt; נייטיב (react native) וזה ממש טוב!&lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
