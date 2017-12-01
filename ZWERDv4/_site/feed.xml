@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-30T23:22:22+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-01T12:12:51+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.&lt;/p&gt;
 
 &lt;p&gt;The well none protocol named TCP is one of the important protocol that really matter in the wide network of today. This protocol as a big play part
 in the Internet in general, many protocols relay on TCP and many protocols designed in such way that without TCP they cannot run. The Important thin
@@ -12,7 +12,7 @@ is that the TCP is can seams so complex but the truth is the opposite, all we ne
   &lt;li&gt;TCP segment structure.&lt;/li&gt;
   &lt;li&gt;TCP session in real world.&lt;/li&gt;
   &lt;li&gt;The special flags.&lt;/li&gt;
-  &lt;li&gt;Real world problems and how to solved them.&lt;/li&gt;
+  &lt;li&gt;TCP attacks.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;so let’s get started&lt;/p&gt;
@@ -520,8 +520,97 @@ The TCP segment structure can be complex to understanding but if you get down to
 
 &lt;h3 id=&quot;the-special-flags&quot;&gt;The special flags.&lt;/h3&gt;
 
-&lt;p&gt;If you remember we talk earlier about three flags that are called Explicit Congestion Notification. In TCP work if the two endpoint sense some congestion in the network which mean some sort of load that cause drop of TCP segments, the endpoint that sense the congestion will send notification to the other endpoint that and and the two endpoint will decrease the traffic by using window scale.
-The problem with that operation is that we always need to resend some packets that was lost during the TCP session. To migrate that issue we use the ECN flags.&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">אביעה חידות</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="אביעה חידות" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p dir=&quot;rtl&quot;&gt;
+&lt;p&gt;If you remember we talk earlier about three flags that are called Explicit Congestion Notification. In TCP word if the two endpoint sense some congestion in the network which mean some sort of load that cause drop of TCP segments, the endpoint that sense the congestion will send notification to the other endpoint that and and the two endpoint will decrease the traffic by using window scale.
+The problem with that operation is that we always need to resend some packets that was lost during the TCP session. To migrate that issue we use the ECN flags.&lt;/p&gt;
+
+&lt;p&gt;So we have three flags as follow:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;NS - That is the ECN-nonce bit&lt;/li&gt;
+  &lt;li&gt;CWR - stand for Congestion Window Reduced, if the endpoint got a ECE flag he will response with CWR flag set to tell the other side that he going to use window scale to decrease the traffic&lt;/li&gt;
+  &lt;li&gt;ECE - ECE-Echo, this bit used to update the other side that some congestion occur.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s say that one side send 3 packets to the other side.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap22.png&quot; alt=&quot;cap22&quot; title=&quot;cap22&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 35&lt;/strong&gt; TCP ending session.&lt;/p&gt;
+
+&lt;p&gt;if some congestion was occur the router in the middle discard the packets.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap23.png&quot; alt=&quot;cap23&quot; title=&quot;cap23&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 36&lt;/strong&gt; TCP ending session.&lt;/p&gt;
+
+&lt;p&gt;So the receiver response with ACK that approved only the first arrived TCP segment in our case, and in the SACK filed he specifies the segments that arrived after the first one, in our case it’s segment 3 so the sender knows that the segment 2 is missing and lost during the transport, so the sender will send the segments again.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap24.png&quot; alt=&quot;cap24&quot; title=&quot;cap24&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 37&lt;/strong&gt; The receiver approved for segment 1 and 3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap25.png&quot; alt=&quot;cap25&quot; title=&quot;cap25&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 38&lt;/strong&gt; The receiver resend segment 2.&lt;/p&gt;
+
+&lt;p&gt;However if the router in the middle support in ECN he will set the ECN flags in the IP packets, this flags is part of DSCP (DiffServ) that used for Quality Of Service. You may ask why the flags set in the IP packet and not in the TCP segment, so please remember that the router working at most at layer 3 and doesn’t open the packets to see the TCP segment, so the flags set must be done in layer 3, so we have two bits that are called ECN-Capable Transport as follow:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap26.png&quot; alt=&quot;cap26&quot; title=&quot;cap26&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 39&lt;/strong&gt; IP packets headers.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Not-ECT - If the two bits are 0’s this mean that there is no support in ECN.&lt;/li&gt;
+  &lt;li&gt;ECT - If the one of the bits are 1 this mean that there is support in ECN.&lt;/li&gt;
+  &lt;li&gt;CE - If both bits set to 1 it’s mean that congestion occur.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap27.png&quot; alt=&quot;cap27&quot; title=&quot;cap27&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+ &lt;strong&gt;Figure 40&lt;/strong&gt; ECN bits.&lt;/p&gt;
+
+&lt;p&gt;To summaries all thing together let’s look what really happens when congestion occur:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The sender send some packets to the other endpoint with ECN Capable set in IP packets .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap28.png&quot; alt=&quot;cap28&quot; title=&quot;cap28&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 41&lt;/strong&gt; ECN capable.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An ECN-capable router detects impending congestion, is usual case the router will start to drop packets, but in our case the router that an ECT codepoint is set in the packet so instead of dropping the packet, the router chooses to set the CE codepoint in the IP header and forwards the packet.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap29.png&quot; alt=&quot;cap29&quot; title=&quot;cap29&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 42&lt;/strong&gt; The router inform about the congestion.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The receiver receives the packet with the CE codepoint set, and sets the ECN-Echo flag in its next TCP ACK sent to the sender.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap30.png&quot; alt=&quot;cap30&quot; title=&quot;cap30&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 43&lt;/strong&gt; ECN-Echo flag is set.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The sender receives the TCP ACK with ECN-Echo set, and reacts to the congestion as if a packet had been dropped. that mean he will decrease the window size during the session.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap31.png&quot; alt=&quot;cap31&quot; title=&quot;cap31&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 44&lt;/strong&gt; The sender going to decrease the  window size.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;So the sender sets the CWR flag in the TCP header of the next packet sent to the receiver to acknowledge its receipt of and reaction to the ECN-Echo flag.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In some special cases the the ECN flags in the IP packets can be override by unmarked or mark some value in the DiffServ through the way of packet traveling, so in that case the using of ECN-nonce is coming in, it enables the receiver to demonstrate to the sender that segments being acknowledged were received unmarked. The sender then can verify the nonce sum returned by the receiver to ensure that congestion indications in the form of marked (or dropped) packets are not being concealed&lt;/p&gt;
+
+&lt;p&gt;So this leave us with 3 bits reserved and 9 bits used for flags in TCP segment.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cap32.png&quot; alt=&quot;cap32&quot; title=&quot;cap32&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
+&lt;strong&gt;Figure 45&lt;/strong&gt; Reserved and flags.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The ECN bits used with some related bit from IP packets and their goal is to notify about congestion that occur in the network and decrement the window size value.&lt;/p&gt;
+
+&lt;h3 id=&quot;tcp-attacks&quot;&gt;TCP attacks.&lt;/h3&gt;
+
+&lt;p&gt;OK guys, if you read so far, you have pritty good knowledge about the TCP session. Now it’s time to start to game with the coolest stuff, there are some attacks that look like deny of service and some of them are focus of disrupting some exist TCP session.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TCP SYN/ACK Flood Attack&lt;/strong&gt; - in this attack we will flood out victim in SYN/ACK requsting for initiate a session but we never done the initiate, let’s&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">אביעה חידות</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="אביעה חידות" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p dir=&quot;rtl&quot;&gt;
 אוקיי... אז סיימתי סוף סוף את האפליקציה, אביעה חידות מני קדם מוכנה ויושבת בחנות של גוגל, זאת הייתה עבודה קשה אבל זה משתלם כי עכשיו יש לי נסיון גם בריאקט&lt;br /&gt; נייטיב (react native) וזה ממש טוב!&lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;

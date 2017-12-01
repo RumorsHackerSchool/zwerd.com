@@ -19,7 +19,7 @@ In my opinion, to understand really good how TCP work we need to lean as follow:
 4. TCP segment structure.
 5. TCP session in real world.
 6. The special flags.
-7. Real world problems and how to solved them.
+7. TCP attacks.
 
 so let's get started
 
@@ -446,5 +446,82 @@ The TCP session contain two rules that we saw every time in the sequence and ack
 
 ### The special flags.
 
-If you remember we talk earlier about three flags that are called Explicit Congestion Notification. In TCP work if the two endpoint sense some congestion in the network which mean some sort of load that cause drop of TCP segments, the endpoint that sense the congestion will send notification to the other endpoint that and and the two endpoint will decrease the traffic by using window scale.
+If you remember we talk earlier about three flags that are called Explicit Congestion Notification. In TCP word if the two endpoint sense some congestion in the network which mean some sort of load that cause drop of TCP segments, the endpoint that sense the congestion will send notification to the other endpoint that and and the two endpoint will decrease the traffic by using window scale.
 The problem with that operation is that we always need to resend some packets that was lost during the TCP session. To migrate that issue we use the ECN flags.
+
+So we have three flags as follow:
+  - NS - That is the ECN-nonce bit
+  - CWR - stand for Congestion Window Reduced, if the endpoint got a ECE flag he will response with CWR flag set to tell the other side that he going to use window scale to decrease the traffic
+  - ECE - ECE-Echo, this bit used to update the other side that some congestion occur.
+
+Let's say that one side send 3 packets to the other side.
+
+![cap22](/assets/images/cap22.png "cap22"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 35** TCP ending session.
+
+if some congestion was occur the router in the middle discard the packets.
+
+![cap23](/assets/images/cap23.png "cap23"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 36** TCP ending session.
+
+So the receiver response with ACK that approved only the first arrived TCP segment in our case, and in the SACK filed he specifies the segments that arrived after the first one, in our case it's segment 3 so the sender knows that the segment 2 is missing and lost during the transport, so the sender will send the segments again.
+
+![cap24](/assets/images/cap24.png "cap24"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 37** The receiver approved for segment 1 and 3.
+
+![cap25](/assets/images/cap25.png "cap25"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 38** The receiver resend segment 2.
+
+However if the router in the middle support in ECN he will set the ECN flags in the IP packets, this flags is part of DSCP (DiffServ) that used for Quality Of Service. You may ask why the flags set in the IP packet and not in the TCP segment, so please remember that the router working at most at layer 3 and doesn't open the packets to see the TCP segment, so the flags set must be done in layer 3, so we have two bits that are called ECN-Capable Transport as follow:
+
+![cap26](/assets/images/cap26.png "cap26"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 39** IP packets headers.
+
+ - Not-ECT - If the two bits are 0's this mean that there is no support in ECN.
+ - ECT - If the one of the bits are 1 this mean that there is support in ECN.
+ - CE - If both bits set to 1 it's mean that congestion occur.
+
+ ![cap27](/assets/images/cap27.png "cap27"){:class="img-responsive"}{:height="1000px" width="2000px"}
+ **Figure 40** ECN bits.
+
+To summaries all thing together let's look what really happens when congestion occur:
+- The sender send some packets to the other endpoint with ECN Capable set in IP packets .
+
+![cap28](/assets/images/cap28.png "cap28"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 41** ECN capable.
+
+- An ECN-capable router detects impending congestion, is usual case the router will start to drop packets, but in our case the router that an ECT codepoint is set in the packet so instead of dropping the packet, the router chooses to set the CE codepoint in the IP header and forwards the packet.
+
+![cap29](/assets/images/cap29.png "cap29"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 42** The router inform about the congestion.
+
+- The receiver receives the packet with the CE codepoint set, and sets the ECN-Echo flag in its next TCP ACK sent to the sender.
+
+![cap30](/assets/images/cap30.png "cap30"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 43** ECN-Echo flag is set.
+
+- The sender receives the TCP ACK with ECN-Echo set, and reacts to the congestion as if a packet had been dropped. that mean he will decrease the window size during the session.
+
+![cap31](/assets/images/cap31.png "cap31"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 44** The sender going to decrease the  window size.
+
+- So the sender sets the CWR flag in the TCP header of the next packet sent to the receiver to acknowledge its receipt of and reaction to the ECN-Echo flag.
+
+
+In some special cases the the ECN flags in the IP packets can be override by unmarked or mark some value in the DiffServ through the way of packet traveling, so in that case the using of ECN-nonce is coming in, it enables the receiver to demonstrate to the sender that segments being acknowledged were received unmarked. The sender then can verify the nonce sum returned by the receiver to ensure that congestion indications in the form of marked (or dropped) packets are not being concealed
+
+So this leave us with 3 bits reserved and 9 bits used for flags in TCP segment.
+
+![cap32](/assets/images/cap32.png "cap32"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 45** Reserved and flags.
+
+**summary**
+
+The ECN bits used with some related bit from IP packets and their goal is to notify about congestion that occur in the network and decrement the window size value.
+
+
+### TCP attacks.
+
+OK guys, if you read so far, you have pritty good knowledge about the TCP session. Now it's time to start to game with the coolest stuff, there are some attacks that look like deny of service and some of them are focus of disrupting some exist TCP session.
+
+**TCP SYN/ACK Flood Attack** - in this attack we will flood out victim in SYN/ACK requsting for initiate a session but we never done the initiate, let's  
