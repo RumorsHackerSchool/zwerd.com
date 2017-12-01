@@ -919,7 +919,41 @@ The problem with that operation is that we always need to resend some packets th
 
 <p>OK guys, if you read so far, you have pritty good knowledge about the TCP session. Now it’s time to start to game with the coolest stuff, there are some attacks that look like deny of service and some of them are focus of disrupting some exist TCP session.</p>
 
-<p><strong>TCP SYN/ACK Flood Attack</strong> - in this attack we will flood out victim in SYN/ACK requsting for initiate a session but we never done the initiate, let’s</p>
+<p><strong>TCP SYN/ACK Flood Attack</strong> - in this attack we will flood our victim with SYN/ACK requesting for initiate a session but we never done the three way handshake which mean that the victim holds these session open and awaiting the final packet in the sequence so it fill up the available connections and denies any requesting clients access.</p>
+
+<p>To perform this attack I’m going to use msfconsole in my Linux Kali distribution, on the terminal type <code class="highlighter-rouge">msfconsole</code> and Metasploit Framework will open. After the msfconsole will open type <code class="highlighter-rouge">use auxiliary/dos/tcp/synflood</code></p>
+
+<p><img src="/assets/images/kali1.png" alt="kali1" title="kali1" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 46</strong> Metasploit Framework.</p>
+
+<p>To see the options we have just type <code class="highlighter-rouge">show options</code>, we will setup the RHOST which is the ip address of our victim and we use port 80 as default.</p>
+
+<p><img src="/assets/images/kali2.png" alt="kali2" title="kali2" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 47</strong> rhost.</p>
+
+<p>The attack will going to be on 10.0.0.138 port 80 which is the http service. To initiate the attack we only need to type <code class="highlighter-rouge">exploit</code> and hit enter.</p>
+
+<p><img src="/assets/images/kali3.png" alt="kali3" title="kali3" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 48</strong> exploit.</p>
+
+<p>now if I trying to get to my router at http service I will not be able to connect and I will get an error after long time.</p>
+
+<p><img src="/assets/images/connecting_error.png" alt="connecting_error" title="connecting_error" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 49</strong> HTTP connecting error.</p>
+
+<p>tcp.flags.ack == 1</p>
+
+<p>I opened Wireshark and I saw many TCP segment that contain only SYN flag in active form.</p>
+
+<p><img src="/assets/images/wireshark_sniffing_with_SYN.png" alt="wireshark_sniffing_with_SYN" title="SYN flag" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 50</strong> Wireshark sniffing with SYN.</p>
+
+<p>I done the same attack but now I setup my source IP, if you doesnt set the source IP it will be randomize, My filter is <code class="highlighter-rouge">tcp.flags.ack == 1 || tcp.flags.syn == 1</code> and we can see the SYN and ACK session between my DG and my Kali host.</p>
+
+<p><img src="/assets/images/kali4.png" alt="kali4" title="kali4" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 51</strong> More sniffing.</p>
+
+<p>To kill the attack just type ctrl+c, in my case after I killed the attack I was able to connect my DG.</p>
 
     
 

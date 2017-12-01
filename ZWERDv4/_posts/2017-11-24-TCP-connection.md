@@ -524,4 +524,39 @@ The ECN bits used with some related bit from IP packets and their goal is to not
 
 OK guys, if you read so far, you have pritty good knowledge about the TCP session. Now it's time to start to game with the coolest stuff, there are some attacks that look like deny of service and some of them are focus of disrupting some exist TCP session.
 
-**TCP SYN/ACK Flood Attack** - in this attack we will flood out victim in SYN/ACK requsting for initiate a session but we never done the initiate, let's  
+**TCP SYN/ACK Flood Attack** - in this attack we will flood our victim with SYN/ACK requesting for initiate a session but we never done the three way handshake which mean that the victim holds these session open and awaiting the final packet in the sequence so it fill up the available connections and denies any requesting clients access.
+
+To perform this attack I'm going to use msfconsole in my Linux Kali distribution, on the terminal type `msfconsole` and Metasploit Framework will open. After the msfconsole will open type `use auxiliary/dos/tcp/synflood`
+
+
+![kali1](/assets/images/kali1.png "kali1"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 46** Metasploit Framework.
+
+To see the options we have just type `show options`, we will setup the RHOST which is the ip address of our victim and we use port 80 as default.
+
+![kali2](/assets/images/kali2.png "kali2"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 47** rhost.
+
+The attack will going to be on 10.0.0.138 port 80 which is the http service. To initiate the attack we only need to type `exploit` and hit enter.
+
+![kali3](/assets/images/kali3.png "kali3"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 48** exploit.
+
+now if I trying to get to my router at http service I will not be able to connect and I will get an error after long time.
+
+![connecting_error](/assets/images/connecting_error.png "connecting_error"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 49** HTTP connecting error.
+
+tcp.flags.ack == 1
+
+I opened Wireshark and I saw many TCP segment that contain only SYN flag in active form.
+
+![wireshark_sniffing_with_SYN](/assets/images/wireshark_sniffing_with_SYN.png "SYN flag"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 50** Wireshark sniffing with SYN.
+
+I done the same attack but now I setup my source IP, if you doesnt set the source IP it will be randomize, My filter is `tcp.flags.ack == 1 || tcp.flags.syn == 1` and we can see the SYN and ACK session between my DG and my Kali host.
+
+![kali4](/assets/images/kali4.png "kali4"){:class="img-responsive"}{:height="1000px" width="2000px"}
+**Figure 51** More sniffing.
+
+To kill the attack just type ctrl+c, in my case after I killed the attack I was able to connect my DG.
