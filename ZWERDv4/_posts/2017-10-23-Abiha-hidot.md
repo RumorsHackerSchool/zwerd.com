@@ -1,100 +1,107 @@
 ---
 layout: post
-title: אביעה חידות
-excerpt: " אני כותב בעברית כי זאת האפליקציה הראשונה שלי והוא בעברית והכל בעברית אז מי שלא יודע עברית שילך ויילמד אני קרעתי את התחת"
+title: Nach Riddles!
+excerpt: k, so I finished the application, now it's on Google Play, the name of the app is "Habia Histom Meni Kedem" of "Nach Riddle"
 
 ---
 
-<p dir="rtl">
-אוקיי... אז סיימתי סוף סוף את האפליקציה, אביעה חידות מני קדם מוכנה ויושבת בחנות של גוגל, זאת הייתה עבודה קשה אבל זה משתלם כי עכשיו יש לי נסיון גם בריאקט<br> נייטיב (react native) וזה ממש טוב!<br>
-<br>
-<br>
-אני מרוצה מהתוצאה הסופית.. קיבלתי חלק מהפידבקים חיובים וחלק פחות חיוביים, הרבה אמרו לי שהאפליקציה ממש קשה, ואני כזה... נו מה... למה ציפיתם הרי התשובות<br> כתובים ממש בפרשיות זה חייב להיות קשה לכו ללמוד את הפרשיות, כנראה שחלק ילכו אבל החלק הגדול לא, לכן חשבתי לעשות משהו אחר<br>
-<br>
-<br>
-מלבד לכתוב מה הפרשייה ובעצם להודיע למשתמה ששם התשובה, אני אביא לו את המקורות לנייד ככה שהוא יוכל לשבת וללמוד ואז הרווחנו שני ציפורים במכה אחת<br>
-הוא גם יישב וילמד וגם יענה וירוויח נקודות.. הנאה כפולה מהמשחק<br>
-<br>
-<br>
-בעקרון יש לי מספר מטרון כדלהלן<br>
-<br>
-<br>
-- להעביר את כפתור האיפוס למסך הראשי<br>
-- לשנות את כל האפליקציה לעבוד עם flex<br>
-- להוסיף פרס למי שמסיים את האפליקציה<br>
-- להוסיף הודעה משמחת על כל 100 יהלומים שזוכים<br>
-- להוסיף מוסיקה<br>
-<br>
-<br>
-כן הייתם מאמינים, כשבניתי את האפליקיציה לא חשבתי לעשות FLEX איזו טעות חמורה<br>
-אבל אני עוד אסדר את זה וזה למען האמת החלק הקל<br>
-מה עם מוסיקה, לעשות משהו מקורי או להביא חיקוי זול? ואם לעשות משהו מקורי אז מוסיקה מוסיקה או סתם רעשים שונים ברקע...<br>
-<br>
-אני צריך לחשוב על זה, בנתיים אני כבר לא עובד על האפליקציה אני פותר תרגילים באינטרנט ולומד התקפות ברמת אבטחת מידע<br>
-אני מקווה למצא עבודה טובה בתחום עם צוות טוב ומגובש שזה הדבר החשוב באמת<br>
-<br>
-ובחזרה לאפליקציה<br>
-אני רוצה לנצל את ההזדמנות להציג פה חלקים ממנה<br>
-<br>
-זה המסך הראשי של האפליקציה, ברגע שמתחילים במשחק ולוחצים תשובה נכונה, במקום "התחל" יהיה כתוב "המשך" זה היה מאוד קשה לעשות את זה כי מדובר על שני סקשנים נפרדים<br>
-ובשביל לעבור ממסך למסך השתמשתי בנוויגייטור (navigator) והיה צריך להכניס ערכים מיוחדים בשביל לעשות את זה<br>
-העיקר זה עבד<br>
+Ok, so I finished the application, now it's on Google Play, the name of the app is "Habia Histom Meni Kedem" of "Nach Riddle". For me it was realy interesting, and now I have knowledge in React Native, may be when I step foreword I will develop more applications in React-Native, but maybe not. For sure I know that I will be developer in script languages such Python and JavaScripts because of Cyber stream area, I know that I need that knowledge, I have some book in reverse engineer using Python.
+
+So, my app is very good I think, I got good and bad feedback about that, the game is really hard so I'm sure that some people will leave that game because of the difficulty.
+
+I think to change some stuff in the app, maybe it will be good:
+- Give the user the possibility to learn the material which the riddle are based on.
+- Move the reset button to the opening screen.
+- changing the app to work with Flex.
+- add some price to the end of the game.
+- add some music.
+
+
+I haven't used Readex yet but I will, some of the code is presented here:
+```
+render() {
+  let width = Dimensions.get('window').width;
+  let font = width / 10;
+  console.log(font)
+  return (
+    <ScrollView>
+    <View style={styles.container}>
+      <Image
+        style={styles.imageStyle}
+        source={require('../img/opening-img2.jpg')}
+      >
+        <View style={styles.backdropView}>
+          <Text style={{paddingTop: 20, fontFamily: 'stam1', textAlign: 'center', color: '#2196F3', fontSize:font}}>אביעה חידות מני קדם</Text>
+          <Image
+            style={{width: 360, height: 165, resizeMode: 'stretch', }}
+            source={require('../img/Book.png')}
+          />
+            <Text style={styles.lineText}>1188 חידות על הנביא</Text>
+            <View style={styles.buttonView}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Riddles', { home: this.onChangeCount.bind(this)})}
+              >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>{this.checkBeginning()}</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonView}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Introduction')}
+              >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>הוראות</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonView}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('About')}
+              >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>אודות</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+        </View>
+      </Image>
+    </View>
+    </ScrollView>
+  )
+```
+
 <br></p>
 ![HomeScreen](/assets/images/app2.jpg "HomeScreen"){:class="img-responsive"}{:height="500px" width="400px"}
 <p dir="rtl">
 <br>
 <br>
-אנשים המליצו לי להוסיף כפתור איפס כבר במסך הזה לאיפוס המשחק ולהוסיפ עוד כפתור של סאונד אם יהיה במסך הזה והכי חשוב שלא יהיה ניתן לגלול את המסך הזה כלומר שהוא<br> יהיה קבוע ומקובע... צריך לראות איך עושים את זה כי זה לא נשמע פשוט<br>
+
 <br>
 <br>
 <br>
 
 
-
-המסך השני קצת יותר מורכב מהקודם, במסך הזה אמרו לי אנשים שבחלק הקלדת התשובה יהיו אותיות שהינם מתוך התשובה<br>
-האתם שעשיתי את זה בהתחלה אבל היה ממש מסובך לשייך את האותיות למקום המתאים בגרירה ואולי זה אשפרי עם רידקס (redax) אבל אני לא בטוח<br>
 <br></p>
 ![Riddle](/assets/images/app3.jpg "Riddle"){:class="img-responsive"}{:height="500px" width="400px"}
 <p dir="rtl">
 <br>
-עקרונית במסך הזה בקובעיה של החידון זה למעשה יהיה כפתור שפותח לנו את הפרשה המלאה<br>
-השאלה הנוספת ונניח שאני מחליט לתת פרס למי שהצליח לענות על החידון, איך אני מודה שהוא באמת ענה ולא מרמה אותי, בנוסף האם להגיד מהו הפרס? הרי הפרס הוא הספר<br>
- המקורי, לפחות על זה חשבתי וזה נשמע לי רעיון פצצה<br>
+
 <br>
 <br>
 <br>
 
 
-אם המשתמש טעה בחידה חשבתי פעם להוריד לו יהלומים אבל אני לא יודע, אולי לא כדאי, בנתיים זה מה יש<br>
 <br></p>
 ![wrong](/assets/images/app4.jpg "wrong"){:class="img-responsive"}{:height="500px" width="400px"}
-<p dir="rtl">
 <br>
 <br>
 <br>
 
-
-זה החלק הכי מגניב כי חנות הרמזים היא בעצם מה שנותנת הנאה מהמחק מלבד החידות עצמןשהם גאוניות<br>
-החישוב ברמזים הוא עלות, כלומר כל רמז עולה יהלומים ואם אין מספיק אז נחשו מה.... איי אפשר להתקדם עם רמזים בלבד לכל אורך המשחק<br>
-זה מכריח מהמשתמש להתאמץ וזה מה שכייף<br>
-</p>
 ![diamonds](/assets/images/app5.jpg "diamonds"){:class="img-responsive"}{:height="500px" width="400px"}
-<p dir="rtl">
-<br>
-מישהו אמחר לי  שזה יכול להיות משחק שימושי למטרות חינוך, אני מסכים אבל האם זה ילך, אין לי שמץ<br>
-<br>
-
 <br>
 <br>
 <br>
 
 
-
-
-המסך האחרון להיום בהמשך למסך הקודם<br>
-</p>
 ![diamonds2](/assets/images/app1.jpg "diamonds2"){:class="img-responsive"}{:height="500px" width="400px"}
-<p dir="rtl">
-<br>
-שלא תגידו שהמשחק הזה לא מושקע, זה לקח לי חודשיים וחצי בשביל ההנאה שלכם!<br>
-אז יאללה תהנו!!!<br>

