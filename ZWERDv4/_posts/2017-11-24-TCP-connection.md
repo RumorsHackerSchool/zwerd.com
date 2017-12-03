@@ -13,18 +13,18 @@ in the Internet in general, many protocols relay on TCP and many protocols desig
 is that the TCP is can seams so complex but the truth is the opposite, all we need to do is actually look on the session of some protocol that relay on TCP and after we learn theoretically how TCP works it's more easy to understand.
 
 In my opinion, to understand really good how TCP work we need to lean as follow:
-1. TCP in the OSI and TCP/IP module.
-2. Basic TCP Functionality and basic flags like SYN/ACK/FIN.
-3. History of TCP in RFC's 793/3168/3540.
-4. TCP segment structure.
-5. TCP session in real world.
-6. The special flags.
-7. TCP attacks.
+1. [TCP in the OSI and TCP-IP module.](#tcp-in-the-osi-and-tcp-ip-module)
+2. [Basic TCP Functionality and basic flags like SYN, ACK, FIN.](#basic-tcp-functionality-and-basic-flags-like-syn-ack-fin)
+3. [History of TCP in RFC's 793/3168/3540.](#history-of-tcp-in-rfcs-793-3168-3540)
+4. [TCP segment structure.](#tcp-segment-structure)
+5. [TCP session in real world.](#tcp-session-in-real-world)
+6. [The special flags.](#the-special-flags)
+7. [TCP attacks.](#tcp-attacks)
 
 so let's get started
 
 
-### TCP in the OSI and TCP/IP module.
+### TCP in the OSI and TCP-IP module
 
 first of all TCP is in the Transport layer in the TCP/IP or IOS models. Brief refresh on OSI model, this is a seven layers model that are labeled from 1 through 7.
 
@@ -61,7 +61,7 @@ TCP is paced in transport layer in the TCP/IP and OSI model, this layer is about
 
 
 
-### Basic TCP Functionality and basic flags like SYN/ACK/FIN.
+### Basic TCP Functionality and basic flags like SYN ACK FIN
 
 The functionality of the TCP working with two main important thing:
   - Approved every revived TCP segment, in that way the other side that get the approvement know that what he sent successfully arrived to the other side.
@@ -117,7 +117,7 @@ So the functionality of TCP is always approved if we get the segment or not and 
 
 
 
-### History of TCP in RFC’s 793/3168/3540.
+### History of TCP in RFCs 793 3168 3540.
 
 Before we start to get down to deep detail is better to know some history. The TCP was developed and designed in 1970s by two DARPA scientists - Vint Cerf and Bob Kahn, persons most often called the fathers of the Internet.
 
