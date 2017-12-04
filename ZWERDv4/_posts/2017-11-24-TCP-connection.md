@@ -561,7 +561,7 @@ I done the same attack but now I setup my source IP, if you doesnt set the sourc
 
 To kill the attack just type ctrl+c, in my case after I killed the attack I was able to connect my DG.
 
-{% highlight rube %}
+{% highlight rouge %}
 
 #!/usr/bin/env python
 #########################################

@@ -8,4 +8,4 @@ tags:
 - Injection
 
 ---
-SQL is the Structured Query Language
+SQL or the Structured Query Language is a way to store and pullout data from database and it's fairly easy because it's like English actually, you can write thing like `SELECT * FROM thistable` and every such command will bring up to you results from the database
