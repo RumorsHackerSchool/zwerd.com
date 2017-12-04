@@ -307,7 +307,36 @@
 </div>
 
   <div class="post-body">
-    <p>SQL or the Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write thing like <code class="highlighter-rouge">SELECT * FROM thistable</code> and every such command will bring up to you results from the database</p>
+    <p>SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like <code class="highlighter-rouge">SELECT * FROM thistable</code> and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.</p>
+
+<p>If we talking about injection you may know that inject some code is not related only to SQL, you can actually to do so with various programing language of course it depend on how the programmer developed that site, but if he or she not care enough about the little things in that code, we may find some way to inject some unwanted code to the website.</p>
+
+<p>In that  article I would like to present and demonstrate the following in order for you have a full picture of what is going on here, so the main goal here is:</p>
+<ul>
+  <li><a href="#what-is-the-vulnerability">What is the vulnerability.</a></li>
+  <li><a href="#exploit-that-vulnerability">Exploit that vulnerability.</a></li>
+  <li><a href="#how-to-migrate-that-vulnerability">How to migrate that vulnerability.</a></li>
+</ul>
+
+<h3 id="what-is-the-vulnerability">What is the vulnerability</h3>
+
+<p>So in SQL the way it’s works with website is as follow,  let’s assume that we have some filed that ask us username and password, if we type in some value like <code class="highlighter-rouge">guy</code> and hit enter it will generate some command in SQL to the database like  <code class="highlighter-rouge">SELECT * FROM users WHERE USERNAME = "guy";</code>, please note the quotation marks, in this way the database will bring back <code class="highlighter-rouge">"guy"</code>, the problem is with those quotation marks, it little bit tricky because let’s say that the user actually put in that filed quotation marks, something that look like that:
+<code class="highlighter-rouge">SELECT * FROM users WHERE USERNAME = "guy""</code></p>
+
+<p>In that case it will failed because the command is not match up, and it will send some error, so it may be annoying, but if we think about that we can do some serious damage in that way because in SQL we have more command like <code class="highlighter-rouge">INSERT</code> to insert stuff or <code class="highlighter-rouge">UPDATE</code> to change stuff and <code class="highlighter-rouge">DELETE</code> to remove data from the database, so if we write on the username filed something more like:
+ <code class="highlighter-rouge">guy"; DELETE * FROM table_name;</code></p>
+
+<p>The command will work and because it is a SQL it will delete everything that in the table_name.</p>
+
+<p>The way to migrate this issue is called escaping and it’s something like the programmer will setup in the code that every time we have quotation marks just put backslash before it, in that way the quotation marks in the filed will be handled as a character and not as quotation marks in the SQL so it may help to migrate the problem with command in SQL in the user input.</p>
+
+<p>For that article I’m going to use DVWA which is great way to learn about vulnerability related to websites, the usual Linux Kali will be used to attack those websites and I hope you will enjoy it.</p>
+
+<h3 id="exploit-that-vulnerability">Exploit that vulnerability.</h3>
+<p><strong>coming soon</strong></p>
+
+<h3 id="how-to-migrate-that-vulnerability">How to migrate that vulnerability.</h3>
+<p><strong>coming soon</strong></p>
 
     
 
@@ -391,9 +420,9 @@
     
       <li>
         <h3>
-          <a href="/2017/10/15/Finish-the-App.html">
-            Nach Riddles on Google Play!
-            <small>15 Oct 2017</small>
+          <a href="/2017/10/22/CheckPoint.html">
+            CheckPoint
+            <small>22 Oct 2017</small>
           </a>
         </h3>
       </li>

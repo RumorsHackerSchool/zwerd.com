@@ -4,31 +4,15 @@ title: About
 sidebar_link: true
 ---
 
-My start point was in the ARMY, there I was involved in networking, my position was at WAN team and
-I was responsible for security devices that proper to the ARMY.
+My name is Guy Zwerdling. I’m a living in Israel, and really love to laugh, watch cartoons and animations, read books, beer, Rock&Roll, guitars, and travel in little land called Israel. I also spend a fair amount of time cracking and build things together in Python, JavaScript and React-Native - not so long ago I finished developing my first application based on my dear brother's book.
 
-The team responsible was on the WAN of the networks that the subunit was responsible for, every change or redesign
-to the network was done only in WAN team by changes/redesign I mean to OSPF of static routing changing, re range tunnles and VPN, upgrade and update CISCO routers
-and IOS FW's, configured from scratch new routers and devices that fit in the WAN layer, bring a solution for complex issue in the WAN layer etc.
+I build this site to help other to learn and developed and do stuff, I think that it doesn't meter who you are, it's doesn't meter where you come from, it's doesn't meter who they think you are, all that meter is **what do you think about yourself**, if you have some dream go and fulfill it!
 
-after I finish the ARMY I start work at MOH in Network and Security team, and there is was more fun and I done the follow:
-Setup from scratch CISCO and HP devices and configure them base on the MOH network needed,
-work on NAC equipment of wise moon, manipulate devices like CheckPoint FW's, CyberARK vault, ODIX AV, PulseSecure VPN.
+I hope that my work here will inspire other for they will do what they love no meter what and never give up, I sure that if you push hard enough and keep doing it, eventually you will be successful.
 
-after 4 years I found new cool pales named BrightSource, there I was member of Network and Security Analists,
-the Network was base on CISCO devices and more cool security equipment like NAC of ForeScout, y Symantec Endpoint Protection Managment,
-Websense of Forcepoint,  Cisco IronPort, PulseSecure VPN, PaloAlto FW's, 2FA Symantec VIP and etc.
+With great power comes great responsibility. The power is inside you!
 
 Now I am searching for the next challenge!
-
-Mean wail I learning every thing that I can related to CyberSecuerity it's so freaking amazing and I love it so much!
-I found very cool challenges on the net, I mean to Python or Javascript challenges and more security challenges...
-
-Maybe some day I will start to write my one CVE that I will found.
-
-In this blog I will post every tech that I found curious enough, maybe bring some cool solution for complex problems and such.
-
-This is all for now.
 
 G. Zwerdling
 
