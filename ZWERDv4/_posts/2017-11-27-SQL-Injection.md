@@ -146,6 +146,13 @@ The way to migrate this issue is called escaping and it's something like the pro
 For that article I'm going to use DVWA which is great way to learn about vulnerability related to websites, the usual Linux Kali will be used to attack those websites and I hope you will enjoy it.
 You can download DVWA from [here](http://www.dvwa.co.uk/), in this web you can find the source code which contain the REDAME.md file that can help you to install the DVWA on your operation system. We going to look on only the SQL injection in that article, I hope you enjoy it! I sure that I will!:]
 
+
+There is a three type of SQL injection:
+- Error: we make some query to the database and we get some error from it, we can extract information about the server in that way.
+- Union: in that case we use more then one SELECT SQL query in the same statements and get some single result.
+- blind: in that type of SQL injection we can do more than ask the database true of false question and using whether valid page returned or not, or we can use the time it took for the page to load, we will see how that going on in that article.
+
+
 ### Exploit that vulnerability.
 
 Ok guys, I have done to setup my Ubuntu server with php7.0 and mysql database and the website (DVWA) is live and running. I have Kali Linux machine and from that machine we going to do the coolest stuff!
@@ -153,6 +160,38 @@ So my topology look something like that:
 
 ![sql-injection-011.png](/assets/images/sql-injection-011.png)
 **Figure 11** Topology for our lab.
+
+you can do the same I did if you like, if you have some trouble in the installation process please feel free to leave a comment here or send me an email and I'll be glad to help.
+
+for this kind for lab you actually doesn't need to setup spacial server just for DVWA, you can setup is on you computer and trying to attack from your Kali, or you can attack the website from your computer, it's really doesn't matter, you can also setup the web directly on your Kali which is the best I think.
+
+Ok, let's look on the DVWA website, we going to do every challenge in that web that related to SQL, so let's start from the low level security to high, if you configure everything correctly you should get the following page:
+![sql-injection-012.png](/assets/images/sql-injection-012.png)
+**Figure 12** Topology for our lab.
+
+The default username is admin and password is password, after you login go to DVWA security tab and select low level and submit it.
+![sql-injection-013.png](/assets/images/sql-injection-013.png)
+**Figure 13** Topology for our lab.
+
+After that go SQL injection tab, and here we going to do our magic!
+As you can see the User ID box and submit button, you can trying to insert some value in that box but nothing will happened, only the URL will be change but it's irrelevant in that point. however if you type sum number in range of 1 to 5 you get some value from the database.
+
+![sql-injection-014.png](/assets/images/sql-injection-014.png)
+**Figure 14** Data from the database.
+
+So we can see the users and their surenames, let's play with the box little more, just write a comma `'` sign and click on the submit button it will bring up an error.
+![sql-injection-015.png](/assets/images/sql-injection-015.png)
+**Figure 15** Data from the database.
+
+So right now we know that the web server is vulnerable for Error base attack, so let's try to play with it more. every query are generate some sentence with quotation marks on the value that the user type, so, in the case we typed 1 in the SQL query it would be somthing like `SELECT column FROM table WHERE number='1'`, remember we type only 1 without quotation marks, so when we type `1'` it actually look like `number= '1''`, so if we trying to put some query we can put in the filed something like that:<br>
+`1' or '0'='0` <br>
+In that case the query will look something like that:<br>
+`number = '1' or '0'='0'`<br>
+In the query case it's put quotation marks,I'll bold it so you can see:<br>
+number = **'** 1' or '0'='0 **'**<br>
+In that case it look like we add another values to the SQL query and the 0=0 is sort of true question, so the answer we get will be all the value because the existing of the value is true.
+
+
 
 ### How to migrate that vulnerability.
 **coming soon**
