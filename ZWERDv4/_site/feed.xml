@@ -1,18 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-05T07:55:27+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-05T18:30:16+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
 
 &lt;p&gt;If we talking about injection you may know that inject some code is not related only to SQL, you can actually to do so with various programing language of course it depend on how the programmer developed that site, but if he or she not care enough about the little things in that code, we may find some way to inject some unwanted code to the website.&lt;/p&gt;
 
 &lt;p&gt;In that  article I would like to present and demonstrate the following in order for you have a full picture of what is going on here, so the main goal here is:&lt;/p&gt;
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#how-sql-work&quot;&gt;How SQL work.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#what-is-the-vulnerability&quot;&gt;What is the vulnerability.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#exploit-that-vulnerability&quot;&gt;Exploit that vulnerability.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#how-to-migrate-that-vulnerability&quot;&gt;How to migrate that vulnerability.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&quot;how-sql-work&quot;&gt;How SQL work&lt;/h3&gt;
+
+&lt;p&gt;I think that before you five in to SQL you need basic understanding how it works, in this section I’m using Ubuntu server with mysql database, so first of all let’s connect to our SQL database.&lt;/p&gt;
+
+&lt;p&gt;To setup mysql in you Ubuntu server you can follow &lt;a href=&quot;https://help.ubuntu.com/lts/serverguide/mysql.html&quot;&gt;this documentation&lt;/a&gt; or you can just type:&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo apt update
+ sudo apt upgrade
+ sudo apt install mysql-server
+ sudo service mysql start
+ sudo service mysql status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The last command will show you what is the status of your sql service, if you have some issue related to that service please search the error you got in &lt;a href=&quot;stackoverflow.com&quot;&gt;stackoverflow&lt;/a&gt; it is a grate way to solve issues with the community.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-001.png&quot; alt=&quot;sql-injection-001.png&quot; /&gt;
+ &lt;strong&gt;Figure 1&lt;/strong&gt; MySQL server.&lt;/p&gt;
+
+&lt;p&gt;After your sql server are ready to use just connect to the database, if it is you first time you should get aome alert about setup your password, just do the command &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo mysql -u root -p&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-002.png&quot; alt=&quot;sql-injection-002.png&quot; /&gt;
+ &lt;strong&gt;Figure 2&lt;/strong&gt; Connect to the database.&lt;/p&gt;
+
+&lt;p&gt;Now let’s look on the command we have in SQL.&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE DATABASE database_name;&lt;/code&gt; - create some database, in that database we will create tables that contain values of our users.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE table_name;&lt;/code&gt; - creating a table with columns and datatype.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DROP  DATABASE database_name;&lt;/code&gt; - delete the database.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DELETE FROM table_name WHERE column_name=value;&lt;/code&gt; - delete some value in our table base on the column_name name, please notice the &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt; statement, if you doesn’t specified that WHERE it will delete every value in the table.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ALERT TABLE table_name DROP COLUMN column_name;&lt;/code&gt; - this command will delete the column in the table that we specified.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM table_name;&lt;/code&gt; - this command will display every value from the table.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM table_name ORDER BY column_name [ASC/DESC];&lt;/code&gt; - this will display the data ordered by the method we chose, DESC stand for descending and ASC stand for ascending.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ALTER TABLE table_name ADD column_name datatype;&lt;/code&gt; - to add some column to out table.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UPDATE table_name SET column_name = value WHERE column_name = value;&lt;/code&gt; - set some value to some filed base on column_name value.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;SQL Operators:&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Operator&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Equal to&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;not equal to ( is the same as !=)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Greater than&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Less than&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BETWEEN&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;will give us a rang&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;like&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;matches a pattern&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;IS or IS NOT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;compare to null&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Table 1&lt;/strong&gt; for more operator refer to &lt;a href=&quot;https://www.w3schools.com/sql/sql_operators.asp&quot;&gt;that link.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s create new database with table and filled that table with users ID and data.&lt;br /&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;CREATE DATABASE mysite;
+USE mysite;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Please remember that you mush chose database before you create some table.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-003.png&quot; alt=&quot;sql-injection-003.png&quot; /&gt;
+&lt;strong&gt;Figure 3&lt;/strong&gt; Select database.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;CREATE TABLE users(
+  id INT NOT NULL,
+  nickName VARCHAR(255),
+  firstName VARCHAR(255),
+  lestName VARCHAR(255),
+  email VARCHAR(255)
+  );&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-004.png&quot; alt=&quot;sql-injection-004.png&quot; /&gt;
+&lt;strong&gt;Figure 4&lt;/strong&gt; Create table.&lt;/p&gt;
+
+&lt;p&gt;So far we created database named “mysite” and add table named users, in that table we have users ID which is must be valuable (NOT NULL) and number (INT which is an integer), in the other values we specified that each value can be long up to 255 characters (VARCHAR(255)), now we need to filled that table up.&lt;/p&gt;
+
+&lt;p&gt;INSERT INTO users(id, nickName, firstName, lestName, email) VALUES
+(1, ‘Jimi’, ‘Johnny’, ‘Hendrix’, ‘jhendrix@gmail.com’),
+(2, ‘Jenni’, ‘Jennifer’, ‘Batten’, ‘jbatten@gmail.com’),
+(3, ‘Steve’, ‘Steven’, ‘Vai’, ‘svai@gmail.com’),
+(4, ‘Jim’, ‘James’, ‘Morrison’, ‘jmorrison@gmail.com’),
+(5, ‘AliceCooper’, ‘Vincent’, ‘Furnier’, ‘vfurnier@gmail.com’);&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-005.png&quot; alt=&quot;sql-injection-005.png&quot; /&gt;
+&lt;strong&gt;Figure 5&lt;/strong&gt; Filled up the tables with values.&lt;/p&gt;
+
+&lt;p&gt;To display the all table, just type SELECT and asterisk FROM the table name.
+&lt;img src=&quot;/assets/images/sql-injection-006.png&quot; alt=&quot;sql-injection-006.png&quot; /&gt;
+&lt;strong&gt;Figure 6&lt;/strong&gt; Tables with values.&lt;/p&gt;
+
+&lt;p&gt;Note that we can insert more that one command in the same raw.
+&lt;img src=&quot;/assets/images/sql-injection-007.png&quot; alt=&quot;sql-injection-007.png&quot; /&gt;
+&lt;strong&gt;Figure 7&lt;/strong&gt; More than one command.&lt;/p&gt;
+
+&lt;p&gt;Now let’s change some email in out table, just type as follow:
+&lt;img src=&quot;/assets/images/sql-injection-008.png&quot; alt=&quot;sql-injection-008.png&quot; /&gt;
+&lt;strong&gt;Figure 8&lt;/strong&gt; Chenge email.&lt;/p&gt;
+
+&lt;p&gt;So if in some website used SQL to store some data in tables from the user, if some user change his email address, this is what actually append behind the scene.&lt;/p&gt;
+
+&lt;p&gt;We can also use some sentence that specified True of False to display something, in the next example I’m use 1=1 which mean True, this is why it display to me all of the values.
+&lt;img src=&quot;/assets/images/sql-injection-009.png&quot; alt=&quot;sql-injection-009.png&quot; /&gt;
+&lt;strong&gt;Figure 9&lt;/strong&gt; 1=1 is actually True.&lt;/p&gt;
+
+&lt;p&gt;We have a way to use wildcard like the next example:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM users WHERE lastName LIKE '%n';&lt;/code&gt;
+In that case the query give up the last names that end with &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; which can be helpful to filter stuff.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-010.png&quot; alt=&quot;sql-injection-010.png&quot; /&gt;
+&lt;strong&gt;Figure 10&lt;/strong&gt; 1=1 is actually True.&lt;/p&gt;
+
 &lt;h3 id=&quot;what-is-the-vulnerability&quot;&gt;What is the vulnerability&lt;/h3&gt;
 
-&lt;p&gt;So in SQL the way it’s works with website is as follow,  let’s assume that we have some filed that ask us username and password, if we type in some value like &lt;code class=&quot;highlighter-rouge&quot;&gt;guy&lt;/code&gt; and hit enter it will generate some command in SQL to the database like  &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM users WHERE USERNAME = &quot;guy&quot;;&lt;/code&gt;, please note the quotation marks, in this way the database will bring back &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;guy&quot;&lt;/code&gt;, the problem is with those quotation marks, it little bit tricky because let’s say that the user actually put in that filed quotation marks, something that look like that:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM users WHERE USERNAME = &quot;guy&quot;&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So in SQL the way it’s works with website is as follow,  let’s assume that we have some filed that ask us username and password, if we type in some value like &lt;code class=&quot;highlighter-rouge&quot;&gt;guy&lt;/code&gt; and hit enter it will generate some command in SQL to the database like  &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM users WHERE USERNAME = 'guy';&lt;/code&gt;, please note the quotation marks, in this way the database will bring back &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;guy&quot;&lt;/code&gt;, the problem is with those quotation marks, it little bit tricky because let’s say that the user actually put in that filed quotation marks, something that look like that:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM users WHERE USERNAME = 'guy''&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;In that case it will failed because the command is not match up, and it will send some error, so it may be annoying, but if we think about that we can do some serious damage in that way because in SQL we have more command like &lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT&lt;/code&gt; to insert stuff or &lt;code class=&quot;highlighter-rouge&quot;&gt;UPDATE&lt;/code&gt; to change stuff and &lt;code class=&quot;highlighter-rouge&quot;&gt;DELETE&lt;/code&gt; to remove data from the database, so if we write on the username filed something more like:
  &lt;code class=&quot;highlighter-rouge&quot;&gt;guy&quot;; DELETE * FROM table_name;&lt;/code&gt;&lt;/p&gt;
@@ -21,10 +158,16 @@
 
 &lt;p&gt;The way to migrate this issue is called escaping and it’s something like the programmer will setup in the code that every time we have quotation marks just put backslash before it, in that way the quotation marks in the filed will be handled as a character and not as quotation marks in the SQL so it may help to migrate the problem with command in SQL in the user input.&lt;/p&gt;
 
-&lt;p&gt;For that article I’m going to use DVWA which is great way to learn about vulnerability related to websites, the usual Linux Kali will be used to attack those websites and I hope you will enjoy it.&lt;/p&gt;
+&lt;p&gt;For that article I’m going to use DVWA which is great way to learn about vulnerability related to websites, the usual Linux Kali will be used to attack those websites and I hope you will enjoy it.
+You can download DVWA from &lt;a href=&quot;http://www.dvwa.co.uk/&quot;&gt;here&lt;/a&gt;, in this web you can find the source code which contain the REDAME.md file that can help you to install the DVWA on your operation system. We going to look on only the SQL injection in that article, I hope you enjoy it! I sure that I will!:]&lt;/p&gt;
 
 &lt;h3 id=&quot;exploit-that-vulnerability&quot;&gt;Exploit that vulnerability.&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;coming soon&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok guys, I have done to setup my Ubuntu server with php7.0 and mysql database and the website (DVWA) is live and running. I have Kali Linux machine and from that machine we going to do the coolest stuff!
+So my topology look something like that:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-011.png&quot; alt=&quot;sql-injection-011.png&quot; /&gt;
+&lt;strong&gt;Figure 11&lt;/strong&gt; Topology for our lab.&lt;/p&gt;
 
 &lt;h3 id=&quot;how-to-migrate-that-vulnerability&quot;&gt;How to migrate that vulnerability.&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;coming soon&lt;/strong&gt;&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="Injection" /><summary type="html">If you look on top 10 of OWASP about Application Security Risks you may find the greatest vulnerabilities on Applications! The cool thing is that injection is the number one and it may sound weird but there is some website that using SQL (Structured Query Language) and you can attack these website in such type of attack that they really should not work anymore but still does. Let's look on the SQL injection in details.</summary></entry><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.&lt;/p&gt;
@@ -154,18 +297,18 @@ is that the TCP is can seams so complex but the truth is the opposite, all we ne
 
 &lt;p&gt;The is three which is the most important flags in every session that you will see in every TCP session is the SYN, ACK and FIN. The SYN flag is used every time some endpoint want to start session with other endpoint, you can consider that like the following example:&lt;/p&gt;
 
-&lt;p&gt;some one named Assaf go’s down the sthreet and see his friend Asher, so he start a conversation:&lt;/p&gt;
+&lt;p&gt;some one named Bob go’s down the street and see his friend John, so he start a conversation:&lt;/p&gt;
 
-&lt;p&gt;Assaf: Hello! how do you do?&lt;/p&gt;
+&lt;p&gt;Bob: Hello! how do you do?&lt;/p&gt;
 
-&lt;p&gt;Asher: I’m good! and you?&lt;/p&gt;
+&lt;p&gt;John: I’m good! and you?&lt;/p&gt;
 
-&lt;p&gt;Assaf: Great!&lt;/p&gt;
+&lt;p&gt;Bob: Great!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/tcp-session-page-001.jpg&quot; alt=&quot;tcp-session&quot; title=&quot;tcp-session&quot; class=&quot;img-responsive&quot; height=&quot;1000px&quot; width=&quot;2000px&quot; /&gt;
 Figure 3 real life conversation&lt;/p&gt;
 
-&lt;p&gt;In TCP it pretty much the same, one site ask the other that he want to start conversation with him and the other response with sort of ok like and the first one do the same.&lt;/p&gt;
+&lt;p&gt;In TCP it pretty much the same, one side ask the other that he want to start conversation with him and the other response with sort of ok and the first one do the same.&lt;/p&gt;
 
 &lt;p&gt;endpoint1: I wanna to SYN with you!&lt;/p&gt;
 
@@ -193,7 +336,7 @@ Figure 5 TCP ending conversation&lt;/p&gt;
 
 &lt;h3 id=&quot;history-of-tcp-in-rfcs-793-3168-3540&quot;&gt;History of TCP in RFCs 793 3168 3540.&lt;/h3&gt;
 
-&lt;p&gt;Before we start to get down to deep detail is better to know some history. The TCP was developed and designed in 1970s by two DARPA scientists - Vint Cerf and Bob Kahn, persons most often called the fathers of the Internet.&lt;/p&gt;
+&lt;p&gt;Before we start to get down to deep detail is better to know some history. The TCP was developed and designed in 1970s by two DARPA scientists - Vinton Cerf and Bob Kahn, persons most often called the fathers of the Internet.&lt;/p&gt;
 
 &lt;p&gt;Kahn worked on an existing project to establish a satellite packet network, and initiated a project to establish a ground-based radio packet network. These experiences convinced him of the need for development of an open-architecture network model, where any network could communicate with any other independent of individual hardware and software configuration. Kahn therefore set four goals for the design of what would become the &lt;strong&gt;Transmission Control Protocol&lt;/strong&gt;&lt;/p&gt;
 
@@ -719,7 +862,7 @@ The problem with that operation is that we always need to resend some packets th
 	&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Total packets sent:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t\t&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;i&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 
-  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">Nach Riddles!</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="Nach Riddles!" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p&gt;Ok, so I finished the application, now it’s on Google Play, the name of the app is “Habia Histom Meni Kedem” of “Nach Riddle”. For me it was realy interesting, and now I have knowledge in React Native, may be when I step foreword I will develop more applications in React-Native, but maybe not. For sure I know that I will be developer in script languages such Python and JavaScripts because of Cyber stream area, I know that I need that knowledge, I have some book in reverse engineer using Python.&lt;/p&gt;
+  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint successfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">Nach Riddles!</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="Nach Riddles!" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p&gt;Ok, so I finished the application, now it’s on Google Play, the name of the app is “Habia Histom Meni Kedem” of “Nach Riddle”. For me it was realy interesting, and now I have knowledge in React Native, may be when I step foreword I will develop more applications in React-Native, but maybe not. For sure I know that I will be developer in script languages such Python and JavaScripts because of Cyber stream area, I know that I need that knowledge, I have some book in reverse engineer using Python.&lt;/p&gt;
 
 &lt;p&gt;So, my app is very good I think, I got good and bad feedback about that, the game is really hard so I’m sure that some people will leave that game because of the difficulty.&lt;/p&gt;
 
