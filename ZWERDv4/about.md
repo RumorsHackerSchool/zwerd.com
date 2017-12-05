@@ -4,7 +4,7 @@ title: About
 sidebar_link: true
 ---
 
-My name is Guy Zwerdling. I’m a living in Israel, and really love to laugh, watch cartoons and animations, read books, beer, Rock&Roll, guitars, and travel in little land called Israel. I also spend a fair amount of time cracking and build things together in Python, JavaScript and React-Native - not so long ago I finished developing my first application based on my dear brother's book.
+My name is Guy Zwerdling. I’m a living in Israel, and really love to laugh, cartoons and animations, books, beer, Rock&Roll, guitars, and travel in little land called Israel. I also spend a fair amount of time cracking and build things together in Python, JavaScript and React-Native - not so long ago I finished developing my first application based on my dear brother's book.
 
 I build this site to help other to learn and developed and do stuff, I think that it doesn't meter who you are, it's doesn't meter where you come from, it's doesn't meter who they think you are, all that meter is **what do you think about yourself**, if you have some dream go and fulfill it!
 
