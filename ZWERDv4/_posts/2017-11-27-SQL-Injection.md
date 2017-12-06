@@ -189,8 +189,9 @@ In that case the query will look something like that:<br>
 `number = '1' or '0'='0'`<br>
 In the query case it's put quotation marks,I'll bold it so you can see:<br>
 number = **'** 1' or '0'='0 **'**<br>
-In that case it look like we add another values to the SQL query and the 0=0 is sort of true question, so the answer we get will be all the value because the existing of the value is true.
+In that case it look like we add another values to the SQL query and the 0=0 is sort of True query, so the answer we get will be all the values because the existing of the value is true.
 
+We can adding UNION to sql statement which mean that we use 2 sql statement at once, so, we can write a brande new command in the input box and maybe the SQL will treat that statement as usual,
 
 
 ### How to migrate that vulnerability.
