@@ -225,6 +225,28 @@ Please note that I used `first_name` and `last_name` for my query, you may ask h
 ![sql-injection-019.png](/assets/images/sql-injection-019.png)
 **Figure 19** Source code.
 
+I want you to new that there is more data that we can find about the database it self and it inportent to know that stuff so just follow me, you can make a SELECT query from the database for find boxes from the table without any value, so let's say that in our table there is some box without value, we can may query to find this boxes as follow:
+{% highlight mysql %}
+SELECT first_name FROM users WHERE the middle_name IS NULL;
+{% endhighlight %}
+
+In that case that query bring us any user that he have no middle name, so that is the main used for NULL, but there is more used for it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  [functions](https://www.w3schools.com/sql/sql_ref_mysql.asp) that used for check some value like in what database we work on, what is the user we used for mysql, what is the version of mysql database  we can actually use null to load some data for the database itself! to doing so just type the following:
+{% highlight mysql %}
+USE mysite;
+SELECT NULL, database();
+{% endhighlight %}
+
+In that case the database will show us it's name after we chose the database, in that case the database name will be 'mysite'.
+
+![sql-injection-024.png](/assets/images/sql-injection-024.png)
+**Figure 24** Source code.
+
+So, we can use sort of function query to extract more data about the database and it's importent you new them all:
+{% highlight mysql %}
+SELECT NULL, users();
+SELECT NULL, version();
+{% endhighlight %}
+
 Now let's do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:
 ```
 SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';

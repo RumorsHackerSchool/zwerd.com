@@ -550,6 +550,25 @@ In that case it look like we add another values to the SQL query and the 0=0 is 
 <p><img src="/assets/images/sql-injection-019.png" alt="sql-injection-019.png" />
 <strong>Figure 19</strong> Source code.</p>
 
+<p>I want you to new that there is more data that we can find about the database it self and it inportent to know that stuff so just follow me, you can make a SELECT query from the database for find boxes from the table without any value, so let’s say that in our table there is some box without value, we can may query to find this boxes as follow:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">SELECT first_name FROM users WHERE the middle_name IS NULL;</code></pre></figure>
+
+<p>In that case that query bring us any user that he have no middle name, so that is the main used for NULL, but there is more used for it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  <a href="https://www.w3schools.com/sql/sql_ref_mysql.asp">functions</a> that used for check some value like in what database we work on, what is the user we used for mysql, what is the version of mysql database  we can actually use null to load some data for the database itself! to doing so just type the following:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">USE mysite;
+SELECT NULL, database();</code></pre></figure>
+
+<p>In that case the database will show us it’s name after we chose the database, in that case the database name will be ‘mysite’.</p>
+
+<p><img src="/assets/images/sql-injection-024.png" alt="sql-injection-024.png" />
+<strong>Figure 24</strong> Source code.</p>
+
+<p>So, we can use sort of function query to extract more data about the database and it’s importent you new them all:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">SELECT NULL, users();
+SELECT NULL, version();</code></pre></figure>
+
 <p>Now let’s do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';
 </code></pre></div></div>
