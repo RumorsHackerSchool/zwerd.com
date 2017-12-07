@@ -62,8 +62,10 @@ SQL Operators:<br>
 | `<>`            | not equal to ( is the same as !=)       |
 | `>`	         | Greater than|  
 | `<`	         | Less than   |
+| `#`          | Used for comment |
+| `%`          | If we use `LIKE` it is used as wildcard character |
 | `BETWEEN`   | will give us a rang  |
-| `like`      | matches a pattern  |
+| `LIKE`      | matches a pattern  |
 | `IS or IS NOT` | compare to null  |
 
 **Table 1** for more operator refer to [that link.](https://www.w3schools.com/sql/sql_operators.asp)
@@ -95,12 +97,14 @@ CREATE TABLE users(
 
 So far we created database named "mysite" and add table named users, in that table we have users ID which is must be valuable (NOT NULL) and number (INT which is an integer), in the other values we specified that each value can be long up to 255 characters (VARCHAR(255)), now we need to filled that table up.
 
+{% highlight mysql %}
 INSERT INTO users(id, nickName, firstName, lestName, email) VALUES
 (1, 'Jimi', 'Johnny', 'Hendrix', 'jhendrix@gmail.com'),
 (2, 'Jenni', 'Jennifer', 'Batten', 'jbatten@gmail.com'),
 (3, 'Steve', 'Steven', 'Vai', 'svai@gmail.com'),
 (4, 'Jim', 'James', 'Morrison', 'jmorrison@gmail.com'),
 (5, 'AliceCooper', 'Vincent', 'Furnier', 'vfurnier@gmail.com');
+{% endhighlight %}
 
 ![sql-injection-005.png](/assets/images/sql-injection-005.png)
 **Figure 5** Filled up the tables with values.
@@ -183,15 +187,101 @@ So we can see the users and their surenames, let's play with the box little more
 ![sql-injection-015.png](/assets/images/sql-injection-015.png)
 **Figure 15** Data from the database.
 
-So right now we know that the web server is vulnerable for Error base attack, so let's try to play with it more. every query are generate some sentence with quotation marks on the value that the user type, so, in the case we typed 1 in the SQL query it would be somthing like `SELECT column FROM table WHERE number='1'`, remember we type only 1 without quotation marks, so when we type `1'` it actually look like `number= '1''`, so if we trying to put some query we can put in the filed something like that:<br>
+So right now we know that the web server is vulnerable for Error base attack, so let's try to play with it more. every query are generate some sentence with quotation marks on the value that the user type, so, in the case we typed 1 in the SQL query it would be something like `SELECT column FROM table WHERE number='1'`, remember we type only 1 without quotation marks, so when we type `1'` it actually look like `number= '1''`, so if we trying to put some query we can put in the filed something like that:<br>
 `1' or '0'='0` <br>
 In that case the query will look something like that:<br>
 `number = '1' or '0'='0'`<br>
 In the query case it's put quotation marks,I'll bold it so you can see:<br>
 number = **'** 1' or '0'='0 **'**<br>
-In that case it look like we add another values to the SQL query and the 0=0 is sort of True query, so the answer we get will be all the values because the existing of the value is true.
+In that case it look like we add another values to the SQL query and the 0=0 is sort of True query, so the answer we get will be all the values because the existing of the value is true, let's look how is works in the SQL, if we type that query we get the following:
 
-We can adding UNION to sql statement which mean that we use 2 sql statement at once, so, we can write a brande new command in the input box and maybe the SQL will treat that statement as usual,
+![sql-injection-016.png](/assets/images/sql-injection-016.png)
+**Figure 16** SQL query.
+
+Now we extract all users from database because the True statement, every value is True so this is why we get every value from the table.
+
+We can adding UNION to sql statement which mean that we use 2 SELECTED statement at once, so, we can write a brand new command in the input box and maybe the SQL will treat that statement as usual, please remember that if we use UNIUN, we can only use that in SELECT statement, and the SELECT statement must be query of equal column, as example the following:
+
+{% highlight mysql %}
+SELECT firstName, lastName, email LIKE '%te%' FROM users UNION SELECT firstName, lastName, email LIKE '%r%' FROM users;
+{% endhighlight %}
+
+In this statement we query the firstName and lastName from our mysite table and we display also the  who have email that contain 'te' in it, in the union we do the same but this time the query should display the rows from our table that contain 'r' in the email filed.
+
+![sql-injection-017.png](/assets/images/sql-injection-017.png)
+**Figure 17** SQL query with UNION.
+
+Please note that we have a third column that contain `0` or `1`, which specified answer to our query. So if we go back to our Kali machine we can use UNION to display two SELECT at once, just inject the follow:
+```
+1' union select first_name,last_name from users WHERE user_id='2
+```
+
+And this is the SQL answer we get for that query:
+![sql-injection-018.png](/assets/images/sql-injection-018.png)
+**Figure 18** SQL query with UNION display two users.
+
+Please note that I used `first_name` and `last_name` for my query, you may ask how did I now that the column names are like that? if you check that website you will see the View Source button and if you click on that you will see the php code that contain the query with `first_name` and `last_name`, but please remember that in the real world it doesn't likely you can view some php code of some site, normally the php code used as server side so you never been access to that code directly, you may try to extract that code with XSS or CSRF or any sort of attacks, but in some cases you may guess the query, just remember that the developer may used some common names, so it may be more simple to guess that column names than extract the code that contain the query.
+
+![sql-injection-019.png](/assets/images/sql-injection-019.png)
+**Figure 19** Source code.
+
+Now let's do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:
+```
+SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';
+```
+
+So the injection code look like that:
+```
+1' union SELECT first_name, password FROM users WHERE user_id='1
+```
+![sql-injection-020.png](/assets/images/sql-injection-020.png)
+**Figure 20** Extract some password.
+
+Well guys, do you saw that? the password is in the surname! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash creck out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can't extract the original data value from the hashing value, so the way to find some hashing of some value is to take some value and hash it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.
+
+In our case I guess the hash value is md5 type so we can check it in our linux machine, just type the command as follow:
+{% highlight shell %}
+echo -n password | md5sum
+{% endhighlight %}
+
+![sql-injection-021.png](/assets/images/sql-injection-021.png)
+**Figure 21** Hash value.
+
+Now if you compare the output to the hash value we already have from our database, this is the same value! if you want to use some online database of crack hashing you can used this links:
+[crackstation](https://crackstation.net/)
+[hashkiller](https://hashkiller.co.uk/md5-decrypter.aspx)
+[onlinehashcrack](https://www.onlinehashcrack.com/)
+I am using them a lot and they very helpful.
+
+So, from that output we know that admin password is 'password'... so typical lol :P
+
+let's try to extract other password from the database, just inject the follow:
+{% highlight mysql %}
+1' union SELECT first_name, password FROM users WHERE user_id='1' or '0'='0
+{% endhighlight %}
+
+And that is it, all we need now is find out what is the real value for that hashs.
+
+![sql-injection-022.png](/assets/images/sql-injection-022.png)
+**Figure 22** Hashs passwords.
+
+Let's crack all password with john the ripper, just take the data and past it in some text editor with the following structure:
+```
+usename:hachPassword
+```
+
+I saved the data in text.txt file, then type the following command in your terminal:
+```
+john --format=raw-MD5 text.txt
+```
+
+![sql-injection-023.png](/assets/images/sql-injection-023.png)
+**Figure 23** john the ripper.
+
+
+Now let's go to the higher level,
+
+
 
 
 ### How to migrate that vulnerability.

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-05T20:59:21+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-07T20:11:49+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
 
 &lt;p&gt;If we talking about injection you may know that inject some code is not related only to SQL, you can actually to do so with various programing language of course it depend on how the programmer developed that site, but if he or she not care enough about the little things in that code, we may find some way to inject some unwanted code to the website.&lt;/p&gt;
 
@@ -72,11 +72,19 @@
       &lt;td style=&quot;text-align: left&quot;&gt;Less than&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Used for comment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;If we use &lt;code class=&quot;highlighter-rouge&quot;&gt;LIKE&lt;/code&gt; it is used as wildcard character&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
       &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BETWEEN&lt;/code&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt;will give us a rang&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;like&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LIKE&lt;/code&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt;matches a pattern&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
@@ -111,12 +119,12 @@ USE mysite;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;So far we created database named “mysite” and add table named users, in that table we have users ID which is must be valuable (NOT NULL) and number (INT which is an integer), in the other values we specified that each value can be long up to 255 characters (VARCHAR(255)), now we need to filled that table up.&lt;/p&gt;
 
-&lt;p&gt;INSERT INTO users(id, nickName, firstName, lestName, email) VALUES
-(1, ‘Jimi’, ‘Johnny’, ‘Hendrix’, ‘jhendrix@gmail.com’),
-(2, ‘Jenni’, ‘Jennifer’, ‘Batten’, ‘jbatten@gmail.com’),
-(3, ‘Steve’, ‘Steven’, ‘Vai’, ‘svai@gmail.com’),
-(4, ‘Jim’, ‘James’, ‘Morrison’, ‘jmorrison@gmail.com’),
-(5, ‘AliceCooper’, ‘Vincent’, ‘Furnier’, ‘vfurnier@gmail.com’);&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;INSERT INTO users(id, nickName, firstName, lestName, email) VALUES
+(1, 'Jimi', 'Johnny', 'Hendrix', 'jhendrix@gmail.com'),
+(2, 'Jenni', 'Jennifer', 'Batten', 'jbatten@gmail.com'),
+(3, 'Steve', 'Steven', 'Vai', 'svai@gmail.com'),
+(4, 'Jim', 'James', 'Morrison', 'jmorrison@gmail.com'),
+(5, 'AliceCooper', 'Vincent', 'Furnier', 'vfurnier@gmail.com');&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-005.png&quot; alt=&quot;sql-injection-005.png&quot; /&gt;
 &lt;strong&gt;Figure 5&lt;/strong&gt; Filled up the tables with values.&lt;/p&gt;
@@ -198,13 +206,89 @@ As you can see the User ID box and submit button, you can trying to insert some 
 &lt;img src=&quot;/assets/images/sql-injection-015.png&quot; alt=&quot;sql-injection-015.png&quot; /&gt;
 &lt;strong&gt;Figure 15&lt;/strong&gt; Data from the database.&lt;/p&gt;
 
-&lt;p&gt;So right now we know that the web server is vulnerable for Error base attack, so let’s try to play with it more. every query are generate some sentence with quotation marks on the value that the user type, so, in the case we typed 1 in the SQL query it would be somthing like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT column FROM table WHERE number='1'&lt;/code&gt;, remember we type only 1 without quotation marks, so when we type &lt;code class=&quot;highlighter-rouge&quot;&gt;1'&lt;/code&gt; it actually look like &lt;code class=&quot;highlighter-rouge&quot;&gt;number= '1''&lt;/code&gt;, so if we trying to put some query we can put in the filed something like that:&lt;br /&gt;
+&lt;p&gt;So right now we know that the web server is vulnerable for Error base attack, so let’s try to play with it more. every query are generate some sentence with quotation marks on the value that the user type, so, in the case we typed 1 in the SQL query it would be something like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT column FROM table WHERE number='1'&lt;/code&gt;, remember we type only 1 without quotation marks, so when we type &lt;code class=&quot;highlighter-rouge&quot;&gt;1'&lt;/code&gt; it actually look like &lt;code class=&quot;highlighter-rouge&quot;&gt;number= '1''&lt;/code&gt;, so if we trying to put some query we can put in the filed something like that:&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;1' or '0'='0&lt;/code&gt; &lt;br /&gt;
 In that case the query will look something like that:&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;number = '1' or '0'='0'&lt;/code&gt;&lt;br /&gt;
 In the query case it’s put quotation marks,I’ll bold it so you can see:&lt;br /&gt;
 number = &lt;strong&gt;‘&lt;/strong&gt; 1’ or ‘0’=’0 &lt;strong&gt;‘&lt;/strong&gt;&lt;br /&gt;
-In that case it look like we add another values to the SQL query and the 0=0 is sort of true question, so the answer we get will be all the value because the existing of the value is true.&lt;/p&gt;
+In that case it look like we add another values to the SQL query and the 0=0 is sort of True query, so the answer we get will be all the values because the existing of the value is true, let’s look how is works in the SQL, if we type that query we get the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-016.png&quot; alt=&quot;sql-injection-016.png&quot; /&gt;
+&lt;strong&gt;Figure 16&lt;/strong&gt; SQL query.&lt;/p&gt;
+
+&lt;p&gt;Now we extract all users from database because the True statement, every value is True so this is why we get every value from the table.&lt;/p&gt;
+
+&lt;p&gt;We can adding UNION to sql statement which mean that we use 2 SELECTED statement at once, so, we can write a brand new command in the input box and maybe the SQL will treat that statement as usual, please remember that if we use UNIUN, we can only use that in SELECT statement, and the SELECT statement must be query of equal column, as example the following:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;SELECT firstName, lastName, email LIKE '%te%' FROM users UNION SELECT firstName, lastName, email LIKE '%r%' FROM users;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In this statement we query the firstName and lastName from our mysite table and we display also the  who have email that contain ‘te’ in it, in the union we do the same but this time the query should display the rows from our table that contain ‘r’ in the email filed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-017.png&quot; alt=&quot;sql-injection-017.png&quot; /&gt;
+&lt;strong&gt;Figure 17&lt;/strong&gt; SQL query with UNION.&lt;/p&gt;
+
+&lt;p&gt;Please note that we have a third column that contain &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;, which specified answer to our query. So if we go back to our Kali machine we can use UNION to display two SELECT at once, just inject the follow:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1' union select first_name,last_name from users WHERE user_id='2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And this is the SQL answer we get for that query:
+&lt;img src=&quot;/assets/images/sql-injection-018.png&quot; alt=&quot;sql-injection-018.png&quot; /&gt;
+&lt;strong&gt;Figure 18&lt;/strong&gt; SQL query with UNION display two users.&lt;/p&gt;
+
+&lt;p&gt;Please note that I used &lt;code class=&quot;highlighter-rouge&quot;&gt;first_name&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;last_name&lt;/code&gt; for my query, you may ask how did I now that the column names are like that? if you check that website you will see the View Source button and if you click on that you will see the php code that contain the query with &lt;code class=&quot;highlighter-rouge&quot;&gt;first_name&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;last_name&lt;/code&gt;, but please remember that in the real world it doesn’t likely you can view some php code of some site, normally the php code used as server side so you never been access to that code directly, you may try to extract that code with XSS or CSRF or any sort of attacks, but in some cases you may guess the query, just remember that the developer may used some common names, so it may be more simple to guess that column names than extract the code that contain the query.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-019.png&quot; alt=&quot;sql-injection-019.png&quot; /&gt;
+&lt;strong&gt;Figure 19&lt;/strong&gt; Source code.&lt;/p&gt;
+
+&lt;p&gt;Now let’s do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So the injection code look like that:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1' union SELECT first_name, password FROM users WHERE user_id='1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-020.png&quot; alt=&quot;sql-injection-020.png&quot; /&gt;
+&lt;strong&gt;Figure 20&lt;/strong&gt; Extract some password.&lt;/p&gt;
+
+&lt;p&gt;Well guys, do you saw that? the password is in the surname! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash creck out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can’t extract the original data value from the hashing value, so the way to find some hashing of some value is to take some value and hash it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.&lt;/p&gt;
+
+&lt;p&gt;In our case I guess the hash value is md5 type so we can check it in our linux machine, just type the command as follow:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; password | md5sum&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-021.png&quot; alt=&quot;sql-injection-021.png&quot; /&gt;
+&lt;strong&gt;Figure 21&lt;/strong&gt; Hash value.&lt;/p&gt;
+
+&lt;p&gt;Now if you compare the output to the hash value we already have from our database, this is the same value! if you want to use some online database of crack hashing you can used this links:
+&lt;a href=&quot;https://crackstation.net/&quot;&gt;crackstation&lt;/a&gt;
+&lt;a href=&quot;https://hashkiller.co.uk/md5-decrypter.aspx&quot;&gt;hashkiller&lt;/a&gt;
+&lt;a href=&quot;https://www.onlinehashcrack.com/&quot;&gt;onlinehashcrack&lt;/a&gt;
+I am using them a lot and they very helpful.&lt;/p&gt;
+
+&lt;p&gt;So, from that output we know that admin password is ‘password’… so typical lol :P&lt;/p&gt;
+
+&lt;p&gt;let’s try to extract other password from the database, just inject the follow:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;1' union SELECT first_name, password FROM users WHERE user_id='1' or '0'='0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And that is it, all we need now is find out what is the real value for that hashs.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-022.png&quot; alt=&quot;sql-injection-022.png&quot; /&gt;
+&lt;strong&gt;Figure 22&lt;/strong&gt; Hashs passwords.&lt;/p&gt;
+
+&lt;p&gt;Let’s crack all password with john the ripper, just take the data and past it in some text editor with the following structure:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;usename:hachPassword
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I saved the data in text.txt file, then type the following command in your terminal:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;john --format=raw-MD5 text.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-023.png&quot; alt=&quot;sql-injection-023.png&quot; /&gt;
+&lt;strong&gt;Figure 23&lt;/strong&gt; john the ripper.&lt;/p&gt;
+
+&lt;p&gt;Now let’s go to the higher level,&lt;/p&gt;
 
 &lt;h3 id=&quot;how-to-migrate-that-vulnerability&quot;&gt;How to migrate that vulnerability.&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;coming soon&lt;/strong&gt;&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="Injection" /><summary type="html">If you look on top 10 of OWASP about Application Security Risks you may find the greatest vulnerabilities on Applications! The cool thing is that injection is the number one and it may sound weird but there is some website that using SQL (Structured Query Language) and you can attack these website in such type of attack that they really should not work anymore but still does. Let's look on the SQL injection in details.</summary></entry><entry><title type="html">TCP connection</title><link href="http://localhost:4000/2017/11/24/TCP-connection.html" rel="alternate" type="text/html" title="TCP connection" /><published>2017-11-24T00:00:00+02:00</published><updated>2017-11-24T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/24/TCP-connection</id><content type="html" xml:base="http://localhost:4000/2017/11/24/TCP-connection.html">&lt;p&gt;Ok, I write this post because of two things, the first reason is because I had in interview in some High Tech School and I ran for a teacher job position, the first interview was great, my passion for security and hacking stuff done more than I expected, for one second I thought that I will be a Cyber coacher, but the second interview was worse, In the second interview I was needed to speak about the TCP and UDP protocols, I have a great knowledge about those two, but to be sure I going on to read about theme little more, in the interview I was needed to pass a lesson to some students that doesn’t know nothing about networking nor security stuff, so I try to explain everything but I confused everything and the students found it difficult to understand the material, so I was not accepted to teach there. I remember when I first learn the TCP I have so much question but the teacher doesn’t really give me the all knowledge about TCP so I was needed to look over the Internet and with some Google search I found what I was needed, so these are the two reason why I was write the article, first I have knowledge of TCP and I feel like I need to improve it to myself after I failed in the interview, and second I want that if some one will read that article he will have very good understanding how TCP really work.&lt;/p&gt;
@@ -899,7 +983,9 @@ The problem with that operation is that we always need to resend some packets th
 	&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Total packets sent:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t\t&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;i&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 
-  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint successfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">Nach Riddles!</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="Nach Riddles!" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p&gt;Ok, so I finished the application, now it’s on Google Play, the name of the app is “Habia Histom Meni Kedem” of “Nach Riddle”. For me it was realy interesting, and now I have knowledge in React Native, may be when I step foreword I will develop more applications in React-Native, but maybe not. For sure I know that I will be developer in script languages such Python and JavaScripts because of Cyber stream area, I know that I need that knowledge, I have some book in reverse engineer using Python.&lt;/p&gt;
+  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;https://twitter.com/GuyZwerdling/status/938687023917010944&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><category term="network" /><summary type="html">The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint successfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!</summary></entry><entry><title type="html">Nach Riddles!</title><link href="http://localhost:4000/2017/10/23/Abiha-hidot.html" rel="alternate" type="text/html" title="Nach Riddles!" /><published>2017-10-23T00:00:00+03:00</published><updated>2017-10-23T00:00:00+03:00</updated><id>http://localhost:4000/2017/10/23/Abiha-hidot</id><content type="html" xml:base="http://localhost:4000/2017/10/23/Abiha-hidot.html">&lt;p&gt;Ok, so I finished the application, now it’s on Google Play, the name of the app is “Habia Histom Meni Kedem” of “Nach Riddle”. For me it was realy interesting, and now I have knowledge in React Native, may be when I step foreword I will develop more applications in React-Native, but maybe not. For sure I know that I will be developer in script languages such Python and JavaScripts because of Cyber stream area, I know that I need that knowledge, I have some book in reverse engineer using Python.&lt;/p&gt;
 
 &lt;p&gt;So, my app is very good I think, I got good and bad feedback about that, the game is really hard so I’m sure that some people will leave that game because of the difficulty.&lt;/p&gt;
 

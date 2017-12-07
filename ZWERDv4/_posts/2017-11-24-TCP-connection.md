@@ -608,3 +608,6 @@ while 1:
 
 
   {% endhighlight %}
+
+
+  https://twitter.com/GuyZwerdling/status/938687023917010944
