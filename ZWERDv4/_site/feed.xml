@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-07T23:28:14+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-08T00:46:22+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
 
 &lt;p&gt;If we talking about injection you may know that inject some code is not related only to SQL, you can actually to do so with various programing language of course it depend on how the programmer developed that site, but if he or she not care enough about the little things in that code, we may find some way to inject some unwanted code to the website.&lt;/p&gt;
 
@@ -245,20 +245,55 @@ In that case it look like we add another values to the SQL query and the 0=0 is 
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;SELECT first_name FROM users WHERE the middle_name IS NULL;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;In that case that query bring us any user that he have no middle name, so that is the main used for NULL, but there is more used for it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  &lt;a href=&quot;https://www.w3schools.com/sql/sql_ref_mysql.asp&quot;&gt;functions&lt;/a&gt; that used for check some value like in what database we work on, what is the user we used for mysql, what is the version of mysql database  we can actually use null to load some data for the database itself! to doing so just type the following:&lt;/p&gt;
+&lt;p&gt;In that case that query bring us any user that he have no middle name, so that is the main used for NULL, there is another way to use it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  &lt;a href=&quot;https://www.w3schools.com/sql/sql_ref_mysql.asp&quot;&gt;functions&lt;/a&gt; that used for check some values related to the database itself or mysql server we working on, as example what is the user we used for mysql, what is the version of mysql database, what is the name of the database we working on it and so on.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;USE mysite;
-SELECT NULL, database();&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+SELECT database();&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;In that case the database will show us it’s name after we chose the database, in that case the database name will be ‘mysite’.&lt;/p&gt;
+&lt;p&gt;In that case the database will show us his name after we chose the database, in my case the database name will be ‘mysite’.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-024.png&quot; alt=&quot;sql-injection-024.png&quot; /&gt;
-&lt;strong&gt;Figure 24&lt;/strong&gt; Source code.&lt;/p&gt;
+&lt;strong&gt;Figure 24&lt;/strong&gt; Database function.&lt;/p&gt;
 
-&lt;p&gt;So, we can use sort of function query to extract more data about the database and it’s importent you new them all:&lt;/p&gt;
+&lt;p&gt;So let’s think carefully, we have a way to extract data about the database, but if we use injection with &lt;code class=&quot;highlighter-rouge&quot;&gt;UNION&lt;/code&gt; we must use in our case two SELECT query because the original query that the php code produces include two column, so if we do something like:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;SELECT NULL, users();
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;select
+  first_name,
+  last_name
+  FROM users WHERE user_id='1' or '0'='0'
+  UNION
+  SELECT database();&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;we will get an error.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-025.png&quot; alt=&quot;sql-injection-025.png&quot; /&gt;
+&lt;strong&gt;Figure 25&lt;/strong&gt; Erorr “different number of columns”.&lt;/p&gt;
+
+&lt;p&gt;For that matter we need to use other query that contain &lt;code class=&quot;highlighter-rouge&quot;&gt;UNION SELECT&lt;/code&gt; with two another columns, we can achieve that goal with NULL, to doing so just type the following:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;select
+  first_name,
+  last_name
+  FROM users WHERE user_id='1' or '0'='0'
+  UNION
+  SELECT NULL, database();&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So, we can use sort of function query to extract more data about the database and it’s important that you new them all or most of them:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;SELECT NULL, database();
+SELECT NULL, user();
 SELECT NULL, version();&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-026.png&quot; alt=&quot;sql-injection-026.png&quot; /&gt;
+&lt;strong&gt;Figure 26&lt;/strong&gt; Select null with function.&lt;/p&gt;
+
+&lt;p&gt;Now we know lets do some injection.
+&lt;img src=&quot;/assets/images/sql-injection-027.png&quot; alt=&quot;sql-injection-027.png&quot; /&gt;
+&lt;strong&gt;Figure 27&lt;/strong&gt; database().
+&lt;img src=&quot;/assets/images/sql-injection-028.png&quot; alt=&quot;sql-injection-028.png&quot; /&gt;
+&lt;strong&gt;Figure 28&lt;/strong&gt; version().
+&lt;img src=&quot;/assets/images/sql-injection-029.png&quot; alt=&quot;sql-injection-029.png&quot; /&gt;
+&lt;strong&gt;Figure 29&lt;/strong&gt; user().&lt;/p&gt;
 
 &lt;p&gt;Now let’s do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';

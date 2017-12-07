@@ -554,20 +554,55 @@ In that case it look like we add another values to the SQL query and the 0=0 is 
 
 <figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">SELECT first_name FROM users WHERE the middle_name IS NULL;</code></pre></figure>
 
-<p>In that case that query bring us any user that he have no middle name, so that is the main used for NULL, but there is more used for it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  <a href="https://www.w3schools.com/sql/sql_ref_mysql.asp">functions</a> that used for check some value like in what database we work on, what is the user we used for mysql, what is the version of mysql database  we can actually use null to load some data for the database itself! to doing so just type the following:</p>
+<p>In that case that query bring us any user that he have no middle name, so that is the main used for NULL, there is another way to use it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  <a href="https://www.w3schools.com/sql/sql_ref_mysql.asp">functions</a> that used for check some values related to the database itself or mysql server we working on, as example what is the user we used for mysql, what is the version of mysql database, what is the name of the database we working on it and so on.</p>
 
 <figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">USE mysite;
-SELECT NULL, database();</code></pre></figure>
+SELECT database();</code></pre></figure>
 
-<p>In that case the database will show us it’s name after we chose the database, in that case the database name will be ‘mysite’.</p>
+<p>In that case the database will show us his name after we chose the database, in my case the database name will be ‘mysite’.</p>
 
 <p><img src="/assets/images/sql-injection-024.png" alt="sql-injection-024.png" />
-<strong>Figure 24</strong> Source code.</p>
+<strong>Figure 24</strong> Database function.</p>
 
-<p>So, we can use sort of function query to extract more data about the database and it’s importent you new them all:</p>
+<p>So let’s think carefully, we have a way to extract data about the database, but if we use injection with <code class="highlighter-rouge">UNION</code> we must use in our case two SELECT query because the original query that the php code produces include two column, so if we do something like:</p>
 
-<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">SELECT NULL, users();
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">select
+  first_name,
+  last_name
+  FROM users WHERE user_id='1' or '0'='0'
+  UNION
+  SELECT database();</code></pre></figure>
+
+<p>we will get an error.</p>
+
+<p><img src="/assets/images/sql-injection-025.png" alt="sql-injection-025.png" />
+<strong>Figure 25</strong> Erorr “different number of columns”.</p>
+
+<p>For that matter we need to use other query that contain <code class="highlighter-rouge">UNION SELECT</code> with two another columns, we can achieve that goal with NULL, to doing so just type the following:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">select
+  first_name,
+  last_name
+  FROM users WHERE user_id='1' or '0'='0'
+  UNION
+  SELECT NULL, database();</code></pre></figure>
+
+<p>So, we can use sort of function query to extract more data about the database and it’s important that you new them all or most of them:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">SELECT NULL, database();
+SELECT NULL, user();
 SELECT NULL, version();</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-026.png" alt="sql-injection-026.png" />
+<strong>Figure 26</strong> Select null with function.</p>
+
+<p>Now we know lets do some injection.
+<img src="/assets/images/sql-injection-027.png" alt="sql-injection-027.png" />
+<strong>Figure 27</strong> database().
+<img src="/assets/images/sql-injection-028.png" alt="sql-injection-028.png" />
+<strong>Figure 28</strong> version().
+<img src="/assets/images/sql-injection-029.png" alt="sql-injection-029.png" />
+<strong>Figure 29</strong> user().</p>
 
 <p>Now let’s do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';
