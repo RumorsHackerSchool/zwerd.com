@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-08T00:46:22+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-08T08:42:11+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
 
 &lt;p&gt;If we talking about injection you may know that inject some code is not related only to SQL, you can actually to do so with various programing language of course it depend on how the programmer developed that site, but if he or she not care enough about the little things in that code, we may find some way to inject some unwanted code to the website.&lt;/p&gt;
 
@@ -289,32 +289,38 @@ SELECT NULL, version();&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Now we know lets do some injection.
 &lt;img src=&quot;/assets/images/sql-injection-027.png&quot; alt=&quot;sql-injection-027.png&quot; /&gt;
-&lt;strong&gt;Figure 27&lt;/strong&gt; database().
-&lt;img src=&quot;/assets/images/sql-injection-028.png&quot; alt=&quot;sql-injection-028.png&quot; /&gt;
-&lt;strong&gt;Figure 28&lt;/strong&gt; version().
-&lt;img src=&quot;/assets/images/sql-injection-029.png&quot; alt=&quot;sql-injection-029.png&quot; /&gt;
-&lt;strong&gt;Figure 29&lt;/strong&gt; user().&lt;/p&gt;
+&lt;strong&gt;Figure 27&lt;/strong&gt; database() - for seen the database name.&lt;/p&gt;
 
-&lt;p&gt;Now let’s do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-028.png&quot; alt=&quot;sql-injection-028.png&quot; /&gt;
+&lt;strong&gt;Figure 28&lt;/strong&gt; version() - for seen the version of our sql database.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-029.png&quot; alt=&quot;sql-injection-029.png&quot; /&gt;
+&lt;strong&gt;Figure 29&lt;/strong&gt; user() - for seen the user that used fro connection the sql server.&lt;/p&gt;
+
+&lt;p&gt;we will use in these commands a lot in this article, it is very important to know such information because let’s say in some mysql version you can do more stuff that in older version you can’t do, as example the command &lt;code class=&quot;highlighter-rouge&quot;&gt;ROW_NUMBER()&lt;/code&gt; can be use in mysql version 8.0.2, but not in version 5.5. You can view in detail the &lt;a href=&quot;https://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-opsfuncs.html&quot;&gt;mysqld-version-reference.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let’s do the same with SELECT sentence that contain some query for password, the query I need to accomplish should look as follow:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;So the injection code look like that:&lt;/p&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1' union SELECT first_name, password FROM users WHERE user_id='1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-020.png&quot; alt=&quot;sql-injection-020.png&quot; /&gt;
 &lt;strong&gt;Figure 20&lt;/strong&gt; Extract some password.&lt;/p&gt;
 
-&lt;p&gt;Well guys, do you saw that? the password is in the surname! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash creck out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can’t extract the original data value from the hashing value, so the way to find some hashing of some value is to take some value and hash it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.&lt;/p&gt;
+&lt;p&gt;Well guys, did you saw that? the password is in the surname filed! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash crack out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can’t extract the original data value from the hashing value because it is &lt;a href=&quot;https://en.wikipedia.org/wiki/One-way_function&quot;&gt;one-way function&lt;/a&gt;, so the way to find some hashing of some value is to take some data and run the hash function on it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.&lt;/p&gt;
 
-&lt;p&gt;In our case I guess the hash value is md5 type so we can check it in our linux machine, just type the command as follow:&lt;/p&gt;
+&lt;p&gt;In our case I guess the hash value is md5 type so we can check in our linux machineand find a match, just type the command as follow:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; password | md5sum&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-021.png&quot; alt=&quot;sql-injection-021.png&quot; /&gt;
 &lt;strong&gt;Figure 21&lt;/strong&gt; Hash value.&lt;/p&gt;
 
-&lt;p&gt;Now if you compare the output to the hash value we already have from our database, this is the same value! if you want to use some online database of crack hashing you can used this links:
+&lt;p&gt;Now if you compare the output to the hash value we already have from our database, this is the same value! which mean that the password is actually “password”. If you want to use some online database of crack hashing you can used this links:
 &lt;a href=&quot;https://crackstation.net/&quot;&gt;crackstation&lt;/a&gt;
 &lt;a href=&quot;https://hashkiller.co.uk/md5-decrypter.aspx&quot;&gt;hashkiller&lt;/a&gt;
 &lt;a href=&quot;https://www.onlinehashcrack.com/&quot;&gt;onlinehashcrack&lt;/a&gt;
@@ -341,6 +347,8 @@ I am using them a lot and they very helpful.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-023.png&quot; alt=&quot;sql-injection-023.png&quot; /&gt;
 &lt;strong&gt;Figure 23&lt;/strong&gt; john the ripper.&lt;/p&gt;
+
+&lt;p&gt;Please note that so far we used Union base to find the data we needed, we will implement more injection types in this article, just bear with me for a moment.&lt;/p&gt;
 
 &lt;p&gt;Now let’s go to the higher level,&lt;/p&gt;
 

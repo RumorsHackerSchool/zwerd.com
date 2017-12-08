@@ -598,32 +598,38 @@ SELECT NULL, version();</code></pre></figure>
 
 <p>Now we know lets do some injection.
 <img src="/assets/images/sql-injection-027.png" alt="sql-injection-027.png" />
-<strong>Figure 27</strong> database().
-<img src="/assets/images/sql-injection-028.png" alt="sql-injection-028.png" />
-<strong>Figure 28</strong> version().
-<img src="/assets/images/sql-injection-029.png" alt="sql-injection-029.png" />
-<strong>Figure 29</strong> user().</p>
+<strong>Figure 27</strong> database() - for seen the database name.</p>
 
-<p>Now let’s do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:</p>
+<p><img src="/assets/images/sql-injection-028.png" alt="sql-injection-028.png" />
+<strong>Figure 28</strong> version() - for seen the version of our sql database.</p>
+
+<p><img src="/assets/images/sql-injection-029.png" alt="sql-injection-029.png" />
+<strong>Figure 29</strong> user() - for seen the user that used fro connection the sql server.</p>
+
+<p>we will use in these commands a lot in this article, it is very important to know such information because let’s say in some mysql version you can do more stuff that in older version you can’t do, as example the command <code class="highlighter-rouge">ROW_NUMBER()</code> can be use in mysql version 8.0.2, but not in version 5.5. You can view in detail the <a href="https://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-opsfuncs.html">mysqld-version-reference.</a></p>
+
+<p>Now let’s do the same with SELECT sentence that contain some query for password, the query I need to accomplish should look as follow:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';
 </code></pre></div></div>
 
 <p>So the injection code look like that:</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1' union SELECT first_name, password FROM users WHERE user_id='1
 </code></pre></div></div>
+
 <p><img src="/assets/images/sql-injection-020.png" alt="sql-injection-020.png" />
 <strong>Figure 20</strong> Extract some password.</p>
 
-<p>Well guys, do you saw that? the password is in the surname! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash creck out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can’t extract the original data value from the hashing value, so the way to find some hashing of some value is to take some value and hash it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.</p>
+<p>Well guys, did you saw that? the password is in the surname filed! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash crack out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can’t extract the original data value from the hashing value because it is <a href="https://en.wikipedia.org/wiki/One-way_function">one-way function</a>, so the way to find some hashing of some value is to take some data and run the hash function on it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.</p>
 
-<p>In our case I guess the hash value is md5 type so we can check it in our linux machine, just type the command as follow:</p>
+<p>In our case I guess the hash value is md5 type so we can check in our linux machineand find a match, just type the command as follow:</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="nt">-n</span> password | md5sum</code></pre></figure>
 
 <p><img src="/assets/images/sql-injection-021.png" alt="sql-injection-021.png" />
 <strong>Figure 21</strong> Hash value.</p>
 
-<p>Now if you compare the output to the hash value we already have from our database, this is the same value! if you want to use some online database of crack hashing you can used this links:
+<p>Now if you compare the output to the hash value we already have from our database, this is the same value! which mean that the password is actually “password”. If you want to use some online database of crack hashing you can used this links:
 <a href="https://crackstation.net/">crackstation</a>
 <a href="https://hashkiller.co.uk/md5-decrypter.aspx">hashkiller</a>
 <a href="https://www.onlinehashcrack.com/">onlinehashcrack</a>
@@ -650,6 +656,8 @@ I am using them a lot and they very helpful.</p>
 
 <p><img src="/assets/images/sql-injection-023.png" alt="sql-injection-023.png" />
 <strong>Figure 23</strong> john the ripper.</p>
+
+<p>Please note that so far we used Union base to find the data we needed, we will implement more injection types in this article, just bear with me for a moment.</p>
 
 <p>Now let’s go to the higher level,</p>
 

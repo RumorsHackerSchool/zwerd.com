@@ -281,28 +281,34 @@ SELECT NULL, version();
 
 Now we know lets do some injection.
 ![sql-injection-027.png](/assets/images/sql-injection-027.png)
-**Figure 27** database().
+**Figure 27** database() - for seen the database name.
+
+
 ![sql-injection-028.png](/assets/images/sql-injection-028.png)
-**Figure 28** version().
+**Figure 28** version() - for seen the version of our sql database.
+
 ![sql-injection-029.png](/assets/images/sql-injection-029.png)
-**Figure 29** user().
+**Figure 29** user() - for seen the user that used fro connection the sql server.
 
+we will use in these commands a lot in this article, it is very important to know such information because let's say in some mysql version you can do more stuff that in older version you can't do, as example the command `ROW_NUMBER()` can be use in mysql version 8.0.2, but not in version 5.5. You can view in detail the [mysqld-version-reference.](https://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-opsfuncs.html)
 
-Now let's do the same with SELECT name that contain some query for password, the query I need to accomplish should look as follow:
+Now let's do the same with SELECT sentence that contain some query for password, the query I need to accomplish should look as follow:
 ```
 SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';
 ```
 
 So the injection code look like that:
+
 ```
 1' union SELECT first_name, password FROM users WHERE user_id='1
 ```
+
 ![sql-injection-020.png](/assets/images/sql-injection-020.png)
 **Figure 20** Extract some password.
 
-Well guys, do you saw that? the password is in the surname! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash creck out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can't extract the original data value from the hashing value, so the way to find some hashing of some value is to take some value and hash it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.
+Well guys, did you saw that? the password is in the surname filed! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash crack out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can't extract the original data value from the hashing value because it is [one-way function](https://en.wikipedia.org/wiki/One-way_function), so the way to find some hashing of some value is to take some data and run the hash function on it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.
 
-In our case I guess the hash value is md5 type so we can check it in our linux machine, just type the command as follow:
+In our case I guess the hash value is md5 type so we can check in our linux machineand find a match, just type the command as follow:
 {% highlight shell %}
 echo -n password | md5sum
 {% endhighlight %}
@@ -310,7 +316,7 @@ echo -n password | md5sum
 ![sql-injection-021.png](/assets/images/sql-injection-021.png)
 **Figure 21** Hash value.
 
-Now if you compare the output to the hash value we already have from our database, this is the same value! if you want to use some online database of crack hashing you can used this links:
+Now if you compare the output to the hash value we already have from our database, this is the same value! which mean that the password is actually "password". If you want to use some online database of crack hashing you can used this links:
 [crackstation](https://crackstation.net/)
 [hashkiller](https://hashkiller.co.uk/md5-decrypter.aspx)
 [onlinehashcrack](https://www.onlinehashcrack.com/)
@@ -340,6 +346,8 @@ john --format=raw-MD5 text.txt
 
 ![sql-injection-023.png](/assets/images/sql-injection-023.png)
 **Figure 23** john the ripper.
+
+Please note that so far we used Union base to find the data we needed, we will implement more injection types in this article, just bear with me for a moment.
 
 
 Now let's go to the higher level,
