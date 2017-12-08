@@ -349,8 +349,94 @@ john --format=raw-MD5 text.txt
 
 Please note that so far we used Union base to find the data we needed, we will implement more injection types in this article, just bear with me for a moment.
 
+Now let's go to the higher level, change the security level to medium and go back to SQL Injection page, ![sql-injection-030.png](/assets/images/sql-injection-030.png)
+**Figure 30** Security level medium.
 
-Now let's go to the higher level,
+Now in the SQL Injection you see that there is no user input, we have some selected box and now we can only select from 1 to 5 and see the user username and surname, so you may ask what we can do now? there no way to inject some query value in that case. You may right but not so quite, there is no input box for the user that true, but now we need some way to make query from the browser and change that query before it will sending to the server, to do so I am going to use burpsuite tool. In that tool we can use local proxy to transfer all our data through burpsuite and then we can change the query before it go to the server.
+
+Before we use burpsuite we need to set our browser to use proxy which will be the burpsuite, just go to the menu in your browser and click on preferences.
+
+![sql-injection-031.png](/assets/images/sql-injection-031.png)
+**Figure 31** Security level medium.
+
+Or press F12 on your key board and go to advance>network>setting.
+![sql-injection-032.png](/assets/images/sql-injection-032.png)
+**Figure 32** Security level medium.
+
+Then change to Menual proxy configuration with http proxy of 127.0.0.1 which is localhost and port 8080.
+![sql-injection-033.png](/assets/images/sql-injection-033.png)
+**Figure 33** Security level medium.
+
+On linux Kali the burpsuite is buildin so just click on the burpsuite icon in the bar slide and then go to proxy>intercept and click on "Intercept is off" button, by pressing that it will change to "Intercept is on", now in the SQL Injection page if we press on submit button we will see in row tab of burpsuite the data that going to be send and all we need to do next is to change it!
+
+![sql-injection-034.png](/assets/images/sql-injection-034.png)
+**Figure 34** Security level medium.
+
+Now let's use the Error base technique, we know that we have some query and we don't need to new the database name, but we need to know the number of column in the original query because we want to use UNION and in that case we must to use equal column number for our injected query, for doing so we can use the command ORDER BY column number. ORDER BY used for ordering the value inside the columns, so if we type ORDER BY 1 it will order our request by column 1 in alpha beta form, and if we type ORDER BY 2 it will order our column number 2.
+
+![sql-injection-035.png](/assets/images/sql-injection-035.png)
+**Figure 35** ORDER BY example.
+
+In case we type some number that not match the columns we will get some error, so in my case if I type ORDER BY 6 it will bring me an error because I haven't column 6.
+
+![sql-injection-036.png](/assets/images/sql-injection-036.png)
+**Figure 36** ORDER BY error.
+
+So, let's try that up in on our target, just type the injection query in the burpsuite as follow and press on forward:
+{% highlight mysql %}
+1 ORDER BY 1
+{% endhighlight %}
+
+![sql-injection-037.png](/assets/images/sql-injection-037.png)
+**Figure 37** ORDER BY 1.
+
+We have no error so let's try:
+{% highlight mysql %}
+1 ORDER BY 3
+{% endhighlight %}
+
+![sql-injection-038.png](/assets/images/sql-injection-038.png)
+**Figure 38** ORDER BY error.
+
+Cool! we have some error, so this is mean that we have no column 3 in the table, now let's try check column 2, it more likely that it will work.
+
+![sql-injection-039.png](/assets/images/sql-injection-039.png)
+**Figure 39** ORDER BY 2.
+
+It work! so now we know that we have 2 column in that table so if we using UNION we need to select two columns in our query, but we still need more data like the columns name and tables name, we can guess it but there is a way to extract that out, for doing so we going to use [information_schema.](https://dev.mysql.com/doc/refman/5.7/en/information-schema.html), this is the way  to provide access to the database metadata so we can make some query about the columns name with that option, just type as follow:
+
+{% highlight mysql %}
+1 UNION SELECT null, column_name FROM information_schema.columns
+{% endhighlight %}
+
+![sql-injection-040.png](/assets/images/sql-injection-040.png)
+**Figure 40** information_schema.columns.
+
+So now we have the name of all the column name from all database that exist in that sql server, and if we scroll down little bit we will find some value that look like what we search so far.
+
+![sql-injection-041.png](/assets/images/sql-injection-041.png)
+**Figure 41** Column values name.
+
+New let's check the tables name with information_schema.tables
+{% highlight mysql %}
+1 UNION SELECT null, table_name FROM information_schema.tables
+{% endhighlight %}
+![sql-injection-042.png](/assets/images/sql-injection-042.png)
+**Figure 42** tables name.
+
+So the users table is what we looking for. Now we can accomplish the command we want in the first place, now inject the following:
+{% highlight mysql %}
+1 UNION SELECT first_name, password FROM users
+{% endhighlight %}
+
+![sql-injection-043.png](/assets/images/sql-injection-043.png)
+**Figure 43** users and password.
+
+We did it again guys!!! we won!!! or moor likely we own the database!!!! GAME OVER!
+![sql-injection-044.png](/assets/images/sql-injection-044.png)
+**Figure 44** GAME OVER.
+
+Let's go to the next level!
 
 
 
