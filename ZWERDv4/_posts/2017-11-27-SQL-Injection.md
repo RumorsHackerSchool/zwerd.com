@@ -432,7 +432,7 @@ So the users table is what we looking for. Now we can accomplish the command we 
 ![sql-injection-043.png](/assets/images/sql-injection-043.png)
 **Figure 43** users and password.
 
-We did it again guys!!! we won!!! or moor likely we own the database!!!! GAME OVER!
+We did it again guys!!! we won!!! or more likely we own the database!!!! GAME OVER!
 ![sql-injection-044.png](/assets/images/sql-injection-044.png)
 **Figure 44** GAME OVER.
 
