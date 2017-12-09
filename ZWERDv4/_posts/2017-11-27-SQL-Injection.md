@@ -54,19 +54,20 @@ I think that before you five in to SQL you need basic understanding how it works
  - `ALTER TABLE table_name ADD column_name datatype;` - to add some column to out table.<br>
  - `UPDATE table_name SET column_name = value WHERE column_name = value;` - set some value to some filed base on column_name value.<br>
 
-SQL Operators:<br>
+##### SQL Operators:
 
 | Operator        | Description        |
 | ------------- |:---------|
-| `=`	            | Equal to      |
-| `<>`            | not equal to ( is the same as !=)       |
-| `>`	         | Greater than|  
-| `<`	         | Less than   |
-| `#`          | Used for comment |
-| `%`          | If we use `LIKE` it is used as wildcard character |
-| `BETWEEN`   | will give us a rang  |
-| `LIKE`      | matches a pattern  |
-| `IS or IS NOT` | compare to null  |
+| `=`	        | Equal to      |
+| `<>`        | not equal to ( is the same as !=)       |
+| `>`	        | Greater than|  
+| `<`	        | Less than   |
+| `#`         | Used for comment on that line (mean that alll character after '#' will be ignored)|
+| `%`         | If we use `LIKE` it is used as wildcard character |
+| `LIMIT`	    | Limit the query by number |
+| `BETWEEN`   | Will give us a rang  |
+| `LIKE`      | Matches a pattern  |
+| `IS or IS NOT` | Compare to null  |
 
 **Table 1** for more operator refer to [that link.](https://www.w3schools.com/sql/sql_operators.asp)
 
@@ -152,9 +153,9 @@ You can download DVWA from [here](http://www.dvwa.co.uk/), in this web you can f
 
 
 There is a three type of SQL injection:
-- Error: we make some query to the database and we get some error from it, we can extract information about the server in that way.
-- Union: in that case we use more then one SELECT SQL query in the same statements and get some single result.
-- blind: in that type of SQL injection we can do more than ask the database true of false question and using whether valid page returned or not, or we can use the time it took for the page to load, we will see how that going on in that article.
+- Error base: we make some query to the database and we get some error from it, we can extract information about the server in that way.
+- Union base: in that case we use more then one SELECT SQL query in the same statements and get some single result.
+- Blind base: in that type of SQL injection we can do more than ask the database true of false question and using whether valid page returned or not, or we can use the time it took for the page to load, we will see how that going on in that article.
 
 
 ### Exploit that vulnerability.
@@ -436,9 +437,51 @@ We did it again guys!!! we won!!! or more likely we own the database!!!! GAME OV
 ![sql-injection-044.png](/assets/images/sql-injection-044.png)
 **Figure 44** GAME OVER.
 
-Let's go to the next level!
+Let's go to the next level! but before that I want you to solve by yourself the the High Level, this time you have all of the knowledge you need to do so, after you finish please step foreword and see how I solved that level, if your solution is different then my, please let me know:) or comment down below.
 
+After you change the level on "DVWA Security" to High Level, you can see that in SQL Injection page, now you have some link that open new window for you type in the ID you want, and if we typed the injection like we done so far it doesn't work for us:
 
+![sql-injection-045.png](/assets/images/sql-injection-045.png)
+**Figure 45** The injection doesn't work.
+
+So as you can see we expected to see every user in the table but unfortunately we got 1 error line that not look like sql error, and now if we type some other query that should bring up an error, this is not work as well:
+![sql-injection-046.png](/assets/images/sql-injection-046.png)
+**Figure 46** No sql error.
+
+As you can see I just add a single quote "**'**" to the query and I got "something went wrong" that mean we have no errors in that level like we saw in other levels.
+
+Again, we need first of all the table name and the column number but we have no way to inject our SQL code and we get no error so let's think what we can do, if you remember in the beginning of that article we saw some of the [SQL operators](#sql-operators) that we can used in our query, and we have "Hash" sign that used for commit in our query like in other programing language so let's see how that go.
+
+![sql-injection-047.png](/assets/images/sql-injection-047.png)
+**Figure 47** Query with Hash sign.
+
+So now we know that there is something that deny for us every query, I want you just look in the source code to see how they apply that.
+
+![sql-injection-048.png](/assets/images/sql-injection-048.png)
+**Figure 48** Limit in query with Hash sign.
+
+Ok, we know now that the query limit for one query only and the error come from the php code, so keep that in mind that this one way to migrate the injection, but as you saw he have way to make the injection anyway with the Hash sign because in SQL this is treat as comment on the query line so this is why the limit to 1 are ignored.
+
+So now let's inject the usual injection codes. I am going to apply that injection like I have no clue how the original php code look like.
+{% highlight mysql %}
+1' ORDER BY 1#
+1' ORDER BY 2#
+1' ORDER BY 3#
+1' UNION SELECT null, table_name FROM information_schema.tables#
+1' UNION SELECT null, column_name FROM information_schema.columns#
+1' UNION SELECT first_name, password FROM users#
+{% endhighlight %}
+
+From the first two line we will see that everything work normal but not in the third line, so this is mean that we use only 2 columns, so now I am checking the table name and the columns names that exist in that database, in the last query I am using the columns name on users table in my query and that's it, we have what we need!
+
+![sql-injection-049.png](/assets/images/sql-injection-049.png)
+**Figure 49** Injection are working with `#` sign.
+
+Please remember that it still Error base, maybe you can called it Blind base but I doesn't because we have some of error in that level, yeh sure this is not a SQL error, but still we have a way to see here we inject some miss type SQL query.
+
+Now let's go for the "Impossible" level and see how that is going on. Again, I recommend to try that level by yourself, I admit that is difficult one, but maybe you have the knowledge to solve it by yourself and if not you can try anyway and lean through Google more and maybe you will find the answer. After you finish check out what I've done this time, and again, if you find different solution please let me know or leave a commit down below.
+
+Ok, everybody like tools, so this is time to lean some tools. It is very important for you to know how to used that tools if you going to check injection vulnerabilities on some website
 
 
 ### How to migrate that vulnerability.

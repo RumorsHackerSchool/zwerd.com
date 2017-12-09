@@ -354,7 +354,7 @@
   <li><code class="highlighter-rouge">UPDATE table_name SET column_name = value WHERE column_name = value;</code> - set some value to some filed base on column_name value.<br /></li>
 </ul>
 
-<p>SQL Operators:<br /></p>
+<h5 id="sql-operators">SQL Operators:</h5>
 
 <table>
   <thead>
@@ -382,23 +382,27 @@
     </tr>
     <tr>
       <td><code class="highlighter-rouge">#</code></td>
-      <td style="text-align: left">Used for comment</td>
+      <td style="text-align: left">Used for comment on that line (mean that alll character after ‘#’ will be ignored)</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">%</code></td>
       <td style="text-align: left">If we use <code class="highlighter-rouge">LIKE</code> it is used as wildcard character</td>
     </tr>
     <tr>
+      <td><code class="highlighter-rouge">LIMIT</code></td>
+      <td style="text-align: left">Limit the query by number</td>
+    </tr>
+    <tr>
       <td><code class="highlighter-rouge">BETWEEN</code></td>
-      <td style="text-align: left">will give us a rang</td>
+      <td style="text-align: left">Will give us a rang</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">LIKE</code></td>
-      <td style="text-align: left">matches a pattern</td>
+      <td style="text-align: left">Matches a pattern</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">IS or IS NOT</code></td>
-      <td style="text-align: left">compare to null</td>
+      <td style="text-align: left">Compare to null</td>
     </tr>
   </tbody>
 </table>
@@ -480,9 +484,9 @@ You can download DVWA from <a href="http://www.dvwa.co.uk/">here</a>, in this we
 
 <p>There is a three type of SQL injection:</p>
 <ul>
-  <li>Error: we make some query to the database and we get some error from it, we can extract information about the server in that way.</li>
-  <li>Union: in that case we use more then one SELECT SQL query in the same statements and get some single result.</li>
-  <li>blind: in that type of SQL injection we can do more than ask the database true of false question and using whether valid page returned or not, or we can use the time it took for the page to load, we will see how that going on in that article.</li>
+  <li>Error base: we make some query to the database and we get some error from it, we can extract information about the server in that way.</li>
+  <li>Union base: in that case we use more then one SELECT SQL query in the same statements and get some single result.</li>
+  <li>Blind base: in that type of SQL injection we can do more than ask the database true of false question and using whether valid page returned or not, or we can use the time it took for the page to load, we will see how that going on in that article.</li>
 </ul>
 
 <h3 id="exploit-that-vulnerability">Exploit that vulnerability.</h3>
@@ -741,7 +745,50 @@ I am using them a lot and they very helpful.</p>
 <img src="/assets/images/sql-injection-044.png" alt="sql-injection-044.png" />
 <strong>Figure 44</strong> GAME OVER.</p>
 
-<p>Let’s go to the next level!</p>
+<p>Let’s go to the next level! but before that I want you to solve by yourself the the High Level, this time you have all of the knowledge you need to do so, after you finish please step foreword and see how I solved that level, if your solution is different then my, please let me know:) or comment down below.</p>
+
+<p>After you change the level on “DVWA Security” to High Level, you can see that in SQL Injection page, now you have some link that open new window for you type in the ID you want, and if we typed the injection like we done so far it doesn’t work for us:</p>
+
+<p><img src="/assets/images/sql-injection-045.png" alt="sql-injection-045.png" />
+<strong>Figure 45</strong> The injection doesn’t work.</p>
+
+<p>So as you can see we expected to see every user in the table but unfortunately we got 1 error line that not look like sql error, and now if we type some other query that should bring up an error, this is not work as well:
+<img src="/assets/images/sql-injection-046.png" alt="sql-injection-046.png" />
+<strong>Figure 46</strong> No sql error.</p>
+
+<p>As you can see I just add a single quote “<strong>‘</strong>” to the query and I got “something went wrong” that mean we have no errors in that level like we saw in other levels.</p>
+
+<p>Again, we need first of all the table name and the column number but we have no way to inject our SQL code and we get no error so let’s think what we can do, if you remember in the beginning of that article we saw some of the <a href="#sql-operators">SQL operators</a> that we can used in our query, and we have “Hash” sign that used for commit in our query like in other programing language so let’s see how that go.</p>
+
+<p><img src="/assets/images/sql-injection-047.png" alt="sql-injection-047.png" />
+<strong>Figure 47</strong> Query with Hash sign.</p>
+
+<p>So now we know that there is something that deny for us every query, I want you just look in the source code to see how they apply that.</p>
+
+<p><img src="/assets/images/sql-injection-048.png" alt="sql-injection-048.png" />
+<strong>Figure 48</strong> Limit in query with Hash sign.</p>
+
+<p>Ok, we know now that the query limit for one query only and the error come from the php code, so keep that in mind that this one way to migrate the injection, but as you saw he have way to make the injection anyway with the Hash sign because in SQL this is treat as comment on the query line so this is why the limit to 1 are ignored.</p>
+
+<p>So now let’s inject the usual injection codes. I am going to apply that injection like I have no clue how the original php code look like.</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">1' ORDER BY 1#
+1' ORDER BY 2#
+1' ORDER BY 3#
+1' UNION SELECT null, table_name FROM information_schema.tables#
+1' UNION SELECT null, column_name FROM information_schema.columns#
+1' UNION SELECT first_name, password FROM users#</code></pre></figure>
+
+<p>From the first two line we will see that everything work normal but not in the third line, so this is mean that we use only 2 columns, so now I am checking the table name and the columns names that exist in that database, in the last query I am using the columns name on users table in my query and that’s it, we have what we need!</p>
+
+<p><img src="/assets/images/sql-injection-049.png" alt="sql-injection-049.png" />
+<strong>Figure 49</strong> Injection are working with <code class="highlighter-rouge">#</code> sign.</p>
+
+<p>Please remember that it still Error base, maybe you can called it Blind base but I doesn’t because we have some of error in that level, yeh sure this is not a SQL error, but still we have a way to see here we inject some miss type SQL query.</p>
+
+<p>Now let’s go for the “Impossible” level and see how that is going on. Again, I recommend to try that level by yourself, I admit that is difficult one, but maybe you have the knowledge to solve it by yourself and if not you can try anyway and lean through Google more and maybe you will find the answer. After you finish check out what I’ve done this time, and again, if you find different solution please let me know or leave a commit down below.</p>
+
+<p>Ok, everybody like tools, so this is time to lean some tools. It is very important for you to know how to used that tools if you going to check injection vulnerabilities on some website</p>
 
 <h3 id="how-to-migrate-that-vulnerability">How to migrate that vulnerability.</h3>
 <p><strong>coming soon</strong></p>

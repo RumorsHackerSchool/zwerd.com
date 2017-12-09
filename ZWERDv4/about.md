@@ -12,6 +12,8 @@ I hope that my work here will inspire other for they will do what they love no m
 
 With great power comes great responsibility. The power is inside you!
 
+Please note that I'm not responsible for every knowledge you've got here! please stay legal, stay ethical!! for me the greatest guys in that filed are the white hat hackers that helps to make a better security and improved everything in the technological world.
+
 Now I am searching for the next challenge!
 
 G. Zwerdling
