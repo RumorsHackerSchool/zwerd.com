@@ -481,8 +481,17 @@ Please remember that it still Error base, maybe you can called it Blind base but
 
 Now let's go for the "Impossible" level and see how that is going on. Again, I recommend to try that level by yourself, I admit that is difficult one, but maybe you have the knowledge to solve it by yourself and if not you can try anyway and lean through Google more and maybe you will find the answer. After you finish check out what I've done this time, and again, if you find different solution please let me know or leave a commit down below.
 
-Ok, everybody like tools, so this is time to lean some tools. It is very important for you to know how to used that tools if you going to check injection vulnerabilities on some website
+Ok, everybody like tools, so this is time to lean some tools. It is very important for you to know how to used that tools if you going to check injection vulnerabilities on some website, in this level we face with blind base, if you try to insert something simple like `1` you will see that it's work fine but if you try to insert something that should cause some error like `1'`, your error will never showed up because the php code prevent from us to get the error value, so if he have some error he will never send it to us, just remember that the code that I am talking about is server side code like we saw earlier in this article, and we would never get an access to server side codes, so just keep that in mind, in our case we can view the source code.
 
+![sql-injection-050.png](/assets/images/sql-injection-050.png)
+**Figure 50** Have no error.
+
+So in the source code you can see that we have some `if` statement that treat ID only if it equal to numeric value, but we have no `else` statement that treat ID if it doesn't equal to some number so this is blind base.
+
+![sql-injection-051.png](/assets/images/sql-injection-051.png)
+**Figure 51** Blind base.
+
+To work around that case we going to use sqlmap
 
 ### How to migrate that vulnerability.
 **coming soon**
