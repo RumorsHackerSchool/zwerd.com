@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-10T21:32:58+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-01-02T14:16:32+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">Penetration Testing with Kali Linux</title><link href="http://localhost:4000/2017/12/28/Penetration_Testing_with_Kali_Linux.html" rel="alternate" type="text/html" title="Penetration Testing with Kali Linux" /><published>2017-12-28T00:00:00+02:00</published><updated>2017-12-28T00:00:00+02:00</updated><id>http://localhost:4000/2017/12/28/Penetration_Testing_with_Kali_Linux</id><content type="html" xml:base="http://localhost:4000/2017/12/28/Penetration_Testing_with_Kali_Linux.html">&lt;p&gt;To be a Cyber Researcher we need in my opinion to have a very good knowledge about everything that related to  hacking world. There is a lot technologies out there that are very important in our security world and the way they work is very unique and special, yes, you must have a knowledge about programming if you want to be professional Cyber Reasercher , but for pentesting all we need is maybe script languages, any way we need to have a very good and basic understanding in the security world which is include Linux, Networking, script programming language like Python or JavaScript etc. In this article we will go through all of those stuff but before that I want to specified what CheckPoint think that is the basic knowledge that we must have to be a very good ethical hacker:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;reverse engineer.&lt;/li&gt;
+  &lt;li&gt;about the web and how it works.&lt;/li&gt;
+  &lt;li&gt;Networking.&lt;/li&gt;
+  &lt;li&gt;knowledge in logics.&lt;/li&gt;
+  &lt;li&gt;and of course programming language.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the syllabus you will find the following&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;About	Kali	Linux&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;about-kali-linux&quot;&gt;About	Kali	Linux&lt;/h1&gt;</content><author><name>Guy Zwerdling</name></author><category term="pentest" /><summary type="html">This time I decided to lean to OSCP certification exam, this exam called PWK (Penetration Testing with Kali Linux) from offensive security, for me it's what I want for a long time. In this article I will go through the PWK syllabus step by step to preparer myself to this exam very well. I also using three books as follow: Kali_Revealed_1st_edition Penetration Testing - A hands-on introduction to Hacking hacking-the-art-of-exploitation I am also going to setup virtual lab for everything in that article, it going to be very cool stuff and I am sure that after I finish here I will have a very good knowledge about Penetration Testing with Linux Kali.</summary></entry><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2017/11/27/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2017-11-27T00:00:00+02:00</published><updated>2017-11-27T00:00:00+02:00</updated><id>http://localhost:4000/2017/11/27/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2017/11/27/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
 
 &lt;p&gt;If we talking about injection you may know that inject some code is not related only to SQL, you can actually to do so with various programing language of course it depend on how the programmer developed that site, but if he or she not care enough about the little things in that code, we may find some way to inject some unwanted code to the website.&lt;/p&gt;
 
@@ -1390,84 +1405,4 @@ more cool song to the grub:&lt;/p&gt;
 
 &lt;p&gt;And also many thanks to my beautiful girlfriend that keep feedback me about this site!&lt;/p&gt;
 
-&lt;p&gt;This is all for now, wish u the best!&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">Hello every one, this is my first blog at my first website, so, congratulations to myself! I think that because this is my first website that I develop by myself there is no beter place to tells my story. At the beginning I start my creer as Network technician at Israel Air Force, after three years I left the army and I find a job in Israel Ministry Of Healf, I worked there four years as Network and Security</summary></entry><entry><title type="html">testing</title><link href="http://localhost:4000/2017/06/01/testing.html" rel="alternate" type="text/html" title="testing" /><published>2017-06-01T00:00:00+03:00</published><updated>2017-06-01T00:00:00+03:00</updated><id>http://localhost:4000/2017/06/01/testing</id><content type="html" xml:base="http://localhost:4000/2017/06/01/testing.html">&lt;p&gt;Hydeout updates the original &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;Hyde&lt;/a&gt;
-theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; 3.x and adds new functionality.&lt;/p&gt;
-
-&lt;h3 id=&quot;keep-it-simple&quot;&gt;Keep It Simple&lt;/h3&gt;
-
-&lt;p&gt;In keeping with the original Hyde theme, Hydeout aims to keep the overall
-design lightweight and plugin-free. JavaScript is currently limited only
-to Disqus and Google Analytics (and is only loaded if you provide configuration
-variables).&lt;/p&gt;
-
-&lt;p&gt;Hydeout makes heavy use of Flexbox in its CSS. If Flexbox is not available,
-the CSS degrades into a single column layout.&lt;/p&gt;
-
-&lt;h3 id=&quot;customization&quot;&gt;Customization&lt;/h3&gt;
-
-&lt;p&gt;Hydeout replaces Hyde’s class-based theming with the use
-of the following SASS variables:&lt;/p&gt;
-
-&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$sidebar-bg-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#202020&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$sidebar-sticky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$layout-reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$link-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#268bd2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To override these variables, create your own &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/css/main.scss&lt;/code&gt; file.
-Define your own variables, then import in Hydeout’s SCSS, like so:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-# Jekyll needs front matter for SCSS files
----
-
-$sidebar-bg-color: #ac4142;
-$link-color: #ac4142;
-$sidebar-sticky: false;
-@import &quot;hydeout&quot;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;See the &lt;a href=&quot;_sass/hydeout/_variables.scss&quot;&gt;_variables&lt;/a&gt; file for other variables
-you can override.&lt;/p&gt;
-
-&lt;p&gt;You can also insert custom head tags (e.g. to load your own stylesheets) by
-defining your own &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/custom-head.html&lt;/code&gt; or insert tags at the end
-of the body (e.g. for custom JS) by defining your own
-&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/custom-foot.html&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;new-features&quot;&gt;New Features&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Hydeout also adds a new tags page (accessible in the sidebar) and a new
-“category” layout for dedicated category pages.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Category pages are automatically added to the sidebar. All other pages
-must have &lt;code class=&quot;highlighter-rouge&quot;&gt;sidebar_link: true&lt;/code&gt; in their front matter to show up in
-the sidebar.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;A simple redirect-to-Google search is available. If you want to use
-Google Custom Search or Algolia or something with more involved,
-override the &lt;code class=&quot;highlighter-rouge&quot;&gt;search.html&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Disqus integration is ready out of the box. Just add the following to
-your config file:&lt;/p&gt;
-
-    &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;disqus&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;shortname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my-disqus-shortname&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;p&gt;If you don’t want Disqus or want to use something else, override
-&lt;code class=&quot;highlighter-rouge&quot;&gt;comments.html&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For Google Analytics support, define a &lt;code class=&quot;highlighter-rouge&quot;&gt;google_analytics&lt;/code&gt; variable with
-your property ID in your config file.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There’s also a bunch of minor tweaks and adjustments throughout the
-theme. Hope this works for you!&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">Hydeout updates the original [Hyde](https://github.com/poole/hyde) theme for [Jekyll](http://jekyllrb.com) 3.x and adds new functionality. ### Keep It Simple In keeping with the original Hyde theme, Hydeout aims to keep the overall design lightweight and plugin-free. JavaScript is currently limited only to Disqus and Google Analytics (and is only loaded if you provide configuration variables).</summary></entry></feed>
+&lt;p&gt;This is all for now, wish u the best!&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">Hello every one, this is my first blog at my first website, so, congratulations to myself! I think that because this is my first website that I develop by myself there is no beter place to tells my story. At the beginning I start my creer as Network technician at Israel Air Force, after three years I left the army and I find a job in Israel Ministry Of Healf, I worked there four years as Network and Security</summary></entry></feed>
