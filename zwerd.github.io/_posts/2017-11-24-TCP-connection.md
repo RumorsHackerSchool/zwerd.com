@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TCP connection
-excerpt: "The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint succesfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!"
+excerpt: "The TCP is freaking amazing! it helps you to track down the packets over the net and knowing for surely that they arrived to the other endpoint successfully. also if the packets arrived to the other endpoint not in the same order they was sent in the first place, the other side will now what is the right sequence of the packets and arrange theme correctly. Let's dive in to the TCP world!"
 tags:
 - network
 
@@ -71,21 +71,21 @@ those are the main thing that TCP responsible to do, there is many application o
 
 The is three which is the most important flags in every session that you will see in every TCP session is the SYN, ACK and FIN. The SYN flag is used every time some endpoint want to start session with other endpoint, you can consider that like the following example:
 
-some one named Assaf go's down the sthreet and see his friend Asher, so he start a conversation:
+some one named Bob go's down the street and see his friend John, so he start a conversation:
 
 
-Assaf: Hello! how do you do?
+Bob: Hello! how do you do?
 
-Asher: I'm good! and you?
+John: I'm good! and you?
 
-Assaf: Great!
+Bob: Great!
 
 ![tcp-session](/assets/images/tcp-session-page-001.jpg "tcp-session"){:class="img-responsive"}{:height="1000px" width="2000px"}
 Figure 3 real life conversation
 
 
 
-In TCP it pretty much the same, one site ask the other that he want to start conversation with him and the other response with sort of ok like and the first one do the same.
+In TCP it pretty much the same, one side ask the other that he want to start conversation with him and the other response with sort of ok and the first one do the same.
 
 
 endpoint1: I wanna to SYN with you!
@@ -119,7 +119,7 @@ So the functionality of TCP is always approved if we get the segment or not and 
 
 ### History of TCP in RFCs 793 3168 3540.
 
-Before we start to get down to deep detail is better to know some history. The TCP was developed and designed in 1970s by two DARPA scientists - Vint Cerf and Bob Kahn, persons most often called the fathers of the Internet.
+Before we start to get down to deep detail is better to know some history. The TCP was developed and designed in 1970s by two DARPA scientists - Vinton Cerf and Bob Kahn, persons most often called the fathers of the Internet.
 
 Kahn worked on an existing project to establish a satellite packet network, and initiated a project to establish a ground-based radio packet network. These experiences convinced him of the need for development of an open-architecture network model, where any network could communicate with any other independent of individual hardware and software configuration. Kahn therefore set four goals for the design of what would become the **Transmission Control Protocol**
 
@@ -608,3 +608,6 @@ while 1:
 
 
   {% endhighlight %}
+
+
+  https://twitter.com/GuyZwerdling/status/938687023917010944

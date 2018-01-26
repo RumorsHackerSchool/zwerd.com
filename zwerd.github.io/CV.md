@@ -4,7 +4,7 @@ title: CV
 sidebar_link: true
 ---
 
-<h2>Summary</h2>
+### Summary
 
 <b>CCIP, CCNP and LPIC1 certified. Currently focused CCNP
 Security. Seeking for a place to fit in and improve myself as
@@ -12,7 +12,12 @@ a security specialist, love to learn, looking for a job with a
 deep level in information security technology.</b>
 
 
-<h2>Experience</h2>
+### Experience
+
+**2017 - Today Freelance application and website development.**
+- Application development with React-Native and Android-Studio atop Linux enviroment, by using npm, node.js, whatchman, and Python/JavaScriptXML.
+- Website development using HTM5,CSS3 and JavaScript.
+- Open source information sharing on Github.
 
 <b>2016 - 2017 Network and Security Analist at the BrightSource.</b>
 <ul>

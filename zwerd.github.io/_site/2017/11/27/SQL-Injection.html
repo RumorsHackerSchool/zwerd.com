@@ -115,6 +115,10 @@
     
   
 
+  
+    
+  
+
 
   
 
@@ -149,6 +153,10 @@
     
   
 
+  
+
+  
+    
   
 
   
@@ -287,7 +295,7 @@
 </nav>
 
   <p>
-  &copy; 2017.
+  &copy; 2018.
   <a href="/LICENSE.md">Zwerd Web Deisgn</a>
 </p>
 
@@ -313,15 +321,164 @@
 
 <p>In that  article I would like to present and demonstrate the following in order for you have a full picture of what is going on here, so the main goal here is:</p>
 <ul>
+  <li><a href="#how-sql-work">How SQL work.</a></li>
   <li><a href="#what-is-the-vulnerability">What is the vulnerability.</a></li>
   <li><a href="#exploit-that-vulnerability">Exploit that vulnerability.</a></li>
   <li><a href="#how-to-migrate-that-vulnerability">How to migrate that vulnerability.</a></li>
 </ul>
 
+<h3 id="how-sql-work">How SQL work</h3>
+
+<p>I think that before you five in to SQL you need basic understanding how it works, in this section I’m using Ubuntu server with mysql database, so first of all let’s connect to our SQL database.</p>
+
+<p>To setup mysql in you Ubuntu server you can follow <a href="https://help.ubuntu.com/lts/serverguide/mysql.html">this documentation</a> or you can just type:<br /></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sudo apt update
+ sudo apt upgrade
+ sudo apt install mysql-server
+ sudo service mysql start
+ sudo service mysql status
+</code></pre></div></div>
+
+<p>The last command will show you what is the status of your sql service, if you have some issue related to that service please search the error you got in <a href="stackoverflow.com">stackoverflow</a> it is a grate way to solve issues with the community.</p>
+
+<p><img src="/assets/images/sql-injection-001.png" alt="sql-injection-001.png" />
+ <strong>Figure 1</strong> MySQL server.</p>
+
+<p>After your sql server are ready to use just connect to the database, if it is you first time you should get aome alert about setup your password, just do the command <code class="highlighter-rouge">sudo mysql -u root -p</code></p>
+
+<p><img src="/assets/images/sql-injection-002.png" alt="sql-injection-002.png" />
+ <strong>Figure 2</strong> Connect to the database.</p>
+
+<p>Now let’s look on the command we have in SQL.<br /></p>
+<ul>
+  <li><code class="highlighter-rouge">CREATE DATABASE database_name;</code> - create some database, in that database we will create tables that contain values of our users.<br /></li>
+  <li><code class="highlighter-rouge">CREATE TABLE table_name;</code> - creating a table with columns and datatype.<br /></li>
+  <li><code class="highlighter-rouge">DROP  DATABASE database_name;</code> - delete the database.<br /></li>
+  <li><code class="highlighter-rouge">DELETE FROM table_name WHERE column_name=value;</code> - delete some value in our table base on the column_name name, please notice the <code class="highlighter-rouge">WHERE</code> statement, if you doesn’t specified that WHERE it will delete every value in the table.<br /></li>
+  <li><code class="highlighter-rouge">ALERT TABLE table_name DROP COLUMN column_name;</code> - this command will delete the column in the table that we specified.<br /></li>
+  <li><code class="highlighter-rouge">SELECT * FROM table_name;</code> - this command will display every value from the table.<br /></li>
+  <li><code class="highlighter-rouge">SELECT * FROM table_name ORDER BY column_name [ASC/DESC];</code> - this will display the data ordered by the method we chose, DESC stand for descending and ASC stand for ascending.<br /></li>
+  <li><code class="highlighter-rouge">ALTER TABLE table_name ADD column_name datatype;</code> - to add some column to out table.<br /></li>
+  <li><code class="highlighter-rouge">UPDATE table_name SET column_name = value WHERE column_name = value;</code> - set some value to some filed base on column_name value.<br /></li>
+</ul>
+
+<h5 id="sql-operators">SQL Operators:</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">=</code></td>
+      <td style="text-align: left">Equal to</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;&gt;</code></td>
+      <td style="text-align: left">not equal to ( is the same as !=)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&gt;</code></td>
+      <td style="text-align: left">Greater than</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&lt;</code></td>
+      <td style="text-align: left">Less than</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">#</code></td>
+      <td style="text-align: left">Used for comment on that line (mean that alll character after ‘#’ will be ignored)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">%</code></td>
+      <td style="text-align: left">If we use <code class="highlighter-rouge">LIKE</code> it is used as wildcard character</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">LIMIT</code></td>
+      <td style="text-align: left">Limit the query by number</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">BETWEEN</code></td>
+      <td style="text-align: left">Will give us a rang</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">LIKE</code></td>
+      <td style="text-align: left">Matches a pattern</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">IS or IS NOT</code></td>
+      <td style="text-align: left">Compare to null</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table 1</strong> for more operator refer to <a href="https://www.w3schools.com/sql/sql_operators.asp">that link.</a></p>
+
+<p>Let’s create new database with table and filled that table with users ID and data.<br /></p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">CREATE DATABASE mysite;
+USE mysite;</code></pre></figure>
+
+<p>Please remember that you mush chose database before you create some table.</p>
+
+<p><img src="/assets/images/sql-injection-003.png" alt="sql-injection-003.png" />
+<strong>Figure 3</strong> Select database.</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">CREATE TABLE users(
+  id INT NOT NULL,
+  nickName VARCHAR(255),
+  firstName VARCHAR(255),
+  lestName VARCHAR(255),
+  email VARCHAR(255)
+  );</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-004.png" alt="sql-injection-004.png" />
+<strong>Figure 4</strong> Create table.</p>
+
+<p>So far we created database named “mysite” and add table named users, in that table we have users ID which is must be valuable (NOT NULL) and number (INT which is an integer), in the other values we specified that each value can be long up to 255 characters (VARCHAR(255)), now we need to filled that table up.</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">INSERT INTO users(id, nickName, firstName, lestName, email) VALUES
+(1, 'Jimi', 'Johnny', 'Hendrix', 'jhendrix@gmail.com'),
+(2, 'Jenni', 'Jennifer', 'Batten', 'jbatten@gmail.com'),
+(3, 'Steve', 'Steven', 'Vai', 'svai@gmail.com'),
+(4, 'Jim', 'James', 'Morrison', 'jmorrison@gmail.com'),
+(5, 'AliceCooper', 'Vincent', 'Furnier', 'vfurnier@gmail.com');</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-005.png" alt="sql-injection-005.png" />
+<strong>Figure 5</strong> Filled up the tables with values.</p>
+
+<p>To display the all table, just type SELECT and asterisk FROM the table name.
+<img src="/assets/images/sql-injection-006.png" alt="sql-injection-006.png" />
+<strong>Figure 6</strong> Tables with values.</p>
+
+<p>Note that we can insert more that one command in the same raw.
+<img src="/assets/images/sql-injection-007.png" alt="sql-injection-007.png" />
+<strong>Figure 7</strong> More than one command.</p>
+
+<p>Now let’s change some email in out table, just type as follow:
+<img src="/assets/images/sql-injection-008.png" alt="sql-injection-008.png" />
+<strong>Figure 8</strong> Chenge email.</p>
+
+<p>So if in some website used SQL to store some data in tables from the user, if some user change his email address, this is what actually append behind the scene.</p>
+
+<p>We can also use some sentence that specified True of False to display something, in the next example I’m use 1=1 which mean True, this is why it display to me all of the values.
+<img src="/assets/images/sql-injection-009.png" alt="sql-injection-009.png" />
+<strong>Figure 9</strong> 1=1 is actually True.</p>
+
+<p>We have a way to use wildcard like the next example:<br />
+<code class="highlighter-rouge">SELECT * FROM users WHERE lastName LIKE '%n';</code>
+In that case the query give up the last names that end with <code class="highlighter-rouge">n</code> which can be helpful to filter stuff.</p>
+
+<p><img src="/assets/images/sql-injection-010.png" alt="sql-injection-010.png" />
+<strong>Figure 10</strong> 1=1 is actually True.</p>
+
 <h3 id="what-is-the-vulnerability">What is the vulnerability</h3>
 
-<p>So in SQL the way it’s works with website is as follow,  let’s assume that we have some filed that ask us username and password, if we type in some value like <code class="highlighter-rouge">guy</code> and hit enter it will generate some command in SQL to the database like  <code class="highlighter-rouge">SELECT * FROM users WHERE USERNAME = "guy";</code>, please note the quotation marks, in this way the database will bring back <code class="highlighter-rouge">"guy"</code>, the problem is with those quotation marks, it little bit tricky because let’s say that the user actually put in that filed quotation marks, something that look like that:
-<code class="highlighter-rouge">SELECT * FROM users WHERE USERNAME = "guy""</code></p>
+<p>So in SQL the way it’s works with website is as follow,  let’s assume that we have some filed that ask us username and password, if we type in some value like <code class="highlighter-rouge">guy</code> and hit enter it will generate some command in SQL to the database like  <code class="highlighter-rouge">SELECT * FROM users WHERE USERNAME = 'guy';</code>, please note the quotation marks, in this way the database will bring back <code class="highlighter-rouge">"guy"</code>, the problem is with those quotation marks, it little bit tricky because let’s say that the user actually put in that filed quotation marks, something that look like that:
+<code class="highlighter-rouge">SELECT * FROM users WHERE USERNAME = 'guy''</code></p>
 
 <p>In that case it will failed because the command is not match up, and it will send some error, so it may be annoying, but if we think about that we can do some serious damage in that way because in SQL we have more command like <code class="highlighter-rouge">INSERT</code> to insert stuff or <code class="highlighter-rouge">UPDATE</code> to change stuff and <code class="highlighter-rouge">DELETE</code> to remove data from the database, so if we write on the username filed something more like:
  <code class="highlighter-rouge">guy"; DELETE * FROM table_name;</code></p>
@@ -330,10 +487,326 @@
 
 <p>The way to migrate this issue is called escaping and it’s something like the programmer will setup in the code that every time we have quotation marks just put backslash before it, in that way the quotation marks in the filed will be handled as a character and not as quotation marks in the SQL so it may help to migrate the problem with command in SQL in the user input.</p>
 
-<p>For that article I’m going to use DVWA which is great way to learn about vulnerability related to websites, the usual Linux Kali will be used to attack those websites and I hope you will enjoy it.</p>
+<p>For that article I’m going to use DVWA which is great way to learn about vulnerability related to websites, the usual Linux Kali will be used to attack those websites and I hope you will enjoy it.
+You can download DVWA from <a href="http://www.dvwa.co.uk/">here</a>, in this web you can find the source code which contain the REDAME.md file that can help you to install the DVWA on your operation system. We going to look on only the SQL injection in that article, I hope you enjoy it! I sure that I will!:]</p>
+
+<p>There is a three type of SQL injection:</p>
+<ul>
+  <li>Error base: we make some query to the database and we get some error from it, we can extract information about the server in that way.</li>
+  <li>Union base: in that case we use more then one SELECT SQL query in the same statements and get some single result.</li>
+  <li>Blind base: in that type of SQL injection we can do more than ask the database true of false question and using whether valid page returned or not, or we can use the time it took for the page to load, we will see how that going on in that article.</li>
+</ul>
 
 <h3 id="exploit-that-vulnerability">Exploit that vulnerability.</h3>
-<p><strong>coming soon</strong></p>
+
+<p>Ok guys, I have done to setup my Ubuntu server with php7.0 and mysql database and the website (DVWA) is live and running. I have Kali Linux machine and from that machine we going to do the coolest stuff!
+So my topology look something like that:</p>
+
+<p><img src="/assets/images/sql-injection-011.png" alt="sql-injection-011.png" />
+<strong>Figure 11</strong> Topology for our lab.</p>
+
+<p>you can do the same I did if you like, if you have some trouble in the installation process please feel free to leave a comment here or send me an email and I’ll be glad to help.</p>
+
+<p>for this kind for lab you actually doesn’t need to setup spacial server just for DVWA, you can setup is on you computer and trying to attack from your Kali, or you can attack the website from your computer, it’s really doesn’t matter, you can also setup the web directly on your Kali which is the best I think.</p>
+
+<p>Ok, let’s look on the DVWA website, we going to do every challenge in that web that related to SQL, so let’s start from the low level security to high, if you configure everything correctly you should get the following page:
+<img src="/assets/images/sql-injection-012.png" alt="sql-injection-012.png" />
+<strong>Figure 12</strong> Topology for our lab.</p>
+
+<p>The default username is admin and password is password, after you login go to DVWA security tab and select low level and submit it.
+<img src="/assets/images/sql-injection-013.png" alt="sql-injection-013.png" />
+<strong>Figure 13</strong> Topology for our lab.</p>
+
+<p>After that go SQL injection tab, and here we going to do our magic!
+As you can see the User ID box and submit button, you can trying to insert some value in that box but nothing will happened, only the URL will be change but it’s irrelevant in that point. however if you type sum number in range of 1 to 5 you get some value from the database.</p>
+
+<p><img src="/assets/images/sql-injection-014.png" alt="sql-injection-014.png" />
+<strong>Figure 14</strong> Data from the database.</p>
+
+<p>So we can see the users and their surenames, let’s play with the box little more, just write a comma <code class="highlighter-rouge">'</code> sign and click on the submit button it will bring up an error.
+<img src="/assets/images/sql-injection-015.png" alt="sql-injection-015.png" />
+<strong>Figure 15</strong> Data from the database.</p>
+
+<p>So right now we know that the web server is vulnerable for Error base attack, so let’s try to play with it more. every query are generate some sentence with quotation marks on the value that the user type, so, in the case we typed 1 in the SQL query it would be something like <code class="highlighter-rouge">SELECT column FROM table WHERE number='1'</code>, remember we type only 1 without quotation marks, so when we type <code class="highlighter-rouge">1'</code> it actually look like <code class="highlighter-rouge">number= '1''</code>, so if we trying to put some query we can put in the filed something like that:<br />
+<code class="highlighter-rouge">1' or '0'='0</code> <br />
+In that case the query will look something like that:<br />
+<code class="highlighter-rouge">number = '1' or '0'='0'</code><br />
+In the query case it’s put quotation marks,I’ll bold it so you can see:<br />
+number = <strong>‘</strong> 1’ or ‘0’=’0 <strong>‘</strong><br />
+In that case it look like we add another values to the SQL query and the 0=0 is sort of True query, so the answer we get will be all the values because the existing of the value is true, let’s look how is works in the SQL, if we type that query we get the following:</p>
+
+<p><img src="/assets/images/sql-injection-016.png" alt="sql-injection-016.png" />
+<strong>Figure 16</strong> SQL query.</p>
+
+<p>Now we extract all users from database because the True statement, every value is True so this is why we get every value from the table.</p>
+
+<p>We can adding UNION to sql statement which mean that we use 2 SELECTED statement at once, so, we can write a brand new command in the input box and maybe the SQL will treat that statement as usual, please remember that if we use UNIUN, we can only use that in SELECT statement, and the SELECT statement must be query of equal column, as example the following:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">SELECT firstName, lastName, email LIKE '%te%' FROM users UNION SELECT firstName, lastName, email LIKE '%r%' FROM users;</code></pre></figure>
+
+<p>In this statement we query the firstName and lastName from our mysite table and we display also the  who have email that contain ‘te’ in it, in the union we do the same but this time the query should display the rows from our table that contain ‘r’ in the email filed.</p>
+
+<p><img src="/assets/images/sql-injection-017.png" alt="sql-injection-017.png" />
+<strong>Figure 17</strong> SQL query with UNION.</p>
+
+<p>Please note that we have a third column that contain <code class="highlighter-rouge">0</code> or <code class="highlighter-rouge">1</code>, which specified answer to our query. So if we go back to our Kali machine we can use UNION to display two SELECT at once, just inject the follow:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1' union select first_name,last_name from users WHERE user_id='2
+</code></pre></div></div>
+
+<p>And this is the SQL answer we get for that query:
+<img src="/assets/images/sql-injection-018.png" alt="sql-injection-018.png" />
+<strong>Figure 18</strong> SQL query with UNION display two users.</p>
+
+<p>Please note that I used <code class="highlighter-rouge">first_name</code> and <code class="highlighter-rouge">last_name</code> for my query, you may ask how did I now that the column names are like that? if you check that website you will see the View Source button and if you click on that you will see the php code that contain the query with <code class="highlighter-rouge">first_name</code> and <code class="highlighter-rouge">last_name</code>, but please remember that in the real world it doesn’t likely you can view some php code of some site, normally the php code used as server side so you never been access to that code directly, you may try to extract that code with XSS or CSRF or any sort of attacks, but in some cases you may guess the query, just remember that the developer may used some common names, so it may be more simple to guess that column names than extract the code that contain the query.</p>
+
+<p><img src="/assets/images/sql-injection-019.png" alt="sql-injection-019.png" />
+<strong>Figure 19</strong> Source code.</p>
+
+<p>I want you to new that there is more data that we can find about the database it self and it inportent to know that stuff so just follow me, you can make a SELECT query from the database for find boxes from the table without any value, so let’s say that in our table there is some box without value, we can may query to find this boxes as follow:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">SELECT first_name FROM users WHERE the middle_name IS NULL;</code></pre></figure>
+
+<p>In that case that query bring us any user that he have no middle name, so that is the main used for NULL, there is another way to use it, but before that there is more things you should know, there is a way to query some data about the database it self, there is some  <a href="https://www.w3schools.com/sql/sql_ref_mysql.asp">functions</a> that used for check some values related to the database itself or mysql server we working on, as example what is the user we used for mysql, what is the version of mysql database, what is the name of the database we working on it and so on.</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">USE mysite;
+SELECT database();</code></pre></figure>
+
+<p>In that case the database will show us his name after we chose the database, in my case the database name will be ‘mysite’.</p>
+
+<p><img src="/assets/images/sql-injection-024.png" alt="sql-injection-024.png" />
+<strong>Figure 24</strong> Database function.</p>
+
+<p>So let’s think carefully, we have a way to extract data about the database, but if we use injection with <code class="highlighter-rouge">UNION</code> we must use in our case two SELECT query because the original query that the php code produces include two column, so if we do something like:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">select
+  first_name,
+  last_name
+  FROM users WHERE user_id='1' or '0'='0'
+  UNION
+  SELECT database();</code></pre></figure>
+
+<p>we will get an error.</p>
+
+<p><img src="/assets/images/sql-injection-025.png" alt="sql-injection-025.png" />
+<strong>Figure 25</strong> Erorr “different number of columns”.</p>
+
+<p>For that matter we need to use other query that contain <code class="highlighter-rouge">UNION SELECT</code> with two another columns, we can achieve that goal with NULL, to doing so just type the following:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">select
+  first_name,
+  last_name
+  FROM users WHERE user_id='1' or '0'='0'
+  UNION
+  SELECT NULL, database();</code></pre></figure>
+
+<p>So, we can use sort of function query to extract more data about the database and it’s important that you new them all or most of them:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">SELECT NULL, database();
+SELECT NULL, user();
+SELECT NULL, version();</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-026.png" alt="sql-injection-026.png" />
+<strong>Figure 26</strong> Select null with function.</p>
+
+<p>Now we know lets do some injection.
+<img src="/assets/images/sql-injection-027.png" alt="sql-injection-027.png" />
+<strong>Figure 27</strong> database() - for seen the database name.</p>
+
+<p><img src="/assets/images/sql-injection-028.png" alt="sql-injection-028.png" />
+<strong>Figure 28</strong> version() - for seen the version of our sql database.</p>
+
+<p><img src="/assets/images/sql-injection-029.png" alt="sql-injection-029.png" />
+<strong>Figure 29</strong> user() - for seen the user that used fro connection the sql server.</p>
+
+<p>we will use in these commands a lot in this article, it is very important to know such information because let’s say in some mysql version you can do more stuff that in older version you can’t do, as example the command <code class="highlighter-rouge">ROW_NUMBER()</code> can be use in mysql version 8.0.2, but not in version 5.5. You can view in detail the <a href="https://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-opsfuncs.html">mysqld-version-reference.</a></p>
+
+<p>Now let’s do the same with SELECT sentence that contain some query for password, the query I need to accomplish should look as follow:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT first_name, last_name FROM users WHERE user_id = '1' union SELECT first_name, password FROM users WHERE user_id='1';
+</code></pre></div></div>
+
+<p>So the injection code look like that:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1' union SELECT first_name, password FROM users WHERE user_id='1
+</code></pre></div></div>
+
+<p><img src="/assets/images/sql-injection-020.png" alt="sql-injection-020.png" />
+<strong>Figure 20</strong> Extract some password.</p>
+
+<p>Well guys, did you saw that? the password is in the surname filed! it look like sort of hash so we need some tool that can find for us the real value of that hash. There is many hash crack out there, just for reminder, hash is some data that some cryptographic function was run on it and produces output of  160-bit value, please note that this is difference from encryption method, in hashing method you can’t extract the original data value from the hashing value because it is <a href="https://en.wikipedia.org/wiki/One-way_function">one-way function</a>, so the way to find some hashing of some value is to take some data and run the hash function on it and compare the output to the hashing value you wanted to, and if there is a match you now know what is the original value.</p>
+
+<p>In our case I guess the hash value is md5 type so we can check in our linux machineand find a match, just type the command as follow:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="nt">-n</span> password | md5sum</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-021.png" alt="sql-injection-021.png" />
+<strong>Figure 21</strong> Hash value.</p>
+
+<p>Now if you compare the output to the hash value we already have from our database, this is the same value! which mean that the password is actually “password”. If you want to use some online database of crack hashing you can used this links:
+<a href="https://crackstation.net/">crackstation</a>
+<a href="https://hashkiller.co.uk/md5-decrypter.aspx">hashkiller</a>
+<a href="https://www.onlinehashcrack.com/">onlinehashcrack</a>
+I am using them a lot and they very helpful.</p>
+
+<p>So, from that output we know that admin password is ‘password’… so typical lol :P</p>
+
+<p>let’s try to extract other password from the database, just inject the follow:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">1' union SELECT first_name, password FROM users WHERE user_id='1' or '0'='0</code></pre></figure>
+
+<p>And that is it, all we need now is find out what is the real value for that hashs.</p>
+
+<p><img src="/assets/images/sql-injection-022.png" alt="sql-injection-022.png" />
+<strong>Figure 22</strong> Hashs passwords.</p>
+
+<p>Let’s crack all password with john the ripper, just take the data and past it in some text editor with the following structure:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usename:hachPassword
+</code></pre></div></div>
+
+<p>I saved the data in text.txt file, then type the following command in your terminal:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>john --format=raw-MD5 text.txt
+</code></pre></div></div>
+
+<p><img src="/assets/images/sql-injection-023.png" alt="sql-injection-023.png" />
+<strong>Figure 23</strong> john the ripper.</p>
+
+<p>Please note that so far we used Union base to find the data we needed, we will implement more injection types in this article, just bear with me for a moment.</p>
+
+<p>Now let’s go to the higher level, change the security level to medium and go back to SQL Injection page, <img src="/assets/images/sql-injection-030.png" alt="sql-injection-030.png" />
+<strong>Figure 30</strong> Security level medium.</p>
+
+<p>Now in the SQL Injection you see that there is no user input, we have some selected box and now we can only select from 1 to 5 and see the user username and surname, so you may ask what we can do now? there no way to inject some query value in that case. You may right but not so quite, there is no input box for the user that true, but now we need some way to make query from the browser and change that query before it will sending to the server, to do so I am going to use burpsuite tool. In that tool we can use local proxy to transfer all our data through burpsuite and then we can change the query before it go to the server.</p>
+
+<p>Before we use burpsuite we need to set our browser to use proxy which will be the burpsuite, just go to the menu in your browser and click on preferences.</p>
+
+<p><img src="/assets/images/sql-injection-031.png" alt="sql-injection-031.png" />
+<strong>Figure 31</strong> Security level medium.</p>
+
+<p>Or press F12 on your key board and go to advance&gt;network&gt;setting.
+<img src="/assets/images/sql-injection-032.png" alt="sql-injection-032.png" />
+<strong>Figure 32</strong> Security level medium.</p>
+
+<p>Then change to Menual proxy configuration with http proxy of 127.0.0.1 which is localhost and port 8080.
+<img src="/assets/images/sql-injection-033.png" alt="sql-injection-033.png" />
+<strong>Figure 33</strong> Security level medium.</p>
+
+<p>On linux Kali the burpsuite is buildin so just click on the burpsuite icon in the bar slide and then go to proxy&gt;intercept and click on “Intercept is off” button, by pressing that it will change to “Intercept is on”, now in the SQL Injection page if we press on submit button we will see in row tab of burpsuite the data that going to be send and all we need to do next is to change it!</p>
+
+<p><img src="/assets/images/sql-injection-034.png" alt="sql-injection-034.png" />
+<strong>Figure 34</strong> Security level medium.</p>
+
+<p>Now let’s use the Error base technique, we know that we have some query and we don’t need to new the database name, but we need to know the number of column in the original query because we want to use UNION and in that case we must to use equal column number for our injected query, for doing so we can use the command ORDER BY column number. ORDER BY used for ordering the value inside the columns, so if we type ORDER BY 1 it will order our request by column 1 in alpha beta form, and if we type ORDER BY 2 it will order our column number 2.</p>
+
+<p><img src="/assets/images/sql-injection-035.png" alt="sql-injection-035.png" />
+<strong>Figure 35</strong> ORDER BY example.</p>
+
+<p>In case we type some number that not match the columns we will get some error, so in my case if I type ORDER BY 6 it will bring me an error because I haven’t column 6.</p>
+
+<p><img src="/assets/images/sql-injection-036.png" alt="sql-injection-036.png" />
+<strong>Figure 36</strong> ORDER BY error.</p>
+
+<p>So, let’s try that up in on our target, just type the injection query in the burpsuite as follow and press on forward:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">1 ORDER BY 1</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-037.png" alt="sql-injection-037.png" />
+<strong>Figure 37</strong> ORDER BY 1.</p>
+
+<p>We have no error so let’s try:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">1 ORDER BY 3</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-038.png" alt="sql-injection-038.png" />
+<strong>Figure 38</strong> ORDER BY error.</p>
+
+<p>Cool! we have some error, so this is mean that we have no column 3 in the table, now let’s try check column 2, it more likely that it will work.</p>
+
+<p><img src="/assets/images/sql-injection-039.png" alt="sql-injection-039.png" />
+<strong>Figure 39</strong> ORDER BY 2.</p>
+
+<p>It work! so now we know that we have 2 column in that table so if we using UNION we need to select two columns in our query, but we still need more data like the columns name and tables name, we can guess it but there is a way to extract that out, for doing so we going to use <a href="https://dev.mysql.com/doc/refman/5.7/en/information-schema.html">information_schema.</a>, this is the way  to provide access to the database metadata so we can make some query about the columns name with that option, just type as follow:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">1 UNION SELECT null, column_name FROM information_schema.columns</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-040.png" alt="sql-injection-040.png" />
+<strong>Figure 40</strong> information_schema.columns.</p>
+
+<p>So now we have the name of all the column name from all database that exist in that sql server, and if we scroll down little bit we will find some value that look like what we search so far.</p>
+
+<p><img src="/assets/images/sql-injection-041.png" alt="sql-injection-041.png" />
+<strong>Figure 41</strong> Column values name.</p>
+
+<p>New let’s check the tables name with information_schema.tables</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">1 UNION SELECT null, table_name FROM information_schema.tables</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-042.png" alt="sql-injection-042.png" />
+<strong>Figure 42</strong> tables name.</p>
+
+<p>So the users table is what we looking for. Now we can accomplish the command we want in the first place, now inject the following:</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">1 UNION SELECT first_name, password FROM users</code></pre></figure>
+
+<p><img src="/assets/images/sql-injection-043.png" alt="sql-injection-043.png" />
+<strong>Figure 43</strong> users and password.</p>
+
+<p>We did it again guys!!! we won!!! or more likely we own the database!!!! GAME OVER!
+<img src="/assets/images/sql-injection-044.png" alt="sql-injection-044.png" />
+<strong>Figure 44</strong> GAME OVER.</p>
+
+<p>Let’s go to the next level! but before that I want you to solve by yourself the the High Level, this time you have all of the knowledge you need to do so, after you finish please step foreword and see how I solved that level, if your solution is different then my, please let me know:) or comment down below.</p>
+
+<p>After you change the level on “DVWA Security” to High Level, you can see that in SQL Injection page, now you have some link that open new window for you type in the ID you want, and if we typed the injection like we done so far it doesn’t work for us:</p>
+
+<p><img src="/assets/images/sql-injection-045.png" alt="sql-injection-045.png" />
+<strong>Figure 45</strong> The injection doesn’t work.</p>
+
+<p>So as you can see we expected to see every user in the table but unfortunately we got 1 error line that not look like sql error, and now if we type some other query that should bring up an error, this is not work as well:
+<img src="/assets/images/sql-injection-046.png" alt="sql-injection-046.png" />
+<strong>Figure 46</strong> No sql error.</p>
+
+<p>As you can see I just add a single quote “<strong>‘</strong>” to the query and I got “something went wrong” that mean we have no errors in that level like we saw in other levels.</p>
+
+<p>Again, we need first of all the table name and the column number but we have no way to inject our SQL code and we get no error so let’s think what we can do, if you remember in the beginning of that article we saw some of the <a href="#sql-operators">SQL operators</a> that we can used in our query, and we have “Hash” sign that used for commit in our query like in other programing language so let’s see how that go.</p>
+
+<p><img src="/assets/images/sql-injection-047.png" alt="sql-injection-047.png" />
+<strong>Figure 47</strong> Query with Hash sign.</p>
+
+<p>So now we know that there is something that deny for us every query, I want you just look in the source code to see how they apply that.</p>
+
+<p><img src="/assets/images/sql-injection-048.png" alt="sql-injection-048.png" />
+<strong>Figure 48</strong> Limit in query with Hash sign.</p>
+
+<p>Ok, we know now that the query limit for one query only and the error come from the php code, so keep that in mind that this one way to migrate the injection, but as you saw he have way to make the injection anyway with the Hash sign because in SQL this is treat as comment on the query line so this is why the limit to 1 are ignored.</p>
+
+<p>So now let’s inject the usual injection codes. I am going to apply that injection like I have no clue how the original php code look like.</p>
+
+<figure class="highlight"><pre><code class="language-mysql" data-lang="mysql">1' ORDER BY 1#
+1' ORDER BY 2#
+1' ORDER BY 3#
+1' UNION SELECT null, table_name FROM information_schema.tables#
+1' UNION SELECT null, column_name FROM information_schema.columns#
+1' UNION SELECT first_name, password FROM users#</code></pre></figure>
+
+<p>From the first two line we will see that everything work normal but not in the third line, so this is mean that we use only 2 columns, so now I am checking the table name and the columns names that exist in that database, in the last query I am using the columns name on users table in my query and that’s it, we have what we need!</p>
+
+<p><img src="/assets/images/sql-injection-049.png" alt="sql-injection-049.png" />
+<strong>Figure 49</strong> Injection are working with <code class="highlighter-rouge">#</code> sign.</p>
+
+<p>Please remember that it still Error base, maybe you can called it Blind base but I doesn’t because we have some of error in that level, yeh sure this is not a SQL error, but still we have a way to see here we inject some miss type SQL query.</p>
+
+<p>Now let’s go for the “Impossible” level and see how that is going on. Again, I recommend to try that level by yourself, I admit that is difficult one, but maybe you have the knowledge to solve it by yourself and if not you can try anyway and lean through Google more and maybe you will find the answer. After you finish check out what I’ve done this time, and again, if you find different solution please let me know or leave a commit down below.</p>
+
+<p>Ok, everybody like tools, so this is time to lean some tools. It is very important for you to know how to used that tools if you going to check injection vulnerabilities on some website, in this level we face with blind base, if you try to insert something simple like <code class="highlighter-rouge">1</code> you will see that it’s work fine but if you try to insert something that should cause some error like <code class="highlighter-rouge">1'</code>, your error will never showed up because the php code prevent from us to get the error value, so if he have some error he will never send it to us, just remember that the code that I am talking about is server side code like we saw earlier in this article, and we would never get an access to server side codes, so just keep that in mind, in our case we can view the source code.</p>
+
+<p><img src="/assets/images/sql-injection-050.png" alt="sql-injection-050.png" />
+<strong>Figure 50</strong> Have no error.</p>
+
+<p>So in the source code you can see that we have some <code class="highlighter-rouge">if</code> statement that treat ID only if it equal to numeric value, but we have no <code class="highlighter-rouge">else</code> statement that treat ID if it doesn’t equal to some number so this is blind base.</p>
+
+<p><img src="/assets/images/sql-injection-051.png" alt="sql-injection-051.png" />
+<strong>Figure 51</strong> Blind base.</p>
+
+<p>To work around that case we going to use sqlmap, first of all I want you to read about <a href="">sqlmap</a></p>
 
 <h3 id="how-to-migrate-that-vulnerability">How to migrate that vulnerability.</h3>
 <p><strong>coming soon</strong></p>
@@ -402,6 +875,15 @@
     
       <li>
         <h3>
+          <a href="/2017/12/28/Penetration_Testing_with_Kali_Linux.html">
+            Penetration Testing with Kali Linux
+            <small>28 Dec 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2017/11/24/TCP-connection.html">
             TCP connection
             <small>24 Nov 2017</small>
@@ -414,15 +896,6 @@
           <a href="/2017/10/23/Abiha-hidot.html">
             Nach Riddles!
             <small>23 Oct 2017</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2017/10/22/CheckPoint.html">
-            CheckPoint
-            <small>22 Oct 2017</small>
           </a>
         </h3>
       </li>
