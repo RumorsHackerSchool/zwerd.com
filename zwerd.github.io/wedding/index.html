@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta itemprop="name"            content="שני וגיא מתחתנים - הזמנה">
+    <meta itemprop="description"     content="הזמנה לברית הנישואים של שני וגיא, נשמח לראותכם!">
+    <meta itemprop="image"           content="https://zwerd.com/wedding/wedding_201_201.png">
+    <meta charset="utf-8">
+    <title>שני וגיא מתחתנים - הזמנה</title>
+    <style>
+    html {
+      text-align: center;
+    }
+body {
+    text-align: center;
+    top: 2%;
+    display: inline-block;
+    margin: 0px;
+  }
+h1, h2{
+  color:#517b96
+}
+div{
+    background-image: url("./wedding13.png");
+    background-position: right;
+    background-size:840px 550px ;
+    background-repeat: no-repeat;
+    text-align: center;
+  	float:right;
+  	display:inline;
+  	padding: 0 5px 0 0 ;
+    margin: 0 0 0 0;
+  	min-height:10px;
+    border: 2px solid #dddddd;;
+
+  }
+div form{
+  float:right;
+  text-align: right;
+      margin: 0 0 0 0;
+      color:#517b96
+}
+div form p {
+  text-align: center;
+  top: 2%;
+  display: inline-block;
+  margin: 0px ;
+}
+a{
+  float: left
+}
+
+@media screen and (max-width: 600px){
+  html {
+    text-align: center;
+  }
+body {
+  text-align: center;
+  top: 2%;
+  display: inline-block;
+  margin: 0px ;
+}
+
+div{
+  background-image: url("./wedding13.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  text-align: center;
+  float:left;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  min-height:10px;
+  border: 2px solid #dddddd;
+}
+div form{
+
+float:right;
+text-align: right;
+}
+p {
+  text-align: center;
+  top: 2%;
+  display: inline-block;
+  margin: 0px ;
+}
+}
+</style>
+<script type="text/javascript">
+function save() {
+  var section,
+    fullName,
+    phonNumber,
+    numberOfPeople,
+    numberOfKids,
+    doComing,
+    userSelect
+  section = document.getElementById('section')
+  fullName = section.elements['full_name'].value
+  phonNumber = section.elements['phon_number'].value
+  numberOfPeople = section.elements['number_of_people'].value
+  numberOfKids = section.elements['number_of_kids'].value
+  doComing = document.getElementById('do_coming')
+  userSelect = doComing.options[doComing.selectedIndex].value
+  console.log(fullName, phonNumber, numberOfPeople, numberOfKids, userSelect)
+
+</script>
+
+
+
+  </head>
+  <body>
+    <h1>שני וגיא מתחתנים</h1>
+    <div class="centered" dir="rtl">
+      <!--<img src="./wedding-packages.jpg" height="350" width="640" alt="wedding-packages">-->
+      <h2>
+      בשבח והודיה לבורא עולם
+      <br>
+      אנו מתכבדים להזמינכם להשתתף בשמחת נישואינו
+      <br>
+      שתתקיים בעזה''י בשעה טובה ומוצלחת
+      <br>
+ביום שני ז' טבת תשע''ח (25.12.17 למנינם)
+      <br>
+      קבלת פנים בשעה 19:00
+      <br>
+      חופה בשעה 20:00 בדיוק.
+      <br>
+      באולמי "דרימס" שד' ירושלים 1, יבנה.
+      <br>
+      לבוש צנוע יהלום את האירוע.
+      <br>
+      נשמח לראותכם משתתפים בשמחתנו.
+      <br>
+      <br>
+      </h2>
+      <form action="myprocessingscript.php" method="POST">
+        <b>
+        שם מלא:<br>
+        <input name="full_name" type="text" value="">
+        <br>
+        <br>
+        טלפון:<br>
+        <input name="phone_number" type="tel" pattern='[0-9]{10}' value="">
+        <br>
+        <br>
+        מספר גברים:<br>
+        <input name="number_of_men" type='tel' pattern='[0-9]{1}' value="0">
+        <br>
+        <br>
+        מספר נשים:<br>
+        <input name="number_of_women" type='tel' pattern='[0-9]{1}' value="0">
+        <br>
+        <br>
+        ברכות לזוג הצעיר:<br>
+        <textarea name="comment" cols="40" rows="5"></textarea>
+        <br>
+        <br>
+        האם מגיע?<br>
+      </b>
+        <select name="approve">
+          <option value="yes">כן</option>
+          <option value="no">לא</option>
+          <option value='maybe'>אולי</option>
+        </select>
+        <br><br>
+        <input type="submit" name="submit" value="אישור">
+
+
+      <h2>
+            <a href="https://www.waze.com/location?h=sv8tqkuhy"><img src="./waze.png" /><a>
+      לפרטים נוספים:
+      <br>
+      שני - 0528089750
+      <br>
+      גיא - 0545558679
+
+      <br>
+
+
+      </h2>
+      </form>
+  <footer>
+  <p>Zwerd Web Deisgn, Copyright &copy; 2017<br>
+  </footer>
+</body>
+</html>

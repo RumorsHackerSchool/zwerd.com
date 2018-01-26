@@ -1,0 +1,54 @@
+<!-- 
+איזה יופי! אתם צופים בקוד מקור!
+תהנו לכם!
+-->
+
+<html>
+<meta charset="utf-8">
+<head>
+<style>
+#outer {
+  width: 100%;
+  text-align: center;
+}
+#wrap {
+  text-align: center;
+  font-family: monospace;
+  margin: 0 auto;
+  /*border: solid 1px gray;*/
+  padding: 1em 5em;
+  display: inline-block;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+}
+.abcRioButton.abcRioButtonLightBlue {
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+<div id="outer">
+<div id="wrap">
+<h1>אביעה חידות מני קדם</h1>
+<i>מבוסס על ספרו של דוד צברדלינג ז"ל</i><br>
+
+<p>גרסת אלפא</p>
+<a href='https://play.google.com/store/apps/details?id=io.rumors.rumors'><img style='width:8em' src='./images/google.svg' alt='Google Play'/></a>
+<a href='https://itunes.apple.com/il/app/rumors-the-digital-lemonade-stand/id1226063659'><img style='width:8em' src='./images/apple.svg' alt='Apple AppStore'/></a>
+
+<br>
+<img style="width:50%" src="./the_app_screen_icon_google.png"/>
+
+<br>
+<br>
+
+<p>Contact: guy.zwerdling@gmail.com</p>
+
+<p style='font-size: 0.7em'>
+<a href='./terms/privacypolicy.htm'>Terms of Service</a>
+<a href='./terms/privacypolicy.htm'>Privacy Policy</a>
+</p>
+
+</div>
+</div>
+</body>
+</html>
