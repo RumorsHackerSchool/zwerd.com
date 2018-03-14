@@ -495,3 +495,8 @@ To work around that case we going to use sqlmap, first of all I want you to read
 
 ### How to migrate that vulnerability.
 **coming soon**
+
+
+### Videos in Hebrew about SQL injection:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wb0RaqskD5s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
