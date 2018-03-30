@@ -1,5 +1,5 @@
 var c = document.getElementById('c')
-var ctx = c.getContext('d2')
+var ctx = c.getContext('2d')
 
 //making the canvas full screen
 c.height = window.innerHeight
@@ -25,7 +25,7 @@ function draw() {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
   ctx.fillRect(0, 0, c.width, c.height)
 
-  ctx.fillStyle = '#87CEEB' //Navy Blue text
+  ctx.fillStyle = '#87CEEB' //green text
   ctx.font = font_size + 'px arial'
   //looping over drops
   for (var i = 0; i < drops.length; i++) {
