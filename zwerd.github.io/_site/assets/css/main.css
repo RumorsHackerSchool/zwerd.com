@@ -508,7 +508,7 @@ body {
     #sidebar .site-title a {
       color: inherit; }
       #sidebar .site-title a:hover {
-        color: white; }
+        color: #ffffff; }
     #sidebar .site-title .back-arrow {
       margin-right: 0.5rem; }
 
@@ -546,7 +546,7 @@ body {
   text-align: center; }
   .home #sidebar .site-title {
     font-size: 3.25rem;
-    color: white; }
+    color: #ffffff; }
   .home #sidebar header ~ *, .home #sidebar p.lead {
     display: block; }
   .home #sidebar header ~ nav {
@@ -576,7 +576,7 @@ body {
   #sidebar .site-title {
     font-size: 3.25rem; }
     #sidebar .site-title a {
-      color: white; }
+      color: #ffffff; }
     #sidebar .site-title .back-arrow {
       display: none; }
   #sidebar p.lead, #sidebar header ~ * {

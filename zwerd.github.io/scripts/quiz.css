@@ -1,0 +1,13 @@
+body {
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial,
+    sans-serif;
+}
+
+p.questions {
+  font-weight: bold;
+}
+input[type='text'] {
+  font-size: 150%;
+}

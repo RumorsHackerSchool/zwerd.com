@@ -1,4 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-03-14T21:12:08+02:00</updated><id>http://localhost:4000/</id><title type="html">Guy Zwerdling</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2018/02/15/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2018-02-15T00:00:00+02:00</published><updated>2018-02-15T00:00:00+02:00</updated><id>http://localhost:4000/2018/02/15/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2018/02/15/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-05-13T17:44:02+03:00</updated><id>http://localhost:4000/</id><title type="html">Zwerd</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">JavaScript - the future of programming.</title><link href="http://localhost:4000/2018/04/23/javascript-tutorial.html" rel="alternate" type="text/html" title="JavaScript - the future of programming." /><published>2018-04-23T00:00:00+03:00</published><updated>2018-04-23T00:00:00+03:00</updated><id>http://localhost:4000/2018/04/23/javascript-tutorial</id><content type="html" xml:base="http://localhost:4000/2018/04/23/javascript-tutorial.html">&lt;p&gt;It’s been awhile, after I done with my SQLi project I start to learn XSS, I found it fascinating! but I felt like I need more strong base knowledge about JavaScript to do my magic stuff. after a week or two I decided to make my on tutorials video about JS and this time in Hebrew, from that project I was learn a lot!&lt;/p&gt;
+
+&lt;p&gt;Originally I wrote that tutorial for Michael which is a friend but unfortunately he give up on JS studies for some unknown reason.&lt;/p&gt;
+
+&lt;p&gt;So here I am finding myself work on some tutorial that is basically designed for me lol!&lt;/p&gt;
+
+&lt;p&gt;I have 3 goals in the next few weeks, first of all I want to do the JS exam that w3schools offers, with this exam I can examine my knowledge in JavaScript and I will feel comfortable with that.&lt;/p&gt;
+
+&lt;p&gt;The second goal is to pass succesfully the GWAPT exam which examine your knowledge in web application penetration testing, for XSS attack and XSRF, the best you can do for your self is to concentrate on JavaScript knowledge because it’s (web attacks - especially XSS &amp;amp; XSRF) have a great deal with JavaScript.&lt;/p&gt;
+
+&lt;p&gt;The third goal is to pass the OSCP exam which examine your knowledge in the world of penetration testing.&lt;/p&gt;
+
+&lt;p&gt;On my JavaScript tutorial I am teach every filed and chapter through w3schools, and in more few days I will be ready to take the exam.&lt;/p&gt;
+
+&lt;p&gt;The tutorial contain also some challenges that I found on the web and we solved it together, after that we will start to develop our won game! and do some more cool stuff.&lt;/p&gt;
+
+&lt;p&gt;I love JS, It is fun and challenge my mind how to do big stuff in short mount of time.&lt;/p&gt;
+
+&lt;p&gt;To help myself to preper the exam, I build some test with many question about JavaScript and hope it’s will help every one who watch this tutorial and want to take the exam too.&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript---the-first-video-about-the-tutorial&quot;&gt;JavaScript - the first video about the tutorial:&lt;/h3&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/2bJtEFba6zI&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;So like I said that tutorial is build in such a way to help me to pass the exam, but to be sure enough that I will succeed to pass the exam I made some self test to check my (or your) knowledge.&lt;/p&gt;
+
+&lt;p&gt;On this quiz you will find question that I found on the web and more question that I made, if you have some issue with some question please feel free to contact me.&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript---quiz&quot;&gt;JavaScript - quiz:&lt;/h3&gt;
+&lt;!--do not cheat!!! and don't look at the source code!!!!--&gt;
+
+&lt;form id=&quot;quiz&quot; name=&quot;quiz&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/scripts/quiz.css&quot; /&gt;
+  &lt;p class=&quot;questions&quot;&gt;1. Inside which HTML element do we put the JavaScript?&lt;/p&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q1&quot; value=&quot;1&quot; /&gt;&amp;lt;script&amp;gt;&lt;br /&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q1&quot; value=&quot;0&quot; /&gt;&amp;lt;js&amp;gt;&lt;br /&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q1&quot; value=&quot;0&quot; /&gt;&amp;lt;javascript&amp;gt;&lt;br /&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q1&quot; value=&quot;0&quot; /&gt;&amp;lt;code&amp;gt;&lt;br /&gt;
+  &lt;br /&gt;
+
+  &lt;p class=&quot;questions&quot;&gt;2. What is the correct JavaScript syntax to change the content of the HTML element below?
+  &lt;br /&gt;
+  &amp;lt;p id=&quot;demo&quot;&amp;gt;This is a demonstration.&amp;lt;/p&amp;gt;
+  &lt;/p&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q2&quot; value=&quot;0&quot; /&gt; document.getElement(&quot;p&quot;).innerHTML = &quot;Hello World!&quot;;&lt;br /&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q2&quot; value=&quot;0&quot; /&gt;#demo.innerHTML = &quot;Hello World!&quot;;&lt;br /&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q2&quot; value=&quot;0&quot; /&gt;document.getElementByName(&quot;p&quot;).innerHTML = &quot;Hello World!&quot;;&lt;br /&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q2&quot; value=&quot;1&quot; /&gt;document.getElementById(&quot;demo&quot;).innerHTML = &quot;Hello World!&quot;;&lt;br /&gt;&lt;br /&gt;
+
+
+&lt;p class=&quot;questions&quot;&gt;3. What is boolean?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q3&quot; value=&quot;0&quot; /&gt;It is some positive value&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q3&quot; value=&quot;1&quot; /&gt;It is some value base on True or False&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q3&quot; value=&quot;0&quot; /&gt;t's a binary value that can be 0 or 1&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q3&quot; value=&quot;0&quot; /&gt;none of the answers are correct&lt;br /&gt;
+&lt;br /&gt;
+
+
+
+
+&lt;p class=&quot;questions&quot;&gt;4. Where is the correct place to insert a JavaScript?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q4&quot; value=&quot;0&quot; /&gt;The &amp;lt;head&amp;gt; section&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q4&quot; value=&quot;0&quot; /&gt;The &amp;lt;body&amp;gt; section&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q4&quot; value=&quot;1&quot; /&gt;Both the &amp;lt;head&amp;gt; section and the &amp;lt;body&amp;gt; section are correct&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q4&quot; value=&quot;0&quot; /&gt;None&lt;br /&gt;
+
+
+
+
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;5. What is the correct syntax for referring to an external script called &quot;xxx.js&quot;?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q5&quot; value=&quot;0&quot; /&gt;&amp;lt;script name=&quot;xxx.js&quot;&amp;gt;&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q5&quot; value=&quot;1&quot; /&gt;&amp;lt;script src=&quot;xxx.js&quot;&amp;gt;&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q5&quot; value=&quot;0&quot; /&gt;&amp;lt;script href=&quot;xxx.js&quot;&amp;gt;&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q5&quot; value=&quot;0&quot; /&gt;&amp;lt;script link=&quot;xxx.js&quot;&amp;gt;&lt;br /&gt;
+
+
+
+
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;6. The external JavaScript file must contain the &amp;lt;script&amp;gt; tag.&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q6&quot; value=&quot;1&quot; /&gt;True&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q6&quot; value=&quot;0&quot; /&gt;False&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q6&quot; value=&quot;0&quot; /&gt;The tage can be what you whant&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q6&quot; value=&quot;0&quot; /&gt;The tag must be with src element&lt;br /&gt;
+
+
+
+
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;7. How do you write &quot;Hello World&quot; in an alert box?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q7&quot; value=&quot;0&quot; /&gt;msgBox(&quot;Hello World&quot;);&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q7&quot; value=&quot;1&quot; /&gt;alert(&quot;Hello World&quot;);&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q7&quot; value=&quot;0&quot; /&gt;msg(&quot;Hello World&quot;);&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q7&quot; value=&quot;0&quot; /&gt;alertBox(&quot;Hello World&quot;);&lt;br /&gt;
+
+
+
+
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;8. How do you call a function named &quot;myFunction&quot;?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q8&quot; value=&quot;1&quot; /&gt;myFunction()&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q8&quot; value=&quot;0&quot; /&gt;myFunction&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q8&quot; value=&quot;0&quot; /&gt;call function myFunction()&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q8&quot; value=&quot;0&quot; /&gt;call myFunction()&lt;br /&gt;
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;10.How to write an IF statement in JavaScript?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q9&quot; value=&quot;0&quot; /&gt;if i = 5 then&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q9&quot; value=&quot;0&quot; /&gt;if i == 5 then&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q9&quot; value=&quot;1&quot; /&gt;if (i == 5)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q9&quot; value=&quot;0&quot; /&gt;if i = 5&lt;br /&gt;
+
+
+
+
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;10. How to write an IF statement for executing some code if &quot;i&quot; is NOT equal to 5?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q10&quot; value=&quot;0&quot; /&gt;if i =! 5 then&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q10&quot; value=&quot;0&quot; /&gt;if i &amp;lt;&amp;gt; 5&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q10&quot; value=&quot;1&quot; /&gt;if (i!=5)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q10&quot; value=&quot;0&quot; /&gt;if(i&amp;lt;&amp;gt;5)&lt;br /&gt;
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;11. How does a WHILE loop start?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q11&quot; value=&quot;1&quot; /&gt;while (i &amp;lt;= 10)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q11&quot; value=&quot;0&quot; /&gt;while (i &amp;lt;= 10) than&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q11&quot; value=&quot;0&quot; /&gt;while i = 1 to 10&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q11&quot; value=&quot;0&quot; /&gt;while (i &amp;lt;= 10; i++)&lt;br /&gt;
+
+
+
+
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;12. How does a FOR loop start?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q12&quot; value=&quot;1&quot; /&gt;for (i = 0; i &amp;lt;= 5; i++)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q12&quot; value=&quot;0&quot; /&gt;for (i = 0; i &amp;lt;= 5)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q12&quot; value=&quot;0&quot; /&gt;for (i &amp;lt;= 5; i++)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q12&quot; value=&quot;0&quot; /&gt;for i = 1 to 5&lt;br /&gt;
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;13. How can you add a comment in a JavaScript?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q13&quot; value=&quot;0&quot; /&gt;&amp;lt;!--This is a comment--&amp;gt;&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q13&quot; value=&quot;1&quot; /&gt;//This is a comment&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q13&quot; value=&quot;0&quot; /&gt;'This is a comment&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q13&quot; value=&quot;0&quot; /&gt;#This is a comment&lt;br /&gt;
+
+
+
+
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;14. How to insert a comment that has more than one line?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q14&quot; value=&quot;0&quot; /&gt;&amp;lt;!--this comment has &amp;lt;br&amp;gt; more then one line--&amp;gt;&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q14&quot; value=&quot;0&quot; /&gt;//This comment has &amp;lt;br&amp;gt; more then one line//&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q14&quot; value=&quot;0&quot; /&gt;//This comment has &amp;lt;br&amp;gt; more than one line*/&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q14&quot; value=&quot;1&quot; /&gt;/*This comment has &amp;lt;br&amp;gt; more than one line*/&lt;br /&gt;
+
+
+
+
+&lt;script&gt;function check(){var answer = document.getElementById(&quot;answer&quot;);
+var correct = 0
+var q1= document.quiz.q1.value;
+if(q1== '1'){correct++};
+var q2= document.quiz.q2.value;
+if(q2== '1'){correct++};
+var q3= document.quiz.q3.value;
+if(q3== '1'){correct++};
+var q4= document.quiz.q4.value;
+if(q4== '1'){correct++};
+var q5= document.quiz.q5.value;
+if(q5== '1'){correct++};
+var q6= document.quiz.q6.value;
+if(q6== '1'){correct++};
+var q7= document.quiz.q7.value;
+if(q7== '1'){correct++};
+var q8= document.quiz.q8.value;
+if(q8== '1'){correct++};
+var q9= document.quiz.q9.value;
+if(q9== '1'){correct++};
+var q10= document.quiz.q10.value;
+if(q10== '1'){correct++};
+var q11= document.quiz.q11.value;
+if(q11== '1'){correct++};
+var q12= document.quiz.q12.value;
+if(q12== '1'){correct++};
+var q13= document.quiz.q13.value;
+if(q13== '1'){correct++};
+var q14= document.quiz.q14.value;
+if(q14== '1'){correct++};
+answer.innerHTML='Your scor is: '+correct*100/14;
+}
+&lt;/script&gt;
+
+
+
+&lt;br /&gt;
+&lt;input id=&quot;button&quot; type=&quot;button&quot; value=&quot;End The Exam!&quot; style=&quot;font-size:20px&quot; onclick=&quot;check();&quot; /&gt;
+&lt;p id=&quot;answer&quot;&gt;&lt;/p&gt;
+&lt;/form&gt;</content><author><name>Guy Zwerdling</name></author><category term="JavaScript" /><summary type="html">It's been awhile, after I done with my SQLi project I start to learn XSS, I found it fascinating! but I felt like I need more strong base knowledge about JavaScript to do my magic stuff. after a week or two I decided to make my on tutorials video about JS and this time in Hebrew, from that project I was learn a lot!</summary></entry><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/2018/02/15/SQL-Injection.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2018-02-15T00:00:00+02:00</published><updated>2018-02-15T00:00:00+02:00</updated><id>http://localhost:4000/2018/02/15/SQL-Injection</id><content type="html" xml:base="http://localhost:4000/2018/02/15/SQL-Injection.html">&lt;p&gt;SQL or Structured Query Language is a way to store and pullout data from database and it’s fairly easy because it’s like English actually, you can write things like &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM thistable&lt;/code&gt; and every such command will bring up to you results from the database and this was the way to store things in websites and still does for many years.&lt;/p&gt;
 
 &lt;p&gt;If we talking about injection you may know that inject some code is not related only to SQL, you can actually to do so with various programing language of course it depend on how the programmer developed that site, but if he or she not care enough about the little things in that code, we may find some way to inject some unwanted code to the website.&lt;/p&gt;
 
@@ -319,7 +505,7 @@ SELECT NULL, version();&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;In our case I guess the hash value is md5 type so we can check in our linux machineand find a match, just type the command as follow:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; password | md5sum&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; password | &lt;span class=&quot;nb&quot;&gt;md5sum&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/sql-injection-021.png&quot; alt=&quot;sql-injection-021.png&quot; /&gt;
 &lt;strong&gt;Figure 21&lt;/strong&gt; Hash value.&lt;/p&gt;
@@ -1366,36 +1552,4 @@ If we setup more that one firewall in the core, in that case we can set it as Hi
 &lt;p&gt;החיבור מחלק את ספרי הנביאים ל-54 פרשיות כמניין פרשיות התורה בכדי שבכל שבוע יהיה אפשר ללמוד לצד פרשת השבוע גם חלק מהנביא ואחר כך לענות על חידון ועל ידי כך להיות בקיאים יותר בנביא.‬‬”&lt;/p&gt;
 
 &lt;p&gt;I’m so proud of my dear brother! So love him! And very miss him! I hope that this app will indeed be compatible with his desire to create a masterpiece on the Bible.
-David Zwerdling, may his memory be blessed&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">This application is about riddles on Neviim and Ktuvim which is the second and the third parts of the Bible, the original book named..... was writing by my dear brother</summary></entry><entry><title type="html">Linux Ubuntu</title><link href="http://localhost:4000/2017/08/30/linux-ubuntu.html" rel="alternate" type="text/html" title="Linux Ubuntu" /><published>2017-08-30T00:00:00+03:00</published><updated>2017-08-30T00:00:00+03:00</updated><id>http://localhost:4000/2017/08/30/linux-ubuntu</id><content type="html" xml:base="http://localhost:4000/2017/08/30/linux-ubuntu.html">&lt;p&gt;I love so much ubuntu because it so frendly lol, but realy, the reasens in my opinion why to used Ubuntu is because of the communities that support in ubuntu, it’s important to understand that the biger the community, the better support, anless u wanna to be hard core in linux and that another immportant field&lt;/p&gt;
-
-&lt;p&gt;In the passed week I worked on my grub, this is grub 2 and I setup some opening image, it was so cool after that I decided to setup opening music, so I configure the Hz of “In the Hall of Mountain King”. It sound great, to setup your own music sound all you need is to open /etc/default/grub file and in the section of GRUB_INIT_TUNE write your own code, the first number is the tempo, and after that the nubers goes as a peers the first one is the Hz tune and the second is the delay of the tune, as example:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;412 265 4 165 4 265 8&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;the first number “412” is the tempo that we going to work with, the second number is the tune of “265 Hz”, the last number is “4” and this is set the sound delay, so number “8” is two time longer than “4”&lt;/p&gt;
-
-&lt;p&gt;and this is my code for “In the Hall of Mountain King”:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;714 123 4 138 4 146 4 164 4 185 4 146 4 185 8 174 4 138 4 174 8 164 4 130 4 164 8 123 4 138 4 146 4 164 4 185 4 146 4 185 4 246 4 220 4 185 4 146 4 185 4 220 8&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;please remember that after you setup the grub you mast type the command “update-grub” for the setting will take affects
-more cool song to the grub:&lt;/p&gt;
-
-&lt;p&gt;Super Mario:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;1000 334 1 334 1 0 1 334 1 0 1 261 1 334 1 0 1 392 2 0 4 196 2&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Star Wars Imperial Death March:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;480 440 4 440 4 440 4 349 3 523 1 440 4 349 3 523 1 440 8 659 4 659 4 659 4 698 3 523 1 415 4 349 3 523 1 440 8&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Raining Blood:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;640 165 4 165 4 165 4 554 2 587 2 554 4 370 2 554 2 523 4 349 2 523 2 494 8 165 4 165 4 165 4&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Mario Bros. Mushroom Powerup:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;1750 523 1 392 1 523 1 659 1 784 1 1047 1 784 1 415 1 523 1 622 1 831 1 622 1 831 1 1046 1 1244 1 1661 1 1244 1 466 1 587 1 698 1 932 1 1195 1 1397 1 1865 1 1397 1&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Fuer Elise:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRUB_INIT_TUNE=&quot;480 420 1 400 1 420 1 400 1 420 1 315 1 370 1 335 1 282 3 180 1 215 1 282 1 315 3 213 1 262 1 315 1 335 3 213 1 420 1 400 1 420 1 400 1 420 1 315 1 370 1 335 1 282 3 180 1 215 1 282 1 315 3 213 1 330 1 315 1 282 3&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">I love so much ubuntu because it so frendly lol, but realy, the reasens in my opinion why to used Ubuntu is because of the communities that support in ubuntu, it's important to understand that the biger the community, the better support, anless u wanna to be hard core in linux and that another immportant field In the passed week I worked on my</summary></entry></feed>
+David Zwerdling, may his memory be blessed&lt;/p&gt;</content><author><name>Guy Zwerdling</name></author><summary type="html">This application is about riddles on Neviim and Ktuvim which is the second and the third parts of the Bible, the original book named..... was writing by my dear brother</summary></entry></feed>
