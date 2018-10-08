@@ -6,10 +6,8 @@ sidebar_link: true
 
 ### Summary
 
-<b>CCIP, CCNP and LPIC1 certified. Currently focused CCNP
-Security. Seeking for a place to fit in and improve myself as
-a security specialist, love to learn, looking for a job with a
-deep level in information security technology.</b>
+<b>CCIP, CCNP and LPIC1 certified. Love everything that related to Cyb3rSecurity stuff, Currently focused on develop my first WEB Game using JS, I am self-learner, with high motivation and lot of curiosity.
+Looking for a job where I can improve my development skills with JS/Python.</b>
 
 
 ### Experience

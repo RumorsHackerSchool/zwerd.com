@@ -156,6 +156,34 @@ On this quiz you will find question that I found on the web and more question th
 
 
 
+<br><p class = "questions">15. What is the correct way to write a JavaScript array?</p>
+<input type="radio" id="mc" name="q15" value="0">var colors = "red", "green", "blue"<br>
+<input type="radio" id="mc" name="q15" value="0">var colors = (1:"red", 2:"green", 3:"blue")<br>
+<input type="radio" id="mc" name="q15" value="0">var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")<br>
+<input type="radio" id="mc" name="q15" value="1">var colors = ["red", "green", "blue"]<br>
+<br><p class = "questions">16. How do you round the number 7.25, to the nearest integer?</p>
+<input type="radio" id="mc" name="q16" value="1">Math.round(7.25)<br>
+<input type="radio" id="mc" name="q16" value="0">round(7.25)<br>
+<input type="radio" id="mc" name="q16" value="0">Math.rnd(7.25)<br>
+<input type="radio" id="mc" name="q16" value="0">rnd(7.25)<br>
+
+
+
+
+<br><p class = "questions">17. How do you find the number with the highest value of x and y?</p>
+<input type="radio" id="mc" name="q17" value="0">ceil(x, y)<br>
+<input type="radio" id="mc" name="q17" value="0">top(x, y)<br>
+<input type="radio" id="mc" name="q17" value="1">Math.max(x, y)<br>
+<input type="radio" id="mc" name="q17" value="0">Math.ceil(x, y)<br>
+<br><p class = "questions">18. What is the correct JavaScript syntax for opening a new window called "w2" ?</p>
+<input type="radio" id="mc" name="q18" value="1">w2 = window.open("http://www.w3schools.com");<br>
+<input type="radio" id="mc" name="q18" value="0">w2 = window.new("http://www.w3schools.com");<br>
+<input type="radio" id="mc" name="q18" value="0">w2 = window.winNew("https://zwerd.com");<br>
+<input type="radio" id="mc" name="q18" value="0">w2 = window.new.window("www.zwerd.com");<br>
+
+
+
+
 <script>function check(){var answer = document.getElementById("answer");
 var correct = 0
 var q1= document.quiz.q1.value;
@@ -186,7 +214,15 @@ var q13= document.quiz.q13.value;
 if(q13== '1'){correct++};
 var q14= document.quiz.q14.value;
 if(q14== '1'){correct++};
-answer.innerHTML='Your scor is: '+correct*100/14;
+var q15= document.quiz.q15.value;
+if(q15== '1'){correct++};
+var q16= document.quiz.q16.value;
+if(q16== '1'){correct++};
+var q17= document.quiz.q17.value;
+if(q17== '1'){correct++};
+var q18= document.quiz.q18.value;
+if(q18== '1'){correct++};
+answer.innerHTML='Your scor is: '+correct*100/18;
 }
 </script>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-05-13T17:44:02+03:00</updated><id>http://localhost:4000/</id><title type="html">Zwerd</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">JavaScript - the future of programming.</title><link href="http://localhost:4000/2018/04/23/javascript-tutorial.html" rel="alternate" type="text/html" title="JavaScript - the future of programming." /><published>2018-04-23T00:00:00+03:00</published><updated>2018-04-23T00:00:00+03:00</updated><id>http://localhost:4000/2018/04/23/javascript-tutorial</id><content type="html" xml:base="http://localhost:4000/2018/04/23/javascript-tutorial.html">&lt;p&gt;It’s been awhile, after I done with my SQLi project I start to learn XSS, I found it fascinating! but I felt like I need more strong base knowledge about JavaScript to do my magic stuff. after a week or two I decided to make my on tutorials video about JS and this time in Hebrew, from that project I was learn a lot!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-05-27T10:38:26+03:00</updated><id>http://localhost:4000/</id><title type="html">Zwerd</title><subtitle>A stunning blog of freaking PT warrior</subtitle><author><name>Guy Zwerdling</name></author><entry><title type="html">JavaScript - the future of programming.</title><link href="http://localhost:4000/2018/04/23/javascript-tutorial.html" rel="alternate" type="text/html" title="JavaScript - the future of programming." /><published>2018-04-23T00:00:00+03:00</published><updated>2018-04-23T00:00:00+03:00</updated><id>http://localhost:4000/2018/04/23/javascript-tutorial</id><content type="html" xml:base="http://localhost:4000/2018/04/23/javascript-tutorial.html">&lt;p&gt;It’s been awhile, after I done with my SQLi project I start to learn XSS, I found it fascinating! but I felt like I need more strong base knowledge about JavaScript to do my magic stuff. after a week or two I decided to make my on tutorials video about JS and this time in Hebrew, from that project I was learn a lot!&lt;/p&gt;
 
 &lt;p&gt;Originally I wrote that tutorial for Michael which is a friend but unfortunately he give up on JS studies for some unknown reason.&lt;/p&gt;
 
@@ -145,6 +145,34 @@
 
 
 
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;15. What is the correct way to write a JavaScript array?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q15&quot; value=&quot;0&quot; /&gt;var colors = &quot;red&quot;, &quot;green&quot;, &quot;blue&quot;&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q15&quot; value=&quot;0&quot; /&gt;var colors = (1:&quot;red&quot;, 2:&quot;green&quot;, 3:&quot;blue&quot;)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q15&quot; value=&quot;0&quot; /&gt;var colors = 1 = (&quot;red&quot;), 2 = (&quot;green&quot;), 3 = (&quot;blue&quot;)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q15&quot; value=&quot;1&quot; /&gt;var colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;]&lt;br /&gt;
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;16. How do you round the number 7.25, to the nearest integer?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q16&quot; value=&quot;1&quot; /&gt;Math.round(7.25)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q16&quot; value=&quot;0&quot; /&gt;round(7.25)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q16&quot; value=&quot;0&quot; /&gt;Math.rnd(7.25)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q16&quot; value=&quot;0&quot; /&gt;rnd(7.25)&lt;br /&gt;
+
+
+
+
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;17. How do you find the number with the highest value of x and y?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q17&quot; value=&quot;0&quot; /&gt;ceil(x, y)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q17&quot; value=&quot;0&quot; /&gt;top(x, y)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q17&quot; value=&quot;1&quot; /&gt;Math.max(x, y)&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q17&quot; value=&quot;0&quot; /&gt;Math.ceil(x, y)&lt;br /&gt;
+&lt;br /&gt;&lt;p class=&quot;questions&quot;&gt;18. What is the correct JavaScript syntax for opening a new window called &quot;w2&quot; ?&lt;/p&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q18&quot; value=&quot;1&quot; /&gt;w2 = window.open(&quot;http://www.w3schools.com&quot;);&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q18&quot; value=&quot;0&quot; /&gt;w2 = window.new(&quot;http://www.w3schools.com&quot;);&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q18&quot; value=&quot;0&quot; /&gt;w2 = window.winNew(&quot;https://zwerd.com&quot;);&lt;br /&gt;
+&lt;input type=&quot;radio&quot; id=&quot;mc&quot; name=&quot;q18&quot; value=&quot;0&quot; /&gt;w2 = window.new.window(&quot;www.zwerd.com&quot;);&lt;br /&gt;
+
+
+
+
 &lt;script&gt;function check(){var answer = document.getElementById(&quot;answer&quot;);
 var correct = 0
 var q1= document.quiz.q1.value;
@@ -175,7 +203,15 @@ var q13= document.quiz.q13.value;
 if(q13== '1'){correct++};
 var q14= document.quiz.q14.value;
 if(q14== '1'){correct++};
-answer.innerHTML='Your scor is: '+correct*100/14;
+var q15= document.quiz.q15.value;
+if(q15== '1'){correct++};
+var q16= document.quiz.q16.value;
+if(q16== '1'){correct++};
+var q17= document.quiz.q17.value;
+if(q17== '1'){correct++};
+var q18= document.quiz.q18.value;
+if(q18== '1'){correct++};
+answer.innerHTML='Your scor is: '+correct*100/18;
 }
 &lt;/script&gt;
 

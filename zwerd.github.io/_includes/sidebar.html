@@ -13,11 +13,21 @@
     </{% if page.layout == "index" %}h1{% else %}div{% endif %}>
     <p class="lead">{{ site.description }}</p>
   </header>
+
+
   {% include sidebar-nav-links.html %}
 
   {% if site.version %}
     <span class="site-version">Currently v{{ site.version }}</span>
   {% endif %}
+
+  <form action="https://getsimpleform.com/messages?form_api_token=fb07df529fbad6b6caabb9352ad2108c" method="post">
+  <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
+  <input type='hidden' name='redirect_to' value='https://zwerd.com' />
+  <!-- all your input fields here.... -->
+  <input type='text' name='test' placeholder="Type your email..."/>
+  <input type='submit' value='Subscribe' />
+</form>
 
   {% include sidebar-icon-links.html %}
   {% include copyright.html %}
